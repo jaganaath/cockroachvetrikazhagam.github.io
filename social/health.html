@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Indicators — Tamil Nadu Social Hub</title>
+<link rel="stylesheet" href="../finance/css/finance.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../finance/js/i18n.js"></script>
+<style>
+  :root { --accent: #44BB66; }
+  body { background: #0A0A0A; color: #E8E8E0; font-family: 'Inter', sans-serif; margin: 0; }
+  .nav { background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .nav-brand { font-weight: 900; font-size: 0.85rem; color: #44BB66; text-decoration: none; padding: 0.9rem 0; }
+  .nav-links { display: flex; flex-wrap: wrap; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 0.9rem 0.8rem; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #44BB66; border-bottom-color: #44BB66; }
+  .lang-btn { background: rgba(68,187,102,0.1); border: 1px solid rgba(68,187,102,0.25); color: #44BB66; font-size: 0.72rem; font-weight: 700; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+  .page-hero { background: linear-gradient(135deg,#0d0d0d,#001a0d 60%,#0d0d0d); padding: 2.5rem 2rem 2rem; border-bottom: 1px solid #1a2a1a; }
+  .page-hero h1 { font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 900; color: #F5F5F0; margin: 0 0 0.4rem; }
+  .page-hero h1 span { color: #44BB66; }
+  .page-hero p { color: #AAA; max-width: 620px; font-size: 0.88rem; line-height: 1.7; margin: 0.4rem 0 0; }
+  .stats-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+  .stat-pill { background: rgba(68,187,102,0.07); border: 1px solid rgba(68,187,102,0.18); border-radius: 6px; padding: 0.8rem 1.2rem; }
+  .stat-pill .v { font-size: 1.6rem; font-weight: 900; color: #44BB66; }
+  .stat-pill .l { font-size: 0.62rem; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .section { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .section-title { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #44BB66; margin-bottom: 1.2rem; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .chart-box { background: #111; border: 1px solid #1e1e1e; border-radius: 8px; padding: 1.2rem; }
+  .chart-box h4 { font-size: 0.73rem; font-weight: 700; color: #AAA; text-transform: uppercase; letter-spacing: 0.09em; margin: 0 0 1rem; }
+  .chart-wrap { position: relative; height: 260px; }
+  .full-width { grid-column: 1 / -1; }
+  .tab-row { display: flex; gap: 0; border-bottom: 1px solid #1e1e1e; margin-bottom: 1.2rem; flex-wrap: wrap; }
+  .tab-btn { font-size: 0.75rem; font-weight: 700; color: #555; background: none; border: none; border-bottom: 2px solid transparent; padding: 0.6rem 1rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .tab-btn.active { color: #44BB66; border-bottom-color: #44BB66; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .src-note { font-size: 0.7rem; color: #444; margin-top: 0.8rem; }
+  .sdg-ref { display: inline-block; background: rgba(68,187,102,0.1); border: 1px solid rgba(68,187,102,0.2); color: #44BB66; font-size: 0.68rem; padding: 2px 8px; border-radius: 3px; margin-left: 6px; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (max-width: 640px) { .chart-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand">← Social Hub</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="education.html">Education</a>
+    <a href="health.html" class="active">Health</a>
+    <a href="women.html">Women</a>
+    <a href="compare.html">State Compare</a>
+  </div>
+  <button class="lang-btn" onclick="if(window.cycleLang)cycleLang()">EN / TA / HI</button>
+</nav>
+
+<div class="page-hero">
+  <h1>Health Indicators — <span>Tamil Nadu</span></h1>
+  <p>Maternal mortality, infant mortality, child nutrition, immunization coverage, anaemia rates and health infrastructure. Sources: NFHS-5, SRS, NHM Annual Reports.</p>
+  <div class="stats-row">
+    <div class="stat-pill"><div class="v">54</div><div class="l">MMR 2018-20 <span class="sdg-ref">SDG ✓</span></div></div>
+    <div class="stat-pill"><div class="v">13</div><div class="l">IMR 2021</div></div>
+    <div class="stat-pill"><div class="v">25%</div><div class="l">Child Stunting</div></div>
+    <div class="stat-pill"><div class="v">71.3%</div><div class="l">Immunization</div></div>
+    <div class="stat-pill"><div class="v">45.5%</div><div class="l">Women Anaemia</div></div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="showTab('mortality',this)">Mortality</button>
+    <button class="tab-btn" onclick="showTab('nutrition',this)">Nutrition</button>
+    <button class="tab-btn" onclick="showTab('immunization',this)">Immunization</button>
+    <button class="tab-btn" onclick="showTab('anaemia',this)">Anaemia</button>
+  </div>
+
+  <!-- MORTALITY -->
+  <div id="tab-mortality" class="tab-panel active">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>MMR Trend — TN vs National Average <span class="help-icon" data-tip="MMR = Maternal Mortality Ratio per 1,00,000 live births. SDG 2030 target is below 70. TN achieved this.">?</span></h4>
+        <div class="chart-wrap"><canvas id="mmrTrendChart"></canvas></div>
+        <div class="src-note">Source: SRS Special Bulletin on MMR</div>
+      </div>
+      <div class="chart-box">
+        <h4>MMR Comparison — 10 States (2018-20) <span class="help-icon" data-tip="Kerala (19) and Maharashtra (33) are best performers. UP (167) and RJ (113) have the highest MMR.">?</span></h4>
+        <div class="chart-wrap"><canvas id="mmrStateChart"></canvas></div>
+        <div class="src-note">Source: SRS Special Bulletin on MMR 2018-20</div>
+      </div>
+      <div class="chart-box">
+        <h4>IMR Trend — TN vs National <span class="help-icon" data-tip="IMR = deaths per 1,000 live births in first year. SDG target is below 12. TN is at 13.">?</span></h4>
+        <div class="chart-wrap"><canvas id="imrTrendChart"></canvas></div>
+        <div class="src-note">Source: SRS Statistical Reports 2015-2021</div>
+      </div>
+      <div class="chart-box">
+        <h4>IMR Comparison — 10 States (2021) <span class="help-icon" data-tip="Kerala has India's lowest IMR at 6. UP at 42 is highest among major states.">?</span></h4>
+        <div class="chart-wrap"><canvas id="imrStateChart"></canvas></div>
+        <div class="src-note">Source: SRS 2021</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUTRITION -->
+  <div id="tab-nutrition" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>Child Nutrition — TN Trend (NFHS) <span class="help-icon" data-tip="Stunted = low height-for-age (chronic). Wasted = low weight-for-height (acute). Underweight = composite. Overweight is rising too.">?</span></h4>
+        <div class="chart-wrap"><canvas id="nutTrendChart"></canvas></div>
+        <div class="src-note">Source: NFHS-3 2005-06, NFHS-4 2015-16, NFHS-5 2019-21</div>
+      </div>
+      <div class="chart-box">
+        <h4>Child Stunting (%) — 10 States (NFHS-5) <span class="help-icon" data-tip="% children under-5 who are stunted (height-for-age below -2 SD). Kerala (23.4%) lowest. TN (25%) second lowest.">?</span></h4>
+        <div class="chart-wrap"><canvas id="stuntStateChart"></canvas></div>
+        <div class="src-note">Source: NFHS-5 2019-21</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMMUNIZATION -->
+  <div id="tab-immunization" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>Full Immunization Coverage — TN Trend <span class="help-icon" data-tip="% children 12-23 months who received BCG + 3 DPT + 3 Polio + Measles. COVID-19 disrupted 2020-21.">?</span></h4>
+        <div class="chart-wrap"><canvas id="immunTrendChart"></canvas></div>
+        <div class="src-note">Source: HMIS / NHM Annual Reports</div>
+      </div>
+      <div class="chart-box">
+        <h4>Full Immunization — 10 States (NFHS-5) <span class="help-icon" data-tip="West Bengal (84%) and Kerala (82.3%) have highest immunization. TN (69.7%) is slightly below national average of 76.4%.">?</span></h4>
+        <div class="chart-wrap"><canvas id="immunStateChart"></canvas></div>
+        <div class="src-note">Source: NFHS-5 2019-21</div>
+      </div>
+      <div class="chart-box full-width">
+        <h4>Vaccine Coverage — TN (NFHS-5 vs NFHS-4) <span class="help-icon" data-tip="Individual vaccine coverage in TN. BCG coverage is near universal at 99%. Measles and full schedule need improvement.">?</span></h4>
+        <div class="chart-wrap"><canvas id="vaccineChart"></canvas></div>
+        <div class="src-note">Source: NFHS-4 2015-16, NFHS-5 2019-21</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANAEMIA -->
+  <div id="tab-anaemia" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>Anaemia — TN: NFHS-4 vs NFHS-5 <span class="help-icon" data-tip="Anaemia measured by haemoglobin levels. Women and young children most affected. Improvement seen in women but children remain high.">?</span></h4>
+        <div class="chart-wrap"><canvas id="anaemiaTNChart"></canvas></div>
+        <div class="src-note">Source: NFHS-4, NFHS-5</div>
+      </div>
+      <div class="chart-box">
+        <h4>Women (15-49) Anaemia (%) — 10 States <span class="help-icon" data-tip="West Bengal has highest women's anaemia at 70.6%. Kerala lowest at 30.2%. TN (45.5%) is below national average.">?</span></h4>
+        <div class="chart-wrap"><canvas id="anaemiaStateChart"></canvas></div>
+        <div class="src-note">Source: NFHS-5 2019-21</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:2rem;color:#444;font-size:0.72rem;border-top:1px solid #1a1a1a;margin-top:2rem;">
+  Data: NFHS-5 2019-21, SRS 2021, NHM Annual Reports ·
+  <a href="index.html" style="color:#44BB66">← Social Hub</a>
+</footer>
+
+<script>
+(function(){
+  const obs = new IntersectionObserver(els=>els.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    btn.classList.add('active');
+  }
+  window.showTab = showTab;
+
+  const states = ['TN','MH','KA','KL','AP','TG','GJ','RJ','UP','WB'];
+  const shortNames = ['Tamil Nadu','Maharashtra','Karnataka','Kerala','Andhra Pradesh','Telangana','Gujarat','Rajasthan','Uttar Pradesh','West Bengal'].map(s=>s.replace(' ','\n'));
+  const colors = ['#D4A017','#3399CC','#44BB66','#00BBCC','#FF6699','#9966CC','#FF8800','#CC3344','#88CC00','#CC6600'];
+  const cx = {responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:9}},grid:{color:'#1a1a1a'}},y:{ticks:{color:'#666',font:{size:10}},grid:{color:'#1a1a1a'}}}};
+
+  // MMR Trend
+  new Chart(document.getElementById('mmrTrendChart'),{type:'line',
+    data:{labels:['2014-16','2015-17','2016-18','2017-19','2018-20'],datasets:[
+      {label:'Tamil Nadu',data:[66,63,63,58,54],borderColor:'#44BB66',backgroundColor:'rgba(68,187,102,0.1)',fill:true,tension:0.3,pointRadius:4,borderWidth:2.5},
+      {label:'National Avg',data:[130,122,113,103,97],borderColor:'#CC3344',borderDash:[4,4],tension:0.3,pointRadius:4,borderWidth:2},
+      {label:'SDG Target (70)',data:[70,70,70,70,70],borderColor:'#888',borderDash:[6,3],borderWidth:1.5,pointRadius:0}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,min:0}}}
+  });
+
+  // MMR State
+  const mmr = {"TN":54,"MH":33,"KA":69,"KL":19,"AP":45,"TG":43,"GJ":57,"RJ":113,"UP":167,"WB":109};
+  new Chart(document.getElementById('mmrStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>mmr[s]),backgroundColor:states.map(s=>mmr[s]<=70?'#44BB66':'#FF4444'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // IMR Trend
+  new Chart(document.getElementById('imrTrendChart'),{type:'line',
+    data:{labels:['2015','2016','2017','2018','2019','2020','2021'],datasets:[
+      {label:'Tamil Nadu',data:[20,18,17,16,15,14,13],borderColor:'#44BB66',backgroundColor:'rgba(68,187,102,0.1)',fill:true,tension:0.3,pointRadius:4,borderWidth:2.5},
+      {label:'National Avg',data:[37,34,32,30,28,27,25],borderColor:'#CC3344',borderDash:[4,4],tension:0.3,pointRadius:4,borderWidth:2},
+      {label:'SDG Target (12)',data:[12,12,12,12,12,12,12],borderColor:'#888',borderDash:[6,3],borderWidth:1.5,pointRadius:0}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}}}
+  });
+
+  // IMR State
+  const imr = {"TN":13,"MH":17,"KA":18,"KL":6,"AP":27,"TG":22,"GJ":25,"RJ":38,"UP":42,"WB":20};
+  new Chart(document.getElementById('imrStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>imr[s]),backgroundColor:states.map(s=>imr[s]<=12?'#44BB66':'#FF8800'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // Nutrition trend
+  new Chart(document.getElementById('nutTrendChart'),{type:'bar',
+    data:{labels:['NFHS-3 (2005-06)','NFHS-4 (2015-16)','NFHS-5 (2019-21)'],datasets:[
+      {label:'Stunted',data:[28.9,27.1,25.0],backgroundColor:'rgba(204,51,68,0.7)',borderRadius:2},
+      {label:'Wasted',data:[22.0,19.6,19.7],backgroundColor:'rgba(255,136,0,0.7)',borderRadius:2},
+      {label:'Underweight',data:[29.5,23.8,23.8],backgroundColor:'rgba(153,102,204,0.7)',borderRadius:2},
+      {label:'Overweight',data:[9.8,13.6,18.3],backgroundColor:'rgba(68,187,102,0.7)',borderRadius:2}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:9}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  // Stunting state
+  const stunt = {"TN":25.0,"MH":35.2,"KA":35.4,"KL":23.4,"AP":31.4,"TG":33.1,"GJ":39.0,"RJ":31.8,"UP":39.7,"WB":33.8};
+  new Chart(document.getElementById('stuntStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>stunt[s]),backgroundColor:states.map(s=>stunt[s]<30?'#44BB66':'#FF4444'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // Immunization trend
+  new Chart(document.getElementById('immunTrendChart'),{type:'line',
+    data:{labels:['2016-17','2017-18','2018-19','2019-20','2020-21','2021-22','2022-23'],datasets:[
+      {label:'TN Full Immunization',data:[72.1,71.8,70.4,70.2,67.9,68.5,71.3],borderColor:'#44BB66',backgroundColor:'rgba(68,187,102,0.1)',fill:true,tension:0.3,pointRadius:4,borderWidth:2.5}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:false}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,min:60,max:80,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  // Immunization state
+  const immun = {"TN":69.7,"MH":56.6,"KA":65.0,"KL":82.3,"AP":65.8,"TG":64.6,"GJ":57.7,"RJ":54.5,"UP":69.6,"WB":84.0};
+  new Chart(document.getElementById('immunStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>immun[s]),backgroundColor:colors,borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // Vaccine coverage
+  const vacLabels = ['BCG','DPT-1','DPT-3','OPV-3','Measles','Full Schedule'];
+  const vacNFHS4 = [98.7,96.4,89.3,91.2,84.5,72.1];
+  const vacNFHS5 = [99.2,97.8,83.4,85.6,82.1,69.7];
+  new Chart(document.getElementById('vaccineChart'),{type:'bar',
+    data:{labels:vacLabels,datasets:[
+      {label:'NFHS-4 (2015-16)',data:vacNFHS4,backgroundColor:'rgba(51,153,204,0.6)',borderRadius:2},
+      {label:'NFHS-5 (2019-21)',data:vacNFHS5,backgroundColor:'rgba(68,187,102,0.6)',borderRadius:2}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,min:60,max:100,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  // Anaemia TN
+  new Chart(document.getElementById('anaemiaTNChart'),{type:'bar',
+    data:{labels:['Children 6-59m','Women 15-49','Pregnant Women','Men 15-49'],datasets:[
+      {label:'NFHS-4 (2015-16)',data:[58.6,55.0,51.8,24.3],backgroundColor:'rgba(204,51,68,0.6)',borderRadius:2},
+      {label:'NFHS-5 (2019-21)',data:[57.4,45.5,37.3,20.7],backgroundColor:'rgba(255,136,0,0.6)',borderRadius:2}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  // Anaemia state
+  const anaemia = {"TN":45.5,"MH":53.2,"KA":47.5,"KL":30.2,"AP":57.4,"TG":53.9,"GJ":65.2,"RJ":54.4,"UP":50.4,"WB":70.6};
+  new Chart(document.getElementById('anaemiaStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>anaemia[s]),backgroundColor:states.map(s=>anaemia[s]<50?'#44BB66':'#FF4444'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Comparison — Tamil Nadu Social Hub</title>
+<link rel="stylesheet" href="../finance/css/finance.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../finance/js/i18n.js"></script>
+<style>
+  :root { --accent: #44BB66; }
+  body { background: #0A0A0A; color: #E8E8E0; font-family: 'Inter', sans-serif; margin: 0; }
+  .nav { background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .nav-brand { font-weight: 900; font-size: 0.85rem; color: #44BB66; text-decoration: none; padding: 0.9rem 0; }
+  .nav-links { display: flex; flex-wrap: wrap; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 0.9rem 0.8rem; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #44BB66; border-bottom-color: #44BB66; }
+  .lang-btn { background: rgba(68,187,102,0.1); border: 1px solid rgba(68,187,102,0.25); color: #44BB66; font-size: 0.72rem; font-weight: 700; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+  .page-hero { background: linear-gradient(135deg,#0d0d0d,#001a0d 60%,#0d0d0d); padding: 2rem 2rem 1.5rem; border-bottom: 1px solid #1a2a1a; }
+  .page-hero h1 { font-size: clamp(1.4rem,3vw,2.2rem); font-weight: 900; color: #F5F5F0; margin: 0 0 0.3rem; }
+  .page-hero h1 span { color: #44BB66; }
+  .page-hero p { color: #AAA; max-width: 600px; font-size: 0.85rem; line-height: 1.6; margin: 0; }
+  .section { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .section-title { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #44BB66; margin-bottom: 1.2rem; }
+  .controls { background: #111; border: 1px solid #1e1e1e; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.2rem; }
+  .controls-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; }
+  .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+  .ctrl-group label { font-size: 0.68rem; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.08em; }
+  select { background: #1a1a1a; border: 1px solid #2a2a2a; color: #DDD; font-size: 0.78rem; padding: 7px 10px; border-radius: 4px; min-width: 160px; }
+  .state-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .state-chip { font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; border: 1.5px solid; cursor: pointer; transition: opacity 0.2s, transform 0.15s; user-select: none; }
+  .state-chip.inactive { opacity: 0.3; }
+  .state-chip:hover { transform: scale(1.05); }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .chart-box { background: #111; border: 1px solid #1e1e1e; border-radius: 8px; padding: 1.2rem; }
+  .chart-box h4 { font-size: 0.73rem; font-weight: 700; color: #AAA; text-transform: uppercase; letter-spacing: 0.09em; margin: 0 0 1rem; }
+  .chart-wrap { position: relative; height: 300px; }
+  .chart-wrap-radar { position: relative; height: 360px; }
+  .full-width { grid-column: 1 / -1; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+  th { color: #666; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 8px; border-bottom: 1px solid #1e1e1e; text-align: left; }
+  td { padding: 8px; border-bottom: 1px solid #111; vertical-align: middle; }
+  tr:hover td { background: #0d0d0d; }
+  .rank-badge { display: inline-block; width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.7rem; font-weight: 800; }
+  .bar-bg { background: #1a1a1a; border-radius: 2px; height: 6px; overflow: hidden; margin-top: 4px; }
+  .bar-fill { height: 100%; border-radius: 2px; transition: width 0.6s; }
+  .src-note { font-size: 0.68rem; color: #444; margin-top: 0.6rem; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (max-width: 640px) { .chart-grid { grid-template-columns: 1fr; } .controls-row { flex-direction: column; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand">← Social Hub</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="education.html">Education</a>
+    <a href="health.html">Health</a>
+    <a href="women.html">Women</a>
+    <a href="compare.html" class="active">State Compare</a>
+  </div>
+  <button class="lang-btn" onclick="if(window.cycleLang)cycleLang()">EN / TA / HI</button>
+</nav>
+
+<div class="page-hero">
+  <h1>Social Indicators — <span>State Comparison</span></h1>
+  <p>Compare Tamil Nadu with up to 4 other states on 15+ social indicators. Select states, choose a metric, pick chart type. All data from NFHS-5, Census, UDISE+, SRS.</p>
+</div>
+
+<div class="section reveal">
+  <!-- CONTROLS -->
+  <div class="controls">
+    <div class="section-title" style="margin-bottom:0.8rem">Select States (TN always included, pick up to 4 more)</div>
+    <div class="state-chips" id="stateChips"></div>
+    <div class="controls-row" style="margin-top:1rem">
+      <div class="ctrl-group">
+        <label>Metric</label>
+        <select id="metricSel" onchange="updateAll()">
+          <option value="female_literacy">Female Literacy Rate</option>
+          <option value="higher_ger">Higher Education GER</option>
+          <option value="secondary_dropout">Secondary Dropout Rate</option>
+          <option value="mmr">Maternal Mortality Ratio</option>
+          <option value="imr">Infant Mortality Rate</option>
+          <option value="stunting">Child Stunting %</option>
+          <option value="immunization">Full Immunization %</option>
+          <option value="women_anaemia">Women Anaemia %</option>
+          <option value="inst_delivery">Institutional Delivery %</option>
+          <option value="child_marriage">Child Marriage %</option>
+          <option value="sex_ratio_birth">Sex Ratio at Birth</option>
+          <option value="women_wfpr">Women Rural WFPR</option>
+          <option value="sdg_overall">SDG Overall Score</option>
+          <option value="sdg_education">SDG Education Score</option>
+          <option value="sdg_health">SDG Health Score</option>
+        </select>
+      </div>
+      <div class="ctrl-group">
+        <label>Chart Type</label>
+        <select id="chartTypeSel" onchange="updateAll()">
+          <option value="bar">Bar Chart</option>
+          <option value="horizontalBar">Horizontal Bar</option>
+          <option value="radar">Radar Chart</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CHART -->
+  <div class="chart-box" style="margin-bottom:1.2rem">
+    <h4 id="mainChartTitle">Metric Comparison</h4>
+    <div style="position:relative;height:340px"><canvas id="mainChart"></canvas></div>
+  </div>
+
+  <!-- RANKING TABLE -->
+  <div class="chart-box" style="margin-bottom:1.2rem">
+    <h4>All-States Ranking Table</h4>
+    <div style="overflow-x:auto"><table id="rankTable"></table></div>
+    <div class="src-note" id="rankSrc">Source: NFHS-5 2019-21, UDISE+ 2021-22, SRS 2021</div>
+  </div>
+
+  <!-- RADAR MULTI-METRIC -->
+  <div class="chart-box full-width">
+    <h4>Multi-Metric Radar — Selected States (8 key indicators)</h4>
+    <div class="chart-wrap-radar"><canvas id="radarChart"></canvas></div>
+    <div class="src-note">Radar normalises each metric 0-100. Higher = better outcome always (MMR/IMR/stunting inverted).</div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:2rem;color:#444;font-size:0.72rem;border-top:1px solid #1a1a1a;margin-top:2rem;">
+  Data: NFHS-5, Census 2011, UDISE+, SRS, NITI Aayog SDG Index ·
+  <a href="index.html" style="color:#44BB66">← Social Hub</a>
+</footer>
+
+<script>
+(function(){
+  const obs = new IntersectionObserver(els=>els.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  const STATES = ['TN','MH','KA','KL','AP','TG','GJ','RJ','UP','WB'];
+  const NAMES  = {'TN':'Tamil Nadu','MH':'Maharashtra','KA':'Karnataka','KL':'Kerala','AP':'Andhra Pradesh','TG':'Telangana','GJ':'Gujarat','RJ':'Rajasthan','UP':'Uttar Pradesh','WB':'West Bengal'};
+  const COLORS = {'TN':'#D4A017','MH':'#3399CC','KA':'#44BB66','KL':'#00BBCC','AP':'#FF6699','TG':'#9966CC','GJ':'#FF8800','RJ':'#CC3344','UP':'#88CC00','WB':'#CC6600'};
+
+  const METRICS = {
+    female_literacy:    {label:'Female Literacy Rate (%)',    data:{TN:82.9,MH:83.2,KA:74.5,KL:93.5,AP:65.8,TG:72.1,GJ:75.3,RJ:58.6,UP:62.4,WB:76.3},  higherBetter:true,  unit:'%', source:'NFHS-5 / Census projections'},
+    higher_ger:         {label:'Higher Education GER (%)',    data:{TN:47.7,MH:37.1,KA:31.8,KL:38.3,AP:32.6,TG:32.5,GJ:21.7,RJ:20.2,UP:23.7,WB:19.8},  higherBetter:true,  unit:'%', source:'AISHE 2021-22'},
+    secondary_dropout:  {label:'Secondary Dropout Rate (%)', data:{TN:14.6,MH:15.2,KA:17.8,KL:5.6,AP:19.4,TG:18.7,GJ:16.3,RJ:25.1,UP:31.2,WB:20.4},    higherBetter:false, unit:'%', source:'UDISE+ 2021-22'},
+    mmr:                {label:'Maternal Mortality Ratio',    data:{TN:54,MH:33,KA:69,KL:19,AP:45,TG:43,GJ:57,RJ:113,UP:167,WB:109},                     higherBetter:false, unit:'/1L births', source:'SRS MMR Bulletin 2018-20'},
+    imr:                {label:'Infant Mortality Rate',       data:{TN:13,MH:17,KA:18,KL:6,AP:27,TG:22,GJ:25,RJ:38,UP:42,WB:20},                         higherBetter:false, unit:'/1K births', source:'SRS 2021'},
+    stunting:           {label:'Child Stunting Under-5 (%)', data:{TN:25.0,MH:35.2,KA:35.4,KL:23.4,AP:31.4,TG:33.1,GJ:39.0,RJ:31.8,UP:39.7,WB:33.8},   higherBetter:false, unit:'%', source:'NFHS-5 2019-21'},
+    immunization:       {label:'Full Immunization (%)',      data:{TN:69.7,MH:56.6,KA:65.0,KL:82.3,AP:65.8,TG:64.6,GJ:57.7,RJ:54.5,UP:69.6,WB:84.0},    higherBetter:true,  unit:'%', source:'NFHS-5 2019-21'},
+    women_anaemia:      {label:'Women Anaemia (%)',          data:{TN:45.5,MH:53.2,KA:47.5,KL:30.2,AP:57.4,TG:53.9,GJ:65.2,RJ:54.4,UP:50.4,WB:70.6},    higherBetter:false, unit:'%', source:'NFHS-5 2019-21'},
+    inst_delivery:      {label:'Institutional Delivery (%)', data:{TN:99.3,MH:97.6,KA:97.2,KL:99.9,AP:97.8,TG:97.1,GJ:97.7,RJ:84.3,UP:85.3,WB:87.9},   higherBetter:true,  unit:'%', source:'NFHS-5 2019-21'},
+    child_marriage:     {label:'Child Marriage (%)',         data:{TN:15.7,MH:26.5,KA:22.6,KL:6.3,AP:27.4,TG:24.5,GJ:21.8,RJ:25.4,UP:21.2,WB:41.6},    higherBetter:false, unit:'%', source:'NFHS-5 2019-21'},
+    sex_ratio_birth:    {label:'Sex Ratio at Birth (F/1K M)',data:{TN:955,MH:903,KA:940,KL:963,AP:927,TG:923,GJ:909,RJ:888,UP:899,WB:947},               higherBetter:true,  unit:'', source:'SRS 2020'},
+    women_wfpr:         {label:'Women Rural WFPR (%)',       data:{TN:37.2,MH:55.3,KA:30.1,KL:18.7,AP:54.2,TG:42.8,GJ:48.6,RJ:49.1,UP:18.2,WB:28.4},   higherBetter:true,  unit:'%', source:'PLFS 2021-22'},
+    sdg_overall:        {label:'SDG Overall Score',          data:{TN:78,MH:75,KA:73,KL:79,AP:67,TG:68,GJ:72,RJ:60,UP:57,WB:66},                         higherBetter:true,  unit:'/100', source:'NITI Aayog SDG Index 2023-24'},
+    sdg_education:      {label:'SDG Education Score',        data:{TN:72,MH:69,KA:65,KL:84,AP:58,TG:60,GJ:61,RJ:46,UP:42,WB:63},                         higherBetter:true,  unit:'/100', source:'NITI Aayog SDG Index 2023-24'},
+    sdg_health:         {label:'SDG Health Score',           data:{TN:81,MH:76,KA:74,KL:90,AP:69,TG:71,GJ:70,RJ:55,UP:50,WB:65},                         higherBetter:true,  unit:'/100', source:'NITI Aayog SDG Index 2023-24'}
+  };
+
+  // Radar metrics for multi-indicator view (normalised 0-100)
+  const RADAR_METRICS = ['female_literacy','higher_ger','immunization','inst_delivery','sdg_education','sdg_health'];
+  const RADAR_LOWER = ['secondary_dropout','mmr','imr','stunting','women_anaemia','child_marriage'];
+  // We'll use these 8: literacy, GER, immunization, inst_delivery, mmr_inv, imr_inv, stunting_inv, sdg_health
+  const RADAR_AXES = ['Female Literacy','Higher Ed GER','Immunization','Inst. Delivery','SDG Health','MMR (inv)','IMR (inv)','Stunting (inv)'];
+
+  function normalise(metric, val) {
+    const vals = Object.values(METRICS[metric].data);
+    const mn = Math.min(...vals), mx = Math.max(...vals);
+    const n = (val - mn) / (mx - mn) * 100;
+    return METRICS[metric].higherBetter ? n : 100 - n;
+  }
+
+  let selectedStates = new Set(['TN','KL','MH','KA','RJ']);
+
+  // Build chips
+  const chipContainer = document.getElementById('stateChips');
+  STATES.forEach(s => {
+    const chip = document.createElement('div');
+    chip.className = 'state-chip' + (selectedStates.has(s) ? '' : ' inactive');
+    chip.style.borderColor = COLORS[s];
+    chip.style.color = selectedStates.has(s) ? COLORS[s] : '#555';
+    chip.style.background = selectedStates.has(s) ? `${COLORS[s]}18` : 'transparent';
+    chip.textContent = NAMES[s];
+    chip.dataset.state = s;
+    if (s !== 'TN') {
+      chip.addEventListener('click', () => {
+        if (selectedStates.has(s)) { selectedStates.delete(s); chip.classList.add('inactive'); chip.style.color='#555'; chip.style.background='transparent'; }
+        else if (selectedStates.size < 5) { selectedStates.add(s); chip.classList.remove('inactive'); chip.style.color=COLORS[s]; chip.style.background=`${COLORS[s]}18`; }
+        updateAll();
+      });
+    }
+    chipContainer.appendChild(chip);
+  });
+
+  let mainChartInst = null;
+  let radarChartInst = null;
+
+  function updateAll() {
+    const metric = document.getElementById('metricSel').value;
+    const chartType = document.getElementById('chartTypeSel').value;
+    const m = METRICS[metric];
+    const selArr = [...selectedStates];
+
+    document.getElementById('mainChartTitle').textContent = m.label + ' — Selected States';
+    document.getElementById('rankSrc').textContent = 'Source: ' + m.source;
+
+    const labels = selArr.map(s => NAMES[s]);
+    const vals   = selArr.map(s => m.data[s]);
+    const bgColors = selArr.map(s => `${COLORS[s]}CC`);
+
+    const cxOpts = {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend:{display:false}, tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1} },
+      scales: { x:{ticks:{color:'#666',font:{size:10}},grid:{color:'#1a1a1a'}}, y:{ticks:{color:'#666',font:{size:10},callback:v=>v+(m.unit&&m.unit.startsWith('/')?'':m.unit)},grid:{color:'#1a1a1a'}} }
+    };
+
+    if (mainChartInst) mainChartInst.destroy();
+    const ctx = document.getElementById('mainChart').getContext('2d');
+
+    if (chartType === 'radar') {
+      mainChartInst = new Chart(ctx, { type:'bar', data:{labels,datasets:[{data:vals,backgroundColor:bgColors,borderRadius:4}]}, options:cxOpts });
+    } else if (chartType === 'horizontalBar') {
+      mainChartInst = new Chart(ctx, { type:'bar', data:{labels,datasets:[{data:vals,backgroundColor:bgColors,borderRadius:4}]},
+        options:{...cxOpts,indexAxis:'y',scales:{x:{...cxOpts.scales.x,ticks:{...cxOpts.scales.x.ticks}},y:{...cxOpts.scales.y,ticks:{color:'#666',font:{size:10}}}}} });
+    } else {
+      mainChartInst = new Chart(ctx, { type:'bar', data:{labels,datasets:[{data:vals,backgroundColor:bgColors,borderRadius:4}]}, options:cxOpts });
+    }
+
+    // Ranking table
+    const sorted = STATES.map(s => ({s, v: m.data[s]}))
+      .sort((a,b) => m.higherBetter ? b.v-a.v : a.v-b.v);
+    const bestVal = sorted[0].v, worstVal = sorted[sorted.length-1].v;
+    const table = document.getElementById('rankTable');
+    table.innerHTML = `<tr><th>#</th><th>State</th><th>Value</th><th>Bar</th></tr>`;
+    sorted.forEach(({s,v},i) => {
+      const pct = Math.abs((v - worstVal) / ((bestVal-worstVal)||1)) * 100;
+      const isSelected = selectedStates.has(s);
+      const rankColor = i===0?'#44BB66':i===sorted.length-1?'#FF4444':'#888';
+      table.innerHTML += `<tr style="${isSelected?'background:#0d120d':''}" >
+        <td><span class="rank-badge" style="background:${rankColor}18;color:${rankColor}">${i+1}</span></td>
+        <td style="font-weight:${isSelected?'700':'400'};color:${isSelected?COLORS[s]:'#BBB'}">${NAMES[s]}</td>
+        <td style="font-weight:700;color:${COLORS[s]}">${v}${m.unit&&!m.unit.startsWith('/')?m.unit:''}</td>
+        <td style="min-width:120px"><div class="bar-bg"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${COLORS[s]}"></div></div></td>
+      </tr>`;
+    });
+
+    // Radar
+    const radarMetrics = ['female_literacy','higher_ger','immunization','inst_delivery','sdg_health','mmr','imr','stunting'];
+    const radarDatasets = selArr.map(s => ({
+      label: NAMES[s],
+      data: radarMetrics.map(rm => normalise(rm, METRICS[rm].data[s])),
+      borderColor: COLORS[s],
+      backgroundColor: COLORS[s]+'22',
+      pointBackgroundColor: COLORS[s],
+      borderWidth: 2,
+      pointRadius: 3
+    }));
+    if (radarChartInst) radarChartInst.destroy();
+    radarChartInst = new Chart(document.getElementById('radarChart'), {
+      type:'radar',
+      data:{ labels: RADAR_AXES, datasets: radarDatasets },
+      options:{ responsive:true, maintainAspectRatio:false,
+        scales:{ r:{ min:0, max:100, ticks:{display:false}, grid:{color:'#1e1e1e'}, pointLabels:{color:'#888',font:{size:9}}, angleLines:{color:'#1e1e1e'} } },
+        plugins:{ legend:{display:true,position:'bottom',labels:{color:'#888',font:{size:9},boxWidth:12,padding:10}}, tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1} }
+      }
+    });
+  }
+
+  updateAll();
+  window.updateAll = updateAll;
+})();
+</script>
+</body>
+</html>

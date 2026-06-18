@@ -509,6 +509,80 @@
   /* scroll-reveal */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s, transform 0.5s; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── DATA HUB BANNERS ── */
+  .hub-banner {
+    border-radius: 10px;
+    padding: 2rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+    transition: border-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+  }
+  .hub-banner:hover { border-color: var(--banner-accent, #D4A017); transform: translateY(-3px); }
+  .hub-banner .hb-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 60%, var(--banner-glow, rgba(212,160,23,0.07)) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hub-banner .hb-topbar {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+  .hb-badge {
+    font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 3px;
+    background: var(--badge-bg, rgba(212,160,23,0.15));
+    border: 1px solid var(--badge-border, rgba(212,160,23,0.3));
+    color: var(--badge-color, #D4A017);
+  }
+  .hb-platform { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #555; }
+  .hub-banner .hb-body {
+    display: flex; align-items: flex-start; gap: 2rem;
+  }
+  .hub-banner .hb-content { flex: 1; min-width: 0; }
+  .hub-banner .hb-cta {
+    flex-shrink: 0; display: flex; flex-direction: column;
+    align-items: center; gap: 0.8rem; text-align: center;
+  }
+  .hb-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    background: var(--icon-bg, rgba(212,160,23,0.1));
+    border: 2px solid var(--icon-border, rgba(212,160,23,0.25));
+  }
+  .hb-cta-btn {
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 9px 18px; border-radius: 4px;
+    white-space: nowrap;
+    background: var(--btn-bg, #D4A017); color: var(--btn-color, #0A0A0A);
+  }
+  .hb-title {
+    font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 900;
+    color: #F5F5F0; line-height: 1.2; margin-bottom: 0.5rem;
+  }
+  .hb-title-ta { font-family: 'Noto Serif Tamil', serif; font-size: 0.6em; color: var(--banner-accent, #D4A017); display: block; }
+  .hb-desc { font-size: 0.84rem; color: #AAAAAA; line-height: 1.6; margin-bottom: 1rem; max-width: 560px; }
+  .hb-stats { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1rem; }
+  .hb-stat-val { font-size: 1.3rem; font-weight: 900; line-height: 1; }
+  .hb-stat-lbl { font-size: 0.65rem; color: #555; margin-top: 2px; }
+  .hb-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .hb-tag {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; padding: 3px 9px;
+    border-radius: 2px; text-transform: uppercase; white-space: nowrap;
+  }
+  /* Mobile: stack body, hide CTA panel, show inline button */
+  @media (max-width: 600px) {
+    .hub-banner { padding: 1.5rem 1.2rem; }
+    .hub-banner .hb-body { flex-direction: column; gap: 1rem; }
+    .hub-banner .hb-cta { flex-direction: row; justify-content: flex-start; }
+    .hb-icon { width: 44px; height: 44px; font-size: 1.3rem; }
+    .hb-cta-hint { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -736,85 +810,83 @@
 
 <hr class="divider">
 
-<!-- FINANCE DATA HUB BANNER -->
-<div id="finance-hub">
-  <div class="section reveal">
-    <a href="finance/index.html" style="text-decoration:none;display:block;">
-      <div style="
-        background: linear-gradient(135deg, #0d0d0d 0%, #1a0a00 50%, #0d0d0d 100%);
-        border: 1px solid #2a2a2a;
-        border-radius: 10px;
-        padding: 2.5rem 2rem;
-        position: relative;
-        overflow: hidden;
-        transition: border-color 0.3s, transform 0.2s;
-        cursor: pointer;
-      " onmouseover="this.style.borderColor='#D4A017';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#2a2a2a';this.style.transform='none'">
+<!-- ── DATA HUB BANNERS ── -->
+<div class="section reveal" style="display:flex;flex-direction:column;gap:1.2rem;">
 
-        <!-- Gold glow -->
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,160,23,0.08) 0%,transparent 65%);pointer-events:none"></div>
-
-        <!-- Top bar -->
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.2rem;flex-wrap:wrap">
-          <div style="background:rgba(212,160,23,0.15);border:1px solid rgba(212,160,23,0.3);border-radius:4px;padding:4px 10px;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;color:#D4A017;text-transform:uppercase">New</div>
-          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#666">Interactive Finance Platform · தரவு தளம் · डेटा प्लेटफॉर्म</div>
+  <!-- FINANCE DATA HUB -->
+  <a id="finance-hub" href="finance/index.html" class="hub-banner"
+     style="background:linear-gradient(135deg,#0d0d0d 0%,#1a0a00 55%,#0d0d0d 100%);--banner-accent:#D4A017;--banner-glow:rgba(212,160,23,0.08);--icon-bg:rgba(212,160,23,0.1);--icon-border:rgba(212,160,23,0.25);--btn-bg:#D4A017;--btn-color:#0A0A0A;">
+    <div class="hb-glow"></div>
+    <div class="hb-topbar">
+      <span class="hb-badge" style="--badge-bg:rgba(212,160,23,0.15);--badge-border:rgba(212,160,23,0.3);--badge-color:#D4A017;">Live</span>
+      <span class="hb-platform">Interactive Finance Platform · தரவு தளம் · डेटा प्लेटफॉर्म</span>
+    </div>
+    <div class="hb-body">
+      <div class="hb-content">
+        <div class="hb-title">
+          Tamil Nadu Finance Data Hub
+          <span class="hb-title-ta">தமிழ்நாடு நிதி தரவு மையம்</span>
         </div>
-
-        <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-          <div>
-            <div style="font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;color:#F5F5F0;line-height:1.15;margin-bottom:0.7rem;">
-              Tamil Nadu Finance Data Hub<br>
-              <span style="color:#D4A017;font-family:'Noto Serif Tamil',serif;font-size:0.65em;">தமிழ்நாடு நிதி தரவு மையம்</span>
-            </div>
-            <div style="font-size:0.88rem;color:#AAAAAA;max-width:560px;line-height:1.6;margin-bottom:1.2rem;">
-              10+ years of Tamil Nadu budget, debt, PSU, and CAG data — visualised interactively. Compare TN with any state. Explore sector data, fiscal trends, and Finance Commission details. In English, Tamil &amp; Hindi.
-            </div>
-
-            <!-- Stats row -->
-            <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.2rem">
-              <div>
-                <div style="font-size:1.4rem;font-weight:900;color:#FF4444;line-height:1">₹13.18L Cr</div>
-                <div style="font-size:0.68rem;color:#666;margin-top:2px">Total TN Liabilities</div>
-              </div>
-              <div>
-                <div style="font-size:1.4rem;font-weight:900;color:#FF8800;line-height:1">4.74%</div>
-                <div style="font-size:0.68rem;color:#666;margin-top:2px">Fiscal Deficit/GSDP</div>
-              </div>
-              <div>
-                <div style="font-size:1.4rem;font-weight:900;color:#D4A017;line-height:1">10 States</div>
-                <div style="font-size:0.68rem;color:#666;margin-top:2px">Comparison Tool</div>
-              </div>
-              <div>
-                <div style="font-size:1.4rem;font-weight:900;color:#44BB66;line-height:1">#3 SDG</div>
-                <div style="font-size:0.68rem;color:#666;margin-top:2px">NITI Aayog Rank</div>
-              </div>
-            </div>
-
-            <!-- Feature tags -->
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <span style="background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.2);color:#D4A017;font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase">Budget Analysis</span>
-              <span style="background:rgba(204,0,0,0.1);border:1px solid rgba(204,0,0,0.2);color:#FF4444;font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase">Debt & CAG</span>
-              <span style="background:rgba(153,102,204,0.1);border:1px solid rgba(153,102,204,0.2);color:#BB88FF;font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase">PSU Data</span>
-              <span style="background:rgba(51,153,204,0.1);border:1px solid rgba(51,153,204,0.2);color:#55BBEE;font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase">State Comparison</span>
-              <span style="background:rgba(68,187,102,0.1);border:1px solid rgba(68,187,102,0.2);color:#44BB66;font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase">Central Finance</span>
-              <span style="background:rgba(170,170,170,0.08);border:1px solid rgba(170,170,170,0.15);color:#888;font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase">EN / TA / HI</span>
-            </div>
-          </div>
-
-          <!-- Right side CTA -->
-          <div style="text-align:center;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:1rem">
-            <div style="width:72px;height:72px;background:rgba(212,160,23,0.1);border:2px solid rgba(212,160,23,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem">📊</div>
-            <div style="background:#D4A017;color:#0A0A0A;font-size:0.82rem;font-weight:800;padding:10px 20px;border-radius:4px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap">
-              Explore Data →
-            </div>
-            <div style="font-size:0.68rem;color:#555;text-align:center">
-              Click anywhere<br>to explore →
-            </div>
-          </div>
+        <p class="hb-desc">10+ years of TN budget, debt, PSU &amp; CAG data — visualised interactively. Compare with any state. English, Tamil &amp; Hindi.</p>
+        <div class="hb-stats">
+          <div><div class="hb-stat-val" style="color:#FF4444">₹13.18L Cr</div><div class="hb-stat-lbl">Total TN Liabilities</div></div>
+          <div><div class="hb-stat-val" style="color:#FF8800">4.74%</div><div class="hb-stat-lbl">Fiscal Deficit/GSDP</div></div>
+          <div><div class="hb-stat-val" style="color:#D4A017">10 States</div><div class="hb-stat-lbl">Comparison Tool</div></div>
+          <div><div class="hb-stat-val" style="color:#44BB66">#3 SDG</div><div class="hb-stat-lbl">NITI Aayog Rank</div></div>
+        </div>
+        <div class="hb-tags">
+          <span class="hb-tag" style="background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.2);color:#D4A017">Budget</span>
+          <span class="hb-tag" style="background:rgba(204,0,0,0.1);border:1px solid rgba(204,0,0,0.2);color:#FF4444">Debt &amp; CAG</span>
+          <span class="hb-tag" style="background:rgba(153,102,204,0.1);border:1px solid rgba(153,102,204,0.2);color:#BB88FF">PSU Data</span>
+          <span class="hb-tag" style="background:rgba(51,153,204,0.1);border:1px solid rgba(51,153,204,0.2);color:#55BBEE">State Compare</span>
+          <span class="hb-tag" style="background:rgba(170,170,170,0.08);border:1px solid rgba(170,170,170,0.15);color:#888">EN / TA / HI</span>
         </div>
       </div>
-    </a>
-  </div>
+      <div class="hb-cta">
+        <div class="hb-icon">📊</div>
+        <div class="hb-cta-btn">Explore Data →</div>
+        <div class="hb-cta-hint" style="font-size:0.65rem;color:#555">Click anywhere</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- SOCIAL INDICATORS HUB -->
+  <a id="social-hub" href="social/index.html" class="hub-banner"
+     style="background:linear-gradient(135deg,#0d0d0d 0%,#001a0d 55%,#0d0d0d 100%);--banner-accent:#44BB66;--banner-glow:rgba(68,187,102,0.07);--icon-bg:rgba(68,187,102,0.1);--icon-border:rgba(68,187,102,0.25);--btn-bg:#44BB66;--btn-color:#0A0A0A;">
+    <div class="hb-glow"></div>
+    <div class="hb-topbar">
+      <span class="hb-badge" style="--badge-bg:rgba(68,187,102,0.15);--badge-border:rgba(68,187,102,0.3);--badge-color:#44BB66;background:rgba(68,187,102,0.15);border:1px solid rgba(68,187,102,0.3);color:#44BB66">New</span>
+      <span class="hb-platform">Social Indicators Platform · சமூக குறியீடுகள் · सामाजिक संकेतक</span>
+    </div>
+    <div class="hb-body">
+      <div class="hb-content">
+        <div class="hb-title" style="--banner-accent:#44BB66">
+          Tamil Nadu Social Indicators Hub
+          <span class="hb-title-ta" style="color:#44BB66">தமிழ்நாடு சமூக குறியீடுகள் மையம்</span>
+        </div>
+        <p class="hb-desc">Education, women empowerment, health &amp; child welfare data across 10 states. Literacy, degree completion, MMR, IMR, nutrition — sourced from NFHS, Census, UDISE+.</p>
+        <div class="hb-stats">
+          <div><div class="hb-stat-val" style="color:#44BB66">82.9%</div><div class="hb-stat-lbl">TN Female Literacy</div></div>
+          <div><div class="hb-stat-val" style="color:#44BB66">54</div><div class="hb-stat-lbl">MMR (per 1L births)</div></div>
+          <div><div class="hb-stat-val" style="color:#D4A017">10 States</div><div class="hb-stat-lbl">Comparison Tool</div></div>
+          <div><div class="hb-stat-val" style="color:#55BBEE">NFHS-5</div><div class="hb-stat-lbl">Primary Source</div></div>
+        </div>
+        <div class="hb-tags">
+          <span class="hb-tag" style="background:rgba(68,187,102,0.1);border:1px solid rgba(68,187,102,0.2);color:#44BB66">Women Education</span>
+          <span class="hb-tag" style="background:rgba(68,187,102,0.1);border:1px solid rgba(68,187,102,0.2);color:#44BB66">Health &amp; MMR</span>
+          <span class="hb-tag" style="background:rgba(51,153,204,0.1);border:1px solid rgba(51,153,204,0.2);color:#55BBEE">Child Welfare</span>
+          <span class="hb-tag" style="background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.2);color:#D4A017">State Compare</span>
+          <span class="hb-tag" style="background:rgba(170,170,170,0.08);border:1px solid rgba(170,170,170,0.15);color:#888">EN / TA / HI</span>
+        </div>
+      </div>
+      <div class="hb-cta">
+        <div class="hb-icon">🌱</div>
+        <div class="hb-cta-btn" style="background:#44BB66;color:#0A0A0A">Explore Data →</div>
+        <div class="hb-cta-hint" style="font-size:0.65rem;color:#555">Click anywhere</div>
+      </div>
+    </div>
+  </a>
+
 </div>
 
 <hr class="divider">
