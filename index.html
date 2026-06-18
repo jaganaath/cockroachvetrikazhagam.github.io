@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cockroach Vetri Kazhagam — மக்கள் சக்தி</title>
+<meta name="description" content="Cockroach Vetri Kazhagam (CVK) — Tamil Nadu's independent political information platform. Honest news. People first. நேர்மையான தகவலே கிடைக்கும்.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700;900&family=Noto+Sans+Tamil:wght@400;500;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:   #0A0A0A;
+    --dmk-bg:  #111111;
+    --tvk-bg:  #1a0000;
+    --dmk-col: #222222;
+    --tvk-col: #CC0000;
+    --gold:    #D4A017;
+    --gold-lt: #F0C040;
+    --white:   #F5F5F0;
+    --grey:    #AAAAAA;
+    --mid:     #555;
+    --border:  #2A2A2A;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 6px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: tick 38s linear infinite;
+  }
+  .ticker-inner span { margin: 0 2.5rem; }
+  @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo { width: 38px; height: 38px; }
+  .nav-name {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .nav-name small {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--grey);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.8rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--grey);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 7px 16px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-lt); }
+
+  /* ── HERO SPLIT ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 540px;
+    position: relative;
+  }
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left  { background: #0e0e0e; }
+  .hero-right { background: #140000; }
+  .hero-divider {
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .hero-label {
+    font-family: 'Noto Serif Tamil', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .hero-left .hero-label  { color: #CCCCCC; }
+  .hero-right .hero-label { color: #FF4444; }
+  .hero-party-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-left  .hero-party-tag { background: #222; color: #888; border: 1px solid #333; }
+  .hero-right .hero-party-tag { background: #2a0000; color: #FF6666; border: 1px solid #440000; }
+  .hero-sub {
+    font-size: 0.85rem;
+    color: var(--grey);
+    text-align: center;
+    max-width: 280px;
+    line-height: 1.5;
+  }
+
+  /* Party symbol SVGs inside hero */
+  .party-symbol { width: 72px; height: 72px; margin-bottom: 1.2rem; opacity: 0.85; }
+
+  /* ── MAKKAL SAKTHI BANNER ── */
+  .makkal-banner {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    padding: 3.5rem 2rem;
+    position: relative;
+  }
+  .makkal-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(212,160,23,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .makkal-title {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .makkal-sub {
+    font-family: 'Noto Serif Tamil', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+  .makkal-tagline {
+    font-family: 'Noto Serif Tamil', serif;
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+    color: var(--grey);
+    font-style: italic;
+  }
+  .makkal-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+
+  /* ── DOCUMENTS SECTION ── */
+  .section {
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .section-desc {
+    font-size: 0.9rem;
+    color: var(--grey);
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+  }
+
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .doc-card {
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .doc-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .doc-thumb {
+    background: linear-gradient(135deg, #1E2761 0%, #0D1030 100%);
+    padding: 2rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 140px;
+    justify-content: center;
+    position: relative;
+  }
+  .doc-thumb-icon {
+    width: 44px; height: 44px;
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .doc-thumb-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+  .doc-thumb-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .doc-thumb-preview {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px;
+    opacity: 0.18;
+  }
+  .doc-thumb-preview span {
+    display: block;
+    height: 4px;
+    background: var(--white);
+    border-radius: 2px;
+  }
+  .doc-thumb-preview span:nth-child(2) { width: 75%; }
+  .doc-thumb-preview span:nth-child(3) { width: 60%; }
+  .doc-thumb-preview span:nth-child(4) { width: 85%; }
+  .doc-thumb-preview span:nth-child(5) { width: 50%; }
+  .doc-info { padding: 1rem 1rem 1.2rem; }
+  .doc-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+  .doc-meta {
+    font-size: 0.72rem;
+    color: var(--grey);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .doc-meta-dot { width: 3px; height: 3px; background: var(--mid); border-radius: 50%; }
+  .doc-open {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+  .doc-open svg { width: 12px; height: 12px; fill: var(--gold); }
+
+  .doc-add-card {
+    background: transparent;
+    border: 1px dashed #333;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--mid);
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .doc-add-card svg { width: 28px; height: 28px; stroke: #444; fill: none; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 2rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-text h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 1rem; }
+  .about-text p  { color: var(--grey); font-size: 0.92rem; line-height: 1.75; margin-bottom: 0.9rem; }
+  .about-text p strong { color: var(--white); }
+  .values-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .values-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.88rem; color: var(--grey);
+  }
+  .values-list li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 0.6rem;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .values-list li strong { color: var(--white); }
+
+  /* ── FAQ ── */
+  .faq-wrap { max-width: 760px; }
+  .faq-item {
+    border-top: 1px solid var(--border);
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 1.1rem 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: inherit;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--gold); }
+  .faq-icon {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: 1px solid #444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--grey);
+    transition: all 0.2s;
+  }
+  .faq-item.open .faq-icon { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.2s;
+  }
+  .faq-a-inner {
+    padding-bottom: 1.2rem;
+    color: var(--grey);
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+  .faq-a-inner a { color: var(--gold); text-decoration: underline; }
+  .faq-item.open .faq-a { max-height: 600px; }
+
+  /* ── CONTACT ── */
+  .contact-box {
+    background: #0e0e0e;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .contact-box h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.3rem; }
+  .contact-box p  { font-size: 0.88rem; color: var(--grey); }
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .contact-email:hover { background: var(--gold-lt); }
+  .contact-email svg { width: 16px; height: 16px; fill: var(--black); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-brand {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .footer-brand small { display: block; font-weight: 400; color: var(--mid); font-size: 0.68rem; margin-top: 2px; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { color: var(--mid); font-size: 0.78rem; text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-note { font-size: 0.72rem; color: #444; }
+
+  /* ── ROACH LOGO (SVG inline) ── */
+  .logo-svg { display: block; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-divider { display: none; }
+    .hero-left { border-bottom: 1px solid var(--border); }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-box { flex-direction: column; text-align: center; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* scroll-reveal */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s, transform 0.5s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap" role="marquee" aria-label="Updates">
+  <div class="ticker-inner">
+    <span>✦ CVK — Cockroach Vetri Kazhagam</span>
+    <span>✦ நேர்மையான தகவலே கிடைக்கும்</span>
+    <span>✦ We are Makkal Sakthi — மக்கள் சக்தி</span>
+    <span>✦ அரசியல் செய்திகள் — நேரடியாக உங்களுக்கு</span>
+    <span>✦ CVK — Cockroach Vetri Kazhagam</span>
+    <span>✦ நேர்மையான தகவலே கிடைக்கும்</span>
+    <span>✦ We are Makkal Sakthi — மக்கள் சக்தி</span>
+    <span>✦ அரசியல் செய்திகள் — நேரடியாக உங்களுக்கு</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <!-- COCKROACH LOGO SVG -->
+    <svg class="nav-logo logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="CVK Logo">
+      <!-- Body -->
+      <ellipse cx="40" cy="46" rx="13" ry="20" fill="#1a1a1a" stroke="#D4A017" stroke-width="1.5"/>
+      <!-- Head -->
+      <ellipse cx="40" cy="24" rx="9" ry="8" fill="#1a1a1a" stroke="#D4A017" stroke-width="1.5"/>
+      <!-- Antennae -->
+      <line x1="35" y1="18" x2="18" y2="6" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="45" y1="18" x2="62" y2="6" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="18" cy="6" r="2" fill="#D4A017"/>
+      <circle cx="62" cy="6" r="2" fill="#D4A017"/>
+      <!-- Legs left -->
+      <line x1="30" y1="36" x2="12" y2="30" stroke="#D4A017" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="29" y1="45" x2="10" y2="44" stroke="#D4A017" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="30" y1="54" x2="13" y2="60" stroke="#D4A017" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Legs right -->
+      <line x1="50" y1="36" x2="68" y2="30" stroke="#D4A017" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="51" y1="45" x2="70" y2="44" stroke="#D4A017" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="50" y1="54" x2="67" y2="60" stroke="#D4A017" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- Body segment lines -->
+      <line x1="28" y1="38" x2="52" y2="38" stroke="#D4A017" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
+      <line x1="27" y1="50" x2="53" y2="50" stroke="#D4A017" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
+      <!-- DMK rising sun (left body - black segment) -->
+      <circle cx="37" cy="32" r="3" fill="none" stroke="#888" stroke-width="1"/>
+      <line x1="37" y1="27.5" x2="37" y2="26" stroke="#888" stroke-width="0.8"/>
+      <line x1="40.5" y1="28.5" x2="41.5" y2="27.3" stroke="#888" stroke-width="0.8"/>
+      <line x1="41.5" y1="32" x2="43" y2="32" stroke="#888" stroke-width="0.8"/>
+      <!-- TVK star (right body - red segment) -->
+      <polygon points="43,43 44.2,46.5 48,46.5 45,48.5 46.2,52 43,50 39.8,52 41,48.5 38,46.5 41.8,46.5" fill="none" stroke="#CC0000" stroke-width="0.9" transform="scale(0.55) translate(32, 34)"/>
+      <!-- NTK wheel (bottom segment) -->
+      <circle cx="40" cy="58" r="3.5" fill="none" stroke="#FF8C00" stroke-width="0.9"/>
+      <line x1="40" y1="54.5" x2="40" y2="61.5" stroke="#FF8C00" stroke-width="0.7"/>
+      <line x1="36.5" y1="58" x2="43.5" y2="58" stroke="#FF8C00" stroke-width="0.7"/>
+      <!-- Eyes -->
+      <circle cx="36.5" cy="23" r="1.5" fill="#D4A017"/>
+      <circle cx="43.5" cy="23" r="1.5" fill="#D4A017"/>
+    </svg>
+    <div class="nav-name">
+      Cockroach Vetri Kazhagam
+      <small>CVK · மக்கள் சக்தி</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#documents">ஆவணங்கள்</a></li>
+    <li><a href="#about">எங்களை பற்றி</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">தொடர்பு</a></li>
+  </ul>
+  <a href="mailto:cvk.makkalsakthi@gmail.com" class="nav-cta">தொடர்பு கொள்ள →</a>
+</nav>
+
+<!-- HERO SPLIT -->
+<section class="hero" id="home">
+  <div class="hero-side hero-left">
+    <!-- DMK sun symbol -->
+    <svg class="party-symbol" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="14" fill="none" stroke="#444" stroke-width="2.5"/>
+      <circle cx="40" cy="40" r="5" fill="#444"/>
+      <!-- rays -->
+      <g stroke="#444" stroke-width="2" stroke-linecap="round">
+        <line x1="40" y1="20" x2="40" y2="13"/>
+        <line x1="40" y1="60" x2="40" y2="67"/>
+        <line x1="20" y1="40" x2="13" y2="40"/>
+        <line x1="60" y1="40" x2="67" y2="40"/>
+        <line x1="26" y1="26" x2="21" y2="21"/>
+        <line x1="54" y1="26" x2="59" y2="21"/>
+        <line x1="26" y1="54" x2="21" y2="59"/>
+        <line x1="54" y1="54" x2="59" y2="59"/>
+      </g>
+    </svg>
+    <div class="hero-party-tag">DMK · திமுக</div>
+    <div class="hero-label">தீய சக்தி</div>
+    <div class="hero-sub">என்று தா.வெ.க வினால் விமர்சிக்க படுகிறது</div>
+  </div>
+  <div class="hero-divider"></div>
+
+  <!-- BIG CVK LOGO in center overlay -->
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:20;pointer-events:none;">
+    <svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+      <!-- glow bg -->
+      <circle cx="60" cy="60" r="55" fill="#0A0A0A" stroke="#D4A017" stroke-width="2"/>
+      <!-- Body -->
+      <ellipse cx="60" cy="72" rx="17" ry="26" fill="#111" stroke="#D4A017" stroke-width="2"/>
+      <!-- Head -->
+      <ellipse cx="60" cy="42" rx="12" ry="10" fill="#111" stroke="#D4A017" stroke-width="2"/>
+      <!-- Antennae -->
+      <line x1="53" y1="34" x2="33" y2="16" stroke="#D4A017" stroke-width="2" stroke-linecap="round"/>
+      <line x1="67" y1="34" x2="87" y2="16" stroke="#D4A017" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="33" cy="16" r="3" fill="#D4A017"/>
+      <circle cx="87" cy="16" r="3" fill="#D4A017"/>
+      <!-- Legs left -->
+      <line x1="45" y1="60" x2="24" y2="52" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="44" y1="73" x2="22" y2="72" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="45" y1="85" x2="25" y2="93" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Legs right -->
+      <line x1="75" y1="60" x2="96" y2="52" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="76" y1="73" x2="98" y2="72" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="75" y1="85" x2="95" y2="93" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- segment lines -->
+      <line x1="44" y1="62" x2="76" y2="62" stroke="#D4A017" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+      <line x1="43" y1="76" x2="77" y2="76" stroke="#D4A017" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+      <!-- DMK sun in upper body (black) -->
+      <circle cx="57" cy="52" r="4.5" fill="none" stroke="#666" stroke-width="1.2"/>
+      <circle cx="57" cy="52" r="1.5" fill="#666"/>
+      <g stroke="#666" stroke-width="1" stroke-linecap="round">
+        <line x1="57" y1="45.5" x2="57" y2="44"/>
+        <line x1="61" y1="46.8" x2="62.2" y2="45.5"/>
+        <line x1="63" y1="52" x2="64.5" y2="52"/>
+        <line x1="61" y1="57.2" x2="62.2" y2="58.5"/>
+        <line x1="57" y1="58.5" x2="57" y2="60"/>
+        <line x1="53" y1="57.2" x2="51.8" y2="58.5"/>
+        <line x1="51" y1="52" x2="49.5" y2="52"/>
+        <line x1="53" y1="46.8" x2="51.8" y2="45.5"/>
+      </g>
+      <!-- TVK star in right body -->
+      <polygon points="66,51 67.4,55 72,55 68.3,57.5 69.7,61.5 66,59 62.3,61.5 63.7,57.5 60,55 64.6,55" fill="none" stroke="#CC0000" stroke-width="1.2"/>
+      <!-- Naam Tamilar wheel bottom -->
+      <circle cx="60" cy="88" r="5" fill="none" stroke="#FF8C00" stroke-width="1.2"/>
+      <line x1="60" y1="83" x2="60" y2="93" stroke="#FF8C00" stroke-width="1"/>
+      <line x1="55" y1="88" x2="65" y2="88" stroke="#FF8C00" stroke-width="1"/>
+      <line x1="56.5" y1="84.5" x2="63.5" y2="91.5" stroke="#FF8C00" stroke-width="0.8"/>
+      <line x1="63.5" y1="84.5" x2="56.5" y2="91.5" stroke="#FF8C00" stroke-width="0.8"/>
+      <!-- Eyes -->
+      <circle cx="55.5" cy="41" r="2" fill="#D4A017"/>
+      <circle cx="64.5" cy="41" r="2" fill="#D4A017"/>
+      <!-- CVK text -->
+      <text x="60" y="113" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" font-weight="800" fill="#D4A017" letter-spacing="2">CVK</text>
+    </svg>
+  </div>
+
+  <div class="hero-side hero-right">
+    <!-- TVK star symbol -->
+    <svg class="party-symbol" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,10 47,32 70,32 52,46 59,68 40,54 21,68 28,46 10,32 33,32" fill="none" stroke="#660000" stroke-width="2.5"/>
+    </svg>
+    <div class="hero-party-tag">TVK · தவக</div>
+    <div class="hero-label">காய்ந்துபோன சக்தி</div>
+    <div class="hero-sub">என்று திமுகவினால் விமர்சிக்க படுகிறது </div>
+  </div>
+</section>
+
+<!-- MAKKAL SAKTHI BANNER -->
+<section class="makkal-banner">
+  <div style="font-size:0.78rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;">— நாங்கள் யார் —</div>
+  <div class="makkal-title">We are Makkal Sakthi</div>
+  <div class="makkal-sub">நாங்கள் மக்கள் சக்தி</div>
+  <div style="height:1rem;"></div>
+  <div class="makkal-tagline">
+    <span class="makkal-dot"></span>
+    confidentah இங்க வாங்க, நேர்மையான தகவலை பெருங்க.
+    <span class="makkal-dot"></span>
+  </div>
+</section>
+
+<!-- DOCUMENTS SECTION -->
+<div id="documents">
+  <div class="section reveal">
+    <div class="section-eyebrow">ஆவணங்கள் &amp; அறிக்கைகள்</div>
+    <div class="section-title">படிக்கவும், புரிந்துகொள்ளவும்</div>
+    <div class="section-desc">தமிழ்நாடு அரசியல் மற்றும் நிதி தொடர்பான முக்கியமான ஆவணங்கள் — எளிதான வடிவில்.</div>
+
+    <div class="docs-grid">
+
+      <!-- DOCUMENT 1 — TN Finance White Paper Comparison -->
+      <a class="doc-card" href="TN_Finance_Whitepaper_Comparison.pptx" target="_blank" rel="noopener" title="Tamil Nadu Finance White Paper Comparison — Open in new tab">
+        <div class="doc-thumb">
+          <div class="doc-thumb-preview">
+            <span style="width:100%"></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="doc-thumb-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
+          </div>
+          <div class="doc-thumb-label">White Paper</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-title">Tamil Nadu Finance — Three White Papers Compared</div>
+          <div class="doc-meta">
+            <span>AIADMK 2001 · DMK 2021 · TVK 2026</span>
+          </div>
+          <div class="doc-meta" style="margin-top:4px;">
+            <span>PowerPoint Presentation</span>
+            <span class="doc-meta-dot"></span>
+            <span>June 2026</span>
+          </div>
+          <div class="doc-open">
+            புதிய tab-ல் திற
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- PLACEHOLDER — more coming -->
+      <div class="doc-add-card">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span style="color:#555;font-size:0.82rem;font-weight:600;">விரைவில் மேலும் ஆவணங்கள்</span>
+        <span style="color:#444;font-size:0.75rem;">More documents coming soon</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="section reveal">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow">எங்களை பற்றி</div>
+        <h2>Cockroach Vetri Kazhagam என்றால் என்ன?</h2>
+        <p>
+          Cockroach Vetri Kazhagam (CVK) என்பது ஒரு <strong>அரசியல் தகவல் தளம்</strong> — எந்த கட்சியின் பக்கமும் சாயாமல் நாங்கள் வெறும் நேர்மையான தகவலை பகிரும் தளம்.
+        </p>
+        <p>
+          தாறுமாறாக வளரும் கடன் சுமை, வரி வருவாய் சரிவு, PSU நஷ்டங்கள் — இவற்றை நாங்கள் கட்சி நிறங்களில் பார்க்கவில்லை. <strong>மக்களின் கண்ணில் பார்க்கிறோம்.</strong>
+        </p>
+        <p>
+          ஒரு தேவாலயத்திலும் வாழக்கூடிய, அணு உலையிலும் உயிர்வாழக்கூடிய கரப்பான் பூச்சியைப் போல — நாங்களும் எந்த ஆட்சியிலும், எந்த சூழலிலும் உண்மையை பகிர தயாராக இருக்கிறோம்.
+        </p>
+      </div>
+      <div>
+        <ul class="values-list">
+          <li><strong>பக்கச்சார்பற்ற செய்தி</strong> — DMK, AIADMK, TVK, NTK எந்த கட்சியும் விமர்சனத்திற்கு அப்பாற்பட்டவர்களில்லை.</li>
+          <li><strong>ஆதாரத்தோடு பேசுவோம்</strong> — வெள்ளை அறிக்கைகள், பட்ஜெட் ஆவணங்கள், அரசு தகவல்கள் மட்டுமே.</li>
+          <li><strong>மக்களுக்காக நிற்போம்</strong> — நீதி கிடைக்காத இடங்களில் குரல் கொடுப்போம்.</li>
+          <li><strong>எளிய தமிழில் விளக்குவோம்</strong> — சிக்கலான நிதி விஷயங்களை எல்லோரும் புரிந்துகொள்ளும் வகையில்.</li>
+          <li><strong>யாரும் நம்மை நிதியுதவி செய்வதில்லை</strong> — நாங்கள் எந்த அரசியல் கட்சியின் அமைப்பும் அல்ல.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<div id="faq">
+  <div class="section reveal">
+    <div class="section-eyebrow">அடிக்கடி கேட்கப்படும் கேள்விகள்</div>
+    <div class="section-title">FAQ</div>
+    <div class="section-desc">உங்கள் சந்தேகங்களுக்கு நேரடியான பதில்கள்.</div>
+
+    <div class="faq-wrap">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          CVK என்றால் என்ன? இது ஒரு உண்மையான கட்சியா?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          இல்லை — CVK ஒரு அரசியல் தகவல் தளம். இது எந்த கட்சியிலும் பதிவு செய்யப்படவில்லை, தேர்தலில் போட்டியிடவில்லை. Cockroach Vetri Kazhagam என்ற பெயர் நகைச்சுவையுடன் கூடிய ஒரு சமூக விமர்சன நோக்கில் எடுக்கப்பட்டது — கரப்பான் பூச்சியைப் போல, எந்த ஆட்சியிலும் உயிர்வாழ்ந்து உண்மையை சொல்வோம் என்ற அர்த்தத்தில்.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          இந்த தளம் DMK-க்கு எதிரானதா? TVK-க்கு ஆதரவானதா?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          இல்லை — நாங்கள் எந்த கட்சியின் பக்கமும் சாயவில்லை. அனைத்து கட்சியும் விமர்சனத்திற்கு உட்பட்டவையே. ஒவ்வொரு கட்சியும் அதன் செயல்பாட்டின் அடிப்படையில் மதிப்பிடப்படும். நாங்கள் இங்கு விமர்சிக்க கூட இல்லை. வெறும் நேர்மையான தகவலை பகிரும் தளம்.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          இங்கு வெளியிடப்படும் தகவல்கள் நம்பகமானதா?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          நாங்கள் வெளியிடும் அனைத்தும் அரசு ஆவணங்கள், வெள்ளை அறிக்கைகள், பட்ஜெட் ஆவணங்கள், CAG அறிக்கைகள், PRS India போன்ற நடுநிலை ஆராய்ச்சி தளங்கள் ஆகியவற்றை அடிப்படையாகக் கொண்டது. நாங்கள் கருத்துக்களை வழங்கினால், அதை தெளிவாக "ஆசிரியர் கருத்து" என்று குறிப்பிடுவோம்.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          தமிழ்நாட்டின் கடன் நிலை என்ன? ஏன் இவ்வளவு முக்கியம்?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          TVK அரசின் 2026 வெள்ளை அறிக்கையின்படி, தமிழ்நாட்டின் நேரடி கடன் ₹10 லட்சம் கோடியை தாண்டியுள்ளது. PSU கடன்களை சேர்த்தால் ₹13.18 லட்சம் கோடி. 2021-22-ல் ₹5.13 லட்சம் கோடியாக இருந்தது — வெறும் 5 ஆண்டுகளில் இரட்டிப்பானது. இதன் அர்த்தம்: தமிழ்நாட்டில் பிறக்கும் ஒவ்வொரு குழந்தையும் ₹1.29 லட்சம் கடனோடு பிறக்கிறது.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          AIADMK, DMK, TVK, NTK — இவர்களில் யார் சிறந்தவர்கள்?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          CVK இதற்கு நேரடியான பதில் தரவில்லை — ஏனென்றால் அது உங்கள் தீர்மானம். ஆனால் நாங்கள் செய்வது: ஒவ்வொரு கட்சியும் ஆட்சியில் இருந்தபோது என்ன செய்தார்கள், என்ன கூறினார்கள், என்ன நடந்தது என்று ஆவணத்தோடு வெளிப்படுத்துவோம். மக்கள் தீர்மானிக்கட்டும்.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          TVK 2026 வெள்ளை அறிக்கை என்ன சொல்கிறது?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          TVK அரசு (CM C. Joseph Vijay) ஜூன் 16, 2026-ல் வெளியிட்ட வெள்ளை அறிக்கை 6 முக்கிய கண்டுபிடிப்புகளை சுட்டுகிறது: (1) கடன் ஏறக்குறைய இரட்டிப்பானது, (2) வட்டி செலவு மூலதன செலவை விட அதிகம், (3) வருவாய் பற்றாக்குறை கட்டமைப்பு சார்ந்தது, (4) SOTR/GSDP வரலாற்றின் மிகவும் குறைந்த நிலையான 5.45% — ஊழல் மற்றும் நிர்வாக தோல்வியால் என்று குறிப்பிடுகிறது, (5) நிர்ணயிக்கப்பட்ட செலவுகள் வளர்ச்சி செலவை ஒடுக்கியது, (6) PSU கடன்கள் உண்மையான கடன் நிலையை மறைக்கின்றன.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          DMK 2021 வெள்ளை அறிக்கை என்ன சொன்னது?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          DMK அரசு (FM PTR Palanivel Thiagarajan) 2021-ல் வெளியிட்ட வெள்ளை அறிக்கை 2006-2021 காலகட்டத்தை ஆராய்ந்தது. 2020-21 COVID ஆண்டில் வருவாய் பற்றாக்குறை GSDP-யின் 3.16% — ₹61,320 கோடி. AIADMK ஆட்சியில் 2011-21 காலகட்டத்தில் கடன் 3 மடங்கு உயர்ந்தது. மின்சார வாரியம் மற்றும் போக்குவரத்து கழக நஷ்டங்கள் பெரும் சுமையாக இருப்பதாக குறிப்பிட்டது. மத்திய பங்கீடு 6.64%-லிருந்து 4.097%-க்கு குறைந்தது என்று அறிவித்தது.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          AIADMK 2001 வெள்ளை அறிக்கை என்ன சொன்னது?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          AIADMK அரசு (Jayalalithaa) 2001-ல் வெளியிட்ட வெள்ளை அறிக்கை 1991-2001 காலகட்டத்தில் DMK ஆட்சியின் நிதி நிர்வாகத்தை விமர்சித்தது. கடன் ~₹30,000 கோடியிலிருந்து ~₹75,000 கோடியாக (150% அதிகரிப்பு) உயர்ந்தது. PSU நஷ்டங்கள் மற்றும் வருவாய் பற்றாக்குறையை முதன்முதலில் ஒரு வெள்ளை அறிக்கை மூலம் அதிகாரப்பூர்வமாக ஆவணப்படுத்தியது. இதுவே தமிழ்நாட்டின் முதல் நிதி வெள்ளை அறிக்கை என்று கருதப்படுகிறது.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          நான் CVK-உடன் எப்படி தொடர்பு கொள்வது?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          எங்களை தொடர்பு கொள்ள: <a href="mailto:cvk.makkalsakthi@gmail.com">cvk.makkalsakthi@gmail.com</a> — உங்கள் கேள்விகள், திருத்தங்கள், யோசனைகள், அல்லது உங்கள் பகுதியில் நடக்கும் அரசியல் செய்திகளை பகிர்ந்துகொள்ளலாம். நேர்மையான தகவல் தளமாக வளர உங்கள் ஒத்துழைப்பு அவசியம்.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Naam Tamilar Katchi (NTK) பற்றி CVK என்ன சொல்கிறது?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          NTK ஒரு தனித்துவமான தமிழ் தேசிய அரசியல் நிலைப்பாட்டை பிரதிநிதித்துவப்படுத்துகிறது. அவர்கள் நேர்மையான நிலைப்பாடுகளை வெளியிடுகிறார்கள் என்பதை நாங்கள் அங்கீகரிக்கிறோம். ஆனால் அவர்களும் விமர்சனத்திற்கு உட்பட்டவர்களே. NTK ஆட்சியில் வந்தால் அதே கேள்விகளை கேட்போம் — கடன் நிர்வாகம், வருவாய் திரட்டல், PSU சீர்திருத்தம்.
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="section reveal">
+    <div class="section-eyebrow">தொடர்பு கொள்ளுங்கள்</div>
+    <div class="contact-box">
+      <div>
+        <h3>உங்கள் குரல் முக்கியம்</h3>
+        <p>கேள்விகள், திருத்தங்கள், செய்திகள் — எல்லாவற்றையும் அனுப்புங்கள்.<br>
+        நாங்கள் படிக்கிறோம், பதில் சொல்கிறோம்.</p>
+      </div>
+      <a href="mailto:cvk.makkalsakthi@gmail.com" class="contact-email">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" fill="none" stroke="#0A0A0A" stroke-width="1.5"/></svg>
+        cvk.makkalsakthi@gmail.com
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    Cockroach Vetri Kazhagam
+    <small>CVK · மக்கள் சக்தி · Est. 2026</small>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#home">முகப்பு</a></li>
+    <li><a href="#documents">ஆவணங்கள்</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="mailto:cvk.makkalsakthi@gmail.com">தொடர்பு</a></li>
+  </ul>
+  <div class="footer-note">நேர்மையான தகவலே கிடைக்கும் · அரசியல் அல்ல, மக்கள் சக்தி</div>
+</footer>
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-icon').textContent = '+';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-icon').textContent = '×';
+    }
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
