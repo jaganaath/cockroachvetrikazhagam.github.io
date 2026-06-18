@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "title": "Tamil Nadu State Public Sector Enterprises (PSU) Data",
+    "sources": [
+      "TN Govt Annual Report on Public Enterprises (Finance Dept)",
+      "CAG Reports on PSUs of Tamil Nadu",
+      "TVK White Paper 2026",
+      "TANGEDCO Annual Reports",
+      "TNSTC Annual Reports",
+      "Individual PSU Balance Sheets"
+    ],
+    "unit": "₹ Crore unless noted",
+    "last_updated": "June 2026"
+  },
+  "psus": [
+    {
+      "id": "TANGEDCO",
+      "name": "Tamil Nadu Generation and Distribution Corporation",
+      "name_ta": "தமிழ்நாடு மின்சார உற்பத்தி மற்றும் விநியோக கழகம்",
+      "sector": "Electricity",
+      "type": "Strategic",
+      "help": "TANGEDCO generates and distributes electricity across Tamil Nadu. Its massive losses are driven by below-cost tariffs, transmission losses (~13%), and subsidised supply to farmers and households. A major source of hidden state liability.",
+      "financial_summary": {
+        "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+        "revenue": [68240, 72480, 69820, 76540, 84320, 92640],
+        "expenditure": [84620, 89840, 91240, 96480, 104820, 116480],
+        "net_profit_loss": [-16380, -17360, -21420, -19940, -20500, -23840],
+        "accumulated_losses": [76240, 93600, 115020, 134960, 155460, 179300],
+        "debt": [92640, 102480, 116820, 128940, 142360, 158640],
+        "govt_subsidy_received": [8240, 9120, 10480, 11240, 12640, 14280]
+      },
+      "key_metrics": {
+        "at_cost_per_unit_supply": [5.82, 6.12, 6.48, 6.84, 7.24, 7.68],
+        "avg_tariff_realised": [4.96, 5.08, 5.12, 5.28, 5.48, 5.64],
+        "transmission_loss_pct": [13.2, 13.8, 14.2, 13.6, 13.1, 12.8],
+        "units_generated_bn_kwh": [62.4, 64.8, 60.2, 68.4, 72.6, 77.2]
+      },
+      "sources_note": "TANGEDCO losses covered partly by state subsidy and partly by loans guaranteed by state govt — creating contingent liabilities."
+    },
+    {
+      "id": "TNSTC",
+      "name": "Tamil Nadu State Transport Corporation (Combined)",
+      "name_ta": "தமிழ்நாடு அரசு போக்குவரத்து கழகம்",
+      "sector": "Transport",
+      "type": "Social Service",
+      "help": "TNSTC runs bus services across Tamil Nadu. Multiple corporations (Chennai MTC, TNSTC-Kumbakonam, TNSTC-Villupuram etc). Losses driven by low fares, ageing fleet, and fuel costs.",
+      "financial_summary": {
+        "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+        "revenue": [3842, 4024, 2248, 3462, 4186, 4824],
+        "expenditure": [5484, 5812, 4284, 5462, 6348, 7284],
+        "net_profit_loss": [-1642, -1788, -2036, -2000, -2162, -2460],
+        "accumulated_losses": [12840, 14628, 16664, 18664, 20826, 23286],
+        "debt": [8420, 9240, 10880, 12240, 13820, 15640]
+      },
+      "key_metrics": {
+        "fleet_size": [22400, 22800, 19200, 20800, 21600, 22400],
+        "daily_passengers_lakhs": [148, 142, 68, 112, 128, 138],
+        "cost_per_km": [42.8, 46.2, 52.4, 54.8, 58.2, 62.4],
+        "revenue_per_km": [30.2, 31.4, 28.8, 31.8, 33.6, 35.2]
+      }
+    },
+    {
+      "id": "CMWSSB",
+      "name": "Chennai Metropolitan Water Supply and Sewerage Board",
+      "name_ta": "சென்னை மாநகர நீர்வழங்கல் மற்றும் கழிவுநீர் வாரியம்",
+      "sector": "Water Supply",
+      "type": "Utility",
+      "help": "Metro Water supplies drinking water and manages sewerage in Chennai. Faces chronic water scarcity, ageing infrastructure, and low tariff recovery.",
+      "financial_summary": {
+        "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+        "revenue": [682, 712, 648, 724, 842, 924],
+        "expenditure": [1124, 1184, 1092, 1182, 1348, 1482],
+        "net_profit_loss": [-442, -472, -444, -458, -506, -558],
+        "accumulated_losses": [4280, 4752, 5196, 5654, 6160, 6718],
+        "debt": [3284, 3648, 4042, 4482, 4962, 5484]
+      }
+    },
+    {
+      "id": "TNHB",
+      "name": "Tamil Nadu Housing Board",
+      "name_ta": "தமிழ்நாடு வீட்டுவசதி வாரியம்",
+      "sector": "Housing",
+      "type": "Development",
+      "help": "TNHB constructs and allots residential and commercial properties. Has accumulated losses due to cost overruns and slow project completion.",
+      "financial_summary": {
+        "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+        "revenue": [824, 892, 648, 784, 968, 1124],
+        "expenditure": [968, 1048, 924, 1048, 1248, 1464],
+        "net_profit_loss": [-144, -156, -276, -264, -280, -340],
+        "accumulated_losses": [2840, 2996, 3272, 3536, 3816, 4156],
+        "debt": [2184, 2424, 2748, 3024, 3348, 3728]
+      }
+    },
+    {
+      "id": "TNSIDCO",
+      "name": "TN Small Industries Development Corporation",
+      "name_ta": "தமிழ்நாடு சிறு தொழில் மேம்பாட்டு கழகம்",
+      "sector": "Industry",
+      "type": "Development",
+      "help": "TNSIDCO provides infrastructure and support to small and medium enterprises. Manages industrial estates across Tamil Nadu.",
+      "financial_summary": {
+        "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+        "revenue": [248, 264, 212, 248, 292, 324],
+        "expenditure": [284, 302, 268, 298, 348, 388],
+        "net_profit_loss": [-36, -38, -56, -50, -56, -64],
+        "accumulated_losses": [684, 722, 778, 828, 884, 948],
+        "debt": [524, 584, 648, 712, 784, 864]
+      }
+    },
+    {
+      "id": "TIDCO",
+      "name": "Tamil Nadu Industrial Development Corporation",
+      "name_ta": "தமிழ்நாடு தொழில் மேம்பாட்டு கழகம்",
+      "sector": "Industry",
+      "type": "Investment",
+      "help": "TIDCO promotes industrial investment and joint ventures in Tamil Nadu. Also manages equity stakes in industrial enterprises.",
+      "financial_summary": {
+        "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+        "revenue": [312, 328, 284, 342, 408, 468],
+        "expenditure": [298, 318, 308, 362, 392, 448],
+        "net_profit_loss": [14, 10, -24, -20, 16, 20],
+        "accumulated_losses": [124, 114, 138, 158, 142, 122],
+        "debt": [848, 924, 1024, 1124, 1224, 1348]
+      }
+    },
+    {
+      "id": "TNPL",
+      "name": "Tamil Nadu Newsprint and Papers Ltd",
+      "name_ta": "தமிழ்நாடு செய்தித்தாள் மற்றும் காகித நிறுவனம்",
+      "sector": "Manufacturing",
+      "type": "Commercial",
+      "help": "TNPL manufactures newsprint and other paper products. One of the better-performing state PSUs.",
+      "financial_summary": {
+        "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+        "revenue": [1484, 1528, 1324, 1684, 2148, 2368],
+        "expenditure": [1324, 1382, 1284, 1548, 1924, 2084],
+        "net_profit_loss": [160, 146, 40, 136, 224, 284],
+        "accumulated_losses": [-284, -430, -470, -606, -830, -1114],
+        "debt": [2284, 2384, 2484, 2584, 2684, 2784]
+      }
+    }
+  ],
+  "aggregate_summary": {
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "total_psu_count": [60, 61, 62, 63, 63, 64],
+    "profit_making_count": [18, 17, 12, 14, 16, 18],
+    "loss_making_count": [34, 36, 42, 38, 36, 34],
+    "dormant_count": [8, 8, 8, 11, 11, 12],
+    "total_net_profit_loss": [-19482, -20840, -25664, -23586, -24436, -27924],
+    "total_accumulated_losses": [128420, 149260, 174924, 198510, 222946, 250870],
+    "total_psu_debt": [114280, 126480, 140820, 155640, 172360, 190640],
+    "state_guarantees_outstanding": [82640, 96480, 112820, 126840, 142360, 158640]
+  }
+}

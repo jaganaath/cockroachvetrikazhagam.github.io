@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Comparison Tool — CVK Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@700;900&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/finance.css">
+<style>
+.state-picker { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1rem; }
+.state-chip {
+  display:flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:20px; border:1.5px solid var(--border2);
+  font-size:0.78rem; font-weight:600; cursor:pointer; transition:all 0.2s;
+  background:var(--bg2); color:var(--grey); user-select:none;
+}
+.state-chip .state-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.state-chip.selected { color:var(--white); border-color:currentColor; }
+.state-chip.selected[data-id="TN"] { background:rgba(212,160,23,0.15); border-color:#D4A017; color:#D4A017; }
+.state-chip.selected[data-id="MH"] { background:rgba(51,153,204,0.15); border-color:#3399CC; color:#3399CC; }
+.state-chip.selected[data-id="KA"] { background:rgba(68,187,102,0.15); border-color:#44BB66; color:#44BB66; }
+.state-chip.selected[data-id="AP"] { background:rgba(255,102,153,0.15); border-color:#FF6699; color:#FF6699; }
+.state-chip.selected[data-id="TG"] { background:rgba(153,102,204,0.15); border-color:#9966CC; color:#9966CC; }
+.state-chip.selected[data-id="KL"] { background:rgba(0,187,204,0.15); border-color:#00BBCC; color:#00BBCC; }
+.state-chip.selected[data-id="GJ"] { background:rgba(255,136,0,0.15); border-color:#FF8800; color:#FF8800; }
+.state-chip.selected[data-id="RJ"] { background:rgba(204,51,68,0.15); border-color:#CC3344; color:#CC3344; }
+.state-chip.selected[data-id="UP"] { background:rgba(136,204,0,0.15); border-color:#88CC00; color:#88CC00; }
+.state-chip.selected[data-id="WB"] { background:rgba(204,102,0,0.15); border-color:#CC6600; color:#CC6600; }
+
+.rank-table .rank-1 td:first-child::before { content:'🥇 '; }
+.rank-table .rank-2 td:first-child::before { content:'🥈 '; }
+.rank-table .rank-3 td:first-child::before { content:'🥉 '; }
+.rank-tn { background:rgba(212,160,23,0.06); }
+</style>
+</head>
+<body>
+<nav class="fin-nav">
+  <a href="index.html" class="fin-nav-brand">
+    <div class="fin-nav-logo">CVK</div>
+    <div class="fin-nav-title">Finance Hub <small>State Comparison</small></div>
+  </a>
+  <ul class="fin-nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="budget.html">Budget</a></li>
+    <li><a href="debt.html">Debt</a></li>
+    <li><a href="psu.html">PSUs</a></li>
+    <li><a href="cag.html">CAG</a></li>
+    <li><a href="compare.html" class="active">Compare States</a></li>
+    <li><a href="central.html">Central Finance</a></li>
+  </ul>
+  <div class="fin-nav-right">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ta">TA</button>
+    <button class="lang-btn" data-lang="hi">HI</button>
+    <a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>CVK</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Interactive Tool</div>
+    <h1 class="page-title" data-i18n="compare_title">State Comparison Tool</h1>
+    <p class="page-desc">Compare Tamil Nadu with any state across 8 fiscal metrics and 7 years. Select states below, choose a metric, and see the charts update instantly.</p>
+    <div class="page-tags">
+      <span class="page-tag">10 States</span>
+      <span class="page-tag">8 Metrics</span>
+      <span class="page-tag">2018-19 to 2024-25</span>
+      <span class="page-tag">RBI Data</span>
+    </div>
+  </div>
+</div>
+
+<main class="fin-main">
+
+  <!-- CONTROLS -->
+  <div class="card reveal" style="margin-bottom:1.5rem">
+    <div class="card-head">
+      <div><div class="card-title">⚖️ Configure Comparison</div><div class="card-subtitle">Tamil Nadu is always included. Select up to 4 additional states.</div></div>
+    </div>
+    <div class="card-body">
+      <div class="selector-row" style="margin-bottom:1.2rem">
+        <span class="selector-label">Metric:</span>
+        <select class="fin-select" id="metricSel" onchange="updateComparison()">
+          <option value="gsdp">GSDP (₹ Lakh Crore)</option>
+          <option value="fiscal_deficit_pct_gsdp" selected>Fiscal Deficit % GSDP</option>
+          <option value="debt_pct_gsdp">Debt % GSDP</option>
+          <option value="capex_pct_gsdp">Capital Expenditure % GSDP</option>
+          <option value="own_tax_pct_gsdp">Own Tax Revenue % GSDP</option>
+          <option value="interest_pct_revenue">Interest Payments % Revenue</option>
+          <option value="per_capita_income">Per Capita Income (₹)</option>
+          <option value="revenue_deficit_pct_gsdp">Revenue Deficit % GSDP</option>
+        </select>
+        <select class="fin-select" id="yearSel" onchange="updateComparison()">
+          <option value="all">All Years (Trend)</option>
+          <option value="2018-19">2018-19</option>
+          <option value="2019-20">2019-20</option>
+          <option value="2020-21">2020-21</option>
+          <option value="2021-22">2021-22</option>
+          <option value="2022-23">2022-23</option>
+          <option value="2023-24" selected>2023-24</option>
+          <option value="2024-25">2024-25 (BE)</option>
+        </select>
+        <select class="fin-select" id="chartTypeSel" onchange="updateComparison()">
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart (Trend)</option>
+          <option value="radar">Radar Chart</option>
+        </select>
+      </div>
+      <div>
+        <div class="selector-label" style="margin-bottom:8px">States (TN always selected · click to toggle):</div>
+        <div class="state-picker" id="statePicker"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CHART -->
+  <div class="card reveal section-gap">
+    <div class="card-head">
+      <div>
+        <div class="card-title" id="compChartTitle">Fiscal Deficit % GSDP — 2023-24</div>
+        <div class="card-subtitle" id="compChartSub">Higher = more fiscal stress. FRBM limit = 3%.</div>
+      </div>
+      <span class="help-icon" id="compHelp" data-tip="Compare how Tamil Nadu's fiscal deficit compares with other major states.">?</span>
+    </div>
+    <div class="card-body">
+      <div class="chart-wrap" style="height:360px"><canvas id="compChart"></canvas></div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- RANKING TABLE -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Rankings</div>
+        <h2 class="sec-title">All States Ranked — <span id="rankMetricName">Fiscal Deficit % GSDP</span></h2>
+        <p class="sec-desc" id="rankYearLabel">Year: 2023-24 · Lower = better fiscal position for deficit metrics</p>
+      </div>
+    </div>
+    <div class="fin-table-wrap">
+      <table class="fin-table rank-table" id="rankTable">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>State</th>
+            <th class="num">Value</th>
+            <th>Bar</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody id="rankTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- MULTI-METRIC SNAPSHOT for TN vs selected state -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Deep Compare</div>
+        <h2 class="sec-title">Tamil Nadu vs <select class="fin-select" id="deepCompareSel" style="font-size:inherit;font-weight:inherit" onchange="updateDeepCompare()">
+          <option value="MH">Maharashtra</option>
+          <option value="KA">Karnataka</option>
+          <option value="KL">Kerala</option>
+          <option value="GJ">Gujarat</option>
+          <option value="AP">Andhra Pradesh</option>
+        </select></h2>
+        <p class="sec-desc">Head-to-head on all 8 metrics for 2023-24</p>
+      </div>
+    </div>
+    <div id="deepCompareGrid" class="grid-2"></div>
+  </div>
+
+  <div class="sources-section reveal">
+    <div class="sources-title">Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-item">RBI Handbook of Statistics on Indian States</div>
+      <div class="source-item">RBI State Finances: A Study of Budgets (Annual)</div>
+      <div class="source-item">Finance Commission Reports — 14th & 15th FC</div>
+      <div class="source-item">NITI Aayog State Statistics</div>
+      <div class="source-item">State Budget Documents (individual state finance depts)</div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.72rem;color:var(--mid)" data-i18n="note_approx">* Approximate figures. 2024-25 are Budget Estimates.</div>
+  </div>
+
+</main>
+<footer class="fin-footer">
+  <div data-i18n="footer_cvk">Cockroach Vetri Kazhagam · நேர்மையான தகவலே கிடைக்கும்</div>
+  <div style="margin-top:8px"><a href="index.html">← Finance Hub</a> · <a href="../index.html">CVK Home</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+// ── DATA ──
+const STATES=[
+  {id:'TN',name:'Tamil Nadu'},{id:'MH',name:'Maharashtra'},{id:'KA',name:'Karnataka'},
+  {id:'AP',name:'Andhra Pradesh'},{id:'TG',name:'Telangana'},{id:'KL',name:'Kerala'},
+  {id:'GJ',name:'Gujarat'},{id:'RJ',name:'Rajasthan'},{id:'UP',name:'Uttar Pradesh'},
+  {id:'WB',name:'West Bengal'}
+];
+const YEARS=['2018-19','2019-20','2020-21','2021-22','2022-23','2023-24','2024-25'];
+
+const SDATA={
+  gsdp:{label:'GSDP (₹ L.Cr)',unit:'₹L.Cr',help:'Gross State Domestic Product at current prices. Larger = bigger economy.',lowerBetter:false,
+    data:{TN:[14.62,15.76,14.82,18.16,20.98,23.64,26.42],MH:[30.12,31.68,28.84,33.52,38.64,42.80,47.20],
+          KA:[17.24,18.88,17.42,20.96,24.12,27.80,31.20],AP:[9.82,10.48,9.68,11.22,12.64,14.04,15.80],
+          TG:[9.28,10.12,9.82,12.04,13.48,14.88,16.92],KL:[8.36,8.82,8.24,9.68,11.02,12.24,13.64],
+          GJ:[16.08,17.42,16.24,19.48,21.84,24.68,27.64],RJ:[9.62,10.24,9.44,11.28,12.84,14.36,16.08],
+          UP:[16.28,17.24,16.12,19.48,22.28,24.92,27.68],WB:[11.08,11.82,11.04,13.16,14.96,16.68,18.48]}},
+  fiscal_deficit_pct_gsdp:{label:'Fiscal Deficit % GSDP',unit:'%',help:'Lower is better. FRBM limit: 3%. Measures borrowing relative to economic size.',lowerBetter:true,
+    data:{TN:[3.69,3.81,4.45,4.19,4.20,4.74,4.51],MH:[1.82,2.04,3.12,2.28,2.44,2.62,2.48],
+          KA:[2.18,2.44,3.56,2.84,2.96,3.04,2.86],AP:[3.82,4.12,5.24,4.68,4.24,4.68,4.36],
+          TG:[2.84,3.06,3.82,3.24,3.08,3.42,3.18],KL:[2.96,3.22,4.62,3.84,3.68,4.12,3.84],
+          GJ:[1.48,1.62,2.48,1.74,1.82,1.94,1.72],RJ:[4.12,4.48,5.82,4.92,4.68,5.24,4.96],
+          UP:[2.98,3.12,4.28,3.42,3.28,3.64,3.42],WB:[3.28,3.52,4.82,4.12,3.84,4.18,3.92]}},
+  debt_pct_gsdp:{label:'Debt % GSDP',unit:'%',help:'Outstanding debt as share of economy. FRBM guideline: 25%. Lower is better.',lowerBetter:true,
+    data:{TN:[28.6,29.4,34.6,32.1,32.3,33.3,38.1],MH:[16.8,17.4,20.2,18.6,18.2,18.8,18.4],
+          KA:[20.4,21.2,26.4,24.2,23.6,24.8,24.2],AP:[32.4,34.2,40.8,38.2,36.4,38.2,37.6],
+          TG:[24.8,26.2,30.4,28.6,27.2,28.4,27.8],KL:[32.6,34.8,42.4,38.6,36.2,38.4,37.8],
+          GJ:[14.2,14.8,17.6,15.8,14.8,15.2,14.6],RJ:[34.8,36.2,42.6,40.8,38.6,40.2,39.8],
+          UP:[26.8,27.4,32.2,30.4,29.2,30.6,29.8],WB:[34.8,36.2,42.6,40.2,38.4,39.8,38.6]}},
+  capex_pct_gsdp:{label:'Capital Expenditure % GSDP',unit:'%',help:'Higher is better. Investment in roads, hospitals, infrastructure.',lowerBetter:false,
+    data:{TN:[2.32,1.78,1.48,1.87,2.76,2.28,2.35],MH:[2.24,2.12,1.68,2.04,2.28,2.42,2.38],
+          KA:[2.64,2.48,1.96,2.28,2.88,3.12,2.96],AP:[3.12,2.84,2.28,2.88,3.24,3.12,3.04],
+          TG:[2.28,2.48,2.04,2.42,2.68,2.84,2.72],KL:[1.82,1.74,1.28,1.62,1.84,2.04,1.96],
+          GJ:[3.42,3.12,2.68,3.04,3.28,3.48,3.38],RJ:[2.62,2.44,1.98,2.24,2.64,2.88,2.72],
+          UP:[3.28,3.06,2.42,2.84,3.12,3.42,3.28],WB:[1.84,1.72,1.36,1.62,1.92,2.08,1.98]}},
+  own_tax_pct_gsdp:{label:'Own Tax Revenue % GSDP',unit:'%',help:'Higher is better. Measures fiscal self-reliance.',lowerBetter:false,
+    data:{TN:[6.98,6.60,5.53,5.51,5.43,5.46,5.45],MH:[7.42,7.28,6.12,7.04,7.18,7.32,7.24],
+          KA:[7.84,7.68,6.24,7.12,7.32,7.48,7.36],AP:[6.12,6.04,5.08,5.82,6.04,6.18,6.08],
+          TG:[8.24,8.06,6.84,7.62,7.88,8.04,7.92],KL:[7.12,6.84,5.72,6.48,6.72,6.88,6.76],
+          GJ:[6.84,6.72,5.68,6.42,6.62,6.78,6.68],RJ:[5.12,4.98,4.08,4.72,4.92,5.08,4.96],
+          UP:[4.28,4.12,3.48,3.92,4.08,4.18,4.12],WB:[4.62,4.48,3.72,4.24,4.42,4.56,4.48]}},
+  interest_pct_revenue:{label:'Interest % Revenue Receipts',unit:'%',help:'Lower is better. Above 15% = stressed. Measures debt service burden.',lowerBetter:true,
+    data:{TN:[20.4,22.2,25.7,25.2,24.6,25.7,27.2],MH:[11.2,11.8,14.2,12.6,12.2,12.8,12.4],
+          KA:[11.8,12.4,15.2,13.8,13.2,13.6,13.2],AP:[19.6,20.8,24.4,22.8,21.6,22.4,21.8],
+          TG:[14.8,15.6,18.4,16.8,15.6,16.4,15.8],KL:[18.2,19.4,23.8,21.6,20.4,21.2,20.8],
+          GJ:[9.8,10.2,12.4,11.2,10.6,10.8,10.4],RJ:[21.8,22.6,26.4,24.8,23.6,24.4,23.8],
+          UP:[17.2,17.8,20.4,18.8,18.2,18.8,18.4],WB:[22.4,23.2,27.6,25.8,24.4,25.2,24.6]}},
+  per_capita_income:{label:'Per Capita Income (₹)',unit:'₹',help:'Higher is better. Net State Income per person.',lowerBetter:false,
+    data:{TN:[157820,168540,157200,193200,222100,249500,278600],MH:[212400,221800,196400,232600,264800,292400,324800],
+          KA:[196200,210400,188200,226800,258400,291200,328400],AP:[124600,132800,119400,140200,160800,179400,200600],
+          TG:[208400,222600,208200,248600,280400,312800,354200],KL:[194200,206800,196400,230600,264200,296400,332800],
+          GJ:[198600,212400,194200,234800,264200,296600,334200],RJ:[96200,102400,92800,110400,124800,138200,154400],
+          UP:[62400,66200,60800,72400,82800,91200,102400],WB:[114200,121400,110800,132600,150200,167800,188400]}},
+  revenue_deficit_pct_gsdp:{label:'Revenue Deficit % GSDP',unit:'%',help:'Lower/negative is better. Negative = revenue surplus (healthy).',lowerBetter:true,
+    data:{TN:[1.64,2.41,3.98,1.98,1.05,1.95,1.63],MH:[0.12,0.24,1.42,0.32,0.08,0.18,0.12],
+          KA:[-0.22,-0.08,0.88,-0.12,-0.28,-0.18,-0.22],AP:[1.62,1.82,2.84,2.12,1.68,1.82,1.64],
+          TG:[-0.82,-0.62,0.48,-0.42,-0.68,-0.52,-0.62],KL:[0.82,1.02,2.28,1.42,1.08,1.24,1.14],
+          GJ:[-0.48,-0.36,0.42,-0.28,-0.42,-0.32,-0.38],RJ:[1.42,1.62,2.82,2.04,1.68,1.82,1.68],
+          UP:[0.42,0.58,1.62,0.82,0.52,0.64,0.58],WB:[1.12,1.28,2.42,1.62,1.32,1.48,1.38]}}
+};
+
+applyChartDefaults();
+
+let selectedStates=['TN','MH','KA','KL'];
+let compChartObj=null;
+
+// Build state picker
+const picker=document.getElementById('statePicker');
+STATES.forEach(s=>{
+  const chip=document.createElement('div');
+  chip.className='state-chip'+(selectedStates.includes(s.id)?' selected':'');
+  chip.dataset.id=s.id;
+  chip.innerHTML=`<span class="state-dot" style="background:${getStateColor(s.id)}"></span>${s.name}`;
+  if(s.id==='TN') chip.style.cursor='default';
+  chip.addEventListener('click',()=>{
+    if(s.id==='TN') return;
+    if(selectedStates.includes(s.id)){
+      selectedStates=selectedStates.filter(x=>x!==s.id);
+      chip.classList.remove('selected');
+    } else if(selectedStates.length<5){
+      selectedStates.push(s.id);
+      chip.classList.add('selected');
+    }
+    updateComparison();
+  });
+  picker.appendChild(chip);
+});
+
+function getYearIdx(y){ return YEARS.indexOf(y); }
+
+function updateComparison(){
+  const metric=document.getElementById('metricSel').value;
+  const year=document.getElementById('yearSel').value;
+  const chartType=document.getElementById('chartTypeSel').value;
+  const mdata=SDATA[metric];
+  if(!mdata) return;
+
+  document.getElementById('compChartTitle').textContent=mdata.label+(year==='all'?' — Trend (All Years)':' — '+year);
+  document.getElementById('compHelp').dataset.tip=mdata.help;
+  document.getElementById('rankMetricName').textContent=mdata.label;
+  document.getElementById('rankYearLabel').textContent='Year: '+(year==='all'?'Latest available (2023-24)':year)+' · '+(mdata.lowerBetter?'Lower = better':'Higher = better');
+
+  const dispYear=year==='all'?'2023-24':year;
+  const yi=getYearIdx(dispYear);
+
+  if(compChartObj) compChartObj.destroy();
+
+  if(year==='all' || chartType==='line'){
+    // Line trend
+    const datasets=selectedStates.map(sid=>{
+      const col=getStateColor(sid);
+      return{label:STATES.find(s=>s.id===sid)?.name||sid,
+             data:SDATA[metric].data[sid]||[],
+             borderColor:col,backgroundColor:col+'22',fill:false,tension:0.3,borderWidth:sid==='TN'?3:2,
+             pointRadius:sid==='TN'?5:3,borderDash:sid==='TN'?[]:[4,3]};
+    });
+    compChartObj=new Chart(document.getElementById('compChart'),{
+      type:'line',
+      data:{labels:YEARS,datasets},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},
+        scales:{x:{ticks:{font:{size:10}}},y:{ticks:{callback:v=>mdata.unit==='%'?v+'%':mdata.unit==='₹'?'₹'+v.toLocaleString('en-IN'):v},grid:{color:'rgba(255,255,255,0.04)'}}}}
+    });
+  } else if(chartType==='radar'){
+    // Radar — latest year across multiple metrics
+    const radarMetrics=['fiscal_deficit_pct_gsdp','debt_pct_gsdp','capex_pct_gsdp','own_tax_pct_gsdp','interest_pct_revenue','revenue_deficit_pct_gsdp'];
+    const radarLabels=['Fiscal Deficit','Debt/GSDP','Capex/GSDP','Own Tax','Interest Burden','Revenue Deficit'];
+    const datasets=selectedStates.map(sid=>{
+      const col=getStateColor(sid);
+      const vals=radarMetrics.map(m=>{
+        const d=SDATA[m]?.data[sid];
+        return d?d[getYearIdx(dispYear)]??0:0;
+      });
+      return{label:STATES.find(s=>s.id===sid)?.name||sid,data:vals,
+             borderColor:col,backgroundColor:col+'33',borderWidth:2,pointBackgroundColor:col};
+    });
+    compChartObj=new Chart(document.getElementById('compChart'),{
+      type:'radar',
+      data:{labels:radarLabels,datasets},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},
+        scales:{r:{ticks:{font:{size:9}},grid:{color:'rgba(255,255,255,0.08)'},pointLabels:{font:{size:11}}}}}
+    });
+  } else {
+    // Bar — single year
+    const labels=selectedStates.map(sid=>STATES.find(s=>s.id===sid)?.name||sid);
+    const vals=selectedStates.map(sid=>{const d=mdata.data[sid];return d?d[yi]??0:0;});
+    const colors=selectedStates.map(sid=>getStateColor(sid));
+    const datasets=[{label:mdata.label,data:vals,backgroundColor:colors.map(c=>c+'BB'),borderColor:colors,borderWidth:2}];
+    compChartObj=new Chart(document.getElementById('compChart'),{
+      type:'bar',
+      data:{labels,datasets},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${mdata.unit==='%'?ctx.parsed.y+'%':ctx.parsed.y}`}}},
+        scales:{x:{ticks:{font:{size:11}}},y:{ticks:{callback:v=>mdata.unit==='%'?v+'%':v},grid:{color:'rgba(255,255,255,0.04)'}}}}
+    });
+  }
+
+  // Ranking table — all states for selected year
+  buildRankTable(metric,dispYear);
+  updateDeepCompare();
+}
+
+function buildRankTable(metric,year){
+  const yi=getYearIdx(year);
+  const mdata=SDATA[metric];
+  const rows=STATES.map(s=>({
+    id:s.id,name:s.name,
+    val:mdata.data[s.id]?mdata.data[s.id][yi]??null:null
+  })).filter(r=>r.val!==null);
+  rows.sort((a,b)=>mdata.lowerBetter?a.val-b.val:b.val-a.val);
+  const maxVal=Math.max(...rows.map(r=>Math.abs(r.val)));
+  const tb=document.getElementById('rankTableBody');
+  tb.innerHTML=rows.map((r,i)=>{
+    const w=maxVal?Math.round(Math.abs(r.val)/maxVal*100):0;
+    const istn=r.id==='TN';
+    const dispVal=mdata.unit==='%'?r.val.toFixed(2)+'%':mdata.unit==='₹'?'₹'+r.val.toLocaleString('en-IN'):r.val.toFixed(2);
+    const ctx=mdata.lowerBetter?(i<3?'✅ Good':i>6?'⚠️ Stressed':'Moderate'):(i<3?'✅ Good':i>6?'⚠️ Low':'Moderate');
+    return`<tr class="${istn?'rank-tn':''} ${i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':''}">
+      <td><strong>#${i+1}</strong></td>
+      <td>${istn?'<strong>'+r.name+' ★</strong>':r.name}</td>
+      <td class="num ${istn?'gold':''}">${dispVal}</td>
+      <td><div class="progress-track" style="width:120px"><div class="progress-fill ${istn?'':'red'}" style="width:${w}%;background:${getStateColor(r.id)}88"></div></div></td>
+      <td style="font-size:0.76rem;color:var(--mid)">${ctx}</td>
+    </tr>`;
+  }).join('');
+}
+
+function updateDeepCompare(){
+  const cmpId=document.getElementById('deepCompareSel').value;
+  const cmpState=STATES.find(s=>s.id===cmpId);
+  const yi=getYearIdx('2023-24');
+  const metrics=Object.keys(SDATA);
+  const grid=document.getElementById('deepCompareGrid');
+  grid.innerHTML=metrics.map(m=>{
+    const md=SDATA[m];
+    const tnv=md.data['TN']?md.data['TN'][yi]:null;
+    const cpv=md.data[cmpId]?md.data[cmpId][yi]:null;
+    if(tnv===null||cpv===null) return'';
+    const tnBetter=md.lowerBetter?tnv<cpv:tnv>cpv;
+    const fmt=v=>md.unit==='%'?v.toFixed(2)+'%':md.unit==='₹'?'₹'+v.toLocaleString('en-IN'):v.toFixed(2);
+    return`<div class="card">
+      <div class="card-head">
+        <div class="card-title" style="font-size:0.82rem">${md.label} <span class="help-icon" data-tip="${md.help}">?</span></div>
+      </div>
+      <div class="card-body-sm" style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+        <div style="text-align:center">
+          <div style="font-size:0.7rem;color:var(--grey);margin-bottom:4px">Tamil Nadu</div>
+          <div style="font-size:1.4rem;font-weight:900;color:${tnBetter?'#44BB66':'#CC3344'}">${fmt(tnv)}</div>
+          <div style="font-size:0.64rem;color:var(--mid)">${tnBetter?'✅ Better':'⚠️ Worse'}</div>
+        </div>
+        <div style="font-size:1.2rem;color:var(--border2)">vs</div>
+        <div style="text-align:center">
+          <div style="font-size:0.7rem;color:var(--grey);margin-bottom:4px">${cmpState?.name||cmpId}</div>
+          <div style="font-size:1.4rem;font-weight:900;color:${!tnBetter?'#44BB66':'var(--grey)'}">${fmt(cpv)}</div>
+          <div style="font-size:0.64rem;color:var(--mid)">${!tnBetter?'✅ Better':'—'}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+updateComparison();
+document.addEventListener('DOMContentLoaded',()=>{initLang();initReveal();});
+initLang();initReveal();
+</script>
+</body>
+</html>

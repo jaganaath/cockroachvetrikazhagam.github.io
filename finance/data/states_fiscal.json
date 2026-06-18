@@ -1,0 +1,160 @@
+{
+  "_meta": {
+    "title": "Multi-State Fiscal Comparison Data",
+    "sources": [
+      "RBI Handbook of Statistics on Indian States",
+      "RBI State Finances: A Study of Budgets (Annual)",
+      "Finance Commission Reports (14th, 15th FC)",
+      "NITI Aayog State Statistics",
+      "MOSPI National Accounts",
+      "State Budget Documents"
+    ],
+    "unit_amounts": "₹ Lakh Crore",
+    "unit_ratios": "Percentage (%)",
+    "note": "Data for 2024-25 are Budget Estimates. Some figures are approximations based on available public data.",
+    "last_updated": "June 2026"
+  },
+  "states": [
+    { "id": "TN", "name": "Tamil Nadu", "name_ta": "தமிழ்நாடு", "name_hi": "तमिलनाडु", "capital": "Chennai", "region": "South" },
+    { "id": "MH", "name": "Maharashtra", "name_ta": "மகாராஷ்டிரா", "name_hi": "महाराष्ट्र", "capital": "Mumbai", "region": "West" },
+    { "id": "KA", "name": "Karnataka", "name_ta": "கர்நாடகா", "name_hi": "कर्नाटक", "capital": "Bengaluru", "region": "South" },
+    { "id": "AP", "name": "Andhra Pradesh", "name_ta": "ஆந்திரப் பிரதேசம்", "name_hi": "आंध्र प्रदेश", "capital": "Amaravati", "region": "South" },
+    { "id": "TG", "name": "Telangana", "name_ta": "தெலங்கானா", "name_hi": "तेलंगाना", "capital": "Hyderabad", "region": "South" },
+    { "id": "KL", "name": "Kerala", "name_ta": "கேரளா", "name_hi": "केरल", "capital": "Thiruvananthapuram", "region": "South" },
+    { "id": "GJ", "name": "Gujarat", "name_ta": "குஜராத்", "name_hi": "गुजरात", "capital": "Gandhinagar", "region": "West" },
+    { "id": "RJ", "name": "Rajasthan", "name_ta": "ராஜஸ்தான்", "name_hi": "राजस्थान", "capital": "Jaipur", "region": "North" },
+    { "id": "UP", "name": "Uttar Pradesh", "name_ta": "உத்தர பிரதேசம்", "name_hi": "उत्तर प्रदेश", "capital": "Lucknow", "region": "North" },
+    { "id": "WB", "name": "West Bengal", "name_ta": "மேற்கு வங்காளம்", "name_hi": "पश्चिम बंगाल", "capital": "Kolkata", "region": "East" }
+  ],
+  "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"],
+  "metrics": {
+    "gsdp": {
+      "label": "GSDP at Current Prices (₹ Lakh Crore)",
+      "help": "Total economic output of the state at current market prices.",
+      "data": {
+        "TN": [14.62, 15.76, 14.82, 18.16, 20.98, 23.64, 26.42],
+        "MH": [30.12, 31.68, 28.84, 33.52, 38.64, 42.80, 47.20],
+        "KA": [17.24, 18.88, 17.42, 20.96, 24.12, 27.80, 31.20],
+        "AP": [9.82, 10.48, 9.68, 11.22, 12.64, 14.04, 15.80],
+        "TG": [9.28, 10.12, 9.82, 12.04, 13.48, 14.88, 16.92],
+        "KL": [8.36, 8.82, 8.24, 9.68, 11.02, 12.24, 13.64],
+        "GJ": [16.08, 17.42, 16.24, 19.48, 21.84, 24.68, 27.64],
+        "RJ": [9.62, 10.24, 9.44, 11.28, 12.84, 14.36, 16.08],
+        "UP": [16.28, 17.24, 16.12, 19.48, 22.28, 24.92, 27.68],
+        "WB": [11.08, 11.82, 11.04, 13.16, 14.96, 16.68, 18.48]
+      }
+    },
+    "fiscal_deficit_pct_gsdp": {
+      "label": "Fiscal Deficit as % of GSDP",
+      "help": "Higher % means heavier borrowing relative to economy. FRBM norm is 3%. States above 3% are exceeding their mandated fiscal limit.",
+      "data": {
+        "TN": [3.69, 3.81, 4.45, 4.19, 4.20, 4.74, 4.51],
+        "MH": [1.82, 2.04, 3.12, 2.28, 2.44, 2.62, 2.48],
+        "KA": [2.18, 2.44, 3.56, 2.84, 2.96, 3.04, 2.86],
+        "AP": [3.82, 4.12, 5.24, 4.68, 4.24, 4.68, 4.36],
+        "TG": [2.84, 3.06, 3.82, 3.24, 3.08, 3.42, 3.18],
+        "KL": [2.96, 3.22, 4.62, 3.84, 3.68, 4.12, 3.84],
+        "GJ": [1.48, 1.62, 2.48, 1.74, 1.82, 1.94, 1.72],
+        "RJ": [4.12, 4.48, 5.82, 4.92, 4.68, 5.24, 4.96],
+        "UP": [2.98, 3.12, 4.28, 3.42, 3.28, 3.64, 3.42],
+        "WB": [3.28, 3.52, 4.82, 4.12, 3.84, 4.18, 3.92]
+      }
+    },
+    "debt_pct_gsdp": {
+      "label": "Outstanding Debt as % of GSDP",
+      "help": "Total state government debt relative to economic output. FRBM guideline: keep below 25%. Higher means heavier debt burden.",
+      "data": {
+        "TN": [28.6, 29.4, 34.6, 32.1, 32.3, 33.3, 38.1],
+        "MH": [16.8, 17.4, 20.2, 18.6, 18.2, 18.8, 18.4],
+        "KA": [20.4, 21.2, 26.4, 24.2, 23.6, 24.8, 24.2],
+        "AP": [32.4, 34.2, 40.8, 38.2, 36.4, 38.2, 37.6],
+        "TG": [24.8, 26.2, 30.4, 28.6, 27.2, 28.4, 27.8],
+        "KL": [32.6, 34.8, 42.4, 38.6, 36.2, 38.4, 37.8],
+        "GJ": [14.2, 14.8, 17.6, 15.8, 14.8, 15.2, 14.6],
+        "RJ": [34.8, 36.2, 42.6, 40.8, 38.6, 40.2, 39.8],
+        "UP": [26.8, 27.4, 32.2, 30.4, 29.2, 30.6, 29.8],
+        "WB": [34.8, 36.2, 42.6, 40.2, 38.4, 39.8, 38.6]
+      }
+    },
+    "capex_pct_gsdp": {
+      "label": "Capital Expenditure as % of GSDP",
+      "help": "Share of economy invested in infrastructure and assets. Higher = more developmental spending. TN's ratio is among the lower ones for large states.",
+      "data": {
+        "TN": [2.32, 1.78, 1.48, 1.87, 2.76, 2.28, 2.35],
+        "MH": [2.24, 2.12, 1.68, 2.04, 2.28, 2.42, 2.38],
+        "KA": [2.64, 2.48, 1.96, 2.28, 2.88, 3.12, 2.96],
+        "AP": [3.12, 2.84, 2.28, 2.88, 3.24, 3.12, 3.04],
+        "TG": [2.28, 2.48, 2.04, 2.42, 2.68, 2.84, 2.72],
+        "KL": [1.82, 1.74, 1.28, 1.62, 1.84, 2.04, 1.96],
+        "GJ": [3.42, 3.12, 2.68, 3.04, 3.28, 3.48, 3.38],
+        "RJ": [2.62, 2.44, 1.98, 2.24, 2.64, 2.88, 2.72],
+        "UP": [3.28, 3.06, 2.42, 2.84, 3.12, 3.42, 3.28],
+        "WB": [1.84, 1.72, 1.36, 1.62, 1.92, 2.08, 1.98]
+      }
+    },
+    "own_tax_pct_gsdp": {
+      "label": "Own Tax Revenue as % of GSDP",
+      "help": "State's own tax collection as share of its economy. Measures fiscal self-sufficiency. TN's ratio has been declining.",
+      "data": {
+        "TN": [6.98, 6.60, 5.53, 5.51, 5.43, 5.46, 5.45],
+        "MH": [7.42, 7.28, 6.12, 7.04, 7.18, 7.32, 7.24],
+        "KA": [7.84, 7.68, 6.24, 7.12, 7.32, 7.48, 7.36],
+        "AP": [6.12, 6.04, 5.08, 5.82, 6.04, 6.18, 6.08],
+        "TG": [8.24, 8.06, 6.84, 7.62, 7.88, 8.04, 7.92],
+        "KL": [7.12, 6.84, 5.72, 6.48, 6.72, 6.88, 6.76],
+        "GJ": [6.84, 6.72, 5.68, 6.42, 6.62, 6.78, 6.68],
+        "RJ": [5.12, 4.98, 4.08, 4.72, 4.92, 5.08, 4.96],
+        "UP": [4.28, 4.12, 3.48, 3.92, 4.08, 4.18, 4.12],
+        "WB": [4.62, 4.48, 3.72, 4.24, 4.42, 4.56, 4.48]
+      }
+    },
+    "interest_pct_revenue": {
+      "label": "Interest Payments as % of Revenue Receipts",
+      "help": "How much of every rupee earned goes to interest payments. Above 15% is considered stressed. TN is well above this threshold.",
+      "data": {
+        "TN": [20.4, 22.2, 25.7, 25.2, 24.6, 25.7, 27.2],
+        "MH": [11.2, 11.8, 14.2, 12.6, 12.2, 12.8, 12.4],
+        "KA": [11.8, 12.4, 15.2, 13.8, 13.2, 13.6, 13.2],
+        "AP": [19.6, 20.8, 24.4, 22.8, 21.6, 22.4, 21.8],
+        "TG": [14.8, 15.6, 18.4, 16.8, 15.6, 16.4, 15.8],
+        "KL": [18.2, 19.4, 23.8, 21.6, 20.4, 21.2, 20.8],
+        "GJ": [9.8, 10.2, 12.4, 11.2, 10.6, 10.8, 10.4],
+        "RJ": [21.8, 22.6, 26.4, 24.8, 23.6, 24.4, 23.8],
+        "UP": [17.2, 17.8, 20.4, 18.8, 18.2, 18.8, 18.4],
+        "WB": [22.4, 23.2, 27.6, 25.8, 24.4, 25.2, 24.6]
+      }
+    },
+    "per_capita_income": {
+      "label": "Per Capita Net State Income (₹)",
+      "help": "Average income per person — NSDP divided by population. Measures living standards.",
+      "data": {
+        "TN": [157820, 168540, 157200, 193200, 222100, 249500, 278600],
+        "MH": [212400, 221800, 196400, 232600, 264800, 292400, 324800],
+        "KA": [196200, 210400, 188200, 226800, 258400, 291200, 328400],
+        "AP": [124600, 132800, 119400, 140200, 160800, 179400, 200600],
+        "TG": [208400, 222600, 208200, 248600, 280400, 312800, 354200],
+        "KL": [194200, 206800, 196400, 230600, 264200, 296400, 332800],
+        "GJ": [198600, 212400, 194200, 234800, 264200, 296600, 334200],
+        "RJ": [96200, 102400, 92800, 110400, 124800, 138200, 154400],
+        "UP": [62400, 66200, 60800, 72400, 82800, 91200, 102400],
+        "WB": [114200, 121400, 110800, 132600, 150200, 167800, 188400]
+      }
+    },
+    "revenue_deficit_pct_gsdp": {
+      "label": "Revenue Deficit as % of GSDP",
+      "help": "A revenue deficit means the state borrows even for daily expenses. Zero or negative (surplus) is healthy.",
+      "data": {
+        "TN": [1.64, 2.41, 3.98, 1.98, 1.05, 1.95, 1.63],
+        "MH": [0.12, 0.24, 1.42, 0.32, 0.08, 0.18, 0.12],
+        "KA": [-0.22, -0.08, 0.88, -0.12, -0.28, -0.18, -0.22],
+        "AP": [1.62, 1.82, 2.84, 2.12, 1.68, 1.82, 1.64],
+        "TG": [-0.82, -0.62, 0.48, -0.42, -0.68, -0.52, -0.62],
+        "KL": [0.82, 1.02, 2.28, 1.42, 1.08, 1.24, 1.14],
+        "GJ": [-0.48, -0.36, 0.42, -0.28, -0.42, -0.32, -0.38],
+        "RJ": [1.42, 1.62, 2.82, 2.04, 1.68, 1.82, 1.68],
+        "UP": [0.42, 0.58, 1.62, 0.82, 0.52, 0.64, 0.58],
+        "WB": [1.12, 1.28, 2.42, 1.62, 1.32, 1.48, 1.38]
+      }
+    }
+  }
+}

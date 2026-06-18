@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TN Finance Data Hub — CVK</title>
+<meta name="description" content="Tamil Nadu State Finance Data Hub — Budget, Debt, PSU, CAG, State Comparison. Powered by CVK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;700;900&family=Noto+Sans+Tamil:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/finance.css">
+<style>
+/* ── HUB PAGE SPECIFIC ── */
+.hero-stats {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 1rem; margin-top: 2rem;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(212,160,23,0.15);
+  border-radius: 6px; padding: 1rem 1.2rem;
+}
+.hero-stat-val { font-size: 1.8rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+.hero-stat-val.red { color: var(--red-lt); }
+.hero-stat-label { font-size: 0.72rem; color: var(--grey); letter-spacing: 0.04em; }
+.hero-stat-src { font-size: 0.62rem; color: var(--mid); margin-top: 2px; }
+
+.ticker-wrap {
+  background: var(--gold); color: var(--black);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+  padding: 5px 0; overflow: hidden; white-space: nowrap;
+}
+.ticker-inner { display: inline-block; animation: tick 42s linear infinite; }
+.ticker-inner span { margin: 0 2rem; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.feature-banner {
+  background: linear-gradient(90deg, rgba(212,160,23,0.08) 0%, transparent 100%);
+  border: 1px solid rgba(212,160,23,0.2); border-radius: 6px;
+  padding: 1rem 1.5rem; margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.feature-banner-icon { font-size: 1.8rem; flex-shrink: 0; }
+.feature-banner-text h3 { font-size: 0.96rem; color: var(--white); margin-bottom: 3px; }
+.feature-banner-text p { font-size: 0.78rem; color: var(--grey); }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>TN Direct Debt: ₹10.08 Lakh Crore (2025-26) · TVK White Paper</span>
+    <span>Total Liabilities incl. PSU: ₹13.18 Lakh Crore · TVK White Paper 2026</span>
+    <span>SOTR/GSDP at historic low: 5.45% · Finance Dept</span>
+    <span>Interest payments exceed Capital Expenditure · CAG</span>
+    <span>TANGEDCO Accumulated Loss: ₹1.79 Lakh Crore (2023-24)</span>
+    <span>Fiscal Deficit: 4.74% of GSDP (2023-24) · FRBM Limit: 3%</span>
+    <span>TN Debt per person: ~₹1.28 Lakh (2025-26 est.)</span>
+    <span>TN Direct Debt: ₹10.08 Lakh Crore (2025-26) · TVK White Paper</span>
+    <span>Total Liabilities incl. PSU: ₹13.18 Lakh Crore · TVK White Paper 2026</span>
+    <span>SOTR/GSDP at historic low: 5.45% · Finance Dept</span>
+    <span>Interest payments exceed Capital Expenditure · CAG</span>
+    <span>TANGEDCO Accumulated Loss: ₹1.79 Lakh Crore (2023-24)</span>
+    <span>Fiscal Deficit: 4.74% of GSDP (2023-24) · FRBM Limit: 3%</span>
+    <span>TN Debt per person: ~₹1.28 Lakh (2025-26 est.)</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="fin-nav">
+  <a href="../index.html" class="fin-nav-brand">
+    <div class="fin-nav-logo">CVK</div>
+    <div class="fin-nav-title">
+      Finance Hub
+      <small>Tamil Nadu · தமிழ்நாடு</small>
+    </div>
+  </a>
+  <ul class="fin-nav-links">
+    <li><a href="index.html" class="active" data-i18n="nav_overview">Overview</a></li>
+    <li><a href="budget.html" data-i18n="nav_budget">Budget</a></li>
+    <li><a href="debt.html" data-i18n="nav_debt">Debt</a></li>
+    <li><a href="psu.html" data-i18n="nav_psu">PSUs</a></li>
+    <li><a href="cag.html" data-i18n="nav_cag">CAG</a></li>
+    <li><a href="compare.html" data-i18n="nav_compare">Compare States</a></li>
+    <li><a href="central.html" data-i18n="nav_central">Central Finance</a></li>
+  </ul>
+  <div class="fin-nav-right">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ta">TA</button>
+    <button class="lang-btn" data-lang="hi">HI</button>
+    <a href="../index.html" class="back-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      CVK
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow" data-i18n="finance_hub_eyebrow">Data Platform</div>
+    <h1 class="page-title" data-i18n="finance_hub_title">Tamil Nadu Finance Data Hub</h1>
+    <p class="page-desc" data-i18n="finance_hub_desc">Explore 10+ years of Tamil Nadu state finance data. Compare with other states. All sources cited.</p>
+    <div class="page-tags">
+      <span class="page-tag">Budget 2024-25</span>
+      <span class="page-tag">TVK White Paper 2026</span>
+      <span class="page-tag">CAG Audit</span>
+      <span class="page-tag">RBI Data</span>
+      <span class="page-tag">10-State Comparison</span>
+      <span class="page-tag">3 Languages</span>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val red">₹10.08L Cr</div>
+        <div class="hero-stat-label">Direct Debt 2025-26</div>
+        <div class="hero-stat-src">TVK White Paper 2026</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val red">₹13.18L Cr</div>
+        <div class="hero-stat-label">Total Liabilities (incl. PSU)</div>
+        <div class="hero-stat-src">TVK White Paper 2026</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">4.74%</div>
+        <div class="hero-stat-label">Fiscal Deficit / GSDP 2023-24</div>
+        <div class="hero-stat-src">TN Finance Dept (FRBM limit: 3%)</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">5.45%</div>
+        <div class="hero-stat-label">SOTR / GSDP (Historic Low)</div>
+        <div class="hero-stat-src">TN Finance Dept</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">₹26.42L Cr</div>
+        <div class="hero-stat-label">GSDP 2024-25 (BE)</div>
+        <div class="hero-stat-src">MOSPI / TN Economics & Statistics</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val red">₹1.79L Cr</div>
+        <div class="hero-stat-label">TANGEDCO Accumulated Loss</div>
+        <div class="hero-stat-src">CAG / TANGEDCO Annual Report</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="fin-main">
+
+  <!-- QUICK NAVIGATION CARDS -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Explore</div>
+        <h2 class="sec-title">Finance Data Sections</h2>
+        <p class="sec-desc">Click any section to dive deep into that category of data.</p>
+      </div>
+    </div>
+    <div class="hub-grid">
+      <a href="budget.html" class="hub-card" style="--card-accent:#D4A017">
+        <div class="hub-card-icon">📊</div>
+        <div class="hub-card-title" data-i18n="budget_title">State Budget Analysis</div>
+        <div class="hub-card-desc" data-i18n="hub_budget_desc">Revenue vs expenditure, fiscal deficit, subsidies, salaries & pensions by year.</div>
+        <div class="hub-card-meta">10 Years · Interactive Charts →</div>
+      </a>
+      <a href="debt.html" class="hub-card" style="--card-accent:#CC3344">
+        <div class="hub-card-icon">🏦</div>
+        <div class="hub-card-title" data-i18n="debt_title">Debt & Fiscal Stress</div>
+        <div class="hub-card-desc" data-i18n="hub_debt_desc">Debt stock, off-budget borrowings, interest burden. How deep is the hole?</div>
+        <div class="hub-card-meta">Direct + PSU Debt · Per Capita →</div>
+      </a>
+      <a href="psu.html" class="hub-card" style="--card-accent:#9966CC">
+        <div class="hub-card-icon">🏭</div>
+        <div class="hub-card-title" data-i18n="psu_title">Public Sector Enterprises</div>
+        <div class="hub-card-desc" data-i18n="hub_psu_desc">TANGEDCO, TNSTC, Metro Water and other PSU profits, losses, and liabilities.</div>
+        <div class="hub-card-meta">7 Major PSUs · Loss Trends →</div>
+      </a>
+      <a href="cag.html" class="hub-card" style="--card-accent:#FF8800">
+        <div class="hub-card-icon">🔍</div>
+        <div class="hub-card-title" data-i18n="cag_title">CAG Audit Findings</div>
+        <div class="hub-card-desc" data-i18n="hub_cag_desc">Independent audit findings — budget deviations, hidden liabilities, irregularities.</div>
+        <div class="hub-card-meta">Constitutional Audit · 6 Years →</div>
+      </a>
+      <a href="compare.html" class="hub-card" style="--card-accent:#3399CC">
+        <div class="hub-card-icon">⚖️</div>
+        <div class="hub-card-title" data-i18n="compare_title">State Comparison Tool</div>
+        <div class="hub-card-desc" data-i18n="hub_compare_desc">Compare Tamil Nadu against any state on any fiscal metric. Pick your states and chart.</div>
+        <div class="hub-card-meta">10 States · 8 Metrics →</div>
+      </a>
+      <a href="central.html" class="hub-card" style="--card-accent:#44BB66">
+        <div class="hub-card-icon">🏛️</div>
+        <div class="hub-card-title" data-i18n="central_title">Central Finance & TN Share</div>
+        <div class="hub-card-desc" data-i18n="hub_central_desc">Central taxes, devolution to TN, GST impact, Finance Commission awards.</div>
+        <div class="hub-card-meta">FC Awards · GST Data →</div>
+      </a>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- OVERVIEW CHARTS -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Overview</div>
+        <h2 class="sec-title">Tamil Nadu at a Glance</h2>
+        <p class="sec-desc">Key fiscal indicators from 2014-15 to 2024-25</p>
+      </div>
+      <div class="chart-actions">
+        <button class="chart-btn active" onclick="switchOverviewChart('gsdp')">GSDP</button>
+        <button class="chart-btn" onclick="switchOverviewChart('debt')">Debt</button>
+        <button class="chart-btn" onclick="switchOverviewChart('deficit')">Fiscal Deficit</button>
+        <button class="chart-btn" onclick="switchOverviewChart('revenue')">Revenue</button>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:1.5rem;">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title" id="main-chart-title">GSDP Growth Trend</div>
+            <div class="card-subtitle" id="main-chart-src">Source: MOSPI / TN Directorate of Economics & Statistics</div>
+          </div>
+          <span class="help-icon" id="main-chart-help" data-tip="Gross State Domestic Product — the total value of all goods and services produced in Tamil Nadu.">?</span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:260px">
+            <canvas id="mainChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Debt vs Capital Expenditure</div>
+            <div class="card-subtitle">The growing imbalance — paying more interest than investing</div>
+          </div>
+          <span class="help-icon" data-tip="When a state's interest payments exceed its capital expenditure, it is paying more to service old debt than building new roads, hospitals, or schools. TN crossed this threshold.">?</span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:260px">
+            <canvas id="debtCapexChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:1.5rem; margin-top:1.5rem;">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">GSDP Sector Composition 2023-24</div>
+            <div class="card-subtitle">Agriculture · Industry · Services</div>
+          </div>
+          <span class="help-icon" data-tip="Tamil Nadu's economy is dominated by Services (IT, finance, trade) at ~61%, followed by Industry (auto, textiles, electronics) at ~29.5%, and Agriculture at ~9.5%.">?</span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:240px">
+            <canvas id="sectorPie"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Revenue vs Expenditure Composition 2023-24</div>
+            <div class="card-subtitle">Where money comes from and where it goes</div>
+          </div>
+          <span class="help-icon" data-tip="Revenue receipts include own taxes, non-tax revenue, and central transfers. Expenditure is dominated by committed costs: salaries, pensions, interest, and subsidies.">?</span>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:240px">
+            <canvas id="revExpChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- KEY ALERTS -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Key Findings</div>
+        <h2 class="sec-title">Fiscal Health Alerts</h2>
+        <p class="sec-desc">Critical indicators from white papers, CAG, and budget documents</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="alert alert-bad">
+          <strong>Debt Trajectory</strong>
+          TN's direct debt doubled in 5 years — from ₹5.13L Cr (2020-21) to ₹10.08L Cr (2025-26). Including PSU obligations: ₹13.18L Cr. Every child born in TN carries ₹1.29 lakh in state debt.
+          <div style="margin-top:6px"><span class="source-pill">TVK White Paper, June 2026</span></div>
+        </div>
+        <div class="alert alert-bad">
+          <strong>Interest &gt; Capital Investment</strong>
+          Interest payments (₹0.83L Cr in 2024-25) now exceed capital expenditure (₹0.62L Cr). The state pays more to service old debt than it invests in new roads, hospitals, or schools.
+          <div style="margin-top:6px"><span class="source-pill">TN Budget 2024-25 / CAG</span></div>
+        </div>
+        <div class="alert alert-warn">
+          <strong>FRBM Breach — Every Year Since 2018</strong>
+          Fiscal deficit has exceeded the FRBM limit of 3% of GSDP every year. 2023-24: 4.74%. CAG notes additional off-budget borrowings that are not reflected in the official figure.
+          <div style="margin-top:6px"><span class="source-pill">TN Finance Dept / CAG</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="alert alert-bad">
+          <strong>SOTR / GSDP at Historic Low</strong>
+          State's Own Tax Revenue as % of GSDP fell to 5.45% — the lowest in TN's recorded history. This indicates weakening tax administration and enforcement. The state collects less from its own economy than it did 10 years ago.
+          <div style="margin-top:6px"><span class="source-pill">TVK White Paper 2026 / Finance Dept</span></div>
+        </div>
+        <div class="alert alert-warn">
+          <strong>PSU Losses: Hidden Liabilities</strong>
+          State PSU accumulated losses exceed ₹2.5L Cr. TANGEDCO alone: ₹1.79L Cr. These don't appear in the state budget but are ultimately the taxpayer's burden — through guaranteed loans, subsidies, and eventual bailouts.
+          <div style="margin-top:6px"><span class="source-pill">CAG PSU Report 2023-24</span></div>
+        </div>
+        <div class="alert alert-good">
+          <strong>Bright Spots</strong>
+          TN is #3 on NITI Aayog SDG Index. Strong manufacturing base (auto, textiles, electronics). No Aspirational Districts. GSDP growth rebounding to ~12% post-COVID. Per capita income above national average.
+          <div style="margin-top:6px"><span class="source-pill">NITI Aayog SDG Index 2023-24</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- YEAR-WISE TABLE -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Historical Data</div>
+        <h2 class="sec-title">10-Year Fiscal Summary</h2>
+        <p class="sec-desc">All major indicators from 2014-15 to 2024-25</p>
+      </div>
+    </div>
+    <div class="fin-table-wrap">
+      <table class="fin-table" id="summaryTable">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th class="num">GSDP <span class="help-icon" data-tip="₹ Lakh Crore, current prices">?</span></th>
+            <th class="num">Revenue Receipts</th>
+            <th class="num">Total Expenditure</th>
+            <th class="num">Capital Expenditure</th>
+            <th class="num">Interest Payments</th>
+            <th class="num">Fiscal Deficit</th>
+            <th class="num">FD % GSDP</th>
+            <th class="num">Debt Stock</th>
+            <th class="num">Debt % GSDP</th>
+          </tr>
+        </thead>
+        <tbody id="summaryTableBody">
+          <tr><td colspan="10" style="text-align:center;color:var(--mid);padding:2rem">Loading data...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:0.8rem; font-size:0.72rem; color:var(--mid);">
+      All amounts in ₹ Lakh Crore. 2024-25 figures are Budget Estimates. Sources: TN Finance Dept, RBI, TVK White Paper 2026.
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- QUICK COMPARISON PREVIEW -->
+  <div class="section-gap reveal">
+    <div class="feature-banner">
+      <div class="feature-banner-icon">⚖️</div>
+      <div class="feature-banner-text">
+        <h3>Compare Tamil Nadu with any state →</h3>
+        <p>Pick states and metrics. Fiscal deficit, debt, capital expenditure, tax effort, per capita income — side by side.</p>
+      </div>
+      <a href="compare.html" class="chart-btn" style="padding:8px 18px; font-size:0.82rem;">Open Comparison Tool →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">Fiscal Deficit % GSDP — State Comparison (2023-24)</div>
+          <div class="card-subtitle">FRBM limit: 3% · Higher = more stressed fiscal position</div>
+        </div>
+        <span class="help-icon" data-tip="Fiscal deficit as % of GSDP for all major states in 2023-24. Red dashed line is the FRBM limit of 3%.">?</span>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrap" style="height:280px">
+          <canvas id="comparePreviewChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources-section reveal">
+    <div class="sources-title">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span data-i18n="sources_title">Data Sources & References</span>
+    </div>
+    <div class="sources-grid">
+      <div class="source-item">RBI Handbook of Statistics on Indian States (rbi.org.in)</div>
+      <div class="source-item">RBI State Finances: A Study of Budgets (Annual Publication)</div>
+      <div class="source-item">TVK White Paper on State Finances — June 2026</div>
+      <div class="source-item">DMK White Paper on State Finances — August 2021</div>
+      <div class="source-item">AIADMK White Paper on State Finances — 2001</div>
+      <div class="source-item">CAG Reports on State Finances of Tamil Nadu (Annual)</div>
+      <div class="source-item">CAG Reports on PSUs of Tamil Nadu</div>
+      <div class="source-item">Tamil Nadu Budget Documents — Finance Department</div>
+      <div class="source-item">Economic Survey of Tamil Nadu — P&D Department (Annual)</div>
+      <div class="source-item">MOSPI National Accounts Statistics</div>
+      <div class="source-item">TN Directorate of Economics & Statistics</div>
+      <div class="source-item">NITI Aayog — SDG India Index, State Statistics</div>
+      <div class="source-item">Finance Commission Reports — 14th & 15th FC</div>
+      <div class="source-item">GST Council Secretariat Data</div>
+      <div class="source-item">Union Budget Documents — Finance Ministry</div>
+      <div class="source-item">TANGEDCO / TNSTC Annual Reports</div>
+    </div>
+    <div style="margin-top:1rem; font-size:0.72rem; color:var(--mid);" data-i18n="note_approx">
+      * Approximate figures based on available public data. Verify with original sources.
+    </div>
+  </div>
+
+</main>
+
+<footer class="fin-footer">
+  <div data-i18n="footer_cvk">Cockroach Vetri Kazhagam · நேர்மையான தகவலே கிடைக்கும்</div>
+  <div style="margin-top:4px" data-i18n="footer_text">Data sourced from RBI, Finance Ministry, CAG, TN Finance Dept. For educational purposes.</div>
+  <div style="margin-top:8px"><a href="../index.html">← Back to CVK Home</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+// ── DATA ──
+const YEARS = ["2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"];
+const GSDP   = [9.02,10.42,11.52,12.88,14.62,15.76,14.82,18.16,20.98,23.64,26.42];
+const REVR   = [1.18,1.36,1.52,1.68,1.86,1.94,1.83,2.14,2.52,2.84,3.05];
+const TOTEXP = [1.44,1.68,1.94,2.16,2.44,2.60,2.64,2.84,3.32,3.84,4.10];
+const CAPEX  = [0.20,0.22,0.25,0.27,0.34,0.28,0.22,0.34,0.58,0.54,0.62];
+const INT    = [0.22,0.26,0.30,0.34,0.38,0.43,0.47,0.54,0.62,0.73,0.83];
+const FD     = [0.30,0.36,0.42,0.46,0.54,0.60,0.66,0.76,0.88,1.12,1.19];
+const FD_PCT = [3.33,3.46,3.65,3.57,3.69,3.81,4.45,4.19,4.20,4.74,4.51];
+const DEBT   = [2.48,2.87,3.32,3.78,4.18,4.64,5.13,5.83,6.78,7.87,10.08];
+const DEBT_PCT=[27.5,27.5,28.8,29.3,28.6,29.4,34.6,32.1,32.3,33.3,38.1];
+const SOTR   = [0.70,0.80,0.88,0.94,1.02,1.04,0.82,1.00,1.14,1.29,1.44];
+const GSDP_G = [9.8,15.5,10.6,11.8,13.5,7.8,-5.9,22.5,15.5,12.7,11.8];
+
+applyChartDefaults();
+
+// ── SUMMARY TABLE ──
+function buildTable() {
+  const tb = document.getElementById('summaryTableBody');
+  let html = '';
+  YEARS.forEach((y,i) => {
+    const fdpct = FD_PCT[i];
+    const dpct  = DEBT_PCT[i];
+    const badge = fdpct > 4 ? 'badge-red' : fdpct > 3 ? 'badge-gold' : 'badge-green';
+    html += `<tr ${i===YEARS.length-1?'class="hl"':''}>
+      <td><strong>${y}</strong>${i===YEARS.length-1?' <span class="badge badge-grey">BE</span>':''}</td>
+      <td class="num">${GSDP[i].toFixed(2)}</td>
+      <td class="num">${REVR[i].toFixed(2)}</td>
+      <td class="num">${TOTEXP[i].toFixed(2)}</td>
+      <td class="num">${CAPEX[i].toFixed(2)}</td>
+      <td class="num ${INT[i]>CAPEX[i]?'red':''}">${INT[i].toFixed(2)}</td>
+      <td class="num">${FD[i].toFixed(2)}</td>
+      <td class="num"><span class="badge ${badge}">${fdpct.toFixed(2)}%</span></td>
+      <td class="num">${DEBT[i].toFixed(2)}</td>
+      <td class="num ${dpct>30?'red':dpct>25?'gold':''}">${dpct.toFixed(1)}%</td>
+    </tr>`;
+  });
+  tb.innerHTML = html;
+}
+buildTable();
+
+// ── CHARTS ──
+let mainChartObj = null;
+
+const chartConfigs = {
+  gsdp: {
+    title: 'GSDP at Current Prices (₹ Lakh Crore)',
+    src: 'MOSPI / TN Directorate of Economics & Statistics',
+    help: 'Gross State Domestic Product — total economic output of Tamil Nadu.',
+    data: GSDP, label: 'GSDP (₹ L.Cr)', color: '#D4A017', type: 'bar'
+  },
+  debt: {
+    title: 'Outstanding Debt Stock (₹ Lakh Crore)',
+    src: 'TN Finance Dept / TVK White Paper 2026',
+    help: 'Total state government debt excluding PSU liabilities.',
+    data: DEBT, label: 'Debt (₹ L.Cr)', color: '#CC3344', type: 'line'
+  },
+  deficit: {
+    title: 'Fiscal Deficit as % of GSDP',
+    src: 'TN Finance Dept (FRBM limit: 3%)',
+    help: 'Fiscal deficit relative to state economy. Red line = FRBM 3% limit.',
+    data: FD_PCT, label: 'Fiscal Deficit (%)', color: '#FF8800', type: 'bar',
+    refLine: { label: 'FRBM Limit (3%)', value: 3, color: '#CC3344' }
+  },
+  revenue: {
+    title: 'Revenue Receipts (₹ Lakh Crore)',
+    src: 'TN Finance Dept / RBI State Finances',
+    help: 'Total money earned by state government from all sources.',
+    data: REVR, label: 'Revenue Receipts (₹ L.Cr)', color: '#44BB66', type: 'line'
+  }
+};
+
+function switchOverviewChart(key) {
+  document.querySelectorAll('.chart-actions .chart-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.toLowerCase().includes(key.split('_')[0].toLowerCase()) ||
+      (key==='gsdp' && b.textContent==='GSDP') ||
+      (key==='debt' && b.textContent==='Debt') ||
+      (key==='deficit' && b.textContent.includes('Deficit')) ||
+      (key==='revenue' && b.textContent==='Revenue'));
+  });
+  const cfg = chartConfigs[key];
+  document.getElementById('main-chart-title').textContent = cfg.title;
+  document.getElementById('main-chart-src').textContent = 'Source: ' + cfg.src;
+  document.getElementById('main-chart-help').dataset.tip = cfg.help;
+  if (mainChartObj) mainChartObj.destroy();
+  const plugins = cfg.refLine ? [{
+    id:'refLine',
+    beforeDraw(chart) {
+      const {ctx,chartArea:{left,right,top,bottom},scales:{y}} = chart;
+      const yPos = y.getPixelForValue(cfg.refLine.value);
+      ctx.save();
+      ctx.strokeStyle = cfg.refLine.color;
+      ctx.setLineDash([5,5]);
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(left,yPos); ctx.lineTo(right,yPos); ctx.stroke();
+      ctx.fillStyle = cfg.refLine.color;
+      ctx.font = '11px Inter';
+      ctx.fillText(cfg.refLine.label, left+4, yPos-6);
+      ctx.restore();
+    }
+  }] : [];
+  mainChartObj = new Chart(document.getElementById('mainChart'), {
+    type: cfg.type,
+    data: {
+      labels: YEARS,
+      datasets: [{
+        label: cfg.label, data: cfg.data,
+        backgroundColor: cfg.type==='bar' ? YEARS.map((_,i)=>cfg.data[i]>(cfg.refLine?.value||999)?'#CC3344':'rgba(212,160,23,0.7)') : 'rgba(212,160,23,0.1)',
+        borderColor: cfg.color, borderWidth: 2,
+        fill: cfg.type==='line', tension: 0.3,
+        pointBackgroundColor: cfg.color, pointRadius: 3
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false} },
+      scales:{
+        x:{ticks:{font:{size:10},maxRotation:45}},
+        y:{grid:{color:'rgba(255,255,255,0.04)'}}
+      }
+    },
+    plugins
+  });
+}
+switchOverviewChart('gsdp');
+
+// Debt vs Capex chart
+new Chart(document.getElementById('debtCapexChart'), {
+  type:'line',
+  data:{
+    labels: YEARS,
+    datasets:[
+      { label:'Interest Payments', data:INT, borderColor:'#CC3344', backgroundColor:'rgba(204,0,0,0.08)', fill:true, tension:0.3, borderWidth:2, pointRadius:3 },
+      { label:'Capital Expenditure', data:CAPEX, borderColor:'#44BB66', backgroundColor:'rgba(68,187,102,0.08)', fill:true, tension:0.3, borderWidth:2, pointRadius:3 }
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{position:'bottom'} },
+    scales:{
+      x:{ticks:{font:{size:10},maxRotation:45}},
+      y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{callback:v=>'₹'+v+'L'}}
+    }
+  }
+});
+
+// Sector pie
+new Chart(document.getElementById('sectorPie'), {
+  type:'doughnut',
+  data:{
+    labels:['Services (IT, Finance, Trade)','Industry (Auto, Textiles, Mfg)','Agriculture & Allied'],
+    datasets:[{
+      data:[61.0, 29.5, 9.5],
+      backgroundColor:['#D4A017','#3399CC','#44BB66'],
+      borderColor:'#111', borderWidth:2
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'bottom', labels:{font:{size:11}, padding:12}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed}%`}}
+    }
+  }
+});
+
+// Rev vs Exp composition
+new Chart(document.getElementById('revExpChart'), {
+  type:'bar',
+  data:{
+    labels:['Revenue Receipts','Revenue Expenditure'],
+    datasets:[
+      { label:'Own Tax Revenue', data:[1.29,0], backgroundColor:'#D4A017' },
+      { label:'Non-Tax + Other', data:[0.37,0], backgroundColor:'#F0C040' },
+      { label:'Central Transfers', data:[1.18,0], backgroundColor:'#88CC00' },
+      { label:'Salaries & Pensions', data:[0,1.26], backgroundColor:'#CC3344' },
+      { label:'Interest', data:[0,0.73], backgroundColor:'#FF8800' },
+      { label:'Subsidies & Welfare', data:[0,0.42], backgroundColor:'#9966CC' },
+      { label:'Capital & Other', data:[0,1.43], backgroundColor:'#3399CC' }
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{position:'bottom', labels:{font:{size:10},padding:8}} },
+    scales:{
+      x:{stacked:true},
+      y:{stacked:true, ticks:{callback:v=>'₹'+v+'L'}, grid:{color:'rgba(255,255,255,0.04)'}}
+    }
+  }
+});
+
+// Compare preview chart
+const statesPreview = ['TN','MH','KA','AP','TG','KL','GJ','RJ','UP','WB'];
+const stateNames    = ['Tamil Nadu','Maharashtra','Karnataka','Andhra Pradesh','Telangana','Kerala','Gujarat','Rajasthan','Uttar Pradesh','West Bengal'];
+const fdVals2324    = [4.74, 2.62, 3.04, 4.68, 3.42, 4.12, 1.94, 5.24, 3.64, 4.18];
+const stateColors   = statesPreview.map(getStateColor);
+
+new Chart(document.getElementById('comparePreviewChart'), {
+  type:'bar',
+  data:{
+    labels: stateNames,
+    datasets:[{
+      label:'Fiscal Deficit % GSDP 2023-24',
+      data: fdVals2324,
+      backgroundColor: fdVals2324.map(v => v>4?'rgba(204,0,0,0.7)':v>3?'rgba(221,136,0,0.7)':'rgba(34,170,102,0.7)'),
+      borderColor: fdVals2324.map(v => v>4?'#CC3344':v>3?'#FF8800':'#44BB66'),
+      borderWidth:1
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed.y}%`}}
+    },
+    scales:{
+      x:{ticks:{font:{size:10},maxRotation:30}},
+      y:{
+        grid:{color:'rgba(255,255,255,0.04)'},
+        ticks:{callback:v=>v+'%'}
+      }
+    }
+  },
+  plugins:[{
+    id:'frbmLine',
+    beforeDraw(chart) {
+      const {ctx,chartArea:{left,right},scales:{y}} = chart;
+      const yPos = y.getPixelForValue(3);
+      ctx.save();
+      ctx.strokeStyle='#CC3344'; ctx.setLineDash([5,5]); ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(left,yPos); ctx.lineTo(right,yPos); ctx.stroke();
+      ctx.fillStyle='#CC3344'; ctx.font='bold 11px Inter';
+      ctx.fillText('FRBM Limit 3%', left+4, yPos-6);
+      ctx.restore();
+    }
+  }]
+});
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  initLang();
+  initReveal();
+});
+initLang();
+initReveal();
+</script>
+</body>
+</html>
