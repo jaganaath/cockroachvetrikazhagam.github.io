@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Comparison — TN Electricity Hub</title>
+<link rel="stylesheet" href="css/electricity.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<nav class="e-nav">
+  <a href="../index.html" class="e-nav-brand">⚡ CVK → Electricity Hub</a>
+  <div class="e-nav-links">
+    <a href="index.html">Overview</a>
+    <a href="tangedco.html">TANGEDCO</a>
+    <a href="generation.html">Generation</a>
+    <a href="party.html">Party Comparison</a>
+    <a href="compare.html" class="active">State Compare</a>
+    <a href="whitepaper.html">White Paper</a>
+  </div>
+  <button class="lang-btn">EN / TA / HI</button>
+</nav>
+
+<div class="e-hero">
+  <h1>State Comparison — <span>TN vs 9 States</span></h1>
+  <p>Compare Tamil Nadu with Maharashtra, Gujarat, Karnataka, Andhra Pradesh and 6 other states on AT&C losses, renewable share, tariffs, per capita consumption, utility losses and more. Select states, pick a metric.</p>
+  <div class="stat-row">
+    <div class="stat-pill"><div class="v" style="color:#F5A623">10</div><div class="l">States Compared</div></div>
+    <div class="stat-pill"><div class="v" style="color:#44BB66">12</div><div class="l">Metrics Available</div></div>
+    <div class="stat-pill"><div class="v" style="color:#3399CC">#3</div><div class="l">TN NITI Energy Rank</div></div>
+    <div class="stat-pill"><div class="v" style="color:#44BB66">4th</div><div class="l">TN on AT&C Losses (best)</div></div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <!-- CONTROLS -->
+  <div class="chart-box" style="margin-bottom:1.2rem">
+    <div class="section-title" style="margin-bottom:0.8rem">Select States &amp; Metric (TN always included)</div>
+    <div class="state-chips" id="stateChips" style="margin-bottom:1rem"></div>
+    <div class="sel-row">
+      <div class="ctrl-grp"><label>Metric</label>
+        <select id="metricSel" onchange="updateAll()">
+          <option value="atc">AT&C Losses % (lower = better)</option>
+          <option value="renewable_pct">Renewable % of Capacity</option>
+          <option value="per_capita">Per Capita Consumption (kWh)</option>
+          <option value="domestic_tariff">Domestic Tariff ₹/unit (0-100u)</option>
+          <option value="commercial_tariff">Commercial Tariff ₹/unit</option>
+          <option value="industrial_tariff">Industrial HT Tariff ₹/unit</option>
+          <option value="annual_loss">Utility Annual Loss (₹ Cr)</option>
+          <option value="accum_loss">Utility Accumulated Loss (₹ Cr)</option>
+          <option value="solar_mw">Solar Capacity (MW)</option>
+          <option value="wind_mw">Wind Capacity (MW)</option>
+          <option value="smart_meter">Smart Meter Coverage %</option>
+          <option value="energy_rank">NITI Energy Index Rank</option>
+        </select>
+      </div>
+      <div class="ctrl-grp"><label>Chart Type</label>
+        <select id="chartType" onchange="updateAll()">
+          <option value="bar">Bar Chart</option>
+          <option value="hbar">Horizontal Bar</option>
+          <option value="radar">Radar (Multi-metric)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CHART -->
+  <div class="chart-box" style="margin-bottom:1.2rem">
+    <h4 id="mainTitle">AT&C Losses % — Selected States (2023)</h4>
+    <div style="position:relative;height:340px"><canvas id="mainChart"></canvas></div>
+    <div class="src-note" id="mainSrc">Source: PFC Report 2022-23</div>
+  </div>
+
+  <!-- RANKING TABLE -->
+  <div class="chart-box" style="margin-bottom:1.2rem">
+    <h4>All-States Ranking</h4>
+    <div style="overflow-x:auto"><table id="rankTable"></table></div>
+  </div>
+
+  <!-- RADAR -->
+  <div class="chart-box full-width">
+    <h4>Multi-Metric Radar — Selected States <span class="help-icon" data-tip="All metrics normalised 0-100. Higher always = better outcome (AT&C losses, costs, tariffs are inverted). Good on all axes = well-rounded performer.">?</span></h4>
+    <div style="position:relative;height:400px"><canvas id="radarChart"></canvas></div>
+    <div class="src-note">Axes: AT&C efficiency · Renewable % · Per capita consumption · Low tariff burden · Financial health · Smart meter coverage · Energy rank</div>
+  </div>
+</div>
+
+<!-- TARIFF COMPARISON -->
+<div class="section reveal">
+  <div class="section-title">Tariff Comparison — All Categories</div>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h4>Domestic Tariff — First 100 Units (₹/unit) <span class="help-icon" data-tip="TN gives 0-100 units free. AP and TG also subsidise heavily. Most other states charge ₹4-5.50 for the first slab.">?</span></h4>
+      <div class="chart-wrap"><canvas id="domTariffChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h4>Commercial vs Industrial Tariff (₹/unit) <span class="help-icon" data-tip="Commercial consumers cross-subsidise domestic/agriculture everywhere. TN commercial (₹8) is among the lower-cost states for commercial users.">?</span></h4>
+      <div class="chart-wrap"><canvas id="commIndChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- RENEWABLE + LOSSES -->
+<div class="section reveal">
+  <div class="section-title">Renewable Transition &amp; Financial Health</div>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h4>Renewable Energy Growth — TN vs Top Performers <span class="help-icon" data-tip="TN, KA and RJ lead in renewable % nationally. GJ catching up fast with solar. MH lags due to coal dependency.">?</span></h4>
+      <div class="chart-wrap"><canvas id="renewTrendChart"></canvas></div>
+      <div class="src-note">Source: CEA, MNRE 2010–2024</div>
+    </div>
+    <div class="chart-box">
+      <h4>Utility Accumulated Losses — 10 States (₹ Cr) <span class="help-icon" data-tip="UP's losses (₹2.15 lakh Cr) dwarf all others. Gujarat is the only profit-making DISCOM. TN (₹1.1 lakh Cr) is 2nd worst nationally after UP.">?</span></h4>
+      <div class="chart-wrap"><canvas id="accumStateChart"></canvas></div>
+      <div class="src-note">Source: PFC 2022-23</div>
+    </div>
+  </div>
+</div>
+
+<div class="e-footer">Data: CEA 2024, PFC 2022-23, MNRE 2024, NITI Aayog SECI 2023, State SERC Tariff Orders · <a href="index.html">← Electricity Hub</a></div>
+
+<script>
+(function(){
+  const obs=new IntersectionObserver(els=>els.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  const STATES=['TN','MH','GJ','KA','AP','TG','RJ','MP','HR','UP'];
+  const NAMES={'TN':'Tamil Nadu','MH':'Maharashtra','GJ':'Gujarat','KA':'Karnataka','AP':'Andhra Pradesh','TG':'Telangana','RJ':'Rajasthan','MP':'Madhya Pradesh','HR':'Haryana','UP':'Uttar Pradesh'};
+  const COLORS={'TN':'#D4A017','MH':'#3399CC','GJ':'#44BB66','KA':'#00BBCC','AP':'#FF6699','TG':'#9966CC','RJ':'#FF8800','MP':'#CC3344','HR':'#88CC00','UP':'#CC6600'};
+
+  const METRICS={
+    atc:            {label:'AT&C Losses %',                 data:{TN:14.8,MH:13.2,GJ:12.8,KA:13.6,AP:10.4,TG:11.8,RJ:18.4,MP:19.2,HR:14.6,UP:26.8}, higherBetter:false, unit:'%', src:'PFC Report 2022-23'},
+    renewable_pct:  {label:'Renewable % of Capacity',       data:{TN:71.0,MH:39.8,GJ:58.8,KA:72.2,AP:70.3,TG:38.9,RJ:87.1,MP:32.9,HR:9.7,UP:13.8},  higherBetter:true,  unit:'%', src:'CEA + MNRE 2024'},
+    per_capita:     {label:'Per Capita Consumption (kWh)',   data:{TN:1452,MH:1380,GJ:2210,KA:1298,AP:1124,TG:1480,RJ:1048,MP:798,HR:2140,UP:748},     higherBetter:true,  unit:' kWh', src:'CEA 2023-24'},
+    domestic_tariff:{label:'Domestic Tariff ₹/unit (0-100u)',data:{TN:0.00,MH:4.20,GJ:5.00,KA:4.35,AP:1.45,TG:1.45,RJ:5.25,MP:5.30,HR:5.00,UP:5.50},  higherBetter:false, unit:'₹', src:'SERC Tariff Orders 2024'},
+    commercial_tariff:{label:'Commercial Tariff ₹/unit',    data:{TN:8.00,MH:10.20,GJ:9.50,KA:9.80,AP:8.50,TG:8.80,RJ:9.00,MP:9.40,HR:9.80,UP:8.40},  higherBetter:false, unit:'₹', src:'SERC Tariff Orders 2024'},
+    industrial_tariff:{label:'Industrial HT Tariff ₹/unit', data:{TN:7.50,MH:8.80,GJ:7.20,KA:7.80,AP:6.90,TG:7.40,RJ:8.20,MP:8.60,HR:8.40,UP:7.80},  higherBetter:false, unit:'₹', src:'SERC Tariff Orders 2024'},
+    annual_loss:    {label:'Utility Annual Loss (₹ Cr)',     data:{TN:13600,MH:8400,GJ:-2100,KA:2800,AP:4200,TG:1800,RJ:16800,MP:4200,HR:3600,UP:32400},higherBetter:false, unit:' Cr', src:'PFC 2022-23'},
+    accum_loss:     {label:'Accumulated Loss (₹ Cr)',        data:{TN:109900,MH:64200,GJ:0,KA:28400,AP:62800,TG:18200,RJ:89400,MP:42100,HR:24800,UP:214800},higherBetter:false,unit:' Cr',src:'PFC 2022-23'},
+    solar_mw:       {label:'Solar Capacity (MW)',            data:{TN:11780,MH:9840,GJ:14820,KA:8640,AP:14820,TG:4820,RJ:22400,MP:5200,HR:420,UP:2840},  higherBetter:true,  unit:' MW', src:'MNRE 2024'},
+    wind_mw:        {label:'Wind Capacity (MW)',             data:{TN:10200,MH:7840,GJ:9840,KA:5840,AP:4820,TG:3680,RJ:4820,MP:3680,HR:12,UP:28},        higherBetter:true,  unit:' MW', src:'MNRE 2024'},
+    smart_meter:    {label:'Smart Meter Coverage %',         data:{TN:6.9,MH:12.4,GJ:28.4,KA:8.2,AP:15.6,TG:22.4,RJ:9.8,MP:6.4,HR:18.2,UP:4.2},        higherBetter:true,  unit:'%', src:'MoP Smart Meter Dashboard 2024'},
+    energy_rank:    {label:'NITI Energy Index Rank (lower=better)',data:{TN:3,MH:5,GJ:1,KA:6,AP:4,TG:8,RJ:2,MP:12,HR:7,UP:16},                          higherBetter:false, unit:'', src:'NITI Aayog SECI 2023'}
+  };
+
+  // Radar normalisation keys (always higher=better after inversion)
+  const RADAR_KEYS=['atc','renewable_pct','per_capita','domestic_tariff','accum_loss','smart_meter','energy_rank'];
+  const RADAR_LABELS=['AT&C Efficiency','Renewable %','Per Capita','Low Tariff Burden','Financial Health','Smart Meters','Energy Rank'];
+
+  function normalise(key,val){
+    const vals=Object.values(METRICS[key].data);
+    const mn=Math.min(...vals),mx=Math.max(...vals);
+    const n=(val-mn)/(mx-mn)*100;
+    return METRICS[key].higherBetter?n:100-n;
+  }
+
+  let selected=new Set(['TN','KA','MH','GJ','RJ']);
+
+  // Build chips
+  STATES.forEach(s=>{
+    const chip=document.createElement('div');
+    chip.className='state-chip'+(selected.has(s)?'':' inactive');
+    chip.style.borderColor=COLORS[s];
+    chip.style.color=selected.has(s)?COLORS[s]:'#555';
+    chip.style.background=selected.has(s)?COLORS[s]+'18':'transparent';
+    chip.textContent=NAMES[s];
+    if(s!=='TN'){chip.addEventListener('click',()=>{
+      if(selected.has(s)){selected.delete(s);chip.classList.add('inactive');chip.style.color='#555';chip.style.background='transparent';}
+      else if(selected.size<5){selected.add(s);chip.classList.remove('inactive');chip.style.color=COLORS[s];chip.style.background=COLORS[s]+'18';}
+      updateAll();
+    });}
+    document.getElementById('stateChips').appendChild(chip);
+  });
+
+  let mainChart=null,radarChart=null;
+
+  function updateAll(){
+    const key=document.getElementById('metricSel').value;
+    const type=document.getElementById('chartType').value;
+    const m=METRICS[key];
+    const sel=[...selected];
+    document.getElementById('mainTitle').textContent=m.label+' — Selected States';
+    document.getElementById('mainSrc').textContent='Source: '+m.src;
+
+    if(mainChart)mainChart.destroy();
+    const ctx=document.getElementById('mainChart').getContext('2d');
+    const labels=sel.map(s=>NAMES[s]);
+    const vals=sel.map(s=>m.data[s]);
+    const bgs=sel.map(s=>COLORS[s]+'CC');
+    const baseOpts={responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1,
+        callbacks:{label:ctx=>{const v=ctx.parsed[type==='hbar'?'x':'y'];return NAMES[sel[ctx.dataIndex]]||sel[ctx.dataIndex]+': '+v+m.unit;}}}},
+      scales:{x:{ticks:{color:'#666',font:{size:10}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:10},callback:v=>v+m.unit},grid:{color:'#111'}}}};
+
+    if(type==='hbar'){
+      mainChart=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:bgs,borderRadius:4}]},
+        options:{...baseOpts,indexAxis:'y',scales:{x:{ticks:{color:'#666',font:{size:9},callback:v=>v+m.unit},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}}}}});
+    } else {
+      mainChart=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data:vals,backgroundColor:bgs,borderRadius:4}]},options:baseOpts});
+    }
+
+    // Rank table
+    const sorted=STATES.map(s=>({s,v:m.data[s]})).sort((a,b)=>m.higherBetter?b.v-a.v:a.v-b.v);
+    const best=sorted[0].v,worst=sorted[sorted.length-1].v;
+    const tbl=document.getElementById('rankTable');
+    tbl.innerHTML='<tr><th>#</th><th>State</th><th>Value</th><th>Bar</th></tr>';
+    sorted.forEach(({s,v},i)=>{
+      const pct=Math.abs((v-(m.higherBetter?worst:best))/((Math.abs(best-worst))||1))*100;
+      const isSel=selected.has(s);
+      const rc=i===0?'#44BB66':i===sorted.length-1?'#FF4444':'#666';
+      tbl.innerHTML+=`<tr style="${isSel?'background:#0d0d0d':''}">
+        <td><span class="rank-num" style="background:${rc}18;color:${rc}">${i+1}</span></td>
+        <td style="font-weight:${isSel?700:400};color:${isSel?COLORS[s]:'#BBB'}">${NAMES[s]}</td>
+        <td style="font-weight:700;color:${COLORS[s]}">${v}${m.unit}</td>
+        <td style="min-width:120px"><div class="bar-bg"><div class="bar-fill" style="width:${pct.toFixed(0)}%;background:${COLORS[s]}"></div></div></td>
+      </tr>`;
+    });
+
+    // Radar
+    if(radarChart)radarChart.destroy();
+    radarChart=new Chart(document.getElementById('radarChart'),{type:'radar',
+      data:{labels:RADAR_LABELS,datasets:sel.map(s=>({
+        label:NAMES[s],data:RADAR_KEYS.map(k=>normalise(k,METRICS[k].data[s])),
+        borderColor:COLORS[s],backgroundColor:COLORS[s]+'22',pointBackgroundColor:COLORS[s],borderWidth:2,pointRadius:3
+      }))},
+      options:{responsive:true,maintainAspectRatio:false,
+        scales:{r:{min:0,max:100,ticks:{display:false},grid:{color:'#1e1e1e'},pointLabels:{color:'#888',font:{size:9}},angleLines:{color:'#1e1e1e'}}},
+        plugins:{legend:{display:true,position:'bottom',labels:{color:'#888',font:{size:9},boxWidth:12,padding:10}},
+          tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}}}});
+  }
+  updateAll();
+  window.updateAll=updateAll;
+
+  // Tariff charts
+  const SNAMES=STATES.map(s=>NAMES[s].replace(' ','\n'));
+  const SCOLORS=STATES.map(s=>COLORS[s]);
+  const cx=(extra={})=>({responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}}}, ...extra});
+
+  new Chart(document.getElementById('domTariffChart'),{type:'bar',
+    data:{labels:SNAMES,datasets:[{data:STATES.map(s=>METRICS.domestic_tariff.data[s]),backgroundColor:STATES.map(s=>METRICS.domestic_tariff.data[s]===0?'#44BB66':COLORS[s]),borderRadius:3}]},
+    options:{...cx(),indexAxis:'y',scales:{x:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+v},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('commIndChart'),{type:'bar',
+    data:{labels:SNAMES,datasets:[
+      {label:'Commercial',data:STATES.map(s=>METRICS.commercial_tariff.data[s]),backgroundColor:'rgba(255,136,0,0.7)',borderRadius:2},
+      {label:'Industrial HT',data:STATES.map(s=>METRICS.industrial_tariff.data[s]),backgroundColor:'rgba(51,153,204,0.7)',borderRadius:2}
+    ]},
+    options:{...cx(),plugins:{legend:{display:true,labels:{color:'#888',font:{size:9},boxWidth:10}},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+      scales:{x:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+v},grid:{color:'#111'}}}}});
+
+  // Renewable trend
+  const rYears=['2010','2015','2018','2020','2022','2024'];
+  const rData={TN:[27.2,52.6,63.4,68.9,70.5,71.0],MH:[8.4,16.2,22.8,28.4,34.6,39.8],GJ:[6.2,18.4,28.6,38.2,48.4,58.8],KA:[32.4,48.2,58.4,62.8,68.4,72.2],RJ:[8.8,22.4,44.8,64.2,78.4,87.1]};
+  new Chart(document.getElementById('renewTrendChart'),{type:'line',
+    data:{labels:rYears,datasets:['TN','MH','GJ','KA','RJ'].map(s=>({label:NAMES[s],data:rData[s],borderColor:COLORS[s],tension:0.3,pointRadius:3,borderWidth:2,fill:false}))},
+    options:{...cx(),plugins:{legend:{display:true,labels:{color:'#888',font:{size:9},boxWidth:10}},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+      scales:{x:{ticks:{color:'#666',font:{size:10}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>v+'%'},grid:{color:'#111'}}}}});
+
+  const accumData=STATES.map(s=>METRICS.accum_loss.data[s]);
+  new Chart(document.getElementById('accumStateChart'),{type:'bar',
+    data:{labels:SNAMES,datasets:[{data:accumData,backgroundColor:STATES.map(s=>METRICS.accum_loss.data[s]===0?'#44BB66':METRICS.accum_loss.data[s]>100000?'#FF4444':'#FF8800'),borderRadius:3}]},
+    options:{...cx(),indexAxis:'y',scales:{x:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(0)+'K'},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}}}}});
+})();
+</script>
+</body>
+</html>

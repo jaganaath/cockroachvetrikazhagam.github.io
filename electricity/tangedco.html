@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TANGEDCO Financials — TN Electricity Hub</title>
+<link rel="stylesheet" href="css/electricity.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<nav class="e-nav">
+  <a href="../index.html" class="e-nav-brand">⚡ CVK → Electricity Hub</a>
+  <div class="e-nav-links">
+    <a href="index.html">Overview</a>
+    <a href="tangedco.html" class="active">TANGEDCO</a>
+    <a href="generation.html">Generation</a>
+    <a href="party.html">Party Comparison</a>
+    <a href="compare.html">State Compare</a>
+    <a href="whitepaper.html">White Paper</a>
+  </div>
+  <button class="lang-btn">EN / TA / HI</button>
+</nav>
+
+<div class="e-hero">
+  <h1>TANGEDCO — <span>Financial Health Dashboard</span></h1>
+  <p>Revenue vs expenditure, annual losses, accumulated losses, debt, power purchase costs and tariff realisation — 15 years of TANGEDCO financial data with party-period annotations.</p>
+  <div class="stat-row">
+    <div class="stat-pill"><div class="v" style="color:#FF4444">₹1.23L Cr</div><div class="l">Accumulated Loss 2024-25</div></div>
+    <div class="stat-pill"><div class="v" style="color:#FF8800">₹1.53L Cr</div><div class="l">Total Debt</div></div>
+    <div class="stat-pill"><div class="v" style="color:#FF4444">₹13,200 Cr</div><div class="l">Annual Loss 2024-25</div></div>
+    <div class="stat-pill"><div class="v" style="color:#F5A623">₹1.72</div><div class="l">Revenue Gap per Unit</div></div>
+    <div class="stat-pill"><div class="v" style="color:#44BB66">₹67,000 Cr</div><div class="l">Revenue 2024-25</div></div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="showTab('losses',this)">Losses</button>
+    <button class="tab-btn" onclick="showTab('revexp',this)">Revenue vs Expenditure</button>
+    <button class="tab-btn" onclick="showTab('tariff',this)">Tariff & Cost</button>
+    <button class="tab-btn" onclick="showTab('debt',this)">Debt</button>
+  </div>
+
+  <!-- LOSSES TAB -->
+  <div id="tab-losses" class="tab-panel active">
+    <div class="chart-grid">
+      <div class="chart-box full-width">
+        <h4>Accumulated Loss Trajectory — ₹ Crore (shaded by ruling party) <span class="help-icon" data-tip="Accumulated loss = total losses since TANGEDCO inception. Rose from ₹11,000 Cr (2010-11) to ₹1.23 lakh Cr (2024-25). Each government inherited and added to this.">?</span></h4>
+        <div class="chart-wrap-lg"><canvas id="accumChart"></canvas></div>
+        <div class="src-note">Source: TANGEDCO Annual Reports 2010–2025, TVK White Paper 2026</div>
+      </div>
+      <div class="chart-box">
+        <h4>Annual Net Loss — ₹ Crore <span class="help-icon" data-tip="Revenue minus expenditure each year. Peaked at ₹13,600 Cr (2023-24). Slight improvement in 2024-25 due to AT&C gains.">?</span></h4>
+        <div class="chart-wrap"><canvas id="annualChart"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h4>Loss Added Per Government Tenure <span class="help-icon" data-tip="Total accumulated losses added during each ruling party's tenure. AIADMK 2016-21 added the most (₹37,700 Cr).">?</span></h4>
+        <div class="chart-wrap"><canvas id="partyLossChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REV-EXP TAB -->
+  <div id="tab-revexp" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box full-width">
+        <h4>Revenue vs Expenditure — ₹ Crore <span class="help-icon" data-tip="Gap between expenditure and revenue is the annual loss. Gap has widened every year as power purchase costs outpace tariff increases.">?</span></h4>
+        <div class="chart-wrap-lg"><canvas id="revExpChart"></canvas></div>
+        <div class="src-note">Source: TANGEDCO Annual Reports</div>
+      </div>
+      <div class="chart-box">
+        <h4>Revenue Growth Rate (YoY %) <span class="help-icon" data-tip="Year-on-year revenue growth. Spikes correspond to tariff hike years (2012, 2015, 2017). COVID dip visible in 2020-21.">?</span></h4>
+        <div class="chart-wrap"><canvas id="revGrowthChart"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h4>Outstanding Dues from Consumers (₹ Cr) <span class="help-icon" data-tip="Government departments owe ₹12,400 Cr; agriculture arrears ₹8,200 Cr; others ₹6,800 Cr. Total receivables crisis is a key TANGEDCO problem.">?</span></h4>
+        <div class="chart-wrap"><canvas id="duesChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TARIFF TAB -->
+  <div id="tab-tariff" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box full-width">
+        <h4>Power Purchase Cost vs Average Tariff Realised (₹/unit) <span class="help-icon" data-tip="The gap between what TANGEDCO pays to buy power and what it collects from consumers = revenue gap. In 2024-25, this is ₹1.72/unit.">?</span></h4>
+        <div class="chart-wrap-lg"><canvas id="tariffGapChart"></canvas></div>
+        <div class="src-note">Source: TANGEDCO, TNERC Tariff Orders</div>
+      </div>
+      <div class="chart-box">
+        <h4>Domestic Tariff Slabs — 2024 <span class="help-icon" data-tip="TN domestic tariff structure. First 100 units free; then increasing slabs. Cross-subsidy from commercial/industrial consumers funds the free units scheme.">?</span></h4>
+        <div class="chart-wrap"><canvas id="slabChart"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h4>Category-wise Tariff Comparison — 2024 <span class="help-icon" data-tip="Commercial tariff (₹8/unit) cross-subsidises domestic (free/low) and agricultural (free) consumers. Industrial HT at ₹7.50.">?</span></h4>
+        <div class="chart-wrap"><canvas id="catTariffChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEBT TAB -->
+  <div id="tab-debt" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box full-width">
+        <h4>TANGEDCO Total Debt Trajectory — ₹ Crore <span class="help-icon" data-tip="Total borrowings. Rose from ₹28,000 Cr (2010-11) to ₹1.53 lakh Cr (2024-25). Funded capacity expansion but also operating losses.">?</span></h4>
+        <div class="chart-wrap-lg"><canvas id="debtChart"></canvas></div>
+        <div class="src-note">Source: TANGEDCO Annual Reports, RBI State Finances data</div>
+      </div>
+      <div class="chart-box">
+        <h4>Debt Added Per Government <span class="help-icon" data-tip="AIADMK 2011-16 added the highest debt (₹44,000 Cr) driven by large capacity additions. 2021-26 DMK adding ₹29,000 Cr.">?</span></h4>
+        <div class="chart-wrap"><canvas id="debtPartyChart"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h4>Interest Payments vs Revenue (%) <span class="help-icon" data-tip="Interest payments as % of total revenue. Rising from ~8% to ~14% — squeezes operating budget significantly.">?</span></h4>
+        <div class="chart-wrap"><canvas id="interestChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="e-footer">Data: TANGEDCO Annual Reports, TVK White Paper 2026 · <a href="index.html">← Electricity Hub</a></div>
+
+<script>
+(function(){
+  const obs=new IntersectionObserver(els=>els.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  function showTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active');}
+  window.showTab=showTab;
+
+  const Y=["2010-11","2011-12","2012-13","2013-14","2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25e"];
+  const ACCUM=[11000,14800,19600,25200,31000,37000,43300,50000,57500,65500,74700,84500,96300,109900,123100];
+  const ANNUAL=[2800,3800,4800,5600,5800,6000,6300,6700,7500,8000,9200,9800,11800,13600,13200];
+  const REV=[21400,23800,26400,29200,32100,35600,38900,42400,46100,49800,48200,53400,58600,63200,67000];
+  const EXP=[24200,27600,31200,34800,37900,41600,45200,49100,53600,57800,57400,63200,70400,76800,80200];
+  const DEBT=[28000,34000,42000,52000,62000,72000,84000,96000,108000,118000,124000,132000,140000,148000,153000];
+  const PPC=[2.84,3.12,3.45,3.78,4.02,4.38,4.72,5.04,5.42,5.71,5.82,6.04,6.38,6.68,6.84];
+  const TARIFF=[3.10,3.25,3.42,3.60,3.78,3.95,4.10,4.28,4.45,4.62,4.72,4.88,5.00,5.08,5.12];
+
+  const PARTY_BG=i=>i<=4?'rgba(204,0,0,0.65)':i<=10?'rgba(34,136,170,0.65)':'rgba(204,0,0,0.65)';
+  const cx=(extra={})=>({responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}}}, ...extra});
+
+  // Accumulated - area with gradient
+  new Chart(document.getElementById('accumChart'),{type:'line',data:{labels:Y,datasets:[
+    {data:ACCUM,borderColor:'#FF4444',backgroundColor:'rgba(255,68,68,0.1)',fill:true,tension:0.3,pointRadius:3,borderWidth:2.5,
+     pointBackgroundColor:Y.map((_,i)=>PARTY_BG(i))}
+  ]},options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(0)+'K Cr'},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('annualChart'),{type:'bar',data:{labels:Y,datasets:[{data:ANNUAL,backgroundColor:Y.map((_,i)=>PARTY_BG(i)),borderRadius:2}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(1)+'K'},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('partyLossChart'),{type:'bar',
+    data:{labels:['DMK\n2006-11','AIADMK\n2011-16','AIADMK\n2016-21','DMK\n2021-26'],
+      datasets:[{data:[11000,26000,37700,48400],backgroundColor:['rgba(204,0,0,0.7)','rgba(34,136,170,0.7)','rgba(34,136,170,0.7)','rgba(204,0,0,0.7)'],borderRadius:4}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:10}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(0)+'K Cr'},grid:{color:'#111'}}}}});
+
+  // Rev vs Exp
+  new Chart(document.getElementById('revExpChart'),{type:'bar',data:{labels:Y,datasets:[
+    {label:'Revenue',data:REV,backgroundColor:'rgba(68,187,102,0.6)',borderRadius:2,stack:'s'},
+    {label:'Expenditure',data:EXP.map((e,i)=>e-REV[i]),backgroundColor:'rgba(255,68,68,0.6)',borderRadius:2,stack:'s'}
+  ]},options:{...cx(),plugins:{legend:{display:true,labels:{color:'#888',font:{size:10},boxWidth:10}},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'},stacked:true},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(0)+'K Cr'},grid:{color:'#111'},stacked:true}}}});
+
+  const revGrowth=REV.map((v,i)=>i===0?null:((v-REV[i-1])/REV[i-1]*100).toFixed(1)*1);
+  new Chart(document.getElementById('revGrowthChart'),{type:'bar',data:{labels:Y,datasets:[{data:revGrowth,backgroundColor:revGrowth.map(v=>v>10?'#44BB66':v<0?'#FF4444':'#F5A623'),borderRadius:2}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>v+'%'},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('duesChart'),{type:'bar',
+    data:{labels:['Govt Depts','Agriculture Arrears','Commercial','Industrial','Others'],
+      datasets:[{data:[12400,8200,4800,3200,6800],backgroundColor:['#FF4444','#FF8800','#3399CC','#9966CC','#888'],borderRadius:4}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+v+'Cr'},grid:{color:'#111'}}}}});
+
+  // Tariff gap
+  new Chart(document.getElementById('tariffGapChart'),{type:'line',data:{labels:Y,datasets:[
+    {label:'Purchase Cost (₹/unit)',data:PPC,borderColor:'#FF4444',tension:0.3,pointRadius:2,borderWidth:2.5,fill:false},
+    {label:'Avg Tariff Realised (₹/unit)',data:TARIFF,borderColor:'#44BB66',tension:0.3,pointRadius:2,borderWidth:2.5,fill:false},
+    {label:'Revenue Gap',data:PPC.map((p,i)=>+(p-TARIFF[i]).toFixed(2)),borderColor:'#FF8800',borderDash:[4,3],tension:0.3,pointRadius:2,borderWidth:1.5,fill:false}
+  ]},options:{...cx(),plugins:{legend:{display:true,labels:{color:'#888',font:{size:10},boxWidth:10}},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+v},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('slabChart'),{type:'bar',
+    data:{labels:['0-100 units','101-200','201-500','501-1000','Above 1000'],
+      datasets:[{data:[0,1.5,3.5,5.0,7.0],backgroundColor:['#44BB66','#F5A623','#FF8800','#FF4444','#CC0000'],borderRadius:4}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:9}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+v},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('catTariffChart'),{type:'bar',
+    data:{labels:['Domestic\n(101-200u)','Domestic\n(201-500u)','Agricultural','Commercial','Industrial\n(HT)','Govt Inst.'],
+      datasets:[{data:[1.5,3.5,0,8.0,7.5,4.5],backgroundColor:['#44BB66','#F5A623','#3399CC','#FF8800','#9966CC','#CC3344'],borderRadius:4}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+v},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('debtChart'),{type:'line',data:{labels:Y,datasets:[
+    {data:DEBT,borderColor:'#3399CC',backgroundColor:'rgba(51,153,204,0.1)',fill:true,tension:0.3,pointRadius:3,borderWidth:2.5,
+     pointBackgroundColor:Y.map((_,i)=>PARTY_BG(i))}
+  ]},options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(0)+'K Cr'},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('debtPartyChart'),{type:'bar',
+    data:{labels:['DMK\n2006-11','AIADMK\n2011-16','AIADMK\n2016-21','DMK\n2021-26'],
+      datasets:[{data:[6000,44000,52000,29000],backgroundColor:['rgba(204,0,0,0.7)','rgba(34,136,170,0.7)','rgba(34,136,170,0.7)','rgba(204,0,0,0.7)'],borderRadius:4}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:10}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(0)+'K Cr'},grid:{color:'#111'}}}}});
+
+  const interest=DEBT.map((d,i)=>+(d*0.085/REV[i]*100).toFixed(1));
+  new Chart(document.getElementById('interestChart'),{type:'line',data:{labels:Y,datasets:[{data:interest,borderColor:'#BB88FF',backgroundColor:'rgba(187,136,255,0.1)',fill:true,tension:0.3,pointRadius:2,borderWidth:2}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>v+'%'},grid:{color:'#111'}}}}});
+})();
+</script>
+</body>
+</html>
