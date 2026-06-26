@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education Indicators — Tamil Nadu Social Hub</title>
+<link rel="stylesheet" href="../finance/css/finance.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../finance/js/i18n.js"></script>
+<style>
+  :root { --accent: #44BB66; }
+  body { background: #0A0A0A; color: #E8E8E0; font-family: 'Inter', sans-serif; margin: 0; }
+  .nav { background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .nav-brand { font-weight: 900; font-size: 0.85rem; color: #44BB66; text-decoration: none; padding: 0.9rem 0; }
+  .nav-links { display: flex; flex-wrap: wrap; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 0.9rem 0.8rem; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #44BB66; border-bottom-color: #44BB66; }
+  .lang-btn { background: rgba(68,187,102,0.1); border: 1px solid rgba(68,187,102,0.25); color: #44BB66; font-size: 0.72rem; font-weight: 700; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+  .page-hero { background: linear-gradient(135deg,#0d0d0d,#001a0d 60%,#0d0d0d); padding: 2.5rem 2rem 2rem; border-bottom: 1px solid #1a2a1a; }
+  .page-hero h1 { font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 900; color: #F5F5F0; margin: 0 0 0.4rem; }
+  .page-hero h1 span { color: #44BB66; }
+  .page-hero p { color: #AAA; max-width: 620px; font-size: 0.88rem; line-height: 1.7; margin: 0.4rem 0 0; }
+  .stats-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+  .stat-pill { background: rgba(68,187,102,0.07); border: 1px solid rgba(68,187,102,0.18); border-radius: 6px; padding: 0.8rem 1.2rem; }
+  .stat-pill .v { font-size: 1.6rem; font-weight: 900; color: #44BB66; }
+  .stat-pill .l { font-size: 0.62rem; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .section { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .section-title { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #44BB66; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .chart-box { background: #111; border: 1px solid #1e1e1e; border-radius: 8px; padding: 1.2rem; }
+  .chart-box h4 { font-size: 0.73rem; font-weight: 700; color: #AAA; text-transform: uppercase; letter-spacing: 0.09em; margin: 0 0 1rem; }
+  .chart-wrap { position: relative; height: 260px; }
+  .chart-wrap-tall { position: relative; height: 360px; }
+  .full-width { grid-column: 1 / -1; }
+  .tab-row { display: flex; gap: 0; border-bottom: 1px solid #1e1e1e; margin-bottom: 1.2rem; flex-wrap: wrap; }
+  .tab-btn { font-size: 0.75rem; font-weight: 700; color: #555; background: none; border: none; border-bottom: 2px solid transparent; padding: 0.6rem 1rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .tab-btn.active { color: #44BB66; border-bottom-color: #44BB66; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .sel-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+  .sel-row label { font-size: 0.72rem; color: #666; }
+  select { background: #1a1a1a; border: 1px solid #2a2a2a; color: #DDD; font-size: 0.78rem; padding: 6px 10px; border-radius: 4px; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .src-note { font-size: 0.7rem; color: #444; margin-top: 0.8rem; }
+  @media (max-width: 640px) { .chart-grid { grid-template-columns: 1fr; } .stats-row { gap: 0.7rem; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand">← Social Hub</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="education.html" class="active">Education</a>
+    <a href="health.html">Health</a>
+    <a href="women.html">Women</a>
+    <a href="compare.html">State Compare</a>
+  </div>
+  <button class="lang-btn" onclick="if(window.cycleLang)cycleLang()">EN / TA / HI</button>
+</nav>
+
+<div class="page-hero">
+  <h1>Education Indicators — <span>Tamil Nadu</span></h1>
+  <p>School enrollment ratios, dropout trends, literacy rates, degree completion and district-level education data. Sources: UDISE+ 2021-22, AISHE 2021-22, Census 2011.</p>
+  <div class="stats-row">
+    <div class="stat-pill"><div class="v">82.9%</div><div class="l">Female Literacy</div></div>
+    <div class="stat-pill"><div class="v">47.7%</div><div class="l">Higher Ed GER</div></div>
+    <div class="stat-pill"><div class="v">54.2%</div><div class="l">Women in Higher Ed</div></div>
+    <div class="stat-pill"><div class="v">1.5%</div><div class="l">Primary Dropout Rate</div></div>
+    <div class="stat-pill"><div class="v">2,356</div><div class="l">Colleges</div></div>
+  </div>
+</div>
+
+<!-- TAB SECTION -->
+<div class="section reveal">
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="showTab('literacy',this)">Literacy</button>
+    <button class="tab-btn" onclick="showTab('ger',this)">Enrollment (GER)</button>
+    <button class="tab-btn" onclick="showTab('dropout',this)">Dropout Rates</button>
+    <button class="tab-btn" onclick="showTab('higher',this)">Higher Education</button>
+  </div>
+
+  <!-- LITERACY -->
+  <div id="tab-literacy" class="tab-panel active">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>Literacy Rate — 10 States (Overall, Male, Female) <span class="help-icon" data-tip="% of population aged 7+ who can read and write. Source: Census 2011.">?</span></h4>
+        <div class="sel-row">
+          <label>Category:</label>
+          <select id="litCatSel" onchange="updateLitChart()">
+            <option value="overall">Overall</option>
+            <option value="female" selected>Female</option>
+            <option value="male">Male</option>
+          </select>
+        </div>
+        <div class="chart-wrap"><canvas id="litChart"></canvas></div>
+        <div class="src-note">Source: Census 2011, projected 2022</div>
+      </div>
+      <div class="chart-box">
+        <h4>TN Female Literacy Trend — 2001 to 2022 <span class="help-icon" data-tip="Female literacy has grown from 64% (2001) to 83% (2022 est.). Gender gap narrowed from 16 to 8 points.">?</span></h4>
+        <div class="chart-wrap"><canvas id="litTrendChart"></canvas></div>
+        <div class="src-note">Source: Census 2001, 2011; NFHS-5 2019-21</div>
+      </div>
+      <div class="chart-box full-width">
+        <h4>District-wise Female Literacy — Tamil Nadu <span class="help-icon" data-tip="Chennai leads at 87.2%. Southern districts and Dharmapuri show lower rates.">?</span></h4>
+        <div class="chart-wrap-tall"><canvas id="distLitChart"></canvas></div>
+        <div class="src-note">Source: Census 2011 (district-level)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GER -->
+  <div id="tab-ger" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>GER Trend by Level — Tamil Nadu <span class="help-icon" data-tip="GER (Gross Enrollment Ratio) = total enrolled ÷ official age-group population × 100. Above 100 is possible when over-age students enroll.">?</span></h4>
+        <div class="chart-wrap"><canvas id="gerTrendChart"></canvas></div>
+        <div class="src-note">Source: UDISE+ Annual Reports</div>
+      </div>
+      <div class="chart-box">
+        <h4>State Comparison — Secondary GER <span class="help-icon" data-tip="Secondary school GER for students aged 14-18. TN is above national average.">?</span></h4>
+        <div class="chart-wrap"><canvas id="secGERChart"></canvas></div>
+        <div class="src-note">Source: UDISE+ 2021-22</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DROPOUT -->
+  <div id="tab-dropout" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>TN Dropout Rate Trend by Level <span class="help-icon" data-tip="% students who leave school without completing the level. Secondary dropout is higher nationally — TN does well.">?</span></h4>
+        <div class="sel-row">
+          <label>Level:</label>
+          <select id="dropLevelSel" onchange="updateDropoutChart()">
+            <option value="primary">Primary</option>
+            <option value="upper_primary">Upper Primary</option>
+            <option value="secondary" selected>Secondary</option>
+          </select>
+        </div>
+        <div class="chart-wrap"><canvas id="dropTrendChart"></canvas></div>
+        <div class="src-note">Source: UDISE+ 2016-17 to 2021-22</div>
+      </div>
+      <div class="chart-box">
+        <h4>Dropout Rate — Secondary Level, State Comparison <span class="help-icon" data-tip="Kerala has the lowest secondary dropout at 5.6%. UP and RJ highest at 31%+.">?</span></h4>
+        <div class="chart-wrap"><canvas id="dropStateChart"></canvas></div>
+        <div class="src-note">Source: UDISE+ 2021-22</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIGHER EDUCATION -->
+  <div id="tab-higher" class="tab-panel">
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h4>Higher Education Enrollment — Tamil Nadu <span class="help-icon" data-tip="Total students (in lakhs) enrolled in TN colleges and universities. Female enrollment overtook male around 2019.">?</span></h4>
+        <div class="chart-wrap"><canvas id="higherEnrollChart"></canvas></div>
+        <div class="src-note">Source: AISHE 2016-17 to 2021-22</div>
+      </div>
+      <div class="chart-box">
+        <h4>GER in Higher Education — 10 States <span class="help-icon" data-tip="TN GER 47.7% is highest among large states. National average is 28.4%.">?</span></h4>
+        <div class="chart-wrap"><canvas id="higherGERStateChart"></canvas></div>
+        <div class="src-note">Source: AISHE 2021-22</div>
+      </div>
+      <div class="chart-box">
+        <h4>Stream Breakdown — TN Higher Education Graduates <span class="help-icon" data-tip="Engineering dominates TN's higher education landscape. Science and Arts follow.">?</span></h4>
+        <div class="chart-wrap"><canvas id="streamChart"></canvas></div>
+        <div class="src-note">Source: AISHE 2021-22</div>
+      </div>
+      <div class="chart-box">
+        <h4>TN Female GER vs Male GER — Higher Education <span class="help-icon" data-tip="Female GER exceeded male GER in 2019-20 — a landmark in Tamil Nadu's gender parity in higher education.">?</span></h4>
+        <div class="chart-wrap"><canvas id="gerGenderChart"></canvas></div>
+        <div class="src-note">Source: AISHE 2021-22</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:2rem;color:#444;font-size:0.72rem;border-top:1px solid #1a1a1a;margin-top:2rem;">
+  Data: UDISE+ 2021-22, AISHE 2021-22, Census 2011 ·
+  <a href="index.html" style="color:#44BB66">← Social Hub</a>
+</footer>
+
+<script>
+(function(){
+  const obs = new IntersectionObserver(els=>els.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    btn.classList.add('active');
+  }
+  window.showTab = showTab;
+
+  const states = ['TN','MH','KA','KL','AP','TG','GJ','RJ','UP','WB'];
+  const stateNames = ['Tamil Nadu','Maharashtra','Karnataka','Kerala','Andhra Pradesh','Telangana','Gujarat','Rajasthan','Uttar Pradesh','West Bengal'];
+  const colors = ['#D4A017','#3399CC','#44BB66','#00BBCC','#FF6699','#9966CC','#FF8800','#CC3344','#88CC00','#CC6600'];
+  const shortNames = stateNames.map(s=>s.replace(' ','\n'));
+  const cx = {responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:9}},grid:{color:'#1a1a1a'}},y:{ticks:{color:'#666',font:{size:10}},grid:{color:'#1a1a1a'}}}};
+
+  // Literacy data
+  const litData = {
+    overall: {"TN":80.09,"MH":82.91,"KA":75.36,"KL":94.00,"AP":67.02,"TG":72.83,"GJ":78.03,"RJ":66.11,"UP":67.70,"WB":76.26},
+    male:    {"TN":86.81,"MH":88.85,"KA":82.47,"KL":96.10,"AP":74.69,"TG":79.89,"GJ":85.75,"RJ":79.19,"UP":77.28,"WB":81.69},
+    female:  {"TN":82.90,"MH":83.20,"KA":74.50,"KL":93.50,"AP":65.80,"TG":72.10,"GJ":75.30,"RJ":58.60,"UP":62.40,"WB":76.30}
+  };
+
+  let litChart = new Chart(document.getElementById('litChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>litData.female[s]),backgroundColor:colors,borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,min:40,max:100,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  function updateLitChart() {
+    const cat = document.getElementById('litCatSel').value;
+    litChart.data.datasets[0].data = states.map(s=>litData[cat][s]);
+    litChart.update();
+  }
+  window.updateLitChart = updateLitChart;
+
+  // Literacy trend
+  new Chart(document.getElementById('litTrendChart'),{type:'line',
+    data:{labels:['2001','2011','2022e'],datasets:[
+      {label:'Female',data:[64.36,73.44,82.9],borderColor:'#44BB66',backgroundColor:'rgba(68,187,102,0.1)',fill:true,tension:0.3,pointRadius:5,borderWidth:2.5},
+      {label:'Male',data:[80.33,86.81,91.3],borderColor:'#3399CC',backgroundColor:'rgba(51,153,204,0.1)',fill:true,tension:0.3,pointRadius:5,borderWidth:2.5}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,min:55,max:100,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  // District literacy
+  const districts = ['Chennai','Coimbatore','Madurai','Salem','Tiruchirappalli','Tirunelveli','Vellore','Erode','Thanjavur','Cuddalore','Villupuram','Dharmapuri','Krishnagiri','Tiruvannamalai','Pudukkottai'];
+  const femLit = [87.23,78.45,79.12,74.23,77.58,72.64,71.45,72.89,77.34,64.23,59.45,57.32,61.45,61.23,64.12];
+  new Chart(document.getElementById('distLitChart'),{type:'bar',
+    data:{labels:districts,datasets:[{label:'Female Literacy %',data:femLit,backgroundColor:femLit.map(v=>v>=75?'#44BB66':'rgba(68,187,102,0.4)'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,min:40,max:100,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // GER Trend
+  const gerYears = ['2015-16','2016-17','2017-18','2018-19','2019-20','2020-21','2021-22'];
+  new Chart(document.getElementById('gerTrendChart'),{type:'line',
+    data:{labels:gerYears,datasets:[
+      {label:'Primary',data:[101.3,101.8,102.1,100.9,100.4,98.7,95.4],borderColor:'#44BB66',borderWidth:2,tension:0.3,pointRadius:3},
+      {label:'Upper Primary',data:[93.2,94.1,95.3,94.8,93.5,91.4,89.2],borderColor:'#3399CC',borderWidth:2,tension:0.3,pointRadius:3},
+      {label:'Secondary',data:[67.4,69.8,71.2,72.6,73.1,71.8,73.4],borderColor:'#FF8800',borderWidth:2,tension:0.3,pointRadius:3},
+      {label:'Higher Secondary',data:[59.8,61.3,63.5,65.2,66.8,64.9,67.2],borderColor:'#CC3344',borderWidth:2,tension:0.3,pointRadius:3}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:9}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  // Secondary GER state compare
+  const secGER = {"TN":73.4,"MH":76.8,"KA":71.9,"KL":89.6,"AP":65.7,"TG":64.2,"GJ":74.5,"RJ":60.8,"UP":55.3,"WB":70.9};
+  new Chart(document.getElementById('secGERChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>secGER[s]),backgroundColor:colors,borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // Dropout trend
+  const dropData = {
+    primary_boys:   [2.1,1.9,1.8,1.7,1.5,1.4],
+    primary_girls:  [1.8,1.6,1.5,1.4,1.3,1.1],
+    upper_primary_boys: [5.2,4.8,4.2,3.8,3.4,3.2],
+    upper_primary_girls:[4.3,3.9,3.5,3.1,2.8,2.6],
+    secondary_boys: [18.9,17.3,16.2,15.8,15.1,14.9],
+    secondary_girls:[16.4,15.1,14.6,14.2,14.0,13.8]
+  };
+  const dropYears = ['2016-17','2017-18','2018-19','2019-20','2020-21','2021-22'];
+  let dropChart = new Chart(document.getElementById('dropTrendChart'),{type:'line',
+    data:{labels:dropYears,datasets:[
+      {label:'Boys',data:dropData.secondary_boys,borderColor:'#3399CC',borderWidth:2,tension:0.3,pointRadius:3},
+      {label:'Girls',data:dropData.secondary_girls,borderColor:'#FF6699',borderWidth:2,tension:0.3,pointRadius:3}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  function updateDropoutChart() {
+    const lvl = document.getElementById('dropLevelSel').value;
+    dropChart.data.datasets[0].data = dropData[lvl+'_boys'];
+    dropChart.data.datasets[1].data = dropData[lvl+'_girls'];
+    dropChart.update();
+  }
+  window.updateDropoutChart = updateDropoutChart;
+
+  // Dropout state compare
+  const secDropout = {"TN":14.6,"MH":15.2,"KA":17.8,"KL":5.6,"AP":19.4,"TG":18.7,"GJ":16.3,"RJ":25.1,"UP":31.2,"WB":20.4};
+  new Chart(document.getElementById('dropStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>secDropout[s]),backgroundColor:states.map(s=>secDropout[s]<15?'#44BB66':'#FF4444'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // Higher Ed enrollment
+  const heYears = ['2016-17','2017-18','2018-19','2019-20','2020-21','2021-22'];
+  const heTotal = [9.8,10.2,10.9,11.4,11.8,12.1];
+  const heFemale = heTotal.map((v,i)=>(v*[51.2,52.1,53.0,53.8,54.0,54.2][i]/100).toFixed(1)*1);
+  const heMale = heTotal.map((v,i)=>(v*(100-[51.2,52.1,53.0,53.8,54.0,54.2][i])/100).toFixed(1)*1);
+  new Chart(document.getElementById('higherEnrollChart'),{type:'bar',
+    data:{labels:heYears,datasets:[
+      {label:'Female (lakhs)',data:heFemale,backgroundColor:'rgba(255,102,153,0.7)',borderRadius:2},
+      {label:'Male (lakhs)',data:heMale,backgroundColor:'rgba(51,153,204,0.7)',borderRadius:2}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x,stacked:true},y:{...cx.scales.y,stacked:true}}}
+  });
+
+  // Higher Ed GER state
+  const heGER = {"TN":47.7,"MH":37.1,"KA":31.8,"KL":38.3,"AP":32.6,"TG":32.5,"GJ":21.7,"RJ":20.2,"UP":23.7,"WB":19.8};
+  new Chart(document.getElementById('higherGERStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>heGER[s]),backgroundColor:colors,borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // Stream breakdown doughnut
+  new Chart(document.getElementById('streamChart'),{type:'doughnut',
+    data:{labels:['Arts & Humanities','Science','Commerce','Engineering','Medicine','Management','Law','Other'],
+      datasets:[{data:[28.4,14.2,12.8,24.6,5.2,8.1,2.3,4.4],backgroundColor:['#D4A017','#44BB66','#3399CC','#FF8800','#FF6699','#9966CC','#00BBCC','#888'],borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'right',labels:{color:'#888',font:{size:9},boxWidth:12}},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}}}
+  });
+
+  // GER by gender
+  const gerF = [45.8,47.2,48.6,49.8,50.9,52.3];
+  const gerM = [42.7,43.7,44.1,44.5,44.4,43.4];
+  new Chart(document.getElementById('gerGenderChart'),{type:'line',
+    data:{labels:heYears,datasets:[
+      {label:'Female GER',data:gerF,borderColor:'#FF6699',backgroundColor:'rgba(255,102,153,0.1)',fill:true,tension:0.3,pointRadius:4,borderWidth:2},
+      {label:'Male GER',data:gerM,borderColor:'#3399CC',backgroundColor:'rgba(51,153,204,0.1)',fill:true,tension:0.3,pointRadius:4,borderWidth:2}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+})();
+</script>
+</body>
+</html>

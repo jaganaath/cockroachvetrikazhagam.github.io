@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "sources": ["CEA Annual Report 2023-24", "Ministry of Power Annual Report 2023-24", "NITI Aayog — State Energy & Climate Index 2023", "PFC Report on State Power Utilities 2022-23", "REC/RECPDCL Data", "State SERCs Tariff Orders 2024"],
+    "states": ["TN","MH","GJ","KA","AP","TG","RJ","MP","HR","UP"],
+    "state_names": {"TN":"Tamil Nadu","MH":"Maharashtra","GJ":"Gujarat","KA":"Karnataka","AP":"Andhra Pradesh","TG":"Telangana","RJ":"Rajasthan","MP":"Madhya Pradesh","HR":"Haryana","UP":"Uttar Pradesh"}
+  },
+  "installed_capacity_mw_2024": {
+    "TN":31240,"MH":46820,"GJ":42180,"KA":31050,"AP":29640,"TG":22180,"RJ":30820,"MP":28640,"HR":16840,"UP":34820,
+    "help": "Total installed electricity generation capacity in MW. Includes all sources. Source: CEA 2024."
+  },
+  "renewable_capacity_mw_2024": {
+    "TN":22180,"MH":18640,"GJ":24820,"KA":22400,"AP":20840,"TG":8620,"RJ":26840,"MP":9420,"HR":1640,"UP":4820,
+    "help": "Renewable energy installed capacity (wind + solar + small hydro + biomass). Source: MNRE 2024."
+  },
+  "renewable_pct_of_total_2024": {
+    "TN":71.0,"MH":39.8,"GJ":58.8,"KA":72.2,"AP":70.3,"TG":38.9,"RJ":87.1,"MP":32.9,"HR":9.7,"UP":13.8,
+    "help": "Renewable energy as % of total installed capacity. Rajasthan leads; TN, KA, AP form a strong southern cluster. Source: CEA + MNRE 2024."
+  },
+  "atc_loss_pct_2023": {
+    "TN":14.8,"MH":13.2,"GJ":12.8,"KA":13.6,"AP":10.4,"TG":11.8,"RJ":18.4,"MP":19.2,"HR":14.6,"UP":26.8,
+    "help": "AT&C (Aggregate Technical & Commercial) Losses %. Combines technical losses in transmission/distribution with revenue collection shortfalls. Lower is better. National average ~16%. Source: PFC 2022-23."
+  },
+  "peak_deficit_pct_2024": {
+    "TN":1.6,"MH":0.4,"GJ":0.0,"KA":2.1,"AP":0.8,"TG":0.4,"RJ":0.0,"MP":0.0,"HR":0.1,"UP":3.8,
+    "help": "Peak demand deficit (supply gap at peak hours) as % of peak demand. Near zero means reliable supply. Source: CEA 2024."
+  },
+  "per_capita_consumption_kwh_2023": {
+    "TN":1452,"MH":1380,"GJ":2210,"KA":1298,"AP":1124,"TG":1480,"RJ":1048,"MP":798,"HR":2140,"UP":748,
+    "help": "Per capita electricity consumption in kWh/year. Higher reflects industrialisation + household usage. National avg 1255 kWh. Source: CEA 2023-24."
+  },
+  "domestic_tariff_per_unit_2024": {
+    "TN":0.00,"MH":4.20,"GJ":5.00,"KA":4.35,"AP":1.45,"TG":1.45,"RJ":5.25,"MP":5.30,"HR":5.00,"UP":5.50,
+    "note": "0-100 units slab (most populated segment). TN = free up to 100 units. AP and TG have low rate for first 100-200 units. Source: State SERC tariff orders 2024."
+  },
+  "agricultural_tariff_per_unit_2024": {
+    "TN":0.00,"MH":0.00,"GJ":0.00,"KA":0.00,"AP":0.00,"TG":0.00,"RJ":0.90,"MP":1.50,"HR":0.00,"UP":0.70,
+    "note": "Agricultural tariff per unit. Most states offer free or highly subsidised power to farmers. Source: State SERC tariff orders 2024."
+  },
+  "commercial_tariff_per_unit_2024": {
+    "TN":8.00,"MH":10.20,"GJ":9.50,"KA":9.80,"AP":8.50,"TG":8.80,"RJ":9.00,"MP":9.40,"HR":9.80,"UP":8.40,
+    "note": "Commercial category (LT) per unit rate. Commercial consumers cross-subsidise domestic + agricultural. Source: SERC tariff orders 2024."
+  },
+  "industrial_tariff_ht_per_unit_2024": {
+    "TN":7.50,"MH":8.80,"GJ":7.20,"KA":7.80,"AP":6.90,"TG":7.40,"RJ":8.20,"MP":8.60,"HR":8.40,"UP":7.80,
+    "note": "HT industrial tariff per unit. Lower industrial tariff attracts manufacturing investment. Source: SERC orders 2024."
+  },
+  "utility_annual_loss_cr_2023": {
+    "TN":13600,"MH":8400,"GJ":-2100,"KA":2800,"AP":4200,"TG":1800,"RJ":16800,"MP":4200,"HR":3600,"UP":32400,
+    "note": "Negative = profit. UP's losses are highest nationally. Gujarat's DISCOM is profit-making. Source: PFC 2022-23."
+  },
+  "utility_accumulated_loss_cr_2023": {
+    "TN":109900,"MH":64200,"GJ":0,"KA":28400,"AP":62800,"TG":18200,"RJ":89400,"MP":42100,"HR":24800,"UP":214800,
+    "note": "Total accumulated losses of state power utilities. Gujarat has cleared losses. UP is worst nationally. Source: PFC 2022-23."
+  },
+  "solar_capacity_mw_2024": {
+    "TN":11780,"MH":9840,"GJ":14820,"KA":8640,"AP":14820,"TG":4820,"RJ":22400,"MP":5200,"HR":420,"UP":2840,
+    "help": "Utility + rooftop solar capacity in MW. Rajasthan leads in utility solar. TN leads in rooftop solar. Source: MNRE 2024."
+  },
+  "wind_capacity_mw_2024": {
+    "TN":10200,"MH":7840,"GJ":9840,"KA":5840,"AP":4820,"TG":3680,"RJ":4820,"MP":3680,"HR":12,"UP":28,
+    "help": "Wind energy installed capacity. TN was India's wind pioneer. Source: MNRE 2024."
+  },
+  "niti_energy_index_rank_2023": {
+    "TN":3,"MH":5,"GJ":1,"KA":6,"AP":4,"TG":8,"RJ":2,"MP":12,"HR":7,"UP":16,
+    "help": "NITI Aayog State Energy & Climate Index rank. Lower rank = better performance across 6 dimensions. Source: SECI 2023."
+  },
+  "subsidy_burden_cr_2023": {
+    "TN":22400,"MH":15800,"GJ":12400,"KA":10200,"AP":18600,"TG":12800,"RJ":19800,"MP":8400,"HR":7200,"UP":28400,
+    "help": "Total electricity subsidy paid by state government (agricultural free power + domestic cross-subsidy + direct transfers). Source: State budgets 2023-24."
+  },
+  "discoms_profit_loss_status": {
+    "TN":"Loss","MH":"Loss","GJ":"Profit","KA":"Loss","AP":"Loss","TG":"Marginal","RJ":"Loss","MP":"Loss","HR":"Loss","UP":"Loss"
+  },
+  "ev_charging_stations_2024": {
+    "TN":2840,"MH":4820,"GJ":3640,"KA":2180,"AP":1240,"TG":1480,"RJ":980,"MP":620,"HR":1280,"UP":1840
+  },
+  "smart_meter_pct_installed": {
+    "TN":6.9,"MH":12.4,"GJ":28.4,"KA":8.2,"AP":15.6,"TG":22.4,"RJ":9.8,"MP":6.4,"HR":18.2,"UP":4.2,
+    "help": "Smart meters installed as % of total connections. Critical for reducing AT&C losses. Source: MoP Smart Meter Dashboard 2024."
+  },
+  "historical_renewable_pct": {
+    "years": ["2010","2015","2018","2020","2022","2024"],
+    "TN":  [27.2, 52.6, 63.4, 68.9, 70.5, 71.0],
+    "MH":  [8.4,  16.2, 22.8, 28.4, 34.6, 39.8],
+    "GJ":  [6.2,  18.4, 28.6, 38.2, 48.4, 58.8],
+    "KA":  [32.4, 48.2, 58.4, 62.8, 68.4, 72.2],
+    "RJ":  [8.8,  22.4, 44.8, 64.2, 78.4, 87.1]
+  }
+}

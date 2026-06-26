@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TN Debt & Fiscal Stress — CVK Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@700;900&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/finance.css">
+</head>
+<body>
+<nav class="fin-nav">
+  <a href="index.html" class="fin-nav-brand">
+    <div class="fin-nav-logo">CVK</div>
+    <div class="fin-nav-title">Finance Hub <small>Debt Analysis</small></div>
+  </a>
+  <ul class="fin-nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="budget.html">Budget</a></li>
+    <li><a href="debt.html" class="active">Debt</a></li>
+    <li><a href="psu.html">PSUs</a></li>
+    <li><a href="cag.html">CAG</a></li>
+    <li><a href="compare.html">Compare States</a></li>
+    <li><a href="central.html">Central Finance</a></li>
+  </ul>
+  <div class="fin-nav-right">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ta">TA</button>
+    <button class="lang-btn" data-lang="hi">HI</button>
+    <a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>CVK</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Fiscal Stress Analysis</div>
+    <h1 class="page-title" data-i18n="debt_title">Debt & Fiscal Stress</h1>
+    <p class="page-desc">Tamil Nadu's debt trajectory — direct liabilities, off-budget borrowings, contingent liabilities, and what it means for every citizen.</p>
+    <div class="page-tags">
+      <span class="page-tag">TVK White Paper 2026</span>
+      <span class="page-tag">CAG Audit</span>
+      <span class="page-tag">RBI State Finances</span>
+      <span class="page-tag">FRBM Act</span>
+    </div>
+  </div>
+</div>
+
+<main class="fin-main">
+
+  <div class="stats-row reveal">
+    <div class="stat-card">
+      <div class="stat-label">Direct Debt 2025-26 <span class="help-icon" data-tip="State government's direct outstanding borrowings — market loans, loans from Centre, institutional loans. Per TVK White Paper 2026.">?</span></div>
+      <div class="stat-value red">₹10.08L</div>
+      <div class="stat-meta">Lakh Crore · TVK White Paper 2026</div>
+      <div class="stat-trend up">▲ Doubled in 5 years</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Liabilities incl. PSU <span class="help-icon" data-tip="Direct debt plus PSU off-budget borrowings backed by state guarantees. TVK WP 2026 pegs this at ₹13.18L Cr.">?</span></div>
+      <div class="stat-value red">₹13.18L</div>
+      <div class="stat-meta">Lakh Crore · TVK White Paper 2026</div>
+      <div class="stat-trend up">▲ ₹3.10L Cr PSU debt</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Debt/GSDP Ratio <span class="help-icon" data-tip="FRBM guideline is to keep below 25%. TN at 38.1% and rising — well above the prudential limit.">?</span></div>
+      <div class="stat-value red">38.1%</div>
+      <div class="stat-meta">of GSDP (2025-26) · FRBM limit: 25%</div>
+      <div class="stat-trend up">▲ Was 27.5% in 2014-15</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Debt Per Person <span class="help-icon" data-tip="Direct state debt divided by Tamil Nadu's population (~7.87 crore). Does not include PSU liabilities.">?</span></div>
+      <div class="stat-value red">₹1.28L</div>
+      <div class="stat-meta">per resident (2025-26 est.)</div>
+      <div class="stat-trend up">▲ Was ₹33,400 in 2014-15</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Interest Payments 2024-25 <span class="help-icon" data-tip="Annual interest on all outstanding loans. Growing every year as debt accumulates.">?</span></div>
+      <div class="stat-value">₹0.83L</div>
+      <div class="stat-meta">27.2% of revenue receipts</div>
+      <div class="stat-trend up">▲ Was 18.6% in 2014-15</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Contingent Liabilities <span class="help-icon" data-tip="State guarantees to PSUs. If PSU defaults, state must pay. ₹1.59L Cr in 2023-24. Growing 10%+ per year.">?</span></div>
+      <div class="stat-value">₹1.59L</div>
+      <div class="stat-meta">State guarantees outstanding (2023-24)</div>
+      <div class="stat-trend neutral">CAG flagged under-reporting</div>
+    </div>
+  </div>
+
+  <!-- DEBT CHARTS -->
+  <div class="section-gap reveal">
+    <div class="alert alert-bad">
+      <strong>Debt Doubled in 5 Years</strong>
+      TN's direct debt grew from ₹5.13L Cr (2020-21) to ₹10.08L Cr (2025-26) — a near-doubling in just 5 years. Including PSU and SPV borrowings, total obligations stand at ₹13.18L Cr. TVK White Paper attributes this to: revenue deficit funding, interest-on-interest compounding, PSU losses requiring government support, and off-budget borrowings that bypass FRBM limits.
+      <div style="margin-top:6px"><span class="source-pill">TVK White Paper on State Finances, June 2026</span></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Debt Stock — Direct vs Total Liabilities</div><div class="card-subtitle">Including PSU off-budget borrowings</div></div>
+          <span class="help-icon" data-tip="Blue = direct state debt (shown in budget). Orange = additional PSU/SPV liabilities. The gap between them = hidden debt.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="debtStackChart"></canvas></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Debt / GSDP Ratio</div><div class="card-subtitle">FRBM prudential guideline: 25%</div></div>
+          <span class="help-icon" data-tip="Rising debt/GSDP means debt is growing faster than the economy. Sustained breaches signal systemic fiscal unsustainability.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="debtGsdpChart"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:1.5rem">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Debt Per Capita — Burden on Every Citizen</div></div>
+          <span class="help-icon" data-tip="Direct state debt divided by TN population. This is what each resident 'owes' in principle — though actual repayment comes from future taxes and service cuts.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="debtCapitaChart"></canvas></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Interest Burden — % of Revenue Receipts</div></div>
+          <span class="help-icon" data-tip="Above 15% is considered 'stressed'. TN is at 27.2% — meaning over 1 in 4 rupees of income goes to interest alone.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="intRevChart"></canvas></div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- OFF-BUDGET BORROWINGS -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Hidden Liabilities</div>
+        <h2 class="sec-title">Off-Budget Borrowings & Contingent Liabilities</h2>
+        <p class="sec-desc">Debt that doesn't appear in the official state budget but ultimately falls on the taxpayer</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="alert alert-warn">
+          <strong>Off-Budget Borrowings</strong>
+          Borrowings routed through SPVs, PSUs, and other state entities that bypass the official FRBM fiscal deficit calculation. CAG flagged ₹1.49L Cr in off-budget borrowings in 2023-24 alone. Including these would push the effective fiscal deficit to ~6.8% of GSDP.
+          <div style="margin-top:6px"><span class="source-pill">CAG Report on State Finances 2023-24</span></div>
+        </div>
+        <div class="alert alert-warn">
+          <strong>State Guarantees</strong>
+          TN has extended guarantees worth ₹1.59L Cr to PSUs (2023-24). These are "contingent liabilities" — they crystallise into real debt if the PSU defaults. With TANGEDCO accumulating ₹1.79L Cr in losses, the risk is significant. FRBM allows guarantees up to 80% of GSDP — TN is well below the ceiling but the quality of these guarantees (TANGEDCO, TNSTC) is concerning.
+          <div style="margin-top:6px"><span class="source-pill">CAG Report on State Finances 2023-24</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Contingent Liabilities Growth</div><div class="card-subtitle">State guarantees outstanding (₹ Crore)</div></div>
+          <span class="help-icon" data-tip="State guarantees to PSUs. These are potential future liabilities — if PSUs can't repay, state steps in. Growing at 10%+ per year.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="contingentChart"></canvas></div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- DEBT TABLE -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Historical Data</div><h2 class="sec-title">Debt Profile — Year by Year</h2></div>
+    </div>
+    <div class="fin-table-wrap">
+      <table class="fin-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th class="num">Direct Debt <span class="help-icon" data-tip="₹ Lakh Crore">?</span></th>
+            <th class="num">PSU Debt</th>
+            <th class="num">Total Liabilities</th>
+            <th class="num">Debt % GSDP</th>
+            <th class="num">Interest Paid</th>
+            <th class="num">Interest % Revenue</th>
+            <th class="num">Debt Per Capita (₹)</th>
+          </tr>
+        </thead>
+        <tbody id="debtTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sources-section reveal">
+    <div class="sources-title">Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-item">TVK White Paper on State Finances, June 2026</div>
+      <div class="source-item">RBI State Finances: A Study of Budgets</div>
+      <div class="source-item">CAG Reports on State Finances of Tamil Nadu (Annual)</div>
+      <div class="source-item">TN Finance Department Budget Documents</div>
+      <div class="source-item">FRBM Act 2003 / TN Fiscal Responsibility Act 2003</div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.72rem;color:var(--mid)" data-i18n="note_approx">* Approximate figures. Verify with original sources.</div>
+  </div>
+
+</main>
+<footer class="fin-footer">
+  <div data-i18n="footer_cvk">Cockroach Vetri Kazhagam · நேர்மையான தகவலே கிடைக்கும்</div>
+  <div style="margin-top:8px"><a href="index.html">← Finance Hub</a> · <a href="../index.html">CVK Home</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+const YEARS=['2014-15','2015-16','2016-17','2017-18','2018-19','2019-20','2020-21','2021-22','2022-23','2023-24','2024-25'];
+const DEBT  =[2.48,2.87,3.32,3.78,4.18,4.64,5.13,5.83,6.78,7.87,10.08];
+const PSU_D =[0.42,0.56,0.72,0.92,1.14,1.46,1.72,2.08,2.48,2.82,3.10];
+const TOTAL =[2.90,3.43,4.04,4.70,5.32,6.10,6.85,7.91,9.26,10.69,13.18];
+const D_PCT =[27.5,27.5,28.8,29.3,28.6,29.4,34.6,32.1,32.3,33.3,38.1];
+const INT   =[0.22,0.26,0.30,0.34,0.38,0.43,0.47,0.54,0.62,0.73,0.83];
+const INT_R =[18.6,19.1,19.7,20.2,20.4,22.2,25.7,25.2,24.6,25.7,27.2];
+const D_PC  =[33400,38200,43800,49400,54200,59800,65800,74400,86200,99700,127800];
+const GUARANT=[82640,96480,112820,126840,142360,158640,null,null,null,null,null];
+const GUAR_Y=['2018-19','2019-20','2020-21','2021-22','2022-23','2023-24'];
+const GUAR_V=[82640,96480,112820,126840,142360,158640];
+
+applyChartDefaults();
+
+// Stacked debt chart
+new Chart(document.getElementById('debtStackChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'Direct State Debt', data:DEBT, backgroundColor:'rgba(204,0,0,0.7)', stack:'a'},
+    {label:'PSU Off-Budget Debt', data:PSU_D, backgroundColor:'rgba(255,136,0,0.7)', stack:'a'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{stacked:true,ticks:{font:{size:9},maxRotation:45}},
+            y:{stacked:true,ticks:{callback:v=>'₹'+v+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// Debt/GSDP
+new Chart(document.getElementById('debtGsdpChart'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'Debt % GSDP', data:D_PCT, borderColor:'#CC3344', backgroundColor:'rgba(204,0,0,0.1)', fill:true, tension:0.3, borderWidth:2, pointRadius:4, pointBackgroundColor:'#CC3344'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}},
+  plugins:[{id:'limit',beforeDraw(c){
+    const {ctx,chartArea:{left,right},scales:{y}}=c;
+    const yp=y.getPixelForValue(25);
+    ctx.save();ctx.strokeStyle='#44BB66';ctx.setLineDash([5,5]);ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
+    ctx.fillStyle='#44BB66';ctx.font='bold 11px Inter';ctx.fillText('FRBM Guideline 25%',left+4,yp-6);
+    ctx.restore();
+  }}]
+});
+
+// Debt per capita
+new Chart(document.getElementById('debtCapitaChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[{
+    label:'Debt per Capita (₹)',data:D_PC,
+    backgroundColor:'rgba(153,102,204,0.7)',borderColor:'#9966CC',borderWidth:1
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},
+            y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// Interest % revenue
+new Chart(document.getElementById('intRevChart'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[{
+    label:'Interest % of Revenue', data:INT_R,
+    borderColor:'#FF8800', backgroundColor:'rgba(255,136,0,0.1)', fill:true, tension:0.3, borderWidth:2, pointRadius:4
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}},
+  plugins:[{id:'stress',beforeDraw(c){
+    const {ctx,chartArea:{left,right},scales:{y}}=c;
+    const yp=y.getPixelForValue(15);
+    ctx.save();ctx.strokeStyle='#FF8800';ctx.setLineDash([5,5]);ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
+    ctx.fillStyle='#FF8800';ctx.font='bold 11px Inter';ctx.fillText('Stress Threshold 15%',left+4,yp-6);
+    ctx.restore();
+  }}]
+});
+
+// Contingent liabilities
+new Chart(document.getElementById('contingentChart'),{
+  type:'bar',
+  data:{labels:GUAR_Y,datasets:[{
+    label:'State Guarantees Outstanding (₹ Crore)',data:GUAR_V,
+    backgroundColor:'rgba(255,136,0,0.7)',borderColor:'#FF8800',borderWidth:1
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:10}}},
+            y:{ticks:{callback:v=>'₹'+(v/100000).toFixed(1)+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// Debt table
+const tb=document.getElementById('debtTableBody');
+YEARS.forEach((y,i)=>{
+  const dp=D_PCT[i];
+  const badge=dp>30?'badge-red':dp>25?'badge-gold':'badge-green';
+  tb.innerHTML+=`<tr ${i===YEARS.length-1?'class="hl"':''}>
+    <td><strong>${y}</strong>${i===YEARS.length-1?' <span class="badge badge-grey">BE</span>':''}</td>
+    <td class="num red">${DEBT[i].toFixed(2)}</td>
+    <td class="num">${PSU_D[i].toFixed(2)}</td>
+    <td class="num red">${TOTAL[i].toFixed(2)}</td>
+    <td class="num"><span class="badge ${badge}">${dp.toFixed(1)}%</span></td>
+    <td class="num">${INT[i].toFixed(2)}</td>
+    <td class="num ${INT_R[i]>15?'red':''}">${INT_R[i].toFixed(1)}%</td>
+    <td class="num">${D_PC[i].toLocaleString('en-IN')}</td>
+  </tr>`;
+});
+
+document.addEventListener('DOMContentLoaded',()=>{initLang();initReveal();});
+initLang();initReveal();
+</script>
+</body>
+</html>
