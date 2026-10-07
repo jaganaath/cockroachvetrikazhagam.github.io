@@ -135,7 +135,7 @@ footer{font-size:12px;color:var(--muted)}
       <span class="lbl">Sort by</span>
       <button class="chip" id="sPrice" aria-pressed="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M17 7H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg>Cabin price</button>
-      <button class="chip" id="sDist" aria-pressed="true">
+      <button class="chip" id="sDist" aria-pressed="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Distance</button>
       <label class="lbl" for="from">from</label>
       <select id="from"><option value="clyde">Clyde</option><option value="tarneit">Tarneit</option></select>
@@ -269,7 +269,7 @@ P.forEach((p,i)=>{p.id="p"+i;p.dc=km(ORIGINS.clyde,p);p.dw=km(ORIGINS.tarneit,p)
 
 const NIGHTS=4;
 const DEF={grp:"all",pool:true,budget:2000};
-const S={...DEF,byPrice:true,byDist:true,from:"clyde",hl:null,feats:new Set(),cmp:[]};
+const S={...DEF,byPrice:true,byDist:false,from:"clyde",hl:null,feats:new Set(),cmp:[]};
 const MAXCMP=4;
 const fmt=v=>"$"+Math.round(v).toLocaleString("en-AU");
 const nightly=v=>"$"+(Math.round(v/NIGHTS*100)/100).toLocaleString("en-AU",{minimumFractionDigits:v%NIGHTS?2:0,maximumFractionDigits:2});
