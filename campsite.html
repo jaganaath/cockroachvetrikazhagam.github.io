@@ -120,6 +120,7 @@ table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;fon
 .dnote{font-size:12px;color:var(--muted);margin:0}
 body.has-bar .wrap{padding-bottom:110px}
 footer{font-size:12px;color:var(--muted)}
+.member-price{font-size:12px;color:var(--gum);display:flex;align-items:center;gap:5px}.member-price .ms{font-size:14px;width:14px}.member-price span{color:var(--muted)}.member-price b{font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.fill{transition:none}}
 </style>
 
@@ -213,7 +214,8 @@ const P=[
  {n:"Discovery Mount Buffalo",t:"Mount Buffalo",g:"Non-BIG4",brand:"Discovery",c:780,pool:false,lat:-36.73,lng:146.80,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/high-country/mount-buffalo?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VBUF"},
  {n:"Discovery Halls Gap",t:"Halls Gap",g:"Non-BIG4",brand:"Discovery",c:480,pool:true,lat:-37.14,lng:142.52,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/western-grampians/halls-gap?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VHAG"},
  {n:"Discovery Grampians",t:"Grampians",g:"Non-BIG4",brand:"Discovery",c:423,pool:false,lat:-37.07,lng:142.49,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/western-grampians/grampians?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VGRA"},
- {n:"Discovery Warrnambool",t:"Warrnambool",g:"Non-BIG4",brand:"Discovery",c:614,pool:true,lat:-38.38,lng:142.49,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/great-ocean-road/warrnambool?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VWAR"}
+ {n:"Discovery Warrnambool",t:"Warrnambool",g:"Non-BIG4",brand:"Discovery",c:614,pool:true,lat:-38.38,lng:142.49,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/great-ocean-road/warrnambool?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VWAR"},
+ {n:"BIG4 Wonthaggi Park Lane",t:"Wonthaggi",g:"Premium",c:510,pool:true,lat:-38.60,lng:145.59,url:"https://www.big4.com.au/caravan-parks/vic/gippsland/wonthaggi-park-lane-holiday-park?start=2027-02-25&end=2027-02-28&adults=2&kids=1"}
 ];
 const WATER={
  "Ballarat (Villa)":["lake","Lake Wendouree",4,"lake, no river or beach nearby"],
@@ -231,7 +233,8 @@ const WATER={
  "Mount Buffalo":["lake","Lake Catani",3,"alpine lake"],
  "Halls Gap":["lake","Lake Bellfield",4,"Stony Creek runs through town"],
  "Grampians":["lake","Lake Bellfield",5,null],
- "Warrnambool":["beach","Lady Bay beach",2,"whale watching season"]
+ "Warrnambool":["beach","Lady Bay beach",2,"whale watching season"],
+ "Wonthaggi":["beach","Wonthaggi surf beaches",5,null]
 };
 const FEAT=[
  ["heated","pool","Heated pool"],["splash","water_drop","Splash / water play"],["spa","hot_tub","Spa"],
@@ -255,7 +258,8 @@ const FAC={
  "Mount Buffalo":"play bbq kitchen fire pets",
  "Halls Gap":"play jump bbq kitchen fire pets",
  "Grampians":"play bbq kitchen pets",
- "Warrnambool":"heated splash play jump courts games bbq kitchen wifi"};
+ "Warrnambool":"heated splash play jump courts games bbq kitchen wifi",
+ "Wonthaggi":"heated bbq kitchen fire pets wifi"};
 const EXTRA={
  "Ballarat (Villa)":"300 m from Sovereign Hill, sensory room, kids club, bike hire",
  "Red Cliffs":"Pizza oven, café and bar",
@@ -272,7 +276,8 @@ const EXTRA={
  "Mount Buffalo":"Alpine hiking, waterfalls, Lake Catani swimming",
  "Halls Gap":"Pump track, off-leash dog park, Grampians walks",
  "Grampians":"Mackenzie Falls, wildlife, rock art walks",
- "Warrnambool":"Lady Bay beach, Flagstaff Hill, whale watching Jul–Oct"};
+ "Warrnambool":"Lady Bay beach, Flagstaff Hill, whale watching Jul–Oct",
+ "Wonthaggi":"Coffee garden, kiosk, Cape Paterson beach 10 min"};
 P.forEach(p=>{p.f=new Set(FAC[p.t].split(" "));p.extra=EXTRA[p.t]||"";});
 const msi=k=>`<span class="ms" aria-hidden="true">${k}</span>`;
 P.forEach(p=>{const w=WATER[p.t];p.w={type:w[0],name:w[1],km:w[2],note:w[3]};});
@@ -283,6 +288,7 @@ P.forEach((p,i)=>{p.id="p"+i;p.dc=km(ORIGINS.clyde,p);p.dw=km(ORIGINS.tarneit,p)
   p.gmap="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.n+" holiday park, "+p.t+" VIC");});
 
 const NIGHTS=3;
+const memberPrice=p=>p.brand==="BIG4"?Math.round(p.c*0.9):p.brand==="NRMA"?p.c-30:null;
 const DEF={grp:"all",pool:true,budget:800};
 const S={...DEF,byPrice:true,byDist:false,from:"clyde",hl:null,feats:new Set(),cmp:[]};
 const MAXCMP=4;
@@ -385,7 +391,7 @@ function render(){
     return `<article class="park${S.hl===p.id?" hl":""}" id="${p.id}">
       <div class="pname"><span class="rank">${i+1}</span>${p.n}
         <div class="tags"><span class="tag grp">${p.g}</span>${poolTag}</div></div>
-      <div class="bars">${row("Cabin",p.c,"c")}</div>
+      <div class="bars">${row("Cabin",p.c,"c")}${memberPrice(p)!==null?`<div class="member-price">${msi("card_membership")} Member price: <b>${fmt(memberPrice(p))}</b> <span>(${p.brand==="BIG4"?"10% off":"−$30"})</span></div>`:""}</div>
       <div class="dist"><span class="${S.from==="clyde"?"sel":""}">From Clyde <b>~${p.dc} km</b></span><span class="${S.from==="tarneit"?"sel":""}">From Tarneit <b>~${p.dw} km</b></span></div>
       <div class="water ${p.w.type}">${ICON[p.w.type==="beach"?"wave":"drop"]}<span>Nearest ${p.w.type}: <b>${p.w.name}</b> · ${waterTxt(p.w)}</span></div>
       <div class="feats">${FEAT.filter(f=>p.f.has(f[0])).map(([k,ic,l])=>`<span class="feat${S.feats.has(k)?" match":""}">${msi(ic)}${l}</span>`).join("")}</div>
