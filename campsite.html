@@ -1,10 +1,9 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Mad House Jan 2027 Shortlisted Campsite</title>
+<title>Mad House Feb–Mar 2027 Shortlisted Campsite</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400,0,0&display=block">
 <style>
-/* Layout: sort bar always visible with a filter toggle, then map + ranked list side by side on desktop, stacked on phone */
 :root{
   --bg:#f3f6f4; --panel:#ffffff; --ink:#15231d; --muted:#5d6b64; --line:#d9e2dd;
   --gum:#1f6b52; --gum-soft:#dcefe6; --sky:#2f74c0; --sky-soft:#e1ecf8; --sun:#c98a10;
@@ -126,8 +125,8 @@ footer{font-size:12px;color:var(--muted)}
 
 <div class="wrap">
   <header>
-    <h1>Mad House Jan 2027 Shortlisted Campsite</h1>
-    <p>16 parks · cabin prices for 4 nights. Tap a park on the map to jump to it.</p>
+    <h1>Mad House Feb–Mar 2027 Shortlisted Campsite</h1>
+    <p>16 parks · cabin prices for 3 nights (26 Feb – 1 Mar). Tap a park on the map to jump to it.</p>
   </header>
 
   <section class="toolbar" aria-label="Sort and filter">
@@ -159,8 +158,8 @@ footer{font-size:12px;color:var(--muted)}
       <div class="seg"><button class="chip" id="pool" aria-pressed="true">Pool / splash park</button></div></div>
     <div class="ctl" style="flex-basis:100%"><span class="lbl">Must also have</span>
       <div class="seg" id="featf"></div></div>
-    <div class="ctl"><span class="lbl">Max cabin total <span class="budget-out" id="budgetOut">$2,000+</span></span>
-      <input type="range" id="budget" min="500" max="2000" step="50" value="2000" aria-label="Maximum cabin price"></div>
+    <div class="ctl"><span class="lbl">Max cabin total <span class="budget-out" id="budgetOut">$800+</span></span>
+      <input type="range" id="budget" min="400" max="800" step="25" value="800" aria-label="Maximum cabin price"></div>
     <button class="reset" id="reset">Reset filters</button>
   </section>
 
@@ -178,7 +177,7 @@ footer{font-size:12px;color:var(--muted)}
     </section>
   </div>
 
-  <footer>Cabin prices as supplied, for 4 nights. Water distances are approximate, estimated from each park's address and BIG4 description. Photo links open each park's own page on BIG4, NRMA or Discovery. Facilities are as listed on those pages.</footer>
+  <footer>Cabin prices as supplied, for 3 nights (26 Feb – 1 Mar 2027). Water distances are approximate. Photo links open each park's booking or info page. Facilities are as listed on those pages.</footer>
 </div>
 
 <div class="cmpbar" id="cmpbar" hidden>
@@ -191,7 +190,7 @@ footer{font-size:12px;color:var(--muted)}
   <div class="dialog">
     <div class="dhead"><h2 id="dtitle">Side-by-side</h2><button class="close" id="dclose">Close</button></div>
     <div class="tscroll"><table class="cmp" id="cmptable"></table></div>
-    <p class="dnote">Highlighted cells are the best of the parks you picked. Cabin prices are for 4 nights; distances are straight-line.</p>
+    <p class="dnote">Highlighted cells are the best of the parks you picked. Cabin prices are for 3 nights; distances are straight-line.</p>
   </div>
 </div>
 
@@ -199,40 +198,40 @@ footer{font-size:12px;color:var(--muted)}
 const ORIGINS={clyde:{name:"Clyde",lat:-38.13,lng:145.33},tarneit:{name:"Tarneit",lat:-37.84,lng:144.67}};
 const B="https://www.big4.com.au/caravan-parks/vic/";
 const P=[
- {n:"BIG4 Red Cliffs",t:"Red Cliffs",g:"Regional",c:670,pool:false,lat:-34.31,lng:142.19,b:"murray/red-cliffs"},
- {n:"BIG4 Ballarat Windmill",t:"Ballarat",g:"Regional",c:1114,pool:true,lat:-37.56,lng:143.85,b:"goldfields/ballarat-windmill-holiday-park"},
- {n:"BIG4 Porepunkah Pines",t:"Porepunkah",g:"Regional",c:910,pool:true,lat:-36.70,lng:146.91,b:"victorias-high-country/porepunkah-pines-holiday-park"},
- {n:"BIG4 Kerang Riverfront",t:"Kerang",g:"Regional",c:730,pool:true,lat:-35.73,lng:143.92,b:"murray/kerang-riverfront-holiday-park"},
- {n:"BIG4 Swan Hill",t:"Swan Hill",g:"Regional",c:950,pool:true,splash:true,lat:-35.34,lng:143.56,b:"murray/swan-hill-holiday-park"},
- {n:"BIG4 Mornington Peninsula",t:"Mornington Peninsula",g:"Premium",c:1034,pool:true,lat:-38.37,lng:144.95,b:"mornington-peninsula/mornington-peninsula-holiday-park"},
- {n:"BIG4 Mildura Getaway",t:"Mildura",g:"Premium",c:782,pool:true,lat:-34.20,lng:142.14,b:"murray/mildura-getaway-holiday-park"},
- {n:"BIG4 Shepparton Park Lane",t:"Shepparton",g:"Premium",c:780,pool:true,lat:-36.38,lng:145.40,b:"goulburn/shepparton-park-lane-holiday-park"},
- {n:"BIG4 Wangaratta North Cedars",t:"Wangaratta",g:"Premium",c:522,pool:true,lat:-36.35,lng:146.31,b:"victorias-high-country/wangaratta-north-cedars-holiday-park"},
- {n:"BIG4 Wonthaggi Park Lane",t:"Wonthaggi",g:"Premium",c:706,pool:true,lat:-38.60,lng:145.59,b:"gippsland/wonthaggi-park-lane-holiday-park"},
- {n:"BIG4 Inverloch",t:"Inverloch",g:"Premium",c:1942,pool:true,lat:-38.63,lng:145.73,b:"gippsland/ingenia-holidays-inverloch"},
- {n:"BIG4 Traralgon Park Lane",t:"Traralgon",g:"Premium",c:1103,pool:true,lat:-38.19,lng:146.53,b:"gippsland/big4-traralgon-park-lane-holiday-park"},
- {n:"BIG4 Ingenia Torquay",t:"Torquay",g:"Great Ocean Rd",c:1187,pool:true,lat:-38.33,lng:144.32,b:"great-ocean-road/ingenia-holidays-torquay"},
- {n:"NRMA Ballarat Holiday Park",t:"Ballarat (NRMA)",g:"Non-BIG4",brand:"NRMA",c:821,pool:true,lat:-37.575,lng:143.87,url:"https://www.nrmaparksandresorts.com.au/ballarat/"},
- {n:"Discovery Parks Melbourne",t:"Braybrook",g:"Non-BIG4",brand:"Discovery",c:790,pool:true,lat:-37.79,lng:144.86,url:"https://www.discoveryholidayparks.com.au/caravan-parks/Victoria/Melbourne/melbourne?adults=2&kids=0&arrive=2027-01-22&depart=2027-01-26&infants=0&accommodationType=cabin&sort=price-asc"},
- {n:"Discovery Parks Grampians",t:"Halls Gap",g:"Non-BIG4",brand:"Discovery",c:1040,pool:true,lat:-37.14,lng:142.52,url:"https://www.discoveryholidayparks.com.au/caravan-parks/Victoria/Western-Grampians/grampians?adults=2&kids=2&arrive=2027-01-22&depart=2027-01-26&infants=0&accommodationType=cabin&sort=price-asc"}
+ {n:"NRMA Ballarat (Villa)",t:"Ballarat (Villa)",g:"Non-BIG4",brand:"NRMA",c:570,pool:true,lat:-37.575,lng:143.87,url:"https://www.nrmaparksandresorts.com.au/ballarat/"},
+ {n:"BIG4 Red Cliffs",t:"Red Cliffs",g:"Regional",c:460,pool:false,lat:-34.31,lng:142.19,b:"murray/red-cliffs"},
+ {n:"BIG4 Apollo Bay Pisces",t:"Apollo Bay",g:"Great Ocean Rd",c:686,pool:true,lat:-38.75,lng:143.67,url:"https://www.big4.com.au/caravan-parks/vic/great-ocean-road/apollo-bay-pisces?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=2&accommSubType=cabin"},
+ {n:"BIG4 Ingenia Torquay",t:"Torquay",g:"Great Ocean Rd",c:530,pool:true,lat:-38.33,lng:144.32,url:"https://www.big4.com.au/caravan-parks/vic/great-ocean-road/ingenia-holidays-torquay/accommodation/airstream?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Mornington Peninsula",t:"Mornington Peninsula",g:"Premium",c:490,pool:true,lat:-38.37,lng:144.95,url:"https://www.big4.com.au/caravan-parks/vic/mornington-peninsula/mornington-peninsula-holiday-park?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Taggerty Holiday Park",t:"Taggerty",g:"Regional",c:432,pool:false,lat:-37.32,lng:145.72,url:"https://www.big4.com.au/caravan-parks/vic/victorias-high-country/taggerty-holiday-park?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Phillip Island Park Lane",t:"Phillip Island (PL)",g:"Premium",c:467,pool:true,lat:-38.49,lng:145.24,url:"https://www.big4.com.au/caravan-parks/vic/phillip-island/phillip-island-park-lane-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"NRMA Phillip Island Beachfront",t:"Phillip Island (NRMA)",g:"Non-BIG4",brand:"NRMA",c:647,pool:true,splash:true,lat:-38.51,lng:145.27,url:"https://www.big4.com.au/caravan-parks/vic/phillip-island/nrma-phillip-island-beachfront-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Mildura Getaway",t:"Mildura",g:"Regional",c:417,pool:true,splash:true,lat:-34.20,lng:142.14,url:"https://www.big4.com.au/caravan-parks/vic/murray/mildura-getaway-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Wangaratta North Cedars",t:"Wangaratta",g:"Regional",c:456,pool:true,lat:-36.35,lng:146.31,url:"https://www.big4.com.au/caravan-parks/vic/victorias-high-country/wangaratta-north-cedars-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"NRMA Ballarat Holiday Park",t:"Ballarat (NRMA)",g:"Non-BIG4",brand:"NRMA",c:480,pool:true,lat:-37.585,lng:143.86,url:"https://www.nrmaparksandresorts.com.au/ballarat/accommodation-and-sites/cabins-and-villas/"},
+ {n:"NRMA Port Campbell",t:"Port Campbell",g:"Non-BIG4",brand:"NRMA",c:600,pool:false,lat:-38.62,lng:142.99,url:"https://www.nrmaparksandresorts.com.au/port-campbell/book-now/"},
+ {n:"Discovery Mount Buffalo",t:"Mount Buffalo",g:"Non-BIG4",brand:"Discovery",c:780,pool:false,lat:-36.73,lng:146.80,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/high-country/mount-buffalo?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VBUF"},
+ {n:"Discovery Halls Gap",t:"Halls Gap",g:"Non-BIG4",brand:"Discovery",c:480,pool:true,lat:-37.14,lng:142.52,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/western-grampians/halls-gap?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VHAG"},
+ {n:"Discovery Grampians",t:"Grampians",g:"Non-BIG4",brand:"Discovery",c:423,pool:true,lat:-37.07,lng:142.49,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/western-grampians/grampians?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VGRA"},
+ {n:"Discovery Warrnambool",t:"Warrnambool",g:"Non-BIG4",brand:"Discovery",c:614,pool:true,lat:-38.38,lng:142.49,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/great-ocean-road/warrnambool?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VWAR"}
 ];
 const WATER={
+ "Ballarat (Villa)":["lake","Lake Wendouree",4,"lake, no river or beach nearby"],
  "Red Cliffs":["river","Murray River",4,null],
- "Ballarat":["lake","Lake Wendouree",4,"lake, no river or beach nearby"],
- "Porepunkah":["river","Ovens River",0,"on the riverbank"],
- "Kerang":["river","Loddon River",0,"river frontage"],
- "Swan Hill":["river","Murray River",2,null],
- "Mornington Peninsula":["beach","Frankston South beaches",3,null],
- "Mildura":["river","Murray River",4,null],
- "Shepparton":["river","Goulburn River",1,"short walk"],
- "Wangaratta":["river","Ovens River",3,null],
- "Wonthaggi":["beach","Wonthaggi surf beaches",5,null],
- "Inverloch":["beach","Anderson Inlet",0,"waterfront"],
- "Traralgon":["river","Latrobe River",8,null],
+ "Apollo Bay":["beach","Apollo Bay beach",0,"beachside"],
  "Torquay":["beach","Torquay beaches",1,"under 1 km"],
- "Ballarat (NRMA)":["lake","Lake Wendouree",5,"lake, no river or beach nearby"],
- "Braybrook":["river","Maribyrnong River",2,null],
- "Halls Gap":["lake","Lake Bellfield",4,"Stony Creek runs through town"]
+ "Mornington Peninsula":["beach","Frankston South beaches",3,null],
+ "Taggerty":["river","Taggerty River",0,"bell tent riverfront"],
+ "Phillip Island (PL)":["beach","Phillip Island beaches",2,null],
+ "Phillip Island (NRMA)":["beach","Phillip Island beach",0,"beachfront"],
+ "Mildura":["river","Murray River",4,null],
+ "Wangaratta":["river","Ovens River",3,null],
+ "Ballarat (NRMA)":["lake","Lake Wendouree",4,"lake, no river or beach nearby"],
+ "Port Campbell":["beach","Port Campbell beach",1,"near 12 Apostles"],
+ "Mount Buffalo":["lake","Lake Catani",3,"alpine lake"],
+ "Halls Gap":["lake","Lake Bellfield",4,"Stony Creek runs through town"],
+ "Grampians":["lake","Lake Bellfield",5,null],
+ "Warrnambool":["beach","Lady Bay beach",2,"whale watching season"]
 };
 const FEAT=[
  ["heated","pool","Heated pool"],["splash","water_drop","Splash / water play"],["spa","hot_tub","Spa"],
@@ -241,34 +240,50 @@ const FEAT=[
  ["bbq","outdoor_grill","BBQ"],["kitchen","countertops","Camp kitchen"],["fire","local_fire_department","Fire pit"],
  ["pets","pets","Pet friendly"],["wifi","wifi","Wi-Fi"]];
 const FAC={
+ "Ballarat (Villa)":"heated spa play jump karts courts games bbq kitchen wifi",
  "Red Cliffs":"play bbq kitchen fire pets wifi",
- "Ballarat":"heated splash spa play jump karts courts games bbq kitchen pets wifi",
- "Porepunkah":"heated splash play jump games bbq kitchen fire pets wifi",
- "Kerang":"play courts games bbq kitchen fire pets",
- "Swan Hill":"splash play jump golf karts courts games kitchen pets",
- "Mornington Peninsula":"play jump karts courts",
- "Mildura":"splash play jump karts courts games bbq kitchen wifi",
- "Shepparton":"play jump games bbq kitchen pets wifi",
- "Wangaratta":"play games bbq kitchen pets wifi",
- "Wonthaggi":"heated bbq kitchen fire pets wifi",
- "Inverloch":"heated splash play jump golf karts courts games bbq kitchen pets wifi",
- "Traralgon":"spa play jump golf karts games bbq kitchen pets wifi",
+ "Apollo Bay":"heated play jump golf courts games bbq kitchen wifi",
  "Torquay":"spa play jump golf courts games bbq kitchen pets wifi",
+ "Mornington Peninsula":"play jump karts courts",
+ "Taggerty":"play bbq kitchen fire pets",
+ "Phillip Island (PL)":"play jump golf karts courts games bbq kitchen pets wifi",
+ "Phillip Island (NRMA)":"heated splash play jump courts games bbq kitchen wifi",
+ "Mildura":"splash play jump karts courts games bbq kitchen wifi",
+ "Wangaratta":"play games bbq kitchen pets wifi",
  "Ballarat (NRMA)":"heated spa play jump karts courts games bbq kitchen wifi",
- "Braybrook":"play games bbq kitchen pets wifi",
- "Halls Gap":"play jump bbq kitchen fire pets"};
-const EXTRA={"Red Cliffs":"Pizza oven, café and bar","Kerang":"Kayak and SUP hire","Mornington Peninsula":"Flying fox, pump track, climbing frame","Mildura":"Water slide, pizza oven","Shepparton":"Tyre maze","Wonthaggi":"Coffee garden, kiosk","Inverloch":"Indoor splash park, pump track","Traralgon":"Ropes course, laser tag, indoor play centre","Torquay":"Outdoor theatre, cricket","Swan Hill":"Sensory room, bike track, school-holiday activities","Ballarat":"Pet billabong, dog wash","Ballarat (NRMA)":"300 m from Sovereign Hill, sensory room, kids club, bike hire","Braybrook":"Kiosk, about 30 min to Melbourne CBD","Halls Gap":"Pump track, off-leash dog park, equipment hire, Grampians walks"};
+ "Port Campbell":"play bbq kitchen pets",
+ "Mount Buffalo":"play bbq kitchen fire pets",
+ "Halls Gap":"play jump bbq kitchen fire pets",
+ "Grampians":"play bbq kitchen pets",
+ "Warrnambool":"heated splash play jump courts games bbq kitchen wifi"};
+const EXTRA={
+ "Ballarat (Villa)":"300 m from Sovereign Hill, sensory room, kids club, bike hire",
+ "Red Cliffs":"Pizza oven, café and bar",
+ "Apollo Bay":"Beachside, Great Ocean Rd walks, surf hire nearby",
+ "Torquay":"Bells Beach surfing nearby, outdoor cinema",
+ "Mornington Peninsula":"Flying fox, pump track, climbing frame",
+ "Taggerty":"Powered bell tent riverfront, campfire, Black Spur forest walks",
+ "Phillip Island (PL)":"Penguin parade 15 min, Seal Rocks nearby",
+ "Phillip Island (NRMA)":"Beachfront, penguin parade nearby, kids splash park",
+ "Mildura":"Water slide, pizza oven",
+ "Wangaratta":"River swimming nearby, town centre walk",
+ "Ballarat (NRMA)":"Sovereign Hill nearby, sensory room, kids club",
+ "Port Campbell":"12 Apostles 5 min drive, ocean views, London Bridge",
+ "Mount Buffalo":"Alpine hiking, waterfalls, Lake Catani swimming",
+ "Halls Gap":"Pump track, off-leash dog park, Grampians walks",
+ "Grampians":"Mackenzie Falls, wildlife, rock art walks",
+ "Warrnambool":"Lady Bay beach, Flagstaff Hill, whale watching Jul–Oct"};
 P.forEach(p=>{p.f=new Set(FAC[p.t].split(" "));p.extra=EXTRA[p.t]||"";});
 const msi=k=>`<span class="ms" aria-hidden="true">${k}</span>`;
 P.forEach(p=>{const w=WATER[p.t];p.w={type:w[0],name:w[1],km:w[2],note:w[3]};});
 const waterTxt=w=>w.km===0?(w.note||"on the water"):(w.note&&w.km<=1?w.note:"~"+w.km+" km"+(w.note?" · "+w.note:""));
 const km=(a,b)=>{const R=6371,r=x=>x*Math.PI/180,dl=r(b.lat-a.lat),dg=r(b.lng-a.lng);
   const h=Math.sin(dl/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dg/2)**2;return Math.round(2*R*Math.asin(Math.sqrt(h)));};
-P.forEach((p,i)=>{p.id="p"+i;p.dc=km(ORIGINS.clyde,p);p.dw=km(ORIGINS.tarneit,p);p.brand=p.brand||"BIG4";p.big4=p.url||B+p.b;
+P.forEach((p,i)=>{p.id="p"+i;p.dc=km(ORIGINS.clyde,p);p.dw=km(ORIGINS.tarneit,p);p.brand=p.brand||"BIG4";p.big4=p.url||(B+p.b);
   p.gmap="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.n+" holiday park, "+p.t+" VIC");});
 
-const NIGHTS=4;
-const DEF={grp:"all",pool:true,budget:2000};
+const NIGHTS=3;
+const DEF={grp:"all",pool:true,budget:800};
 const S={...DEF,byPrice:true,byDist:false,from:"clyde",hl:null,feats:new Set(),cmp:[]};
 const MAXCMP=4;
 const fmt=v=>"$"+Math.round(v).toLocaleString("en-AU");
@@ -290,7 +305,7 @@ $("sPrice").addEventListener("click",()=>{S.byPrice=!S.byPrice;render();});
 $("sDist").addEventListener("click",()=>{S.byDist=!S.byDist;render();});
 $("from").addEventListener("change",e=>{S.from=e.target.value;render();});
 $("fbtn").addEventListener("click",()=>{const f=$("filters");f.hidden=!f.hidden;$("fbtn").setAttribute("aria-expanded",!f.hidden);});
-$("reset").addEventListener("click",()=>{Object.assign(S,DEF);S.feats.clear();$("budget").value=2000;setSeg("grp","grp");render();});
+$("reset").addEventListener("click",()=>{Object.assign(S,DEF);S.feats.clear();$("budget").value=800;setSeg("grp","grp");render();});
 $("featf").innerHTML=FEAT.map(([k,ic,l])=>`<button class="chip" data-f="${k}" aria-pressed="false">${msi(ic)}${l}</button>`).join("");
 $("featf").addEventListener("click",e=>{const b=e.target.closest("button[data-f]");if(!b)return;const k=b.dataset.f;S.feats.has(k)?S.feats.delete(k):S.feats.add(k);render();});
 $("list").addEventListener("click",e=>{const b=e.target.closest(".cmpbtn");if(!b)return;const id=b.dataset.id,i=S.cmp.indexOf(id);
@@ -303,7 +318,7 @@ $("dclose").addEventListener("click",closeDlg);
 $("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeDlg();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("overlay").hidden)closeDlg();});
 
-function visible(){return P.filter(p=>(S.grp==="all"||p.g===S.grp)&&(!S.pool||p.pool)&&(S.budget>=2000||p.c<=S.budget)&&[...S.feats].every(f=>p.f.has(f)));}
+function visible(){return P.filter(p=>(S.grp==="all"||p.g===S.grp)&&(!S.pool||p.pool)&&(S.budget>=800||p.c<=S.budget)&&[...S.feats].every(f=>p.f.has(f)));}
 
 function buildCompare(){
   const ps=S.cmp.map(id=>P.find(p=>p.id===id));
@@ -311,9 +326,9 @@ function buildCompare(){
   const numRow=(label,fn,show,low=true)=>{const vals=ps.map(fn),b=best(vals,low);
     return `<tr><th scope="row">${label}</th>${ps.map((p,i)=>`<td class="${b[i]?"best":""}">${show(p)}</td>`).join("")}</tr>`;};
   const sec=t=>`<tr class="sec"><th scope="rowgroup" colspan="${ps.length+1}">${t}</th></tr>`;
-  let h=`<thead><tr><th>Park</th>${ps.map(p=>`<th>${p.n.replace("BIG4 ","")}<span class="sm">${p.g}</span></th>`).join("")}</tr></thead><tbody>`;
-  h+=sec("Price · 4 guests");
-  h+=numRow("Cabin per night",p=>p.c,p=>nightly(p.c)+`<span class="sm">${fmt(p.c)} for 4 nights</span>`);
+  let h=`<thead><tr><th>Park</th>${ps.map(p=>`<th>${p.n.replace(/^(BIG4|NRMA|Discovery) /,"")}<span class="sm">${p.g}</span></th>`).join("")}</tr></thead><tbody>`;
+  h+=sec("Price · 3 nights");
+  h+=numRow("Cabin per night",p=>p.c,p=>nightly(p.c)+`<span class="sm">${fmt(p.c)} for 3 nights</span>`);
   h+=sec("Getting there");
   h+=numRow("From Clyde",p=>p.dc,p=>"~"+p.dc+" km");
   h+=numRow("From Tarneit",p=>p.dw,p=>"~"+p.dw+" km");
@@ -323,7 +338,7 @@ function buildCompare(){
   h+=numRow("Facility count",p=>p.f.size,p=>p.f.size+" of "+FEAT.length,false);
   FEAT.forEach(([k,ic,l])=>{h+=`<tr><th scope="row">${msi(ic)} ${l}</th>${ps.map(p=>`<td class="${p.f.has(k)?"yes":"no"}">${p.f.has(k)?"✓":"–"}</td>`).join("")}</tr>`;});
   h+=`<tr><th scope="row">Also</th>${ps.map(p=>`<td>${p.extra||"–"}</td>`).join("")}</tr>`;
-  h+=`<tr><th scope="row">Links</th>${ps.map(p=>`<td><a href="${p.big4}" target="_blank" rel="noopener">${p.brand} photos ↗</a><br><a href="${p.gmap}" target="_blank" rel="noopener">Google Maps ↗</a></td>`).join("")}</tr>`;
+  h+=`<tr><th scope="row">Links</th>${ps.map(p=>`<td><a href="${p.big4}" target="_blank" rel="noopener">${p.brand} page ↗</a><br><a href="${p.gmap}" target="_blank" rel="noopener">Google Maps ↗</a></td>`).join("")}</tr>`;
   $("cmptable").innerHTML=h+"</tbody>";
 }
 function sorted(v){
@@ -339,11 +354,11 @@ function sorted(v){
 function render(){
   $("sPrice").setAttribute("aria-pressed",S.byPrice);$("sDist").setAttribute("aria-pressed",S.byDist);
   $("pool").setAttribute("aria-pressed",S.pool);
-  $("budgetOut").textContent=fmt(S.budget)+(S.budget>=2000?"+":"");
-  const pl="cabin price", fromN=ORIGINS[S.from].name;
-  $("sortNote").textContent=S.byPrice&&S.byDist?`Best balance of ${pl} and distance from ${fromN}, weighted equally.`
-    :S.byPrice?`Lowest ${pl} first.`:S.byDist?`Closest to ${fromN} first.`:"Alphabetical. Pick Price or Distance to rank.";
-  const n=(S.grp!==DEF.grp)+(S.pool)+(S.budget<2000)+S.feats.size;
+  $("budgetOut").textContent=fmt(S.budget)+(S.budget>=800?"+":"");
+  const fromN=ORIGINS[S.from].name;
+  $("sortNote").textContent=S.byPrice&&S.byDist?`Best balance of cabin price and distance from ${fromN}, weighted equally.`
+    :S.byPrice?`Lowest cabin price first.`:S.byDist?`Closest to ${fromN} first.`:"Alphabetical. Pick Price or Distance to rank.";
+  const n=(S.grp!==DEF.grp)+(S.pool)+(S.budget<800)+S.feats.size;
   document.querySelectorAll("#featf button").forEach(b=>b.setAttribute("aria-pressed",S.feats.has(b.dataset.f)));
   const bar=$("cmpbar"),full=S.cmp.length>=MAXCMP;
   bar.hidden=!S.cmp.length;document.body.classList.toggle("has-bar",!!S.cmp.length);
@@ -357,7 +372,7 @@ function render(){
   if(!v.length)sm.innerHTML="";else{
     const cc=v.reduce((a,b)=>a.c<b.c?a:b),fm=v.reduce((a,b)=>b.f.size>a.f.size?b:a),cl=v.reduce((a,b)=>dist(a)<dist(b)?a:b);
     const t=[];
-    t.push(["Cheapest cabin",nightly(cc.c)+"/night",fmt(cc.c)+" for 4 nights · "+cc.t]);
+    t.push(["Cheapest cabin",nightly(cc.c)+"/night",fmt(cc.c)+" for 3 nights · "+cc.t]);
     t.push(["Most facilities",fm.f.size+" of "+FEAT.length,fm.t]);
     t.push(["Closest to "+fromN,"~"+dist(cl)+" km",cl.t]);
     sm.innerHTML=t.map(x=>`<div class="stat"><small>${x[0]}</small><b>${x[1]}</b><em>${x[2]}</em></div>`).join("");}
@@ -376,7 +391,7 @@ function render(){
       <div class="feats">${FEAT.filter(f=>p.f.has(f[0])).map(([k,ic,l])=>`<span class="feat${S.feats.has(k)?" match":""}">${msi(ic)}${l}</span>`).join("")}</div>
       <div class="links">
         <button class="cmpbtn" data-id="${p.id}" aria-pressed="${S.cmp.includes(p.id)}" ${!S.cmp.includes(p.id)&&full?"disabled title='You can compare up to 4 parks'":""}>${msi(S.cmp.includes(p.id)?"check_box":"check_box_outline_blank")}${S.cmp.includes(p.id)?"Added to compare":"Compare"}</button>
-        <a class="lnk b4" href="${p.big4}" target="_blank" rel="noopener">${ICON.cam}Photos on ${p.brand}</a>
+        <a class="lnk b4" href="${p.big4}" target="_blank" rel="noopener">${ICON.cam}${p.brand} page</a>
         <a class="lnk gm" href="${p.gmap}" target="_blank" rel="noopener">${ICON.pin}Google Maps</a></div>
     </article>`;}).join("");
   drawMap(v);
@@ -396,12 +411,13 @@ function drawMap(v){
   Object.entries(ORIGINS).forEach(([k,o])=>{const on=k===S.from,x=X(o.lng),y=Y(o.lat);
     h+=`<rect x="${x-6}" y="${y-6}" width="12" height="12" rx="2" fill="${on?c('--ink'):c('--panel')}" stroke="${c('--ink')}" stroke-width="2"/>
       <text x="${k==="tarneit"?x-11:x+10}" y="${k==="tarneit"?y-6:y+16}" text-anchor="${k==="tarneit"?"end":"start"}" font-size="12" font-weight="600" fill="${c('--ink')}" ${F}>${o.name}</text>`;});
-  const right=new Set(["Red Cliffs","Mildura","Swan Hill","Kerang","Ballarat","Shepparton","Wangaratta","Porepunkah","Traralgon","Torquay","Braybrook","Halls Gap"]);
+  const right=new Set(["Red Cliffs","Mildura","Grampians","Halls Gap","Warrnambool","Port Campbell","Apollo Bay","Ballarat (Villa)","Ballarat (NRMA)","Taggerty","Wangaratta"]);
+  const dyMap={"Phillip Island (NRMA)":14,"Phillip Island (PL)":-8,"Grampians":14,"Halls Gap":-8,"Ballarat (NRMA)":14,"Ballarat (Villa)":-8,"Mount Buffalo":-10};
   P.forEach(p=>{const on=ids.has(p.id),x=X(p.lng),y=Y(p.lat),col=p.g==="Regional"?c('--sky'):p.g==="Premium"?c('--gum'):p.g==="Non-BIG4"?c('--plum'):c('--sun');
-    const r=S.hl===p.id?10:7,dy={Mildura:-10,"Red Cliffs":14,Inverloch:16,Wonthaggi:-8,"Ballarat (NRMA)":16,Braybrook:-8}[p.t]??4,rt=right.has(p.t);
+    const r=S.hl===p.id?10:7,dy=dyMap[p.t]??4,rt=right.has(p.t);
     h+=`<g class="dot${on?"":" dim"}" data-id="${p.id}" tabindex="${on?0:-1}" role="button" aria-label="${p.n}">
       <circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${c('--panel')}" stroke-width="2"/>
-      <text x="${rt?x+11:x-11}" y="${y+dy}" text-anchor="${rt?"start":"end"}" font-size="12" fill="${c('--ink')}" ${F}>${p.t}${on?" · "+nightly(price(p))+"/nt":""}</text></g>`;});
+      <text x="${rt?x+11:x-11}" y="${y+dy}" text-anchor="${rt?"start":"end"}" font-size="11" fill="${c('--ink')}" ${F}>${p.t}${on?" · "+nightly(price(p))+"/nt":""}</text></g>`;});
   h+=`<g font-size="11" ${F} fill="${c('--muted')}">
     <circle cx="30" cy="440" r="5" fill="${c('--sky')}"/><text x="40" y="444">Regional</text>
     <circle cx="110" cy="440" r="5" fill="${c('--gum')}"/><text x="120" y="444">Premium</text>
@@ -416,5 +432,4 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render);
 new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 render();
 </script>
-
 </body></html>
