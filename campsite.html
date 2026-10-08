@@ -1,0 +1,435 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mad House Feb–Mar 2027 Shortlisted Campsite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400,0,0&display=block">
+<style>
+:root{
+  --bg:#f3f6f4; --panel:#ffffff; --ink:#15231d; --muted:#5d6b64; --line:#d9e2dd;
+  --gum:#1f6b52; --gum-soft:#dcefe6; --sky:#2f74c0; --sky-soft:#e1ecf8; --sun:#c98a10;
+  --warn:#b4432f; --warn-soft:#f8e3de; --plum:#7a4a9e; --on-gum:#ffffff;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Figtree",ui-sans-serif,system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1714; --panel:#17221d; --ink:#e7efea; --muted:#9db0a6; --line:#2a3a33;
+  --gum:#5cc69c; --gum-soft:#1d3a2f; --sky:#6ea7e6; --sky-soft:#1b2c40; --sun:#e6aa3a;
+  --warn:#ee8a76; --warn-soft:#3a201b; --plum:#c49be0; --on-gum:#0f1714; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1714; --panel:#17221d; --ink:#e7efea; --muted:#9db0a6; --line:#2a3a33;
+  --gum:#5cc69c; --gum-soft:#1d3a2f; --sky:#6ea7e6; --sky-soft:#1b2c40; --sun:#e6aa3a;
+  --warn:#ee8a76; --warn-soft:#3a201b; --plum:#c49be0; --on-gum:#0f1714; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:grid;gap:16px}
+header h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,36px);margin:0;text-wrap:balance;letter-spacing:-.01em}
+header p{margin:4px 0 0;color:var(--muted)}
+.toolbar{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between}
+.sortgrp{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--gum);border-color:var(--gum);color:var(--on-gum)}
+.chip svg,.fbtn svg,.lnk svg{width:15px;height:15px;flex:none}
+.fbtn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.fbtn[aria-expanded="true"]{border-color:var(--gum);color:var(--gum)}
+.badge{background:var(--gum);color:var(--on-gum);font-size:11px;border-radius:999px;padding:0 7px;line-height:18px;font-variant-numeric:tabular-nums}
+.sortnote{font-size:12px;color:var(--muted);flex-basis:100%}
+.filters{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end}
+.ctl{display:grid;gap:6px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,[role=button]:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+select{font:inherit;font-size:13px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+input[type=range]{width:180px;accent-color:var(--gum)}
+.budget-out{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);text-transform:none;letter-spacing:0}
+.reset{font:inherit;font-size:13px;background:none;border:none;color:var(--sky);cursor:pointer;padding:6px 0;text-decoration:underline}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.stat small{display:block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat b{font-family:var(--display);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.stat em{font-style:normal;color:var(--muted);font-size:13px;display:block}
+.main{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.mapbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (max-width:860px){.mapbox{position:static}}
+.mapbox h2,.listhead h2{font-family:var(--display);font-size:17px;font-weight:600;margin:0}
+.mapbox p{margin:2px 0 8px;font-size:12px;color:var(--muted)}
+svg.map{width:100%;height:auto;display:block}
+.dot{cursor:pointer}
+.dot.dim{opacity:.18}
+.list{display:grid;gap:10px;margin-top:10px}
+.listhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.listhead span{color:var(--muted);font-size:13px}
+.park{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:9px;scroll-margin-top:16px}
+.park.hl{border-color:var(--gum);box-shadow:0 0 0 2px var(--gum-soft)}
+.pname{font-weight:600;font-size:16px;min-width:0}
+.pname .rank{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:500;margin-right:6px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:3px}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--gum-soft);color:var(--gum)}
+.tag.no{background:var(--warn-soft);color:var(--warn)}
+.tag.grp{background:var(--sky-soft);color:var(--sky)}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.lnk{font-size:13px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;border:1px solid var(--line);color:var(--ink)}
+.lnk:hover{border-color:var(--gum)}
+.lnk.b4 svg{color:var(--gum)} .lnk.gm svg{color:var(--sky)}
+.bars{display:grid;gap:5px}
+.bar{display:grid;grid-template-columns:44px minmax(0,1fr) 112px;gap:8px;align-items:center;font-size:13px}
+.val .tot{display:block;font-size:11px;font-weight:400;color:var(--muted);line-height:1.2}
+.bar label{color:var(--muted)}
+.track{height:10px;background:var(--bg);border-radius:5px;overflow:hidden}
+.fill{height:100%;border-radius:0 5px 5px 0;transition:width .3s}
+.fill.c{background:var(--gum)} .fill.s{background:var(--sun)}
+.val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.val small{font-weight:400;color:var(--muted)}
+.dist{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;font-variant-numeric:tabular-nums}
+.dist span{color:var(--muted)} .dist b{font-weight:600;color:var(--ink)}
+.dist .sel b{color:var(--gum)}
+.water{display:flex;gap:7px;align-items:flex-start;font-size:13px;color:var(--muted)}
+.water svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--sky)}
+.water.beach svg{color:var(--sun)}
+.water b{color:var(--ink);font-weight:600}
+.empty{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted)}
+.ms{font-family:"Material Symbols Outlined";font-weight:normal;font-style:normal;font-size:17px;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;-webkit-font-feature-settings:"liga";font-feature-settings:"liga";-webkit-font-smoothing:antialiased;display:inline-block;width:17px;overflow:hidden;flex:none}
+.feats{display:flex;flex-wrap:wrap;gap:6px}
+.feat{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 9px 3px 7px;border-radius:999px;background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.feat .ms{color:var(--gum)}
+.feat.match{border-color:var(--gum);background:var(--gum-soft)}
+.cmpbtn{font:inherit;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.cmpbtn[aria-pressed="true"]{background:var(--gum);border-color:var(--gum);color:var(--on-gum)}
+.cmpbtn:disabled{opacity:.4;cursor:not-allowed}
+.cmpbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--panel);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;box-shadow:0 -6px 20px rgba(0,0,0,.08)}
+.cmpbar .names{font-size:13px;color:var(--muted);min-width:0;flex:1 1 200px;max-width:560px}
+.cmpbar .names b{color:var(--ink)}
+.go{font:inherit;font-size:14px;font-weight:600;padding:8px 16px;border-radius:999px;border:none;background:var(--gum);color:var(--on-gum);cursor:pointer}
+.go:disabled{opacity:.45;cursor:not-allowed}
+.ghost{font:inherit;font-size:13px;background:none;border:none;color:var(--sky);cursor:pointer;text-decoration:underline}
+.overlay{position:fixed;inset:0;z-index:30;background:rgba(10,20,15,.55);display:flex;align-items:flex-start;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) 12px calc(16px + env(safe-area-inset-bottom,0px));overflow-y:auto}
+.dialog{background:var(--panel);border-radius:14px;border:1px solid var(--line);width:100%;max-width:1000px;padding:16px;display:grid;gap:12px}
+.dhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.dhead h2{font-family:var(--display);font-size:20px;margin:0}
+.close{font:inherit;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;font-variant-numeric:tabular-nums}
+.cmp th,.cmp td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.cmp thead th{font-size:14px;font-weight:600;background:var(--bg)}
+.cmp tbody th{font-weight:500;color:var(--muted);position:sticky;left:0;background:var(--panel);width:140px;z-index:1}
+.cmp thead th:first-child{position:sticky;left:0;z-index:2}
+.cmp tr.sec th{background:var(--bg);color:var(--ink);font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
+.cmp td.best{background:var(--gum-soft);color:var(--gum);font-weight:600}
+.cmp .yes{color:var(--gum);font-weight:600} .cmp .no{color:var(--muted)}
+.cmp .sm{display:block;font-size:11px;color:var(--muted);font-weight:400}
+.dnote{font-size:12px;color:var(--muted);margin:0}
+body.has-bar .wrap{padding-bottom:110px}
+footer{font-size:12px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Mad House Feb–Mar 2027 Shortlisted Campsite</h1>
+    <p>16 parks · cabin prices for 3 nights (26 Feb – 1 Mar). Tap a park on the map to jump to it.</p>
+  </header>
+
+  <section class="toolbar" aria-label="Sort and filter">
+    <div class="sortgrp">
+      <span class="lbl">Sort by</span>
+      <button class="chip" id="sPrice" aria-pressed="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M17 7H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg>Cabin price</button>
+      <button class="chip" id="sDist" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Distance</button>
+      <label class="lbl" for="from">from</label>
+      <select id="from"><option value="clyde">Clyde</option><option value="tarneit">Tarneit</option></select>
+      <span class="sortnote" id="sortNote"></span>
+    </div>
+    <button class="fbtn" id="fbtn" aria-expanded="false" aria-controls="filters">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/></svg>
+      Filters <span class="badge" id="fcount">1</span></button>
+  </section>
+
+  <section class="filters" id="filters" hidden aria-label="Filters">
+    <div class="ctl"><span class="lbl">Area</span>
+      <div class="seg" id="grp">
+        <button class="chip" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" data-v="Regional" aria-pressed="false">Regional</button>
+        <button class="chip" data-v="Premium" aria-pressed="false">Premium</button>
+        <button class="chip" data-v="Great Ocean Rd" aria-pressed="false">Great Ocean Rd</button>
+        <button class="chip" data-v="Non-BIG4" aria-pressed="false">Non-BIG4</button>
+      </div></div>
+    <div class="ctl"><span class="lbl">Must have</span>
+      <div class="seg"><button class="chip" id="pool" aria-pressed="true">Pool / splash park</button></div></div>
+    <div class="ctl" style="flex-basis:100%"><span class="lbl">Must also have</span>
+      <div class="seg" id="featf"></div></div>
+    <div class="ctl"><span class="lbl">Max cabin total <span class="budget-out" id="budgetOut">$800+</span></span>
+      <input type="range" id="budget" min="400" max="800" step="25" value="800" aria-label="Maximum cabin price"></div>
+    <button class="reset" id="reset">Reset filters</button>
+  </section>
+
+  <section class="summary" id="summary" aria-live="polite"></section>
+
+  <div class="main">
+    <aside class="mapbox">
+      <h2>Where they are</h2>
+      <p>Approximate positions. Distances are straight-line, not driving.</p>
+      <svg class="map" id="map" viewBox="0 0 640 460" role="img" aria-label="Map of park locations across Victoria with Clyde and Tarneit marked"></svg>
+    </aside>
+    <section>
+      <div class="listhead"><h2>Parks</h2><span id="count"></span></div>
+      <div class="list" id="list"></div>
+    </section>
+  </div>
+
+  <footer>Cabin prices as supplied, for 3 nights (26 Feb – 1 Mar 2027). Water distances are approximate. Photo links open each park's booking or info page. Facilities are as listed on those pages.</footer>
+</div>
+
+<div class="cmpbar" id="cmpbar" hidden>
+  <div class="names" id="cmpnames"></div>
+  <button class="ghost" id="cmpclear">Clear</button>
+  <button class="go" id="cmpgo">Compare</button>
+</div>
+
+<div class="overlay" id="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="dtitle">
+  <div class="dialog">
+    <div class="dhead"><h2 id="dtitle">Side-by-side</h2><button class="close" id="dclose">Close</button></div>
+    <div class="tscroll"><table class="cmp" id="cmptable"></table></div>
+    <p class="dnote">Highlighted cells are the best of the parks you picked. Cabin prices are for 3 nights; distances are straight-line.</p>
+  </div>
+</div>
+
+<script>
+const ORIGINS={clyde:{name:"Clyde",lat:-38.13,lng:145.33},tarneit:{name:"Tarneit",lat:-37.84,lng:144.67}};
+const B="https://www.big4.com.au/caravan-parks/vic/";
+const P=[
+ {n:"NRMA Ballarat (Villa)",t:"Ballarat (Villa)",g:"Non-BIG4",brand:"NRMA",c:570,pool:true,lat:-37.575,lng:143.87,url:"https://www.nrmaparksandresorts.com.au/ballarat/"},
+ {n:"BIG4 Red Cliffs",t:"Red Cliffs",g:"Regional",c:460,pool:false,lat:-34.31,lng:142.19,b:"murray/red-cliffs"},
+ {n:"BIG4 Apollo Bay Pisces",t:"Apollo Bay",g:"Great Ocean Rd",c:686,pool:false,lat:-38.75,lng:143.67,url:"https://www.big4.com.au/caravan-parks/vic/great-ocean-road/apollo-bay-pisces?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=2&accommSubType=cabin"},
+ {n:"BIG4 Ingenia Torquay",t:"Torquay",g:"Great Ocean Rd",c:530,pool:true,lat:-38.33,lng:144.32,url:"https://www.big4.com.au/caravan-parks/vic/great-ocean-road/ingenia-holidays-torquay/accommodation/airstream?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Mornington Peninsula",t:"Mornington Peninsula",g:"Premium",c:490,pool:true,lat:-38.37,lng:144.95,url:"https://www.big4.com.au/caravan-parks/vic/mornington-peninsula/mornington-peninsula-holiday-park?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Taggerty Holiday Park",t:"Taggerty",g:"Regional",c:432,pool:true,lat:-37.32,lng:145.72,url:"https://www.big4.com.au/caravan-parks/vic/victorias-high-country/taggerty-holiday-park?query=Victoria&start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Phillip Island Park Lane",t:"Phillip Island (PL)",g:"Premium",c:467,pool:false,lat:-38.49,lng:145.24,url:"https://www.big4.com.au/caravan-parks/vic/phillip-island/phillip-island-park-lane-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"NRMA Phillip Island Beachfront",t:"Phillip Island (NRMA)",g:"Non-BIG4",brand:"NRMA",c:647,pool:true,splash:true,lat:-38.51,lng:145.27,url:"https://www.big4.com.au/caravan-parks/vic/phillip-island/nrma-phillip-island-beachfront-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Mildura Getaway",t:"Mildura",g:"Regional",c:417,pool:true,splash:true,lat:-34.20,lng:142.14,url:"https://www.big4.com.au/caravan-parks/vic/murray/mildura-getaway-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"BIG4 Wangaratta North Cedars",t:"Wangaratta",g:"Regional",c:456,pool:true,lat:-36.35,lng:146.31,url:"https://www.big4.com.au/caravan-parks/vic/victorias-high-country/wangaratta-north-cedars-holiday-park?start=2027-02-26&end=2027-03-01&adults=2&kids=1&accommSubType=cabin"},
+ {n:"NRMA Ballarat Holiday Park",t:"Ballarat (NRMA)",g:"Non-BIG4",brand:"NRMA",c:480,pool:true,lat:-37.585,lng:143.86,url:"https://www.nrmaparksandresorts.com.au/ballarat/accommodation-and-sites/cabins-and-villas/"},
+ {n:"NRMA Port Campbell",t:"Port Campbell",g:"Non-BIG4",brand:"NRMA",c:600,pool:false,lat:-38.62,lng:142.99,url:"https://www.nrmaparksandresorts.com.au/port-campbell/book-now/"},
+ {n:"Discovery Mount Buffalo",t:"Mount Buffalo",g:"Non-BIG4",brand:"Discovery",c:780,pool:false,lat:-36.73,lng:146.80,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/high-country/mount-buffalo?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VBUF"},
+ {n:"Discovery Halls Gap",t:"Halls Gap",g:"Non-BIG4",brand:"Discovery",c:480,pool:true,lat:-37.14,lng:142.52,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/western-grampians/halls-gap?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VHAG"},
+ {n:"Discovery Grampians",t:"Grampians",g:"Non-BIG4",brand:"Discovery",c:423,pool:false,lat:-37.07,lng:142.49,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/western-grampians/grampians?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VGRA"},
+ {n:"Discovery Warrnambool",t:"Warrnambool",g:"Non-BIG4",brand:"Discovery",c:614,pool:true,lat:-38.38,lng:142.49,url:"https://www.discoveryholidayparks.com.au/caravan-parks/victoria/great-ocean-road/warrnambool?arrive=2027-02-25&depart=2027-02-28&adults=2&kids=1&accommodationType=cabin&propertyCode=VWAR"}
+];
+const WATER={
+ "Ballarat (Villa)":["lake","Lake Wendouree",4,"lake, no river or beach nearby"],
+ "Red Cliffs":["river","Murray River",4,null],
+ "Apollo Bay":["beach","Apollo Bay beach",0,"beachside"],
+ "Torquay":["beach","Torquay beaches",1,"under 1 km"],
+ "Mornington Peninsula":["beach","Frankston South beaches",3,null],
+ "Taggerty":["river","Taggerty River",0,"bell tent riverfront"],
+ "Phillip Island (PL)":["beach","Phillip Island beaches",2,null],
+ "Phillip Island (NRMA)":["beach","Phillip Island beach",0,"beachfront"],
+ "Mildura":["river","Murray River",4,null],
+ "Wangaratta":["river","Ovens River",3,null],
+ "Ballarat (NRMA)":["lake","Lake Wendouree",4,"lake, no river or beach nearby"],
+ "Port Campbell":["beach","Port Campbell beach",1,"near 12 Apostles"],
+ "Mount Buffalo":["lake","Lake Catani",3,"alpine lake"],
+ "Halls Gap":["lake","Lake Bellfield",4,"Stony Creek runs through town"],
+ "Grampians":["lake","Lake Bellfield",5,null],
+ "Warrnambool":["beach","Lady Bay beach",2,"whale watching season"]
+};
+const FEAT=[
+ ["heated","pool","Heated pool"],["splash","water_drop","Splash / water play"],["spa","hot_tub","Spa"],
+ ["play","toys","Playground"],["jump","sports_gymnastics","Jumping pillow"],["golf","golf_course","Mini golf"],
+ ["karts","pedal_bike","Pedal karts"],["courts","sports_tennis","Sports courts"],["games","sports_esports","Games room"],
+ ["bbq","outdoor_grill","BBQ"],["kitchen","countertops","Camp kitchen"],["fire","local_fire_department","Fire pit"],
+ ["pets","pets","Pet friendly"],["wifi","wifi","Wi-Fi"]];
+const FAC={
+ "Ballarat (Villa)":"heated spa play jump karts courts games bbq kitchen wifi",
+ "Red Cliffs":"play bbq kitchen fire pets wifi",
+ "Apollo Bay":"heated play jump golf courts games bbq kitchen wifi",
+ "Torquay":"spa play jump golf courts games bbq kitchen pets wifi",
+ "Mornington Peninsula":"play jump karts courts",
+ "Taggerty":"play bbq kitchen fire pets",
+ "Phillip Island (PL)":"play jump golf karts courts games bbq kitchen pets wifi",
+ "Phillip Island (NRMA)":"heated splash play jump courts games bbq kitchen wifi",
+ "Mildura":"splash play jump karts courts games bbq kitchen wifi",
+ "Wangaratta":"play games bbq kitchen pets wifi",
+ "Ballarat (NRMA)":"heated spa play jump karts courts games bbq kitchen wifi",
+ "Port Campbell":"play bbq kitchen pets",
+ "Mount Buffalo":"play bbq kitchen fire pets",
+ "Halls Gap":"play jump bbq kitchen fire pets",
+ "Grampians":"play bbq kitchen pets",
+ "Warrnambool":"heated splash play jump courts games bbq kitchen wifi"};
+const EXTRA={
+ "Ballarat (Villa)":"300 m from Sovereign Hill, sensory room, kids club, bike hire",
+ "Red Cliffs":"Pizza oven, café and bar",
+ "Apollo Bay":"Beachside, Great Ocean Rd walks, surf hire nearby",
+ "Torquay":"Bells Beach surfing nearby, outdoor cinema",
+ "Mornington Peninsula":"Flying fox, pump track, climbing frame",
+ "Taggerty":"Powered bell tent riverfront, campfire, Black Spur forest walks",
+ "Phillip Island (PL)":"Penguin parade 15 min, Seal Rocks nearby",
+ "Phillip Island (NRMA)":"Beachfront, penguin parade nearby, kids splash park",
+ "Mildura":"Water slide, pizza oven",
+ "Wangaratta":"River swimming nearby, town centre walk",
+ "Ballarat (NRMA)":"Sovereign Hill nearby, sensory room, kids club",
+ "Port Campbell":"12 Apostles 5 min drive, ocean views, London Bridge",
+ "Mount Buffalo":"Alpine hiking, waterfalls, Lake Catani swimming",
+ "Halls Gap":"Pump track, off-leash dog park, Grampians walks",
+ "Grampians":"Mackenzie Falls, wildlife, rock art walks",
+ "Warrnambool":"Lady Bay beach, Flagstaff Hill, whale watching Jul–Oct"};
+P.forEach(p=>{p.f=new Set(FAC[p.t].split(" "));p.extra=EXTRA[p.t]||"";});
+const msi=k=>`<span class="ms" aria-hidden="true">${k}</span>`;
+P.forEach(p=>{const w=WATER[p.t];p.w={type:w[0],name:w[1],km:w[2],note:w[3]};});
+const waterTxt=w=>w.km===0?(w.note||"on the water"):(w.note&&w.km<=1?w.note:"~"+w.km+" km"+(w.note?" · "+w.note:""));
+const km=(a,b)=>{const R=6371,r=x=>x*Math.PI/180,dl=r(b.lat-a.lat),dg=r(b.lng-a.lng);
+  const h=Math.sin(dl/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dg/2)**2;return Math.round(2*R*Math.asin(Math.sqrt(h)));};
+P.forEach((p,i)=>{p.id="p"+i;p.dc=km(ORIGINS.clyde,p);p.dw=km(ORIGINS.tarneit,p);p.brand=p.brand||"BIG4";p.big4=p.url||(B+p.b);
+  p.gmap="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.n+" holiday park, "+p.t+" VIC");});
+
+const NIGHTS=3;
+const DEF={grp:"all",pool:true,budget:800};
+const S={...DEF,byPrice:true,byDist:false,from:"clyde",hl:null,feats:new Set(),cmp:[]};
+const MAXCMP=4;
+const fmt=v=>"$"+Math.round(v).toLocaleString("en-AU");
+const nightly=v=>"$"+(Math.round(v/NIGHTS*100)/100).toLocaleString("en-AU",{minimumFractionDigits:v%NIGHTS?2:0,maximumFractionDigits:2});
+const dist=p=>S.from==="clyde"?p.dc:p.dw;
+const price=p=>p.c;
+const ICON={
+  wave:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 9c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg>',
+  drop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>',
+  cam:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>'};
+
+function setSeg(id,key){document.querySelectorAll("#"+id+" button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.v===S[key]));}
+["grp"].forEach(id=>document.querySelectorAll("#"+id+" button").forEach(b=>b.addEventListener("click",()=>{S[id]=b.dataset.v;setSeg(id,id);render();})));
+const $=id=>document.getElementById(id);
+$("pool").addEventListener("click",()=>{S.pool=!S.pool;render();});
+$("budget").addEventListener("input",e=>{S.budget=+e.target.value;render();});
+$("sPrice").addEventListener("click",()=>{S.byPrice=!S.byPrice;render();});
+$("sDist").addEventListener("click",()=>{S.byDist=!S.byDist;render();});
+$("from").addEventListener("change",e=>{S.from=e.target.value;render();});
+$("fbtn").addEventListener("click",()=>{const f=$("filters");f.hidden=!f.hidden;$("fbtn").setAttribute("aria-expanded",!f.hidden);});
+$("reset").addEventListener("click",()=>{Object.assign(S,DEF);S.feats.clear();$("budget").value=800;setSeg("grp","grp");render();});
+$("featf").innerHTML=FEAT.map(([k,ic,l])=>`<button class="chip" data-f="${k}" aria-pressed="false">${msi(ic)}${l}</button>`).join("");
+$("featf").addEventListener("click",e=>{const b=e.target.closest("button[data-f]");if(!b)return;const k=b.dataset.f;S.feats.has(k)?S.feats.delete(k):S.feats.add(k);render();});
+$("list").addEventListener("click",e=>{const b=e.target.closest(".cmpbtn");if(!b)return;const id=b.dataset.id,i=S.cmp.indexOf(id);
+  if(i>-1)S.cmp.splice(i,1);else if(S.cmp.length<MAXCMP)S.cmp.push(id);render();});
+$("cmpclear").addEventListener("click",()=>{S.cmp=[];render();});
+let lastFocus=null;
+$("cmpgo").addEventListener("click",()=>{lastFocus=document.activeElement;buildCompare();$("overlay").hidden=false;$("dclose").focus();});
+const closeDlg=()=>{$("overlay").hidden=true;if(lastFocus)lastFocus.focus();};
+$("dclose").addEventListener("click",closeDlg);
+$("overlay").addEventListener("click",e=>{if(e.target===$("overlay"))closeDlg();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("overlay").hidden)closeDlg();});
+
+function visible(){return P.filter(p=>(S.grp==="all"||p.g===S.grp)&&(!S.pool||p.pool)&&(S.budget>=800||p.c<=S.budget)&&[...S.feats].every(f=>p.f.has(f)));}
+
+function buildCompare(){
+  const ps=S.cmp.map(id=>P.find(p=>p.id===id));
+  const best=(vals,low=true)=>{const m=low?Math.min(...vals):Math.max(...vals);return vals.map(v=>v===m&&vals.filter(x=>x===m).length<vals.length);};
+  const numRow=(label,fn,show,low=true)=>{const vals=ps.map(fn),b=best(vals,low);
+    return `<tr><th scope="row">${label}</th>${ps.map((p,i)=>`<td class="${b[i]?"best":""}">${show(p)}</td>`).join("")}</tr>`;};
+  const sec=t=>`<tr class="sec"><th scope="rowgroup" colspan="${ps.length+1}">${t}</th></tr>`;
+  let h=`<thead><tr><th>Park</th>${ps.map(p=>`<th>${p.n.replace(/^(BIG4|NRMA|Discovery) /,"")}<span class="sm">${p.g}</span></th>`).join("")}</tr></thead><tbody>`;
+  h+=sec("Price · 3 nights");
+  h+=numRow("Cabin per night",p=>p.c,p=>nightly(p.c)+`<span class="sm">${fmt(p.c)} for 3 nights</span>`);
+  h+=sec("Getting there");
+  h+=numRow("From Clyde",p=>p.dc,p=>"~"+p.dc+" km");
+  h+=numRow("From Tarneit",p=>p.dw,p=>"~"+p.dw+" km");
+  h+=numRow("Nearest water",p=>p.w.km,p=>`${p.w.name}<span class="sm">${waterTxt(p.w)}</span>`);
+  h+=sec("Facilities");
+  h+=`<tr><th scope="row">Pool</th>${ps.map(p=>`<td class="${p.pool?"yes":"no"}">${p.pool?(p.splash?"✓ Pool + splash park":"✓"):"–"}</td>`).join("")}</tr>`;
+  h+=numRow("Facility count",p=>p.f.size,p=>p.f.size+" of "+FEAT.length,false);
+  FEAT.forEach(([k,ic,l])=>{h+=`<tr><th scope="row">${msi(ic)} ${l}</th>${ps.map(p=>`<td class="${p.f.has(k)?"yes":"no"}">${p.f.has(k)?"✓":"–"}</td>`).join("")}</tr>`;});
+  h+=`<tr><th scope="row">Also</th>${ps.map(p=>`<td>${p.extra||"–"}</td>`).join("")}</tr>`;
+  h+=`<tr><th scope="row">Links</th>${ps.map(p=>`<td><a href="${p.big4}" target="_blank" rel="noopener">${p.brand} page ↗</a><br><a href="${p.gmap}" target="_blank" rel="noopener">Google Maps ↗</a></td>`).join("")}</tr>`;
+  $("cmptable").innerHTML=h+"</tbody>";
+}
+function sorted(v){
+  if(S.byPrice&&S.byDist){
+    const pr=v.map(price),ds=v.map(dist),[p0,p1]=[Math.min(...pr),Math.max(...pr)],[d0,d1]=[Math.min(...ds),Math.max(...ds)];
+    const sc=p=>((price(p)-p0)/((p1-p0)||1))+((dist(p)-d0)/((d1-d0)||1));
+    return v.slice().sort((a,b)=>sc(a)-sc(b));}
+  if(S.byPrice)return v.slice().sort((a,b)=>price(a)-price(b)||dist(a)-dist(b));
+  if(S.byDist)return v.slice().sort((a,b)=>dist(a)-dist(b)||price(a)-price(b));
+  return v.slice().sort((a,b)=>a.n.localeCompare(b.n));
+}
+
+function render(){
+  $("sPrice").setAttribute("aria-pressed",S.byPrice);$("sDist").setAttribute("aria-pressed",S.byDist);
+  $("pool").setAttribute("aria-pressed",S.pool);
+  $("budgetOut").textContent=fmt(S.budget)+(S.budget>=800?"+":"");
+  const fromN=ORIGINS[S.from].name;
+  $("sortNote").textContent=S.byPrice&&S.byDist?`Best balance of cabin price and distance from ${fromN}, weighted equally.`
+    :S.byPrice?`Lowest cabin price first.`:S.byDist?`Closest to ${fromN} first.`:"Alphabetical. Pick Price or Distance to rank.";
+  const n=(S.grp!==DEF.grp)+(S.pool)+(S.budget<800)+S.feats.size;
+  document.querySelectorAll("#featf button").forEach(b=>b.setAttribute("aria-pressed",S.feats.has(b.dataset.f)));
+  const bar=$("cmpbar"),full=S.cmp.length>=MAXCMP;
+  bar.hidden=!S.cmp.length;document.body.classList.toggle("has-bar",!!S.cmp.length);
+  $("cmpnames").innerHTML=`<b>${S.cmp.length} of ${MAXCMP}</b> selected: `+S.cmp.map(id=>P.find(p=>p.id===id).t).join(", ")+(S.cmp.length<2?" · pick at least 2":"");
+  $("cmpgo").disabled=S.cmp.length<2;
+  $("fcount").textContent=n;$("fcount").hidden=!n;
+
+  const v=sorted(visible()), max=Math.max(...P.map(p=>p.c));
+  $("count").textContent=v.length+" of "+P.length+" shown";
+  const sm=$("summary");
+  if(!v.length)sm.innerHTML="";else{
+    const cc=v.reduce((a,b)=>a.c<b.c?a:b),fm=v.reduce((a,b)=>b.f.size>a.f.size?b:a),cl=v.reduce((a,b)=>dist(a)<dist(b)?a:b);
+    const t=[];
+    t.push(["Cheapest cabin",nightly(cc.c)+"/night",fmt(cc.c)+" for 3 nights · "+cc.t]);
+    t.push(["Most facilities",fm.f.size+" of "+FEAT.length,fm.t]);
+    t.push(["Closest to "+fromN,"~"+dist(cl)+" km",cl.t]);
+    sm.innerHTML=t.map(x=>`<div class="stat"><small>${x[0]}</small><b>${x[1]}</b><em>${x[2]}</em></div>`).join("");}
+
+  const L=$("list");
+  if(!v.length)L.innerHTML='<div class="empty">No parks match. Raise the budget or open Filters and clear one.</div>';
+  else L.innerHTML=v.map((p,i)=>{
+    const row=(lbl,val,cls)=>`<div class="bar"><label>${lbl}</label><div class="track"><div class="fill ${cls}" style="width:${val/max*100}%"></div></div><div class="val">${nightly(val)}<small>/night</small><span class="tot">${fmt(val)} total</span></div></div>`;
+    const poolTag=p.pool?`<span class="tag">${msi("pool")} ${p.splash?"Pool + splash":"Pool"}</span>`:`<span class="tag no">${msi("pool_off")} No pool</span>`;
+    return `<article class="park${S.hl===p.id?" hl":""}" id="${p.id}">
+      <div class="pname"><span class="rank">${i+1}</span>${p.n}
+        <div class="tags"><span class="tag grp">${p.g}</span>${poolTag}</div></div>
+      <div class="bars">${row("Cabin",p.c,"c")}</div>
+      <div class="dist"><span class="${S.from==="clyde"?"sel":""}">From Clyde <b>~${p.dc} km</b></span><span class="${S.from==="tarneit"?"sel":""}">From Tarneit <b>~${p.dw} km</b></span></div>
+      <div class="water ${p.w.type}">${ICON[p.w.type==="beach"?"wave":"drop"]}<span>Nearest ${p.w.type}: <b>${p.w.name}</b> · ${waterTxt(p.w)}</span></div>
+      <div class="feats">${FEAT.filter(f=>p.f.has(f[0])).map(([k,ic,l])=>`<span class="feat${S.feats.has(k)?" match":""}">${msi(ic)}${l}</span>`).join("")}</div>
+      <div class="links">
+        <button class="cmpbtn" data-id="${p.id}" aria-pressed="${S.cmp.includes(p.id)}" ${!S.cmp.includes(p.id)&&full?"disabled title='You can compare up to 4 parks'":""}>${msi(S.cmp.includes(p.id)?"check_box":"check_box_outline_blank")}${S.cmp.includes(p.id)?"Added to compare":"Compare"}</button>
+        <a class="lnk b4" href="${p.big4}" target="_blank" rel="noopener">${ICON.cam}${p.brand} page</a>
+        <a class="lnk gm" href="${p.gmap}" target="_blank" rel="noopener">${ICON.pin}Google Maps</a></div>
+    </article>`;}).join("");
+  drawMap(v);
+}
+
+function drawMap(v){
+  const svg=$("map"),ids=new Set(v.map(p=>p.id));
+  const X=lng=>(lng-141)/7*580+30, Y=lat=>(-lat-33.8)/5.2*420+20;
+  const cs=getComputedStyle(document.documentElement),c=k=>cs.getPropertyValue(k).trim(),F='font-family="Figtree,sans-serif"';
+  let h=`<rect width="640" height="460" rx="10" fill="${c('--bg')}"/>`;
+  for(let lng=142;lng<=147;lng++)h+=`<line x1="${X(lng)}" y1="10" x2="${X(lng)}" y2="450" stroke="${c('--line')}"/>`;
+  for(let lat=-35;lat>=-38;lat--)h+=`<line x1="10" y1="${Y(lat)}" x2="630" y2="${Y(lat)}" stroke="${c('--line')}"/>`;
+  h+=`<text x="${X(144.6)}" y="${Y(-38.95)}" font-size="12" fill="${c('--muted')}" text-anchor="middle" ${F}>Bass Strait</text>`;
+  h+=`<text x="${X(141.3)}" y="${Y(-34.05)}" font-size="11" fill="${c('--muted')}" ${F}>NSW border ↑</text>`;
+  const O=ORIGINS[S.from];
+  P.forEach(p=>{if(ids.has(p.id))h+=`<line x1="${X(O.lng)}" y1="${Y(O.lat)}" x2="${X(p.lng)}" y2="${Y(p.lat)}" stroke="${c('--line')}" stroke-dasharray="3 4"/>`;});
+  Object.entries(ORIGINS).forEach(([k,o])=>{const on=k===S.from,x=X(o.lng),y=Y(o.lat);
+    h+=`<rect x="${x-6}" y="${y-6}" width="12" height="12" rx="2" fill="${on?c('--ink'):c('--panel')}" stroke="${c('--ink')}" stroke-width="2"/>
+      <text x="${k==="tarneit"?x-11:x+10}" y="${k==="tarneit"?y-6:y+16}" text-anchor="${k==="tarneit"?"end":"start"}" font-size="12" font-weight="600" fill="${c('--ink')}" ${F}>${o.name}</text>`;});
+  const right=new Set(["Red Cliffs","Mildura","Grampians","Halls Gap","Warrnambool","Port Campbell","Apollo Bay","Ballarat (Villa)","Ballarat (NRMA)","Taggerty","Wangaratta"]);
+  const dyMap={"Phillip Island (NRMA)":14,"Phillip Island (PL)":-8,"Grampians":14,"Halls Gap":-8,"Ballarat (NRMA)":14,"Ballarat (Villa)":-8,"Mount Buffalo":-10};
+  P.forEach(p=>{const on=ids.has(p.id),x=X(p.lng),y=Y(p.lat),col=p.g==="Regional"?c('--sky'):p.g==="Premium"?c('--gum'):p.g==="Non-BIG4"?c('--plum'):c('--sun');
+    const r=S.hl===p.id?10:7,dy=dyMap[p.t]??4,rt=right.has(p.t);
+    h+=`<g class="dot${on?"":" dim"}" data-id="${p.id}" tabindex="${on?0:-1}" role="button" aria-label="${p.n}">
+      <circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="${c('--panel')}" stroke-width="2"/>
+      <text x="${rt?x+11:x-11}" y="${y+dy}" text-anchor="${rt?"start":"end"}" font-size="11" fill="${c('--ink')}" ${F}>${p.t}${on?" · "+nightly(price(p))+"/nt":""}</text></g>`;});
+  h+=`<g font-size="11" ${F} fill="${c('--muted')}">
+    <circle cx="30" cy="440" r="5" fill="${c('--sky')}"/><text x="40" y="444">Regional</text>
+    <circle cx="110" cy="440" r="5" fill="${c('--gum')}"/><text x="120" y="444">Premium</text>
+    <circle cx="190" cy="440" r="5" fill="${c('--sun')}"/><text x="200" y="444">Great Ocean Rd</text>
+    <circle cx="300" cy="440" r="5" fill="${c('--plum')}"/><text x="310" y="444">Non-BIG4</text></g>`;
+  svg.innerHTML=h;
+  svg.querySelectorAll(".dot").forEach(g=>{const go=()=>{if(g.classList.contains("dim"))return;S.hl=g.dataset.id;render();
+      const el=$(S.hl);if(el)el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});};
+    g.addEventListener("click",go);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});});
+}
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render);
+new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+render();
+</script>
+</body></html>

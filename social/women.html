@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Women Indicators — Tamil Nadu Social Hub</title>
+<link rel="stylesheet" href="../finance/css/finance.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../finance/js/i18n.js"></script>
+<style>
+  :root { --accent: #44BB66; }
+  body { background: #0A0A0A; color: #E8E8E0; font-family: 'Inter', sans-serif; margin: 0; }
+  .nav { background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .nav-brand { font-weight: 900; font-size: 0.85rem; color: #44BB66; text-decoration: none; padding: 0.9rem 0; }
+  .nav-links { display: flex; flex-wrap: wrap; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 0.9rem 0.8rem; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #44BB66; border-bottom-color: #44BB66; }
+  .lang-btn { background: rgba(68,187,102,0.1); border: 1px solid rgba(68,187,102,0.25); color: #44BB66; font-size: 0.72rem; font-weight: 700; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+  .page-hero { background: linear-gradient(135deg,#0d0d0d,#001a0d 60%,#0d0d0d); padding: 2.5rem 2rem 2rem; border-bottom: 1px solid #1a2a1a; }
+  .page-hero h1 { font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 900; color: #F5F5F0; margin: 0 0 0.4rem; }
+  .page-hero h1 span { color: #44BB66; }
+  .page-hero p { color: #AAA; max-width: 620px; font-size: 0.88rem; line-height: 1.7; margin: 0.4rem 0 0; }
+  .stats-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+  .stat-pill { background: rgba(68,187,102,0.07); border: 1px solid rgba(68,187,102,0.18); border-radius: 6px; padding: 0.8rem 1.2rem; }
+  .stat-pill .v { font-size: 1.6rem; font-weight: 900; color: #44BB66; }
+  .stat-pill .l { font-size: 0.62rem; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .section { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .section-title { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #44BB66; margin-bottom: 1.2rem; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .chart-box { background: #111; border: 1px solid #1e1e1e; border-radius: 8px; padding: 1.2rem; }
+  .chart-box h4 { font-size: 0.73rem; font-weight: 700; color: #AAA; text-transform: uppercase; letter-spacing: 0.09em; margin: 0 0 1rem; }
+  .chart-wrap { position: relative; height: 260px; }
+  .full-width { grid-column: 1 / -1; }
+  .src-note { font-size: 0.7rem; color: #444; margin-top: 0.8rem; }
+  .schemes-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 0.8rem; }
+  .scheme-card { background: #111; border: 1px solid #1a2a1a; border-radius: 8px; padding: 1.2rem; }
+  .scheme-card h4 { font-size: 0.8rem; font-weight: 800; color: #44BB66; margin: 0 0 0.4rem; }
+  .scheme-card .reach { font-size: 1.4rem; font-weight: 900; color: #F5F5F0; }
+  .scheme-card p { font-size: 0.72rem; color: #777; line-height: 1.6; margin: 0.3rem 0 0; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (max-width: 640px) { .chart-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand">← Social Hub</a>
+  <div class="nav-links">
+    <a href="index.html">Overview</a>
+    <a href="education.html">Education</a>
+    <a href="health.html">Health</a>
+    <a href="women.html" class="active">Women</a>
+    <a href="compare.html">State Compare</a>
+  </div>
+  <button class="lang-btn" onclick="if(window.cycleLang)cycleLang()">EN / TA / HI</button>
+</nav>
+
+<div class="page-hero">
+  <h1>Women Empowerment — <span>Tamil Nadu</span></h1>
+  <p>Sex ratio, literacy gender gap, workforce participation, maternal health, child marriage, domestic violence, political representation and government schemes for women.</p>
+  <div class="stats-row">
+    <div class="stat-pill"><div class="v">996</div><div class="l">Sex Ratio (per 1000 men)</div></div>
+    <div class="stat-pill"><div class="v">82.9%</div><div class="l">Female Literacy</div></div>
+    <div class="stat-pill"><div class="v">54.2%</div><div class="l">Women in Higher Ed</div></div>
+    <div class="stat-pill"><div class="v">43.5%</div><div class="l">Women in Local Bodies</div></div>
+    <div class="stat-pill"><div class="v">15.7%</div><div class="l">Child Marriage Rate</div></div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="section-title">Literacy & Education</div>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h4>Female Literacy Trend — TN vs National <span class="help-icon" data-tip="TN female literacy has grown from 64% (2001) to 83% (2022). Gender gap narrowed from 16 to 8 points.">?</span></h4>
+      <div class="chart-wrap"><canvas id="litTrendChart"></canvas></div>
+      <div class="src-note">Source: Census 2001, 2011; NFHS-5</div>
+    </div>
+    <div class="chart-box">
+      <h4>Female Literacy — 10 States (2022 est.) <span class="help-icon" data-tip="Kerala (93.5%) leads. TN (82.9%) ranks second among large states. Rajasthan (58.6%) and UP (62.4%) are lowest.">?</span></h4>
+      <div class="chart-wrap"><canvas id="litStateChart"></canvas></div>
+      <div class="src-note">Source: NFHS-5 projections</div>
+    </div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="section-title">Workforce Participation</div>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h4>Women's LFPR Trend — TN Rural vs Urban <span class="help-icon" data-tip="LFPR = Labour Force Participation Rate. Rural women's participation in TN is around 37% — above urban (22%).">?</span></h4>
+      <div class="chart-wrap"><canvas id="lfprTrendChart"></canvas></div>
+      <div class="src-note">Source: PLFS Annual Reports 2018-2022</div>
+    </div>
+    <div class="chart-box">
+      <h4>Women's Rural WFPR — 10 States (2021-22) <span class="help-icon" data-tip="Maharashtra (55%) and Rajasthan (49%) have high rural women participation. Urban women participation is generally lower across all states.">?</span></h4>
+      <div class="chart-wrap"><canvas id="wfprStateChart"></canvas></div>
+      <div class="src-note">Source: PLFS 2021-22</div>
+    </div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="section-title">Maternal Health & Safety</div>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h4>Institutional Delivery (%) — 10 States <span class="help-icon" data-tip="% births that happened in a hospital or clinic. TN (99.3%) and Kerala (99.9%) near universal. RJ and UP below 90%.">?</span></h4>
+      <div class="chart-wrap"><canvas id="instDelChart"></canvas></div>
+      <div class="src-note">Source: NFHS-5 2019-21</div>
+    </div>
+    <div class="chart-box">
+      <h4>Child Marriage Rate (%) — 10 States <span class="help-icon" data-tip="% women aged 20-24 who were married before 18. WB (41.6%) is highest. Kerala (6.3%) lowest. TN (15.7%) below national average (23.3%).">?</span></h4>
+      <div class="chart-wrap"><canvas id="childMarChart"></canvas></div>
+      <div class="src-note">Source: NFHS-5 2019-21</div>
+    </div>
+    <div class="chart-box">
+      <h4>Domestic Violence (Any) — 10 States (%) <span class="help-icon" data-tip="% ever-married women 15-49 reporting physical, sexual or emotional violence. National avg 29.3%. Karnataka (44%) is highest.">?</span></h4>
+      <div class="chart-wrap"><canvas id="dvChart"></canvas></div>
+      <div class="src-note">Source: NFHS-5 2019-21</div>
+    </div>
+    <div class="chart-box">
+      <h4>TN Domestic Violence by Type (NFHS-5) <span class="help-icon" data-tip="Physical violence most common. 24.7% of TN women report any form of violence by partner — still 1 in 4 women.">?</span></h4>
+      <div class="chart-wrap"><canvas id="dvTypeChart"></canvas></div>
+      <div class="src-note">Source: NFHS-5 2019-21</div>
+    </div>
+  </div>
+</div>
+
+<div class="section reveal">
+  <div class="section-title">Political Representation</div>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h4>Women in Legislature — TN State Assembly vs Local Bodies <span class="help-icon" data-tip="50% reservation in panchayats has transformed rural women's representation. State assembly (10.2%) still low.">?</span></h4>
+      <div class="chart-wrap"><canvas id="polRepChart"></canvas></div>
+      <div class="src-note">Source: SEC TN 2021, ECI</div>
+    </div>
+    <div class="chart-box">
+      <h4>Sex Ratio at Birth — 10 States <span class="help-icon" data-tip="Females per 1,000 male live births. Below 950 signals gender-biased sex selection. TN (955) is above most states.">?</span></h4>
+      <div class="chart-wrap"><canvas id="srBirthChart"></canvas></div>
+      <div class="src-note">Source: SRS 2020</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCHEMES -->
+<div class="section reveal">
+  <div class="section-title">Government Schemes for Women — Tamil Nadu</div>
+  <div class="schemes-grid">
+    <div class="scheme-card">
+      <h4>Kalaignar Magalir Urimai Thogai</h4>
+      <div class="reach">1.06 Cr</div>
+      <p>₹1,000/month direct transfer to women heads of household. Targets economic independence for women.</p>
+    </div>
+    <div class="scheme-card">
+      <h4>Pudhumai Penn Scheme</h4>
+      <div class="reach">3.4 Lakh</div>
+      <p>₹1,000/month scholarship for government school girl students who join higher education. Reduces dropout after school.</p>
+    </div>
+    <div class="scheme-card">
+      <h4>SHG — TNSRLM</h4>
+      <div class="reach">63 Lakh</div>
+      <p>4.6 lakh Self-Help Groups with 63 lakh members. Microfinance, skill training and enterprise support for rural women.</p>
+    </div>
+    <div class="scheme-card">
+      <h4>Makkalai Thedi Maruthuvam</h4>
+      <div class="reach">1.2 Cr</div>
+      <p>Doorstep health and nutrition services particularly benefiting women who cannot access hospitals easily.</p>
+    </div>
+    <div class="scheme-card">
+      <h4>Cradle Baby Scheme</h4>
+      <div class="reach">43,000+</div>
+      <p>Accepts unwanted girl babies since 1992 — preventing female infanticide. Over 43,000 babies have been cared for.</p>
+    </div>
+    <div class="scheme-card">
+      <h4>CMCHIS — Women's Health</h4>
+      <div class="reach">1.59 Cr families</div>
+      <p>₹5 lakh annual health cover per family for 1,015+ surgeries. Maternal and obstetric surgeries fully covered.</p>
+    </div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:2rem;color:#444;font-size:0.72rem;border-top:1px solid #1a1a1a;margin-top:2rem;">
+  Data: NFHS-5 2019-21, Census 2011, PLFS 2021-22, NCRB 2022 ·
+  <a href="index.html" style="color:#44BB66">← Social Hub</a>
+</footer>
+
+<script>
+(function(){
+  const obs = new IntersectionObserver(els=>els.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  const states = ['TN','MH','KA','KL','AP','TG','GJ','RJ','UP','WB'];
+  const shortNames = ['Tamil Nadu','Maharashtra','Karnataka','Kerala','Andhra Pradesh','Telangana','Gujarat','Rajasthan','Uttar Pradesh','West Bengal'].map(s=>s.replace(' ','\n'));
+  const colors = ['#D4A017','#3399CC','#44BB66','#00BBCC','#FF6699','#9966CC','#FF8800','#CC3344','#88CC00','#CC6600'];
+  const cx = {responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:9}},grid:{color:'#1a1a1a'}},y:{ticks:{color:'#666',font:{size:10}},grid:{color:'#1a1a1a'}}}};
+
+  // Literacy trend
+  new Chart(document.getElementById('litTrendChart'),{type:'line',
+    data:{labels:['2001','2011','2022e'],datasets:[
+      {label:'TN Female',data:[64.36,73.44,82.9],borderColor:'#44BB66',backgroundColor:'rgba(68,187,102,0.1)',fill:true,tension:0.3,pointRadius:5,borderWidth:2.5},
+      {label:'National Female',data:[53.67,65.46,70.3],borderColor:'#888',borderDash:[4,4],tension:0.3,pointRadius:4,borderWidth:1.8}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,min:40,max:100,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  const femLit = {"TN":82.9,"MH":83.2,"KA":74.5,"KL":93.5,"AP":65.8,"TG":72.1,"GJ":75.3,"RJ":58.6,"UP":62.4,"WB":76.3};
+  new Chart(document.getElementById('litStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>femLit[s]),backgroundColor:colors,borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,min:40,max:100,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  // LFPR trend
+  new Chart(document.getElementById('lfprTrendChart'),{type:'line',
+    data:{labels:['2017-18','2018-19','2019-20','2020-21','2021-22'],datasets:[
+      {label:'Rural Women',data:[33.4,35.1,36.2,36.9,37.2],borderColor:'#44BB66',backgroundColor:'rgba(68,187,102,0.1)',fill:true,tension:0.3,pointRadius:4,borderWidth:2.5},
+      {label:'Urban Women',data:[20.1,21.0,21.8,22.1,22.4],borderColor:'#3399CC',backgroundColor:'rgba(51,153,204,0.1)',fill:true,tension:0.3,pointRadius:4,borderWidth:2.5}
+    ]},
+    options:{...cx,plugins:{...cx.plugins,legend:{display:true,labels:{color:'#888',font:{size:10}}}},scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  const wfpr = {"TN":37.2,"MH":55.3,"KA":30.1,"KL":18.7,"AP":54.2,"TG":42.8,"GJ":48.6,"RJ":49.1,"UP":18.2,"WB":28.4};
+  new Chart(document.getElementById('wfprStateChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>wfpr[s]),backgroundColor:colors,borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  const instDel = {"TN":99.3,"MH":97.6,"KA":97.2,"KL":99.9,"AP":97.8,"TG":97.1,"GJ":97.7,"RJ":84.3,"UP":85.3,"WB":87.9};
+  new Chart(document.getElementById('instDelChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>instDel[s]),backgroundColor:colors,borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,min:70,max:100,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  const childMar = {"TN":15.7,"MH":26.5,"KA":22.6,"KL":6.3,"AP":27.4,"TG":24.5,"GJ":21.8,"RJ":25.4,"UP":21.2,"WB":41.6};
+  new Chart(document.getElementById('childMarChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>childMar[s]),backgroundColor:states.map(s=>childMar[s]<20?'#44BB66':'#FF4444'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  const dv = {"TN":24.7,"MH":28.5,"KA":44.0,"KL":31.4,"AP":37.5,"TG":36.9,"GJ":19.8,"RJ":28.6,"UP":34.7,"WB":32.8};
+  new Chart(document.getElementById('dvChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>dv[s]),backgroundColor:states.map(s=>dv[s]<25?'#44BB66':'#FF4444'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,ticks:{...cx.scales.x.ticks,callback:v=>v+'%'}},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+
+  new Chart(document.getElementById('dvTypeChart'),{type:'bar',
+    data:{labels:['Physical','Emotional','Sexual','Any Violence'],datasets:[{data:[19.5,12.3,10.2,24.7],backgroundColor:['#FF4444','#FF8800','#CC3344','#FF6699'],borderRadius:3}]},
+    options:{...cx,scales:{x:{...cx.scales.x},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  new Chart(document.getElementById('polRepChart'),{type:'bar',
+    data:{labels:['State Assembly','Local Bodies (overall)','Panchayat Presidents'],datasets:[{data:[10.2,43.5,47.2],backgroundColor:['#3399CC','#44BB66','#D4A017'],borderRadius:4}]},
+    options:{...cx,scales:{x:{...cx.scales.x},y:{...cx.scales.y,max:100,ticks:{...cx.scales.y.ticks,callback:v=>v+'%'}}}}
+  });
+
+  const srBirth = {"TN":955,"MH":903,"KA":940,"KL":963,"AP":927,"TG":923,"GJ":909,"RJ":888,"UP":899,"WB":947};
+  new Chart(document.getElementById('srBirthChart'),{type:'bar',
+    data:{labels:shortNames,datasets:[{data:states.map(s=>srBirth[s]),backgroundColor:states.map(s=>srBirth[s]>=950?'#44BB66':'#FF4444'),borderRadius:3}]},
+    options:{...cx,indexAxis:'y',scales:{x:{...cx.scales.x,min:860,max:980},y:{...cx.scales.y,ticks:{...cx.scales.y.ticks,font:{size:9}}}}}
+  });
+})();
+</script>
+</body>
+</html>

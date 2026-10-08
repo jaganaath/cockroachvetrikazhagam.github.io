@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Nadu Social Indicators Hub — CVK</title>
+<link rel="stylesheet" href="../finance/css/finance.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../finance/js/i18n.js"></script>
+<style>
+  :root { --social-accent: #44BB66; --social-bg: #001a0d; }
+  body { background: #0A0A0A; color: #E8E8E0; font-family: 'Inter', sans-serif; margin: 0; }
+  .social-hero { background: linear-gradient(135deg, #0d0d0d 0%, #001a0d 60%, #0d0d0d 100%); padding: 3rem 2rem 2rem; text-align: center; border-bottom: 1px solid #1a2a1a; }
+  .social-hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: #F5F5F0; margin: 0 0 0.5rem; line-height: 1.15; }
+  .social-hero h1 span { color: var(--social-accent); }
+  .social-hero .ta { font-family: 'Noto Serif Tamil', serif; color: var(--social-accent); font-size: 0.65em; display: block; }
+  .social-hero p { color: #AAA; max-width: 600px; margin: 0.8rem auto 1.5rem; font-size: 0.92rem; line-height: 1.7; }
+  .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+  .hero-stat { text-align: center; }
+  .hero-stat .val { font-size: 2rem; font-weight: 900; color: var(--social-accent); }
+  .hero-stat .lbl { font-size: 0.65rem; color: #555; text-transform: uppercase; letter-spacing: 0.1em; }
+  .section { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .section-title { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--social-accent); margin-bottom: 1.2rem; }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .hub-card { background: #111; border: 1px solid #1a2a1a; border-radius: 8px; padding: 1.5rem; text-decoration: none; transition: border-color 0.25s, transform 0.2s; display: block; }
+  .hub-card:hover { border-color: var(--social-accent); transform: translateY(-2px); }
+  .hub-card .icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .hub-card h3 { font-size: 1rem; font-weight: 800; color: #F5F5F0; margin: 0 0 0.4rem; }
+  .hub-card p { font-size: 0.78rem; color: #777; line-height: 1.6; margin: 0 0 0.8rem; }
+  .hub-card .kpi { font-size: 1.6rem; font-weight: 900; color: var(--social-accent); }
+  .hub-card .kpi-lbl { font-size: 0.62rem; color: #555; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .chart-box { background: #111; border: 1px solid #1e1e1e; border-radius: 8px; padding: 1.2rem; }
+  .chart-box h4 { font-size: 0.75rem; font-weight: 700; color: #AAA; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 1rem; }
+  .chart-wrap { position: relative; height: 240px; }
+  .src-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .src-item { background: #111; border: 1px solid #1e1e1e; border-radius: 6px; padding: 0.8rem; font-size: 0.72rem; color: #777; }
+  .src-item strong { display: block; color: #AAA; margin-bottom: 2px; font-size: 0.75rem; }
+  .ticker-wrap { background: #0d0d0d; border-bottom: 1px solid #1a1a1a; overflow: hidden; padding: 8px 0; }
+  .ticker-inner { display: flex; gap: 3rem; animation: ticker-scroll 30s linear infinite; white-space: nowrap; font-size: 0.72rem; color: #666; }
+  .ticker-inner span.hi { color: var(--social-accent); font-weight: 700; }
+  @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .nav { background: #0d0d0d; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .nav-brand { font-weight: 900; font-size: 0.85rem; color: var(--social-accent); text-decoration: none; padding: 0.9rem 0; white-space: nowrap; }
+  .nav-links { display: flex; gap: 0; flex-wrap: wrap; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 0.9rem 0.9rem; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { color: var(--social-accent); border-bottom-color: var(--social-accent); }
+  .lang-btn { background: rgba(68,187,102,0.1); border: 1px solid rgba(68,187,102,0.25); color: var(--social-accent); font-size: 0.72rem; font-weight: 700; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (max-width: 640px) {
+    .chart-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1rem; }
+    .hero-stat .val { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>✦ TN Female Literacy: <span class="hi">82.9%</span></span>
+    <span>✦ MMR 2018-20: <span class="hi">54</span> per 1L births (SDG achieved)</span>
+    <span>✦ IMR 2021: <span class="hi">13</span> — 3rd lowest in India</span>
+    <span>✦ Higher Ed GER: <span class="hi">47.7%</span> — highest among large states</span>
+    <span>✦ Female GER > Male GER since 2019: <span class="hi">52.3% vs 43.4%</span></span>
+    <span>✦ NITI Aayog SDG Score 2023: <span class="hi">78/100</span></span>
+    <span>✦ 99.3% institutional deliveries — near universal</span>
+    <span>✦ TN Female Literacy: <span class="hi">82.9%</span></span>
+    <span>✦ MMR 2018-20: <span class="hi">54</span> per 1L births (SDG achieved)</span>
+    <span>✦ IMR 2021: <span class="hi">13</span> — 3rd lowest in India</span>
+    <span>✦ Higher Ed GER: <span class="hi">47.7%</span> — highest among large states</span>
+    <span>✦ Female GER > Male GER since 2019: <span class="hi">52.3% vs 43.4%</span></span>
+    <span>✦ NITI Aayog SDG Score 2023: <span class="hi">78/100</span></span>
+    <span>✦ 99.3% institutional deliveries — near universal</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">← CVK Home</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Overview</a>
+    <a href="education.html">Education</a>
+    <a href="health.html">Health</a>
+    <a href="women.html">Women</a>
+    <a href="compare.html">State Compare</a>
+  </div>
+  <button class="lang-btn" onclick="cycleLang()">EN / TA / HI</button>
+</nav>
+
+<!-- HERO -->
+<div class="social-hero">
+  <h1>Tamil Nadu Social Indicators Hub<span class="ta">தமிழ்நாடு சமூக குறியீடுகள் மையம்</span></h1>
+  <p>Education, women empowerment, health and child welfare data across 10 Indian states — sourced from NFHS-5, Census, UDISE+, SRS and NITI Aayog. Explore trends, compare states, and understand outcomes.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="val">82.9%</div><div class="lbl">Female Literacy</div></div>
+    <div class="hero-stat"><div class="val">54</div><div class="lbl">MMR (SDG Target: 70)</div></div>
+    <div class="hero-stat"><div class="val">47.7%</div><div class="lbl">Higher Ed GER</div></div>
+    <div class="hero-stat"><div class="val">#2</div><div class="lbl">Health Index Rank</div></div>
+    <div class="hero-stat"><div class="val">99.3%</div><div class="lbl">Inst. Deliveries</div></div>
+    <div class="hero-stat"><div class="val">13</div><div class="lbl">IMR (per 1,000)</div></div>
+  </div>
+</div>
+
+<!-- HUB CARDS -->
+<div class="section reveal">
+  <div class="section-title">Explore by Topic</div>
+  <div class="hub-grid">
+    <a href="education.html" class="hub-card">
+      <div class="icon">📚</div>
+      <h3>Education Indicators</h3>
+      <p>Literacy rates, school GER, dropout rates, degree completion, district-level data. Trend analysis from 2001 to 2022.</p>
+      <div class="kpi">47.7%</div><div class="kpi-lbl">Higher Education GER — highest among large states</div>
+    </a>
+    <a href="health.html" class="hub-card">
+      <div class="icon">🏥</div>
+      <h3>Health Indicators</h3>
+      <p>MMR, IMR, child nutrition (stunting/wasting), immunization coverage, anaemia. Compare with national benchmarks and SDG targets.</p>
+      <div class="kpi">54</div><div class="kpi-lbl">MMR — SDG 2030 target achieved</div>
+    </a>
+    <a href="women.html" class="hub-card">
+      <div class="icon">👩</div>
+      <h3>Women Empowerment</h3>
+      <p>Sex ratio, workforce participation, maternal health, domestic violence, child marriage, political representation and welfare schemes.</p>
+      <div class="kpi">99.3%</div><div class="kpi-lbl">Institutional deliveries</div>
+    </a>
+    <a href="compare.html" class="hub-card">
+      <div class="icon">📊</div>
+      <h3>State Comparison</h3>
+      <p>Compare TN with up to 4 states on any social metric. Bar, line and radar charts. 10-state ranking tables with progress bars.</p>
+      <div class="kpi">10</div><div class="kpi-lbl">States in comparison tool</div>
+    </a>
+  </div>
+</div>
+
+<!-- OVERVIEW CHARTS -->
+<div class="section reveal">
+  <div class="section-title">Overview — Key Comparisons</div>
+  <div class="chart-grid">
+    <div class="chart-box">
+      <h4>Female Literacy Rate — 10 States (2022 est.) <span class="help-icon" data-tip="% women aged 7+ who can read and write. Source: Census 2011 + NFHS projections.">?</span></h4>
+      <div class="chart-wrap"><canvas id="femaleLitChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h4>Maternal Mortality Ratio — 2018-20 <span class="help-icon" data-tip="Deaths per 1,00,000 live births. SDG target = below 70. Source: SRS Special Bulletin.">?</span></h4>
+      <div class="chart-wrap"><canvas id="mmrChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h4>Higher Education GER — 10 States <span class="help-icon" data-tip="Gross Enrollment Ratio for 18–23 age group in colleges/universities. Source: AISHE 2021-22.">?</span></h4>
+      <div class="chart-wrap"><canvas id="gerChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h4>NITI Aayog SDG Score 2023 — Overall &amp; Education <span class="help-icon" data-tip="0–100 composite score on SDG progress. Education = SDG Goal 4. Source: NITI Aayog SDG India Index 2023-24.">?</span></h4>
+      <div class="chart-wrap"><canvas id="sdgChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- SOURCES -->
+<div class="section reveal">
+  <div class="section-title">Data Sources</div>
+  <div class="src-grid">
+    <div class="src-item"><strong>NFHS-5 (2019-21)</strong>National Family Health Survey — health, nutrition, women & child data.</div>
+    <div class="src-item"><strong>UDISE+ 2021-22</strong>Unified District Information System for Education — school enrollment & dropout.</div>
+    <div class="src-item"><strong>AISHE 2021-22</strong>All India Survey on Higher Education — college GER, female enrollment.</div>
+    <div class="src-item"><strong>SRS / RGI India</strong>Sample Registration System — MMR, IMR, birth & death rates.</div>
+    <div class="src-item"><strong>Census 2011</strong>Literacy rates, sex ratio, population structure.</div>
+    <div class="src-item"><strong>NITI Aayog SDG Index</strong>Annual state-level SDG progress scores across all 17 goals.</div>
+    <div class="src-item"><strong>NCRB 2022</strong>National Crime Records Bureau — crimes against women data.</div>
+    <div class="src-item"><strong>PLFS 2021-22</strong>Periodic Labour Force Survey — workforce participation by gender.</div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:2rem;color:#444;font-size:0.72rem;border-top:1px solid #1a1a1a;">
+  Tamil Nadu Social Indicators Hub — CVK Data Platform · Data sourced from official Indian government statistics ·
+  <a href="../index.html" style="color:#44BB66">← Back to CVK Home</a>
+</footer>
+
+<script>
+(function() {
+  // Scroll reveal
+  const obs = new IntersectionObserver(els => els.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  function cycleLang() {
+    const langs = ['en','ta','hi'];
+    const cur = localStorage.getItem('cvk_lang') || 'en';
+    const next = langs[(langs.indexOf(cur)+1)%3];
+    if(window.setLang) setLang(next);
+    else localStorage.setItem('cvk_lang', next);
+  }
+  window.cycleLang = cycleLang;
+
+  const states = ['TN','MH','KA','KL','AP','TG','GJ','RJ','UP','WB'];
+  const stateNames = ['Tamil Nadu','Maharashtra','Karnataka','Kerala','Andhra Pradesh','Telangana','Gujarat','Rajasthan','Uttar Pradesh','West Bengal'];
+  const colors = ['#D4A017','#3399CC','#44BB66','#00BBCC','#FF6699','#9966CC','#FF8800','#CC3344','#88CC00','#CC6600'];
+
+  const chartDefaults = { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { backgroundColor:'#1a1a1a', titleColor:'#AAA', bodyColor:'#DDD', borderColor:'#333', borderWidth:1 } },
+    scales: { x: { ticks: { color:'#666', font: { size:9 } }, grid: { color:'#1a1a1a' } }, y: { ticks: { color:'#666', font: { size:10 } }, grid: { color:'#1a1a1a' } } }
+  };
+
+  // Female Literacy
+  const femaleLit = {"TN":82.9,"MH":83.2,"KA":74.5,"KL":93.5,"AP":65.8,"TG":72.1,"GJ":75.3,"RJ":58.6,"UP":62.4,"WB":76.3};
+  new Chart(document.getElementById('femaleLitChart'), { type:'bar',
+    data: { labels: stateNames.map(s=>s.replace(' ','\n')), datasets:[{ data: states.map(s=>femaleLit[s]), backgroundColor: colors, borderRadius:3 }] },
+    options: { ...chartDefaults, indexAxis:'y', scales: { x:{...chartDefaults.scales.x, min:40, max:100, ticks:{...chartDefaults.scales.x.ticks, callback:v=>v+'%'}}, y:{...chartDefaults.scales.y, ticks:{...chartDefaults.scales.y.ticks, font:{size:9}}} } }
+  });
+
+  // MMR
+  const mmr = {"TN":54,"MH":33,"KA":69,"KL":19,"AP":45,"TG":43,"GJ":57,"RJ":113,"UP":167,"WB":109};
+  new Chart(document.getElementById('mmrChart'), { type:'bar',
+    data: { labels: stateNames.map(s=>s.replace(' ','\n')), datasets:[{ data: states.map(s=>mmr[s]), backgroundColor: states.map(s=>mmr[s]<=70?'#44BB66':'#FF4444'), borderRadius:3 }] },
+    options: { ...chartDefaults, indexAxis:'y',
+      plugins: { ...chartDefaults.plugins, annotation: {} },
+      scales: { x:{...chartDefaults.scales.x, ticks:{...chartDefaults.scales.x.ticks}}, y:{...chartDefaults.scales.y, ticks:{...chartDefaults.scales.y.ticks, font:{size:9}}} }
+    }
+  });
+
+  // GER Higher Education
+  const ger = {"TN":47.7,"MH":37.1,"KA":31.8,"KL":38.3,"AP":32.6,"TG":32.5,"GJ":21.7,"RJ":20.2,"UP":23.7,"WB":19.8};
+  new Chart(document.getElementById('gerChart'), { type:'bar',
+    data: { labels: stateNames.map(s=>s.replace(' ','\n')), datasets:[{ data: states.map(s=>ger[s]), backgroundColor: colors, borderRadius:3 }] },
+    options: { ...chartDefaults, indexAxis:'y', scales: { x:{...chartDefaults.scales.x, ticks:{...chartDefaults.scales.x.ticks, callback:v=>v+'%'}}, y:{...chartDefaults.scales.y, ticks:{...chartDefaults.scales.y.ticks, font:{size:9}}} } }
+  });
+
+  // SDG Score
+  const sdgOverall = {"TN":78,"MH":75,"KA":73,"KL":79,"AP":67,"TG":68,"GJ":72,"RJ":60,"UP":57,"WB":66};
+  const sdgEdu = {"TN":72,"MH":69,"KA":65,"KL":84,"AP":58,"TG":60,"GJ":61,"RJ":46,"UP":42,"WB":63};
+  new Chart(document.getElementById('sdgChart'), { type:'bar',
+    data: { labels: stateNames.map(s=>s.replace(' ','\n')),
+      datasets:[
+        { label:'Overall SDG', data: states.map(s=>sdgOverall[s]), backgroundColor: 'rgba(68,187,102,0.7)', borderRadius:3 },
+        { label:'Education (SDG 4)', data: states.map(s=>sdgEdu[s]), backgroundColor: 'rgba(85,187,238,0.7)', borderRadius:3 }
+      ]
+    },
+    options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend:{display:true,labels:{color:'#888',font:{size:10}}} }, scales: { x:{...chartDefaults.scales.x, ticks:{...chartDefaults.scales.x.ticks, font:{size:8}}}, y:{...chartDefaults.scales.y, min:0, max:100} } }
+  });
+})();
+</script>
+</body>
+</html>

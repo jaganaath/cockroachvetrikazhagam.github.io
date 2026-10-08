@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "title": "Central Government Finance & TN's Share",
+    "sources": [
+      "Union Budget Documents (Finance Ministry)",
+      "Finance Commission Reports (14th, 15th FC)",
+      "RBI Government Debt Statistics",
+      "NITI Aayog Reports",
+      "GST Council Data",
+      "Controller General of Accounts (CGA)"
+    ],
+    "unit": "₹ Lakh Crore unless noted",
+    "last_updated": "June 2026"
+  },
+  "central_fiscal": {
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"],
+    "gdp": [190.1, 200.7, 197.5, 232.2, 269.5, 294.8, 327.7],
+    "total_revenue_receipts": [15.53, 15.96, 15.69, 20.26, 23.04, 26.02, 28.48],
+    "tax_revenue_net": [13.17, 13.56, 13.44, 17.28, 20.27, 23.27, 25.53],
+    "non_tax_revenue": [2.36, 2.40, 2.25, 2.98, 2.77, 2.75, 2.95],
+    "capital_receipts": [6.00, 6.84, 12.82, 10.71, 10.93, 11.32, 12.44],
+    "total_expenditure": [24.57, 26.84, 30.42, 37.70, 41.87, 44.43, 48.21],
+    "revenue_expenditure": [20.07, 22.47, 26.39, 29.69, 32.08, 35.02, 37.09],
+    "capital_expenditure": [3.08, 3.36, 4.12, 5.54, 7.28, 9.98, 11.11],
+    "fiscal_deficit": [6.49, 6.62, 9.38, 6.71, 6.45, 5.63, 5.63],
+    "fiscal_deficit_pct_gdp": [3.4, 3.3, 4.6, 3.4, 2.4, 1.9, 1.7],
+    "central_debt_pct_gdp": [49.1, 51.2, 61.8, 60.4, 57.8, 57.0, 56.2],
+    "interest_payments": [5.80, 6.11, 6.93, 8.09, 10.42, 11.64, 12.52],
+    "subsidies": [2.98, 3.02, 3.81, 4.33, 5.17, 3.74, 3.82]
+  },
+  "tn_central_transfers": {
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"],
+    "tax_devolution": [0.28, 0.29, 0.32, 0.38, 0.44, 0.52, 0.58],
+    "grants_in_aid": [0.08, 0.09, 0.12, 0.14, 0.16, 0.18, 0.20],
+    "css_central_share": [0.14, 0.15, 0.18, 0.20, 0.22, 0.24, 0.26],
+    "total_from_centre": [0.50, 0.53, 0.62, 0.72, 0.82, 0.94, 1.04],
+    "tn_share_in_central_taxes_pct": [4.02, 3.94, 3.86, 3.82, 3.78, 3.74, 3.70],
+    "note": "TN's share in central tax pool has declined from ~6% (2000s) to ~3.7% under 15th Finance Commission formula — a long-standing grievance since higher population growth states gain more under population-based devolution."
+  },
+  "gst_data": {
+    "source": "GST Council Secretariat",
+    "years": ["2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "tn_sgst_collection_crore": [38420, 36248, 46824, 56248, 64820],
+    "tn_igst_settled_crore": [12480, 11248, 15624, 18428, 22480],
+    "tn_gst_compensation_crore": [8240, 9848, 11240, 2480, 0],
+    "note": "GST compensation to states ended in June 2022. TN was a net loser in GST transition as it had a high manufacturing base and GST shifted tax collection to consumption states.",
+    "tn_loss_in_gst_transition_analysis": "TN being a producing state historically collected more sales tax. Under GST (destination-based), revenue shifted partially to consuming states. PTR (FM under DMK) estimated TN's annual loss at ~₹8,000-12,000 crore post-compensation period."
+  },
+  "finance_commission": {
+    "14th_fc": {
+      "period": "2015-2020",
+      "tn_share_pct": 4.023,
+      "key_formula_weights": "Population 2011: 17.5%, Area: 15%, Forest cover: 7.5%, Income distance: 50%, DTCP efficiency: 10%"
+    },
+    "15th_fc": {
+      "period": "2021-2026",
+      "tn_share_pct": 4.189,
+      "key_formula_weights": "Population 2011: 15%, Area: 15%, Forest & Ecology: 10%, Income distance: 45%, Tax effort & Demographic performance: 15%",
+      "note": "TN benefited slightly from demographic performance criterion (lower fertility rate) but lost ground due to relative income distance formula."
+    }
+  },
+  "niti_aayog": {
+    "sdg_index_2023_24": {
+      "tn_rank": 3,
+      "tn_score": 79,
+      "top_states": ["Kerala", "TN", "HP"],
+      "areas_of_concern": ["Clean water", "Zero hunger", "Reduced inequalities"],
+      "source": "NITI Aayog SDG India Index 2023-24"
+    },
+    "composite_water_management_index": {
+      "tn_rank": 4,
+      "tn_score": 62,
+      "note": "Chennai Day Zero crisis (2019) highlighted urban water vulnerability despite relatively good score"
+    },
+    "aspirational_districts": {
+      "tn_districts": [],
+      "note": "Tamil Nadu has no aspirational districts — all districts meet baseline development thresholds."
+    }
+  }
+}

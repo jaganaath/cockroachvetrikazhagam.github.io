@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TN PSU Performance — CVK Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@700;900&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/finance.css">
+<style>
+.psu-selector { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1.5rem; }
+.psu-btn {
+  padding:6px 14px; border-radius:3px; border:1px solid var(--border2);
+  background:var(--bg2); color:var(--grey); font-size:0.78rem; font-weight:600;
+  cursor:pointer; transition:all 0.2s;
+}
+.psu-btn.active, .psu-btn:hover { background:rgba(212,160,23,0.1); color:var(--gold); border-color:rgba(212,160,23,0.3); }
+</style>
+</head>
+<body>
+<nav class="fin-nav">
+  <a href="index.html" class="fin-nav-brand">
+    <div class="fin-nav-logo">CVK</div>
+    <div class="fin-nav-title">Finance Hub <small>PSU Performance</small></div>
+  </a>
+  <ul class="fin-nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="budget.html">Budget</a></li>
+    <li><a href="debt.html">Debt</a></li>
+    <li><a href="psu.html" class="active">PSUs</a></li>
+    <li><a href="cag.html">CAG</a></li>
+    <li><a href="compare.html">Compare States</a></li>
+    <li><a href="central.html">Central Finance</a></li>
+  </ul>
+  <div class="fin-nav-right">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ta">TA</button>
+    <button class="lang-btn" data-lang="hi">HI</button>
+    <a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>CVK</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Public Sector Enterprises</div>
+    <h1 class="page-title" data-i18n="psu_title">State Public Sector Enterprises</h1>
+    <p class="page-desc">Financial performance of Tamil Nadu's major PSUs — profits, losses, accumulated liabilities, and state subsidies. These hidden liabilities are ultimately borne by the taxpayer.</p>
+    <div class="page-tags">
+      <span class="page-tag">TANGEDCO</span>
+      <span class="page-tag">TNSTC</span>
+      <span class="page-tag">Metro Water</span>
+      <span class="page-tag">7 PSUs</span>
+      <span class="page-tag">CAG Audited</span>
+    </div>
+  </div>
+</div>
+
+<main class="fin-main">
+
+  <div class="stats-row reveal">
+    <div class="stat-card">
+      <div class="stat-label">Total PSU Net Loss 2023-24 <span class="help-icon" data-tip="Combined net losses of all 64 TN state PSUs in 2023-24.">?</span></div>
+      <div class="stat-value red">₹27,924Cr</div>
+      <div class="stat-meta">64 PSUs total</div>
+      <div class="stat-trend up">▲ 14.3% vs prev yr</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Accumulated Losses <span class="help-icon" data-tip="Lifetime net losses piled up across all TN PSUs — amounts that must eventually be recapitalised by state.">?</span></div>
+      <div class="stat-value red">₹2.51L Cr</div>
+      <div class="stat-meta">as of 2023-24</div>
+      <div class="stat-trend up">▲ Growing ₹25-30K Cr/yr</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Loss-Making PSUs <span class="help-icon" data-tip="Number of TN state PSUs recording net losses in 2023-24. Of 64 active PSUs, 34 made losses.">?</span></div>
+      <div class="stat-value red">34</div>
+      <div class="stat-meta">of 64 active PSUs (53%)</div>
+      <div class="stat-trend neutral">12 dormant PSUs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">TANGEDCO Accum. Loss <span class="help-icon" data-tip="TANGEDCO's accumulated losses since inception. Driven by below-cost tariffs, transmission losses, and inadequate state subsidy.">?</span></div>
+      <div class="stat-value red">₹1.79L Cr</div>
+      <div class="stat-meta">as of 2023-24</div>
+      <div class="stat-trend up">▲ ₹23,840 Cr loss in FY24</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">State Guarantees to PSUs <span class="help-icon" data-tip="Loans guaranteed by state government for PSU borrowings. If PSUs default, state must pay. ₹1.59L Cr outstanding.">?</span></div>
+      <div class="stat-value">₹1.59L Cr</div>
+      <div class="stat-meta">contingent liabilities 2023-24</div>
+      <div class="stat-trend neutral">+10.8% per year</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Subsidy to PSUs (Budget) <span class="help-icon" data-tip="Annual subsidy paid from state budget to PSUs — primarily TANGEDCO electricity subsidy. CAG notes actual payments often fall short.">?</span></div>
+      <div class="stat-value">₹14,280Cr</div>
+      <div class="stat-meta">TANGEDCO subsidy 2023-24</div>
+      <div class="stat-trend neutral">↑ Growing annually</div>
+    </div>
+  </div>
+
+  <!-- PSU SELECTOR -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">PSU Deep-Dive</div><h2 class="sec-title">Individual PSU Analysis</h2></div>
+    </div>
+    <div class="psu-selector">
+      <button class="psu-btn active" onclick="showPSU('TANGEDCO',this)">TANGEDCO</button>
+      <button class="psu-btn" onclick="showPSU('TNSTC',this)">TNSTC</button>
+      <button class="psu-btn" onclick="showPSU('CMWSSB',this)">Metro Water</button>
+      <button class="psu-btn" onclick="showPSU('TNHB',this)">TN Housing Board</button>
+      <button class="psu-btn" onclick="showPSU('TNPL',this)">TNPL (Paper)</button>
+    </div>
+
+    <div id="psuDetail" class="grid-2"><!-- filled by JS --></div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- AGGREGATE CHARTS -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Sector View</div><h2 class="sec-title">All PSUs — Aggregate Trend</h2></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Profit/Loss Trend — All PSUs</div><div class="card-subtitle">Net P&L (₹ Crore)</div></div>
+          <span class="help-icon" data-tip="Combined net profit/loss of all TN state PSUs. Persistent and growing losses represent a structural drain on state finances.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="aggPlChart"></canvas></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Profit vs Loss Making PSUs</div><div class="card-subtitle">Count of PSUs by financial status</div></div>
+          <span class="help-icon" data-tip="Number of TN PSUs recording profit vs loss each year. Loss-making count has remained persistently high.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="countChart"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1.5rem">
+      <div class="card-head">
+        <div><div class="card-title">Accumulated Losses — All PSUs</div><div class="card-subtitle">Total lifetime losses piled up (₹ Crore)</div></div>
+        <span class="help-icon" data-tip="Accumulated losses represent what taxpayers will ultimately need to pay — through recapitalisation, higher tariffs, or service cuts.">?</span>
+      </div>
+      <div class="card-body"><div class="chart-wrap" style="height:240px"><canvas id="accumChart"></canvas></div></div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- WHY IT MATTERS -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Analysis</div><h2 class="sec-title">Why PSU Losses Matter</h2></div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="alert alert-bad">
+          <strong>TANGEDCO — The Biggest Risk</strong>
+          TANGEDCO supplies below-cost electricity due to political tariff decisions. Average cost of supply: ~₹7.68/unit. Average tariff realised: ~₹5.64/unit. The ~₹2/unit gap is partly covered by state subsidy, but the rest becomes losses — now ₹1.79L Cr accumulated. TANGEDCO borrows from banks with state guarantees, creating hidden sovereign debt.
+          <div style="margin-top:6px"><span class="source-pill">TANGEDCO Annual Report 2023-24 / CAG</span></div>
+        </div>
+        <div class="alert alert-warn">
+          <strong>TNSTC — Ageing Fleet, Fixed Fares</strong>
+          Bus fares have not been revised to keep pace with fuel costs and inflation. TNSTC accumulated losses: ₹23,286 Cr. Daily passengers declined from 148L (2018-19) to 138L (2023-24) — partly due to private vehicles, partly route rationalisation. Safety concerns from inadequate maintenance funding.
+          <div style="margin-top:6px"><span class="source-pill">TNSTC Annual Report / CAG PSU Report</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="alert alert-info">
+          <strong>TNPL — A Success Story</strong>
+          Tamil Nadu Newsprint and Papers Ltd (TNPL) is one of the few profitable state PSUs. Net profit in 2023-24: ₹284 Cr. Strong export performance, efficient pulp sourcing. Shows that PSUs can be viable with commercial discipline.
+          <div style="margin-top:6px"><span class="source-pill">TNPL Annual Report 2023-24</span></div>
+        </div>
+        <div class="alert alert-warn">
+          <strong>Reform Imperative</strong>
+          International experience shows PSU losses can be addressed through: (1) Tariff rationalisation with targeted subsidies to poor, (2) Operational efficiency drives, (3) Privatisation of non-strategic PSUs, (4) Transparent subsidy accounting. Without reform, PSU losses will continue to crowd out state capital expenditure.
+          <div style="margin-top:6px"><span class="source-pill">World Bank / NITI Aayog PSU Reform Studies</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sources-section reveal">
+    <div class="sources-title">Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-item">TN Finance Department — Annual Report on Public Enterprises</div>
+      <div class="source-item">CAG Reports on PSUs of Tamil Nadu (Annual)</div>
+      <div class="source-item">TANGEDCO Annual Reports (tangedco.gov.in)</div>
+      <div class="source-item">TNSTC Annual Reports (tnstc.gov.in)</div>
+      <div class="source-item">TVK White Paper on State Finances, June 2026</div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.72rem;color:var(--mid)" data-i18n="note_approx">* Approximate figures. Verify with original sources.</div>
+  </div>
+
+</main>
+<footer class="fin-footer">
+  <div data-i18n="footer_cvk">Cockroach Vetri Kazhagam · நேர்மையான தகவலே கிடைக்கும்</div>
+  <div style="margin-top:8px"><a href="index.html">← Finance Hub</a> · <a href="../index.html">CVK Home</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+const PSU_YEARS=['2018-19','2019-20','2020-21','2021-22','2022-23','2023-24'];
+const PSU_DATA={
+  TANGEDCO:{
+    name:'Tamil Nadu Generation & Distribution Corporation',name_short:'TANGEDCO',
+    sector:'Electricity',help:'Generates and distributes electricity across TN. Losses driven by below-cost tariffs (~₹5.64 vs ₹7.68 cost/unit) and 12.8% transmission losses.',
+    revenue:[68240,72480,69820,76540,84320,92640],
+    expenditure:[84620,89840,91240,96480,104820,116480],
+    pl:[-16380,-17360,-21420,-19940,-20500,-23840],
+    accum:[76240,93600,115020,134960,155460,179300],
+    debt:[92640,102480,116820,128940,142360,158640]
+  },
+  TNSTC:{
+    name:'TN State Transport Corporation (Combined)',name_short:'TNSTC',
+    sector:'Transport',help:'Runs bus services across TN. Losses driven by below-cost fares, ageing fleet, and high fuel costs. Accumulated losses: ₹23,286 Cr.',
+    revenue:[3842,4024,2248,3462,4186,4824],
+    expenditure:[5484,5812,4284,5462,6348,7284],
+    pl:[-1642,-1788,-2036,-2000,-2162,-2460],
+    accum:[12840,14628,16664,18664,20826,23286],
+    debt:[8420,9240,10880,12240,13820,15640]
+  },
+  CMWSSB:{
+    name:'Chennai Metro Water Supply & Sewerage Board',name_short:'Metro Water',
+    sector:'Water Supply',help:'Supplies drinking water to Chennai. Faces chronic water scarcity and below-cost tariffs.',
+    revenue:[682,712,648,724,842,924],
+    expenditure:[1124,1184,1092,1182,1348,1482],
+    pl:[-442,-472,-444,-458,-506,-558],
+    accum:[4280,4752,5196,5654,6160,6718],
+    debt:[3284,3648,4042,4482,4962,5484]
+  },
+  TNHB:{
+    name:'Tamil Nadu Housing Board',name_short:'TN Housing Board',
+    sector:'Housing',help:'Constructs and allots housing. Losses from cost overruns and slow project completion.',
+    revenue:[824,892,648,784,968,1124],
+    expenditure:[968,1048,924,1048,1248,1464],
+    pl:[-144,-156,-276,-264,-280,-340],
+    accum:[2840,2996,3272,3536,3816,4156],
+    debt:[2184,2424,2748,3024,3348,3728]
+  },
+  TNPL:{
+    name:'Tamil Nadu Newsprint & Papers Ltd',name_short:'TNPL',
+    sector:'Manufacturing',help:'One of TN\'s few profitable PSUs. Makes newsprint and paper. Good export performance.',
+    revenue:[1484,1528,1324,1684,2148,2368],
+    expenditure:[1324,1382,1284,1548,1924,2084],
+    pl:[160,146,40,136,224,284],
+    accum:[-284,-430,-470,-606,-830,-1114],
+    debt:[2284,2384,2484,2584,2684,2784]
+  }
+};
+
+let psuCharts={};
+applyChartDefaults();
+
+function showPSU(id, btn){
+  document.querySelectorAll('.psu-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const d=PSU_DATA[id];
+  if(!d) return;
+  Object.values(psuCharts).forEach(c=>c.destroy());
+  psuCharts={};
+  const pl_colors=d.pl.map(v=>v>=0?'rgba(68,187,102,0.8)':'rgba(204,0,0,0.8)');
+  document.getElementById('psuDetail').innerHTML=`
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <div class="card-title">${d.name_short} — Revenue vs Expenditure</div>
+          <div class="card-subtitle">${d.sector} · ${d.help.substring(0,60)}...</div>
+        </div>
+        <span class="help-icon" data-tip="${d.help}">?</span>
+      </div>
+      <div class="card-body"><div class="chart-wrap" style="height:240px"><canvas id="psuRevChart"></canvas></div></div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div><div class="card-title">${d.name_short} — Net Profit/Loss</div><div class="card-subtitle">Annual P&L (₹ Crore)</div></div>
+      </div>
+      <div class="card-body"><div class="chart-wrap" style="height:240px"><canvas id="psuPlChart"></canvas></div></div>
+    </div>
+    <div class="card" style="grid-column:1/-1">
+      <div class="card-head">
+        <div><div class="card-title">${d.name_short} — Accumulated Losses & Debt</div></div>
+        <span class="help-icon" data-tip="Accumulated losses = total net losses since inception. Debt = total outstanding borrowings.">?</span>
+      </div>
+      <div class="card-body"><div class="chart-wrap" style="height:220px"><canvas id="psuAccumChart"></canvas></div></div>
+    </div>
+  `;
+  psuCharts.rev=new Chart(document.getElementById('psuRevChart'),{
+    type:'bar',
+    data:{labels:PSU_YEARS,datasets:[
+      {label:'Revenue',data:d.revenue,backgroundColor:'rgba(68,187,102,0.7)'},
+      {label:'Expenditure',data:d.expenditure,backgroundColor:'rgba(204,0,0,0.7)'}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom'}},
+      scales:{x:{ticks:{font:{size:9}}},y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')+'Cr'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+  psuCharts.pl=new Chart(document.getElementById('psuPlChart'),{
+    type:'bar',
+    data:{labels:PSU_YEARS,datasets:[{label:'Net P&L (₹ Cr)',data:d.pl,backgroundColor:pl_colors,borderWidth:1}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:{font:{size:9}}},y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+  psuCharts.accum=new Chart(document.getElementById('psuAccumChart'),{
+    type:'line',
+    data:{labels:PSU_YEARS,datasets:[
+      {label:'Accumulated Losses',data:d.accum,borderColor:'#CC3344',backgroundColor:'rgba(204,0,0,0.08)',fill:true,tension:0.3,borderWidth:2},
+      {label:'Total Debt',data:d.debt,borderColor:'#FF8800',backgroundColor:'rgba(255,136,0,0.08)',fill:true,tension:0.3,borderWidth:2}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom'}},
+      scales:{x:{ticks:{font:{size:9}}},y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')+'Cr'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+  });
+}
+
+// Aggregate charts
+const AGG_YEARS=['2018-19','2019-20','2020-21','2021-22','2022-23','2023-24'];
+new Chart(document.getElementById('aggPlChart'),{
+  type:'bar',
+  data:{labels:AGG_YEARS,datasets:[{
+    label:'All PSUs Net P&L (₹ Cr)',
+    data:[-19482,-20840,-25664,-23586,-24436,-27924],
+    backgroundColor:'rgba(204,0,0,0.7)',borderColor:'#CC3344',borderWidth:1
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:10}}},y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+new Chart(document.getElementById('countChart'),{
+  type:'bar',
+  data:{labels:AGG_YEARS,datasets:[
+    {label:'Profit Making',data:[18,17,12,14,16,18],backgroundColor:'rgba(68,187,102,0.8)',stack:'a'},
+    {label:'Loss Making',data:[34,36,42,38,36,34],backgroundColor:'rgba(204,0,0,0.8)',stack:'a'},
+    {label:'Dormant',data:[8,8,8,11,11,12],backgroundColor:'rgba(100,100,100,0.5)',stack:'a'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{stacked:true,ticks:{font:{size:10}}},y:{stacked:true,grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+new Chart(document.getElementById('accumChart'),{
+  type:'line',
+  data:{labels:AGG_YEARS,datasets:[{
+    label:'Accumulated Losses (₹ Cr)',
+    data:[128420,149260,174924,198510,222946,250870],
+    borderColor:'#CC3344',backgroundColor:'rgba(204,0,0,0.1)',fill:true,tension:0.3,borderWidth:2
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:10}}},y:{ticks:{callback:v=>'₹'+(v/100000).toFixed(2)+'L Cr'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+showPSU('TANGEDCO',null);
+document.addEventListener('DOMContentLoaded',()=>{initLang();initReveal();});
+initLang();initReveal();
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "meta": { "state": "Tamil Nadu", "sources": ["UDISE+ 2021-22", "AISHE 2021-22", "SSA/SAMAGRA SHIKSHA", "TN School Education Dept Annual Report 2023", "Census 2011"] },
+  "school_indicators": {
+    "years": ["2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22"],
+    "primary_ger":       [101.3, 101.8, 102.1, 100.9, 100.4, 98.7, 95.4],
+    "upper_primary_ger": [93.2,  94.1,  95.3,  94.8,  93.5,  91.4, 89.2],
+    "secondary_ger":     [67.4,  69.8,  71.2,  72.6,  73.1,  71.8, 73.4],
+    "higher_secondary_ger": [59.8, 61.3, 63.5, 65.2, 66.8, 64.9, 67.2],
+    "primary_ner":       [99.1, 99.3, 99.5, 99.4, 99.3, 99.0, 98.7],
+    "secondary_ner":     [57.2, 59.4, 61.3, 63.8, 64.5, 62.9, 64.7],
+    "help_ger": "Gross Enrollment Ratio can exceed 100% when over-age/under-age students enroll. NER (Net Enrollment Ratio) counts only official age group.",
+    "source": "UDISE+ Annual Reports"
+  },
+  "dropout_trends": {
+    "years": ["2016-17","2017-18","2018-19","2019-20","2020-21","2021-22"],
+    "primary_boys":    [2.1, 1.9, 1.8, 1.7, 1.5, 1.4],
+    "primary_girls":   [1.8, 1.6, 1.5, 1.4, 1.3, 1.1],
+    "upper_primary_boys":  [5.2, 4.8, 4.2, 3.8, 3.4, 3.2],
+    "upper_primary_girls": [4.3, 3.9, 3.5, 3.1, 2.8, 2.6],
+    "secondary_boys":  [18.9, 17.3, 16.2, 15.8, 15.1, 14.9],
+    "secondary_girls": [16.4, 15.1, 14.6, 14.2, 14.0, 13.8],
+    "help": "TN has consistently lower dropout rates than national average. Mid-day meal scheme and bicycle/uniform incentives are key drivers of retention.",
+    "source": "UDISE+, Ministry of Education"
+  },
+  "higher_education": {
+    "universities": 68,
+    "colleges": 2356,
+    "enrolled_students_lakhs": [9.8, 10.2, 10.9, 11.4, 11.8, 12.1],
+    "enrolled_years": ["2016-17","2017-18","2018-19","2019-20","2020-21","2021-22"],
+    "female_enrollment_pct": [51.2, 52.1, 53.0, 53.8, 54.0, 54.2],
+    "gross_enrollment_ratio_higher": [44.1, 45.3, 46.2, 47.0, 47.5, 47.7],
+    "ger_female": [45.8, 47.2, 48.6, 49.8, 50.9, 52.3],
+    "ger_male":   [42.7, 43.7, 44.1, 44.5, 44.4, 43.4],
+    "help": "Tamil Nadu has the highest Higher Education GER among large states. Female GER exceeds male GER since 2019.",
+    "source": "AISHE 2021-22, Ministry of Education"
+  },
+  "degree_completion": {
+    "graduation_rate_pct": 72.4,
+    "stem_graduates_pct_all": 42.3,
+    "female_stem_pct": 48.3,
+    "engineering_colleges": 479,
+    "medical_colleges": 66,
+    "polytechnics": 422,
+    "iti_count": 504,
+    "stream_breakdown": {
+      "labels": ["Arts & Humanities","Science","Commerce","Engineering","Medicine","Management","Law","Other"],
+      "values":  [28.4, 14.2, 12.8, 24.6, 5.2, 8.1, 2.3, 4.4]
+    },
+    "help": "Degree completion rate = % enrolled students who graduate within 5 years. TN's high engineering college density drives STEM graduation.",
+    "source": "AISHE 2021-22"
+  },
+  "school_infrastructure": {
+    "total_schools": 53000,
+    "govt_schools_pct": 58.4,
+    "schools_with_toilets_pct": 99.2,
+    "schools_with_electricity_pct": 98.7,
+    "schools_with_computers_pct": 74.3,
+    "pupil_teacher_ratio_primary": 23.4,
+    "pupil_teacher_ratio_secondary": 19.8,
+    "help": "Infrastructure quality index reflects availability of basic amenities in schools.",
+    "source": "UDISE+ 2021-22, TN School Education Dept"
+  },
+  "district_literacy": {
+    "districts": ["Chennai","Coimbatore","Madurai","Salem","Tiruchirappalli","Tirunelveli","Vellore","Erode","Thanjavur","Cuddalore","Villupuram","Dharmapuri","Krishnagiri","Tiruvannamalai","Pudukkottai"],
+    "overall_literacy": [90.18, 82.67, 82.23, 79.35, 81.49, 77.20, 76.94, 77.81, 81.13, 70.55, 66.49, 64.74, 68.38, 68.03, 70.42],
+    "female_literacy":  [87.23, 78.45, 79.12, 74.23, 77.58, 72.64, 71.45, 72.89, 77.34, 64.23, 59.45, 57.32, 61.45, 61.23, 64.12],
+    "source": "Census 2011, updated projections 2022"
+  }
+}

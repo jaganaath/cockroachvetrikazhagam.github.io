@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAG Audit Findings — CVK Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@700;900&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/finance.css">
+<style>
+.finding-card {
+  background:var(--bg); border:1px solid var(--border); border-radius:6px;
+  padding:1.2rem; margin-bottom:1rem; border-left:3px solid var(--amber);
+  transition:border-color 0.2s;
+}
+.finding-card:hover { border-left-color:var(--gold); }
+.finding-year { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; color:var(--mid); text-transform:uppercase; margin-bottom:4px; }
+.finding-cat { display:inline-flex; align-items:center; gap:4px; font-size:0.72rem; font-weight:700; color:var(--amber); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.6rem; }
+.finding-text { font-size:0.84rem; color:var(--white); line-height:1.6; margin-bottom:0.5rem; }
+.finding-impact { font-size:0.78rem; color:var(--grey); padding-top:0.5rem; border-top:1px solid var(--border); }
+.finding-impact::before { content:'⚠️ Impact: '; font-weight:700; color:var(--amber); }
+</style>
+</head>
+<body>
+<nav class="fin-nav">
+  <a href="index.html" class="fin-nav-brand">
+    <div class="fin-nav-logo">CVK</div>
+    <div class="fin-nav-title">Finance Hub <small>CAG Findings</small></div>
+  </a>
+  <ul class="fin-nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="budget.html">Budget</a></li>
+    <li><a href="debt.html">Debt</a></li>
+    <li><a href="psu.html">PSUs</a></li>
+    <li><a href="cag.html" class="active">CAG</a></li>
+    <li><a href="compare.html">Compare States</a></li>
+    <li><a href="central.html">Central Finance</a></li>
+  </ul>
+  <div class="fin-nav-right">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ta">TA</button>
+    <button class="lang-btn" data-lang="hi">HI</button>
+    <a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>CVK</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Constitutional Audit</div>
+    <h1 class="page-title" data-i18n="cag_title">CAG Audit Findings</h1>
+    <p class="page-desc">The Comptroller and Auditor General independently audits state finances every year. CAG findings reveal budget deviations, hidden liabilities, and financial irregularities not visible in official budget documents.</p>
+    <div class="page-tags">
+      <span class="page-tag">Off-Budget Borrowings</span>
+      <span class="page-tag">Budget Deviations</span>
+      <span class="page-tag">Revenue Arrears</span>
+      <span class="page-tag">Contingent Liabilities</span>
+    </div>
+  </div>
+</div>
+
+<main class="fin-main">
+
+  <div class="alert alert-info reveal">
+    <strong>What is CAG?</strong>
+    The Comptroller and Auditor General (CAG) of India is a constitutional authority (Article 148) that independently audits government accounts. CAG reports are submitted to the state legislature. They are the most authoritative independent assessment of a state's actual fiscal health — often revealing what official budgets conceal.
+  </div>
+
+  <div class="stats-row reveal">
+    <div class="stat-card">
+      <div class="stat-label">Audit Paras 2023-24 <span class="help-icon" data-tip="Number of specific findings/objections raised by CAG in 2023-24. Each para = one financial irregularity.">?</span></div>
+      <div class="stat-value red">438</div>
+      <div class="stat-meta">Audit objections raised</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Pending Paras (Cumulative) <span class="help-icon" data-tip="Unresolved CAG objections from all previous years. Growing pile indicates weak audit response.">?</span></div>
+      <div class="stat-value red">4,284</div>
+      <div class="stat-meta">Unresolved from prior years</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Amount Under Objection <span class="help-icon" data-tip="Total financial value of CAG audit objections in 2023-24.">?</span></div>
+      <div class="stat-value">₹50,680Cr</div>
+      <div class="stat-meta">Under audit objection (2023-24)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Recovery Rate <span class="help-icon" data-tip="% of objected amounts actually recovered. Very low rate indicates weak follow-through on CAG findings.">?</span></div>
+      <div class="stat-value red">2.5%</div>
+      <div class="stat-meta">₹1,284 Cr recovered of ₹50,680 Cr</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Off-Budget Borrowings Flagged <span class="help-icon" data-tip="CAG estimate of borrowings not reflected in official fiscal deficit. Would push effective deficit to ~6.8% if included.">?</span></div>
+      <div class="stat-value red">₹1.49L Cr</div>
+      <div class="stat-meta">Not in official FD calc (2023-24)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Tax Arrears Outstanding <span class="help-icon" data-tip="Taxes assessed but not collected. ₹54,640 Cr in arrears — potential revenue if enforcement improves.">?</span></div>
+      <div class="stat-value">₹54,640Cr</div>
+      <div class="stat-meta">Commercial tax + others (2023-24)</div>
+    </div>
+  </div>
+
+  <!-- AUDIT TREND CHARTS -->
+  <div class="section-gap reveal">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Audit Paras Raised vs Pending</div><div class="card-subtitle">Growing backlog of unresolved findings</div></div>
+          <span class="help-icon" data-tip="New paras raised each year vs cumulative pending. Growing pending pile means CAG findings are not being acted upon by the government.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="parasChart"></canvas></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Amount Under Objection</div><div class="card-subtitle">₹ Crore under audit query (2018-19 to 2023-24)</div></div>
+          <span class="help-icon" data-tip="Growing amounts under CAG objection — indicating increasing financial irregularities or expanding audit scope.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="amtChart"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:1.5rem">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Off-Budget Borrowings vs Official Fiscal Deficit</div></div>
+          <span class="help-icon" data-tip="CAG estimates off-budget borrowings that bypass FRBM. Adding them to official FD pushes the actual deficit well above 6%.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="offBudgetChart"></canvas></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Tax Revenue Arrears</div><div class="card-subtitle">Assessed but uncollected taxes (₹ Crore)</div></div>
+          <span class="help-icon" data-tip="Taxes that have been assessed but not collected. This represents enforceable revenue foregone — improving collection could significantly reduce fiscal deficit.">?</span>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="arrearsChart"></canvas></div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- KEY FINDINGS -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Notable Findings</div><h2 class="sec-title">Key CAG Findings — Tamil Nadu</h2></div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-year">2023-24</div>
+      <div class="finding-cat">🔴 Off-Budget Borrowings</div>
+      <div class="finding-text">CAG flagged ₹1.49 lakh crore in borrowings routed through SPVs and PSUs that were not reported in the state's fiscal deficit calculation. These are effectively state liabilities but kept off the official balance sheet to meet FRBM compliance on paper.</div>
+      <div class="finding-impact">Actual fiscal deficit was understated by approximately 2.1% of GSDP. True deficit ~6.8% vs reported 4.74%.</div>
+      <div style="margin-top:8px"><span class="source-pill">CAG Report on State Finances of TN, 2023-24</span></div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-year">2022-23</div>
+      <div class="finding-cat">🟠 TANGEDCO Subsidy Opacity</div>
+      <div class="finding-text">Electricity subsidy actually paid to TANGEDCO was ₹3,840 crore less than the subsidy amount shown in budget provisions. The gap was funded through TANGEDCO's own borrowings — creating a circular debt loop where TANGEDCO borrows to fill a subsidy shortfall, then needs more state guarantees.</div>
+      <div class="finding-impact">Masks true subsidy cost; pushes TANGEDCO further into debt at commercial interest rates.</div>
+      <div style="margin-top:8px"><span class="source-pill">CAG Report on PSUs of TN, 2022-23</span></div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-year">2022-23</div>
+      <div class="finding-cat">🔴 Revenue Arrears</div>
+      <div class="finding-text">Outstanding tax and non-tax revenue arrears reached ₹48,280 crore, with commercial tax arrears alone at ₹22,480 crore. Recovery mechanisms have been deteriorating, with enforcement actions remaining low relative to assessed arrears.</div>
+      <div class="finding-impact">Significant revenue foregone annually. Collecting even 25% of arrears would reduce fiscal deficit by ~0.5% of GSDP.</div>
+      <div style="margin-top:8px"><span class="source-pill">CAG Report on Revenue Receipts of TN, 2022-23</span></div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-year">2021-22</div>
+      <div class="finding-cat">🟠 Excess Appropriation</div>
+      <div class="finding-text">Expenditure of ₹2,924 crore was incurred without legislative approval (beyond Demands for Grants passed by Assembly), requiring post-facto regularisation. This violates Article 266 of the Constitution, which requires prior parliamentary approval for expenditure from the Consolidated Fund.</div>
+      <div class="finding-impact">Weakens legislative financial oversight. The Assembly approves budgets; spending beyond that is unconstitutional without supplementary approval.</div>
+      <div style="margin-top:8px"><span class="source-pill">CAG Report on State Finances of TN, 2021-22</span></div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-year">2021-22</div>
+      <div class="finding-cat">🟠 Guarantee Fee Not Collected</div>
+      <div class="finding-text">State gave guarantees worth ₹1.27 lakh crore to PSUs but did not collect guarantee fees of ₹1,968 crore, violating FRBM provisions that mandate fee collection as compensation for the risk undertaken by the state.</div>
+      <div class="finding-impact">Revenue loss; implicit subsidy to inefficient PSUs; undermines the risk-pricing discipline that guarantee fees are meant to enforce.</div>
+      <div style="margin-top:8px"><span class="source-pill">CAG Report on State Finances of TN, 2021-22</span></div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-year">2020-21</div>
+      <div class="finding-cat">🔴 COVID Relief Accountability Gap</div>
+      <div class="finding-text">Utilisation certificates for ₹3,840 crore of COVID relief funds were not submitted. Funds meant for migrant worker welfare and health infrastructure had unverifiable end-use. CAG could not confirm actual delivery of intended benefits.</div>
+      <div class="finding-impact">Accountability gap during a crisis period. No confirmed audit trail for crisis expenditure.</div>
+      <div style="margin-top:8px"><span class="source-pill">CAG COVID Compliance Audit, 2021</span></div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- BUDGET DEVIATIONS TABLE -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Budget Discipline</div><h2 class="sec-title">Budget Deviations — Year by Year</h2></div>
+    </div>
+    <div class="fin-table-wrap">
+      <table class="fin-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th class="num">Excess Expenditure <span class="help-icon" data-tip="Spending beyond what Assembly approved — requires post-facto regularisation. A constitutional violation.">?</span></th>
+            <th class="num">Surrendered Savings</th>
+            <th class="num">Supplementary Demands</th>
+            <th class="num">Tax Arrears</th>
+            <th class="num">Amount Under Objection</th>
+            <th class="num">Recovery Rate</th>
+          </tr>
+        </thead>
+        <tbody id="cagTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sources-section reveal">
+    <div class="sources-title">Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-item">CAG Reports on State Finances of Tamil Nadu (Annual — cag.gov.in)</div>
+      <div class="source-item">CAG Reports on Revenue Receipts of Tamil Nadu</div>
+      <div class="source-item">CAG Reports on PSUs of Tamil Nadu</div>
+      <div class="source-item">CAG Performance Audit Reports on various TN schemes</div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.72rem;color:var(--mid)" data-i18n="note_approx">* Approximate figures. All CAG reports available at cag.gov.in</div>
+  </div>
+
+</main>
+<footer class="fin-footer">
+  <div data-i18n="footer_cvk">Cockroach Vetri Kazhagam · நேர்மையான தகவலே கிடைக்கும்</div>
+  <div style="margin-top:8px"><a href="index.html">← Finance Hub</a> · <a href="../index.html">CVK Home</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+const YEARS=['2018-19','2019-20','2020-21','2021-22','2022-23','2023-24'];
+const PARAS=[428,446,362,384,412,438];
+const PENDING=[2840,3168,3482,3728,3992,4284];
+const AMTS=[28420,32640,36480,40820,45240,50680];
+const RECOV_R=[4.5,4.5,2.7,2.8,3.0,2.5];
+const EXCESS=[2840,3124,2684,2924,3284,3648];
+const SURRENDER=[8420,9248,12840,10482,9648,11284];
+const SUPP=[12840,14280,18640,16820,14480,15840];
+const ARREARS=[28420,32640,36480,42840,48280,54640];
+const OFF_B=[87460,102720,121300,137480,155200,173460];
+const OFF_FD=[3.69,3.81,4.45,4.19,4.20,4.74];
+const TRUE_FD=[4.24,4.46,5.26,4.93,4.94,5.52];
+
+applyChartDefaults();
+
+new Chart(document.getElementById('parasChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'New Paras Raised',data:PARAS,backgroundColor:'rgba(255,136,0,0.7)',yAxisID:'y'},
+    {label:'Cumulative Pending',data:PENDING,type:'line',borderColor:'#CC3344',backgroundColor:'transparent',borderWidth:2,yAxisID:'y1',pointRadius:4}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{ticks:{font:{size:10}}},
+            y:{ticks:{color:'#FF8800'},grid:{color:'rgba(255,255,255,0.04)'}},
+            y1:{position:'right',ticks:{color:'#CC3344'},grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('amtChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'Amount Under Objection (₹ Cr)',data:AMTS,backgroundColor:'rgba(204,0,0,0.7)',borderWidth:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:10}}},y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')+'Cr'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+new Chart(document.getElementById('offBudgetChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'Official Fiscal Deficit % GSDP',data:OFF_FD,backgroundColor:'rgba(255,136,0,0.7)',stack:'a'},
+    {label:'Off-Budget (CAG Estimate)',data:TRUE_FD.map((t,i)=>+(t-OFF_FD[i]).toFixed(2)),backgroundColor:'rgba(204,0,0,0.7)',stack:'a'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{stacked:true,ticks:{font:{size:10}}},
+            y:{stacked:true,ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}},
+  plugins:[{id:'frbm',beforeDraw(c){
+    const {ctx,chartArea:{left,right},scales:{y}}=c;
+    const yp=y.getPixelForValue(3);
+    ctx.save();ctx.strokeStyle='#44BB66';ctx.setLineDash([5,5]);ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
+    ctx.fillStyle='#44BB66';ctx.font='bold 11px Inter';ctx.fillText('FRBM 3%',left+4,yp-6);
+    ctx.restore();
+  }}]
+});
+
+new Chart(document.getElementById('arrearsChart'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'Total Tax Arrears',data:ARREARS,borderColor:'#FF8800',backgroundColor:'rgba(255,136,0,0.1)',fill:true,tension:0.3,borderWidth:2,pointRadius:4}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:10}}},y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')+'Cr'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// CAG table
+const tb=document.getElementById('cagTableBody');
+YEARS.forEach((y,i)=>{
+  tb.innerHTML+=`<tr>
+    <td><strong>${y}</strong></td>
+    <td class="num red">${EXCESS[i].toLocaleString('en-IN')}</td>
+    <td class="num">${SURRENDER[i].toLocaleString('en-IN')}</td>
+    <td class="num">${SUPP[i].toLocaleString('en-IN')}</td>
+    <td class="num">${ARREARS[i].toLocaleString('en-IN')}</td>
+    <td class="num">${AMTS[i].toLocaleString('en-IN')}</td>
+    <td class="num ${RECOV_R[i]<3?'red':''}">${RECOV_R[i]}%</td>
+  </tr>`;
+});
+
+document.addEventListener('DOMContentLoaded',()=>{initLang();initReveal();});
+initLang();initReveal();
+</script>
+</body>
+</html>

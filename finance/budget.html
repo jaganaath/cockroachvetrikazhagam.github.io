@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TN State Budget Analysis — CVK Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@700;900&family=Noto+Sans+Tamil:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/finance.css">
+</head>
+<body>
+<nav class="fin-nav">
+  <a href="index.html" class="fin-nav-brand">
+    <div class="fin-nav-logo">CVK</div>
+    <div class="fin-nav-title">Finance Hub <small>Budget Analysis</small></div>
+  </a>
+  <ul class="fin-nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="budget.html" class="active">Budget</a></li>
+    <li><a href="debt.html">Debt</a></li>
+    <li><a href="psu.html">PSUs</a></li>
+    <li><a href="cag.html">CAG</a></li>
+    <li><a href="compare.html">Compare States</a></li>
+    <li><a href="central.html">Central Finance</a></li>
+  </ul>
+  <div class="fin-nav-right">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ta">TA</button>
+    <button class="lang-btn" data-lang="hi">HI</button>
+    <a href="../index.html" class="back-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>CVK
+    </a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">State Finance</div>
+    <h1 class="page-title" data-i18n="budget_title">State Budget Analysis</h1>
+    <p class="page-desc">Revenue sources, expenditure breakdown, fiscal deficit, subsidies, and committed costs — 10 years of Tamil Nadu budget data.</p>
+    <div class="page-tags">
+      <span class="page-tag">2014-15 to 2024-25</span>
+      <span class="page-tag">TN Finance Dept</span>
+      <span class="page-tag">RBI State Finances</span>
+      <span class="page-tag">FRBM Compliance</span>
+    </div>
+  </div>
+</div>
+
+<main class="fin-main">
+
+  <!-- STATS ROW -->
+  <div class="stats-row reveal">
+    <div class="stat-card">
+      <div class="stat-label">Total Revenue 2024-25 <span class="help-icon" data-tip="All money earned by state from taxes, non-tax sources, and central transfers. Budget Estimate.">?</span></div>
+      <div class="stat-value gold">₹3.05L</div>
+      <div class="stat-meta">Lakh Crore (BE)</div>
+      <div class="stat-trend up">▲ 7.4% vs prev yr</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Expenditure 2024-25 <span class="help-icon" data-tip="All state government spending — revenue + capital expenditure.">?</span></div>
+      <div class="stat-value red">₹4.10L</div>
+      <div class="stat-meta">Lakh Crore (BE)</div>
+      <div class="stat-trend up">▲ 6.8% vs prev yr</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Fiscal Deficit <span class="help-icon" data-tip="Gap between spending and income. State must borrow this amount.">?</span></div>
+      <div class="stat-value red">₹1.19L</div>
+      <div class="stat-meta">4.51% of GSDP (BE)</div>
+      <div class="stat-trend neutral">FRBM Limit: 3%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Capital Expenditure <span class="help-icon" data-tip="Investment in long-term assets — roads, hospitals, schools. Only 15% of total spending.">?</span></div>
+      <div class="stat-value">₹0.62L</div>
+      <div class="stat-meta">15.1% of total exp.</div>
+      <div class="stat-trend down">▼ Below interest pmt</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Interest Payments <span class="help-icon" data-tip="Annual interest on all outstanding loans. Now exceeds capital expenditure.">?</span></div>
+      <div class="stat-value red">₹0.83L</div>
+      <div class="stat-meta">27.2% of revenue receipts</div>
+      <div class="stat-trend up">▲ Exceeds capex</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Own Tax Revenue <span class="help-icon" data-tip="Taxes collected directly by TN. At historic low of 5.45% of GSDP.">?</span></div>
+      <div class="stat-value">₹1.44L</div>
+      <div class="stat-meta">5.45% of GSDP (historic low)</div>
+      <div class="stat-trend neutral">TVK White Paper</div>
+    </div>
+  </div>
+
+  <!-- TAB INTERFACE -->
+  <div class="reveal">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('revenue')">Revenue</button>
+      <button class="tab-btn" onclick="switchTab('expenditure')">Expenditure</button>
+      <button class="tab-btn" onclick="switchTab('deficit')">Fiscal Deficit</button>
+      <button class="tab-btn" onclick="switchTab('committed')">Committed Costs</button>
+      <button class="tab-btn" onclick="switchTab('trend')">10-Yr Trend</button>
+    </div>
+
+    <!-- REVENUE TAB -->
+    <div id="tab-revenue" class="tab-panel active">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Revenue Sources Over Time</div>
+              <div class="card-subtitle">Own Tax · Non-Tax · Central Transfers</div>
+            </div>
+            <span class="help-icon" data-tip="Revenue receipts broken into: SOTR (state's own taxes), non-tax revenue (dividends, fees), and transfers from centre (devolution + grants).">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="revSourceChart"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">SOTR / GSDP Ratio — Declining Trend</div>
+              <div class="card-subtitle">State's Own Tax as % of its Economy</div>
+            </div>
+            <span class="help-icon" data-tip="A declining ratio means TN is collecting less tax relative to its economic size — pointing to tax evasion, exemptions, or enforcement gaps. TVK WP calls this a 'historic low'.">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="sotrChart"></canvas></div></div>
+        </div>
+      </div>
+      <div class="alert alert-warn" style="margin-top:1.5rem">
+        <strong>Revenue Dependency on Centre</strong>
+        Central transfers now account for ~40% of TN's revenue receipts. TN's own tax-to-GSDP ratio fell from ~7.7% (2014-15) to 5.45% (2024-25). Recovery of ₹54,640 crore in arrears could significantly improve fiscal position.
+        <div style="margin-top:6px"><span class="source-pill">TVK White Paper 2026 / CAG Revenue Receipts Report</span></div>
+      </div>
+    </div>
+
+    <!-- EXPENDITURE TAB -->
+    <div id="tab-expenditure" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">Expenditure Composition 2023-24</div><div class="card-subtitle">What TN spends money on</div></div>
+            <span class="help-icon" data-tip="Committed expenditure (salaries, pensions, interest, subsidies) accounts for over 80% of revenue spending, leaving very little for development.">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="expPieChart"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">Capital vs Revenue Expenditure</div><div class="card-subtitle">Development investment vs day-to-day spending</div></div>
+            <span class="help-icon" data-tip="Revenue expenditure (day-to-day running costs) should ideally be covered by revenue receipts. Capital expenditure (investment) can be funded by borrowings. TN's revenue expenditure consistently exceeds revenue receipts.">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="capRevChart"></canvas></div></div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Major Expenditure Heads — 10-Year Trend</div></div>
+          <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="expTrendChart"></canvas></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FISCAL DEFICIT TAB -->
+    <div id="tab-deficit" class="tab-panel">
+      <div class="alert alert-bad">
+        <strong>FRBM Breached Every Year Since 2018-19</strong>
+        Tamil Nadu's fiscal deficit has exceeded the FRBM ceiling of 3% of GSDP every single year since 2018-19. The COVID year (2020-21) saw it spike to 4.45%. Even "normal" years now see 4%+. CAG additionally flags that off-budget borrowings would push the actual deficit even higher.
+        <div style="margin-top:6px"><span class="source-pill">TN Finance Dept / CAG / FRBM Act 2003</span></div>
+      </div>
+      <div class="grid-2" style="margin-top:1rem;">
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">Fiscal Deficit % GSDP — vs FRBM Limit</div></div>
+            <span class="help-icon" data-tip="Red bars = above FRBM 3% limit. Dashed red line = FRBM ceiling. Even excluding off-budget borrowings, TN consistently breaches this limit.">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="fdChart"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">Revenue Deficit — Borrowing for Consumption</div></div>
+            <span class="help-icon" data-tip="Revenue deficit = borrowing for day-to-day expenses (not investment). This erodes fiscal health and adds to debt without creating assets. Zero/negative is the goal.">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="rdChart"></canvas></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMITTED COSTS TAB -->
+    <div id="tab-committed" class="tab-panel">
+      <div class="alert alert-warn">
+        <strong>Committed Expenditure Crowd-Out</strong>
+        Over 80% of TN's revenue expenditure is committed — salaries, pensions, interest payments, and subsidies. These are nearly impossible to cut in the short term. This leaves little room for development spending or fiscal adjustment.
+      </div>
+      <div class="grid-2" style="margin-top:1rem;">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Committed Costs vs Discretionary Spending</div></div>
+          <div class="card-body">
+            <div class="progress-row">
+              <div class="progress-label"><span>Salaries & Pensions <span class="help-icon" data-tip="Government employee salaries and pension to retired employees. ~33% of revenue expenditure.">?</span></span><span>₹1.38L Cr</span></div>
+              <div class="progress-track"><div class="progress-fill red" style="width:73%"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-label"><span>Interest Payments <span class="help-icon" data-tip="Annual interest on accumulated debt. Growing every year as debt rises.">?</span></span><span>₹0.83L Cr</span></div>
+              <div class="progress-track"><div class="progress-fill red" style="width:44%"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-label"><span>Subsidies & Welfare <span class="help-icon" data-tip="Electricity subsidies (TANGEDCO), PDS rice, Amma canteens, welfare pensions.">?</span></span><span>₹0.46L Cr</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:24%"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-label"><span>Capital Expenditure <span class="help-icon" data-tip="Investment in roads, schools, hospitals. Only 15% of total spending.">?</span></span><span>₹0.62L Cr</span></div>
+              <div class="progress-track"><div class="progress-fill green" style="width:33%"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-label"><span>Other Revenue Exp. <span class="help-icon" data-tip="Grants to local bodies, CSS matching, O&M expenses.">?</span></span><span>₹0.81L Cr</span></div>
+              <div class="progress-track"><div class="progress-fill" style="width:43%"></div></div>
+            </div>
+            <div style="margin-top:1rem;font-size:0.75rem;color:var(--mid);">Bar scale: % of total revenue receipts (₹3.05L Cr) · 2024-25 BE</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Interest vs Capex — The Crossover</div></div>
+          <div class="card-body">
+            <div class="alert alert-bad" style="margin-bottom:1rem">
+              <strong>Crossover Happened in 2022-23</strong>
+              Interest payments exceeded capital expenditure for the first time in 2022-23 and the gap is widening. In 2024-25, TN will pay ₹0.83L Cr in interest but invest only ₹0.62L Cr in new assets.
+            </div>
+            <div class="chart-wrap" style="height:200px"><canvas id="intCapChart"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10-YR TREND TAB -->
+    <div id="tab-trend" class="tab-panel">
+      <div class="selector-row">
+        <span class="selector-label">Metric:</span>
+        <select class="fin-select" id="trendMetricSel" onchange="updateTrendChart()">
+          <option value="gsdp">GSDP (₹ L.Cr)</option>
+          <option value="revenue">Revenue Receipts</option>
+          <option value="expenditure">Total Expenditure</option>
+          <option value="capex">Capital Expenditure</option>
+          <option value="interest">Interest Payments</option>
+          <option value="sotr">Own Tax Revenue</option>
+          <option value="fd">Fiscal Deficit</option>
+          <option value="fd_pct">Fiscal Deficit % GSDP</option>
+        </select>
+        <select class="fin-select" id="trendTypeSel" onchange="updateTrendChart()">
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+        </select>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title" id="trendTitle">GSDP — 10-Year Trend</div><div class="card-subtitle">2014-15 to 2024-25</div></div>
+        </div>
+        <div class="card-body"><div class="chart-wrap" style="height:320px"><canvas id="trendChart"></canvas></div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="fin-divider">
+
+  <!-- YEAR-WISE TABLE -->
+  <div class="section-gap reveal">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Full Data</div>
+        <h2 class="sec-title">Budget Summary — Year by Year</h2>
+      </div>
+    </div>
+    <div class="fin-table-wrap">
+      <table class="fin-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th class="num">SOTR <span class="help-icon" data-tip="State's Own Tax Revenue in ₹ L.Cr">?</span></th>
+            <th class="num">Revenue Receipts</th>
+            <th class="num">Revenue Exp.</th>
+            <th class="num">Capital Exp.</th>
+            <th class="num">Salaries+Pension</th>
+            <th class="num">Interest</th>
+            <th class="num">Subsidies</th>
+            <th class="num">Fiscal Deficit</th>
+            <th class="num">FD % GSDP</th>
+          </tr>
+        </thead>
+        <tbody id="budgetTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources-section reveal">
+    <div class="sources-title">Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-item">Tamil Nadu Budget Documents — Finance Department (finweb.tn.gov.in)</div>
+      <div class="source-item">RBI State Finances: A Study of Budgets (Annual)</div>
+      <div class="source-item">TVK White Paper on State Finances, June 2026</div>
+      <div class="source-item">DMK White Paper on State Finances, August 2021</div>
+      <div class="source-item">CAG Reports on State Finances of Tamil Nadu</div>
+      <div class="source-item">Economic Survey of Tamil Nadu — P&D Department</div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.72rem;color:var(--mid)" data-i18n="note_approx">* Approximate figures. Verify with original sources.</div>
+  </div>
+
+</main>
+<footer class="fin-footer">
+  <div data-i18n="footer_cvk">Cockroach Vetri Kazhagam · நேர்மையான தகவலே கிடைக்கும்</div>
+  <div style="margin-top:8px"><a href="index.html">← Finance Hub</a> · <a href="../index.html">CVK Home</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+const YEARS=['2014-15','2015-16','2016-17','2017-18','2018-19','2019-20','2020-21','2021-22','2022-23','2023-24','2024-25'];
+const DATA={
+  gsdp:   [9.02,10.42,11.52,12.88,14.62,15.76,14.82,18.16,20.98,23.64,26.42],
+  revenue:[1.18,1.36,1.52,1.68,1.86,1.94,1.83,2.14,2.52,2.84,3.05],
+  sotr:   [0.70,0.80,0.88,0.94,1.02,1.04,0.82,1.00,1.14,1.29,1.44],
+  central:[0.38,0.45,0.52,0.58,0.64,0.68,0.72,0.86,1.04,1.18,1.22],
+  nontax: [0.10,0.11,0.12,0.16,0.20,0.22,0.29,0.28,0.34,0.37,0.39],
+  revexp: [1.24,1.44,1.68,1.88,2.10,2.32,2.42,2.50,2.74,3.30,3.48],
+  capex:  [0.20,0.22,0.25,0.27,0.34,0.28,0.22,0.34,0.58,0.54,0.62],
+  interest:[0.22,0.26,0.30,0.34,0.38,0.43,0.47,0.54,0.62,0.73,0.83],
+  salpen: [0.50,0.58,0.66,0.74,0.84,0.92,0.96,1.02,1.12,1.26,1.38],
+  subsidy:[0.14,0.16,0.18,0.20,0.22,0.26,0.28,0.30,0.36,0.42,0.46],
+  fd:     [0.30,0.36,0.42,0.46,0.54,0.60,0.66,0.76,0.88,1.12,1.19],
+  fd_pct: [3.33,3.46,3.65,3.57,3.69,3.81,4.45,4.19,4.20,4.74,4.51],
+  rd_pct: [0.67,0.86,1.39,1.55,1.64,2.41,3.98,1.98,1.05,1.95,1.63],
+  sotr_pct:[7.76,7.68,7.64,7.30,6.98,6.60,5.53,5.51,5.43,5.46,5.45]
+};
+
+applyChartDefaults();
+
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    const ids=['revenue','expenditure','deficit','committed','trend'];
+    b.classList.toggle('active', ids[i]===id);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  if(id==='trend') updateTrendChart();
+}
+
+// Revenue sources stacked bar
+new Chart(document.getElementById('revSourceChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'Own Tax Revenue', data:DATA.sotr, backgroundColor:'rgba(212,160,23,0.8)', stack:'a'},
+    {label:'Non-Tax Revenue', data:DATA.nontax, backgroundColor:'rgba(240,192,64,0.8)', stack:'a'},
+    {label:'Central Transfers', data:DATA.central, backgroundColor:'rgba(68,187,102,0.8)', stack:'a'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{stacked:true,ticks:{font:{size:9},maxRotation:45}},
+            y:{stacked:true,ticks:{callback:v=>'₹'+v+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// SOTR ratio line
+new Chart(document.getElementById('sotrChart'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'SOTR % of GSDP', data:DATA.sotr_pct, borderColor:'#D4A017', backgroundColor:'rgba(212,160,23,0.1)', fill:true, tension:0.3, borderWidth:2, pointRadius:4, pointBackgroundColor:'#D4A017'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},
+            y:{min:4,ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// Expenditure pie
+new Chart(document.getElementById('expPieChart'),{
+  type:'doughnut',
+  data:{labels:['Salaries & Pensions','Interest Payments','Subsidies & Welfare','Capital Expenditure','Other Revenue Exp.'],
+        datasets:[{data:[1.26,0.73,0.42,0.54,0.89],
+                   backgroundColor:['#CC3344','#FF8800','#9966CC','#44BB66','#3399CC'],
+                   borderColor:'#111',borderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:10}},
+             tooltip:{callbacks:{label:ctx=>`${ctx.label}: ₹${ctx.parsed}L Cr`}}}}
+});
+
+// Capital vs Revenue
+new Chart(document.getElementById('capRevChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'Revenue Expenditure', data:DATA.revexp, backgroundColor:'rgba(204,0,0,0.6)'},
+    {label:'Capital Expenditure', data:DATA.capex, backgroundColor:'rgba(68,187,102,0.8)'},
+    {label:'Revenue Receipts', data:DATA.revenue, type:'line', borderColor:'#D4A017', backgroundColor:'transparent', borderWidth:2, borderDash:[4,3], pointRadius:3, fill:false}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{font:{size:10}}}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{ticks:{callback:v=>'₹'+v+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// Expenditure trend
+new Chart(document.getElementById('expTrendChart'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'Salaries & Pensions', data:DATA.salpen, borderColor:'#CC3344', tension:0.3, borderWidth:2, pointRadius:2},
+    {label:'Interest', data:DATA.interest, borderColor:'#FF8800', tension:0.3, borderWidth:2, pointRadius:2},
+    {label:'Subsidies', data:DATA.subsidy, borderColor:'#9966CC', tension:0.3, borderWidth:2, pointRadius:2},
+    {label:'Capital Exp.', data:DATA.capex, borderColor:'#44BB66', tension:0.3, borderWidth:2, pointRadius:2}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{font:{size:10}}}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{ticks:{callback:v=>'₹'+v+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// FD chart
+new Chart(document.getElementById('fdChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[{
+    label:'Fiscal Deficit % GSDP',
+    data:DATA.fd_pct,
+    backgroundColor:DATA.fd_pct.map(v=>v>3?'rgba(204,0,0,0.7)':'rgba(68,187,102,0.7)'),
+    borderColor:DATA.fd_pct.map(v=>v>3?'#CC3344':'#44BB66'),borderWidth:1
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},
+            y:{ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}},
+  plugins:[{id:'frbm',beforeDraw(c){
+    const {ctx,chartArea:{left,right},scales:{y}}=c;
+    const yp=y.getPixelForValue(3);
+    ctx.save();ctx.strokeStyle='#FF4444';ctx.setLineDash([5,5]);ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
+    ctx.fillStyle='#FF4444';ctx.font='bold 11px Inter';ctx.fillText('FRBM 3%',left+4,yp-6);
+    ctx.restore();
+  }}]
+});
+
+// Revenue deficit chart
+new Chart(document.getElementById('rdChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[{
+    label:'Revenue Deficit % GSDP',
+    data:DATA.rd_pct,
+    backgroundColor:DATA.rd_pct.map(v=>v>2?'rgba(204,0,0,0.7)':v>0?'rgba(221,136,0,0.7)':'rgba(68,187,102,0.7)'),
+    borderWidth:1
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// Interest vs Capex
+new Chart(document.getElementById('intCapChart'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'Interest Payments', data:DATA.interest, borderColor:'#CC3344', backgroundColor:'rgba(204,0,0,0.08)', fill:true, tension:0.3, borderWidth:2, pointRadius:3},
+    {label:'Capital Expenditure', data:DATA.capex, borderColor:'#44BB66', backgroundColor:'rgba(68,187,102,0.08)', fill:true, tension:0.3, borderWidth:2, pointRadius:3}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{font:{size:10}}}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{ticks:{callback:v=>'₹'+v+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+// Trend chart (dynamic)
+let trendChartObj=null;
+const trendMeta={
+  gsdp:{title:'GSDP',color:'#D4A017'},revenue:{title:'Revenue Receipts',color:'#44BB66'},
+  expenditure:{title:'Total Expenditure',color:'#CC3344'},capex:{title:'Capital Expenditure',color:'#3399CC'},
+  interest:{title:'Interest Payments',color:'#FF8800'},sotr:{title:'Own Tax Revenue',color:'#D4A017'},
+  fd:{title:'Fiscal Deficit',color:'#9966CC'},fd_pct:{title:'Fiscal Deficit % GSDP',color:'#FF8800'}
+};
+function updateTrendChart(){
+  const key=document.getElementById('trendMetricSel').value;
+  const type=document.getElementById('trendTypeSel').value;
+  const m=trendMeta[key]||{title:key,color:'#D4A017'};
+  document.getElementById('trendTitle').textContent=m.title+' — 10-Year Trend';
+  if(trendChartObj) trendChartObj.destroy();
+  trendChartObj=new Chart(document.getElementById('trendChart'),{
+    type,
+    data:{labels:YEARS,datasets:[{
+      label:m.title,data:DATA[key],
+      backgroundColor:type==='bar'?m.color+'BB':'rgba(212,160,23,0.1)',
+      borderColor:m.color,borderWidth:2,fill:type==='line',tension:0.3,pointRadius:4
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:{font:{size:10},maxRotation:45}},y:{grid:{color:'rgba(255,255,255,0.04)'},ticks:{callback:v=>key.includes('pct')?v+'%':'₹'+v+'L'}}}}
+  });
+}
+updateTrendChart();
+
+// Budget table
+const tb=document.getElementById('budgetTableBody');
+YEARS.forEach((y,i)=>{
+  const fd=DATA.fd_pct[i];
+  const badge=fd>4?'badge-red':fd>3?'badge-gold':'badge-green';
+  const inthi=DATA.interest[i]>DATA.capex[i];
+  tb.innerHTML+=`<tr ${i===YEARS.length-1?'class="hl"':''}>
+    <td><strong>${y}</strong>${i===YEARS.length-1?' <span class="badge badge-grey">BE</span>':''}</td>
+    <td class="num">${DATA.sotr[i].toFixed(2)}</td>
+    <td class="num">${DATA.revenue[i].toFixed(2)}</td>
+    <td class="num">${DATA.revexp[i].toFixed(2)}</td>
+    <td class="num">${DATA.capex[i].toFixed(2)}</td>
+    <td class="num">${DATA.salpen[i].toFixed(2)}</td>
+    <td class="num ${inthi?'red':''}">${DATA.interest[i].toFixed(2)}</td>
+    <td class="num">${DATA.subsidy[i].toFixed(2)}</td>
+    <td class="num">${DATA.fd[i].toFixed(2)}</td>
+    <td class="num"><span class="badge ${badge}">${fd.toFixed(2)}%</span></td>
+  </tr>`;
+});
+
+document.addEventListener('DOMContentLoaded',()=>{initLang();initReveal();});
+initLang();initReveal();
+</script>
+</body>
+</html>

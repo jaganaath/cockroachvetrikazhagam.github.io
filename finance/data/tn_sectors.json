@@ -1,0 +1,106 @@
+{
+  "_meta": {
+    "title": "Tamil Nadu Sector-wise GSDP and Employment Data",
+    "sources": [
+      "TN Directorate of Economics & Statistics",
+      "MOSPI National Accounts",
+      "Economic Survey of Tamil Nadu (Annual)",
+      "Periodic Labour Force Survey (PLFS)",
+      "CMIE State GDP Data"
+    ],
+    "unit_gsdp": "₹ Lakh Crore (Current Prices)",
+    "last_updated": "June 2026"
+  },
+  "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+  "sector_gsdp": {
+    "Agriculture": {
+      "help": "Farming, animal husbandry, forestry, fishing. Tamil Nadu has a relatively smaller agri share compared to north Indian states.",
+      "values": [1.62, 1.68, 1.84, 2.08, 2.12, 2.24]
+    },
+    "Industry": {
+      "help": "Manufacturing, mining, construction. TN is a major manufacturing hub — auto, textiles, electronics, leather.",
+      "values": [4.88, 4.96, 4.12, 5.48, 6.24, 6.98]
+    },
+    "Services": {
+      "help": "IT/ITES, finance, trade, hotels, transport. Chennai is India's 2nd largest IT hub. Services drive TN's growth.",
+      "values": [8.12, 9.12, 8.86, 10.60, 12.62, 14.42]
+    }
+  },
+  "sector_share_pct": {
+    "Agriculture": [11.1, 10.7, 12.4, 11.5, 10.1, 9.5],
+    "Industry": [33.4, 31.5, 27.8, 30.2, 29.7, 29.5],
+    "Services": [55.5, 57.8, 59.8, 58.3, 60.2, 61.0]
+  },
+  "sector_growth_pct": {
+    "Agriculture": [4.2, 3.7, 9.5, 13.0, 1.9, 5.7],
+    "Industry": [8.6, 1.6, -16.9, 33.0, 13.9, 11.9],
+    "Services": [16.8, 12.3, -2.9, 19.7, 19.1, 14.3]
+  },
+  "manufacturing_subsectors": {
+    "years": ["2020-21","2021-22","2022-23","2023-24"],
+    "Automobiles_Components": {
+      "help": "Chennai is called 'Detroit of India'. Major manufacturers: Hyundai, Ford (now closed), BMW, TVS, Royal Enfield, Ashok Leyland.",
+      "share_pct": [18.4, 19.2, 20.1, 21.2]
+    },
+    "Textiles_Apparel": {
+      "help": "TN is India's largest textile producer. Major clusters: Tirupur (knitwear), Coimbatore (spinning), Salem (steel but also textiles).",
+      "share_pct": [16.2, 15.8, 15.4, 14.8]
+    },
+    "Electronics_IT_Hardware": {
+      "help": "Growing sector — Foxconn (Apple supplier), Pegatron, Samsung, Dell assembly in Tamil Nadu.",
+      "share_pct": [8.4, 9.2, 10.1, 11.4]
+    },
+    "Leather_Footwear": {
+      "help": "Chennai and Vellore are major leather export hubs. India's 2nd largest leather export state.",
+      "share_pct": [6.8, 6.4, 6.2, 5.8]
+    },
+    "Food_Processing": {
+      "help": "Growing sector — major in Hosur, Coimbatore, Salem corridors.",
+      "share_pct": [9.2, 9.4, 9.6, 9.8]
+    },
+    "Chemicals_Pharma": {
+      "help": "Pharma clusters in Chennai, Hosur. Growing speciality chemicals.",
+      "share_pct": [7.4, 7.6, 7.8, 8.2]
+    },
+    "Other_Manufacturing": {
+      "help": "Cement, plastics, engineering goods, other industries.",
+      "share_pct": [33.6, 32.4, 30.8, 28.8]
+    }
+  },
+  "employment": {
+    "source": "Periodic Labour Force Survey (PLFS), CMIE",
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "workforce_million": [38.2, 38.8, 36.4, 38.4, 39.8, 40.6],
+    "unemployment_rate_pct": [5.8, 6.2, 9.4, 7.8, 6.8, 6.2],
+    "youth_unemployment_pct": [18.4, 19.2, 28.4, 24.2, 21.8, 20.4],
+    "labour_force_participation_pct": [48.2, 47.8, 44.6, 46.8, 48.4, 49.2],
+    "female_lfpr_pct": [32.8, 32.4, 30.2, 32.6, 34.2, 35.4],
+    "informal_sector_pct": [78.4, 78.8, 82.4, 80.8, 79.4, 78.2]
+  },
+  "district_gsdp_2022_23": {
+    "source": "TN Directorate of Economics & Statistics District Product",
+    "note": "Approximate figures — district-level GDP is less precise than state-level.",
+    "districts": [
+      { "name": "Chennai", "gsdp_crore": 312840, "per_capita_rank": 1 },
+      { "name": "Coimbatore", "gsdp_crore": 124280, "per_capita_rank": 2 },
+      { "name": "Tiruvallur", "gsdp_crore": 86420, "per_capita_rank": 4 },
+      { "name": "Kancheepuram", "gsdp_crore": 78240, "per_capita_rank": 5 },
+      { "name": "Salem", "gsdp_crore": 68420, "per_capita_rank": 8 },
+      { "name": "Erode", "gsdp_crore": 62840, "per_capita_rank": 6 },
+      { "name": "Tiruppur", "gsdp_crore": 72480, "per_capita_rank": 3 },
+      { "name": "Vellore", "gsdp_crore": 54280, "per_capita_rank": 12 },
+      { "name": "Madurai", "gsdp_crore": 84280, "per_capita_rank": 9 },
+      { "name": "Tiruchirappalli", "gsdp_crore": 68420, "per_capita_rank": 10 },
+      { "name": "Tirunelveli", "gsdp_crore": 48240, "per_capita_rank": 14 },
+      { "name": "Dindigul", "gsdp_crore": 38420, "per_capita_rank": 18 },
+      { "name": "Cuddalore", "gsdp_crore": 36240, "per_capita_rank": 20 },
+      { "name": "Villupuram", "gsdp_crore": 32480, "per_capita_rank": 24 },
+      { "name": "Thanjavur", "gsdp_crore": 42840, "per_capita_rank": 16 },
+      { "name": "Nagapattinam", "gsdp_crore": 22480, "per_capita_rank": 30 },
+      { "name": "Dharmapuri", "gsdp_crore": 24840, "per_capita_rank": 28 },
+      { "name": "Krishnagiri", "gsdp_crore": 38240, "per_capita_rank": 15 },
+      { "name": "Namakkal", "gsdp_crore": 34280, "per_capita_rank": 17 },
+      { "name": "Nilgiris", "gsdp_crore": 18420, "per_capita_rank": 22 }
+    ]
+  }
+}

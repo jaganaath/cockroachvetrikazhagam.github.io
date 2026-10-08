@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "sources": ["NFHS-5 (2019-21)", "Census 2011 & 2021 projections", "UDISE+ 2021-22", "Ministry of Education AISHE 2021-22", "NHM Annual Report 2022-23", "NITI Aayog SDG India Index 2023-24"],
+    "states": ["TN","MH","KA","KL","AP","TG","GJ","RJ","UP","WB"],
+    "state_names": {
+      "TN":"Tamil Nadu","MH":"Maharashtra","KA":"Karnataka","KL":"Kerala","AP":"Andhra Pradesh","TG":"Telangana","GJ":"Gujarat","RJ":"Rajasthan","UP":"Uttar Pradesh","WB":"West Bengal"
+    }
+  },
+  "education": {
+    "literacy_rate": {
+      "overall": {"TN":80.09,"MH":82.91,"KA":75.36,"KL":94.00,"AP":67.02,"TG":72.83,"GJ":78.03,"RJ":66.11,"UP":67.70,"WB":76.26},
+      "male":    {"TN":86.81,"MH":88.85,"KA":82.47,"KL":96.10,"AP":74.69,"TG":79.89,"GJ":85.75,"RJ":79.19,"UP":77.28,"WB":81.69},
+      "female":  {"TN":73.44,"MH":76.69,"KA":68.08,"KL":91.98,"AP":59.15,"TG":65.46,"GJ":69.68,"RJ":52.12,"UP":57.18,"WB":70.54},
+      "help": "Literacy rate = % of population aged 7+ who can read and write with understanding. Source: Census 2011 (projected to 2022).",
+      "source": "Census 2011, RGI India"
+    },
+    "female_literacy": {
+      "2001": {"TN":64.36,"MH":67.51,"KA":56.87,"KL":87.72,"AP":50.43,"TG":50.43,"GJ":57.80,"RJ":43.85,"UP":42.22,"WB":59.61},
+      "2011": {"TN":73.44,"MH":76.69,"KA":68.08,"KL":91.98,"AP":59.15,"TG":65.46,"GJ":69.68,"RJ":52.12,"UP":57.18,"WB":70.54},
+      "2022e": {"TN":82.90,"MH":83.20,"KA":74.50,"KL":93.50,"AP":65.80,"TG":72.10,"GJ":75.30,"RJ":58.60,"UP":62.40,"WB":76.30},
+      "help": "Female literacy rate trend shows progress over two decades.",
+      "source": "Census 2001, 2011; NFHS-5 2019-21 projections"
+    },
+    "gross_enrollment_ratio": {
+      "primary_6_11": {"TN":95.4,"MH":98.2,"KA":96.1,"KL":99.2,"AP":92.8,"TG":91.5,"GJ":97.3,"RJ":88.6,"UP":85.4,"WB":96.8},
+      "upper_primary_11_14": {"TN":89.2,"MH":91.5,"KA":88.7,"KL":97.8,"AP":84.3,"TG":83.6,"GJ":90.2,"RJ":79.5,"UP":72.1,"WB":87.3},
+      "secondary_14_18": {"TN":73.4,"MH":76.8,"KA":71.9,"KL":89.6,"AP":65.7,"TG":64.2,"GJ":74.5,"RJ":60.8,"UP":55.3,"WB":70.9},
+      "higher_18_23": {"TN":47.7,"MH":37.1,"KA":31.8,"KL":38.3,"AP":32.6,"TG":32.5,"GJ":21.7,"RJ":20.2,"UP":23.7,"WB":19.8},
+      "help": "GER = total enrolled ÷ official age group population × 100. Can exceed 100% if over-age/under-age students enrolled.",
+      "source": "UDISE+ 2021-22; AISHE 2021-22"
+    },
+    "dropout_rate": {
+      "primary": {"TN":1.5,"MH":2.1,"KA":3.8,"KL":0.5,"AP":5.2,"TG":4.9,"GJ":2.8,"RJ":6.7,"UP":8.4,"WB":4.1},
+      "upper_primary": {"TN":3.2,"MH":4.5,"KA":6.2,"KL":0.9,"AP":8.7,"TG":7.8,"GJ":5.1,"RJ":11.3,"UP":13.8,"WB":7.6},
+      "secondary": {"TN":14.6,"MH":15.2,"KA":17.8,"KL":5.6,"AP":19.4,"TG":18.7,"GJ":16.3,"RJ":25.1,"UP":31.2,"WB":20.4},
+      "help": "Dropout rate = % of students who leave school without completing that level.",
+      "source": "UDISE+ 2021-22"
+    },
+    "degree_completion": {
+      "graduates_per_lakh_pop": {"TN":1180,"MH":890,"KA":760,"KL":920,"AP":680,"TG":720,"GJ":520,"RJ":310,"UP":280,"WB":430},
+      "female_higher_ed_pct": {"TN":54.2,"MH":47.8,"KA":45.6,"KL":58.3,"AP":43.1,"TG":46.8,"GJ":38.4,"RJ":28.7,"UP":31.5,"WB":40.2},
+      "stem_female_pct": {"TN":48.3,"MH":42.1,"KA":44.7,"KL":52.6,"AP":38.2,"TG":40.5,"GJ":32.1,"RJ":22.4,"UP":24.8,"WB":35.7},
+      "help": "Degree completion: graduates per lakh population, % women in higher education, % women in STEM programs.",
+      "source": "AISHE 2021-22, Ministry of Education"
+    }
+  },
+  "women": {
+    "sex_ratio": {
+      "overall": {"TN":996,"MH":929,"KA":973,"KL":1084,"AP":993,"TG":988,"GJ":919,"RJ":928,"UP":912,"WB":950},
+      "at_birth": {"TN":955,"MH":903,"KA":940,"KL":963,"AP":927,"TG":923,"GJ":909,"RJ":888,"UP":899,"WB":947},
+      "help": "Sex ratio = females per 1000 males. At-birth ratio reflects gender bias in births.",
+      "source": "Census 2011, SRS 2020"
+    },
+    "women_workforce_participation": {
+      "rural_wfpr": {"TN":37.2,"MH":55.3,"KA":30.1,"KL":18.7,"AP":54.2,"TG":42.8,"GJ":48.6,"RJ":49.1,"UP":18.2,"WB":28.4},
+      "urban_wfpr": {"TN":22.4,"MH":18.9,"KA":19.3,"KL":16.8,"AP":18.7,"TG":20.1,"GJ":14.2,"RJ":12.8,"UP":9.7,"WB":14.6},
+      "help": "WFPR = Workers Force Participation Rate — % women in working population who are employed or seeking work.",
+      "source": "PLFS Annual Report 2021-22"
+    },
+    "maternal_health": {
+      "anc_4plus_visits_pct": {"TN":76.2,"MH":64.3,"KA":70.1,"KL":93.4,"AP":68.7,"TG":72.3,"GJ":55.8,"RJ":41.2,"UP":38.6,"WB":62.1},
+      "institutional_delivery_pct": {"TN":99.3,"MH":97.6,"KA":97.2,"KL":99.9,"AP":97.8,"TG":97.1,"GJ":97.7,"RJ":84.3,"UP":85.3,"WB":87.9},
+      "skilled_birth_attendant_pct": {"TN":99.4,"MH":97.8,"KA":97.5,"KL":99.9,"AP":98.2,"TG":97.8,"GJ":97.9,"RJ":84.5,"UP":86.1,"WB":88.4},
+      "help": "ANC 4+ = at least 4 antenatal care visits. Institutional delivery = birth in hospital/clinic.",
+      "source": "NFHS-5 2019-21"
+    },
+    "violence_and_safety": {
+      "domestic_violence_pct": {"TN":19.5,"MH":23.8,"KA":44.0,"KL":31.4,"AP":32.0,"TG":36.9,"GJ":13.4,"RJ":28.6,"UP":27.0,"WB":32.8},
+      "crimes_against_women_per_lakh": {"TN":68.2,"MH":82.4,"KA":53.7,"KL":84.2,"AP":64.1,"TG":82.3,"GJ":28.5,"RJ":173.5,"UP":91.4,"WB":70.8},
+      "help": "Domestic violence = % women aged 15-49 who experienced physical/sexual violence by spouse. Crimes per lakh women from NCRB.",
+      "source": "NFHS-5 2019-21; NCRB 2022"
+    },
+    "child_marriage": {
+      "women_married_before_18_pct": {"TN":15.7,"MH":26.5,"KA":22.6,"KL":6.3,"AP":27.4,"TG":24.5,"GJ":21.8,"RJ":25.4,"UP":21.2,"WB":41.6},
+      "help": "% women aged 20-24 who were married before age 18. Child marriage limits education and health outcomes.",
+      "source": "NFHS-5 2019-21"
+    }
+  },
+  "health": {
+    "maternal_mortality": {
+      "mmr_2018_20": {"TN":54,"MH":33,"KA":69,"KL":19,"AP":45,"TG":43,"GJ":57,"RJ":113,"UP":167,"WB":109},
+      "mmr_2016_18": {"TN":63,"MH":46,"KA":83,"KL":43,"AP":65,"TG":56,"GJ":75,"RJ":164,"UP":197,"WB":98},
+      "mmr_2014_16": {"TN":66,"MH":61,"KA":108,"KL":46,"AP":74,"TG":74,"GJ":91,"RJ":199,"UP":201,"WB":117},
+      "sdg_target": 70,
+      "help": "MMR = Maternal Mortality Ratio: deaths per 1,00,000 live births. SDG target is below 70 by 2030.",
+      "source": "SRS Special Bulletin on MMR 2018-20"
+    },
+    "infant_mortality": {
+      "imr_2021": {"TN":13,"MH":17,"KA":18,"KL":6,"AP":27,"TG":22,"GJ":25,"RJ":38,"UP":42,"WB":20},
+      "imr_2018": {"TN":16,"MH":20,"KA":21,"KL":7,"AP":33,"TG":27,"GJ":30,"RJ":41,"UP":47,"WB":22},
+      "imr_2015": {"TN":20,"MH":24,"KA":28,"KL":12,"AP":40,"TG":36,"GJ":38,"RJ":47,"UP":52,"WB":27},
+      "sdg_target": 12,
+      "help": "IMR = Infant Mortality Rate: deaths per 1,000 live births in first year. SDG target < 12 by 2030.",
+      "source": "SRS Statistical Report 2021"
+    },
+    "under5_mortality": {
+      "u5mr_2021": {"TN":18,"MH":22,"KA":25,"KL":8,"AP":35,"TG":29,"GJ":33,"RJ":46,"UP":51,"WB":24},
+      "help": "Under-5 Mortality Rate: deaths per 1,000 live births before age 5.",
+      "source": "SRS 2021"
+    },
+    "child_nutrition": {
+      "stunted_under5_pct": {"TN":25.0,"MH":35.2,"KA":35.4,"KL":23.4,"AP":31.4,"TG":33.1,"GJ":39.0,"RJ":31.8,"UP":39.7,"WB":33.8},
+      "wasted_under5_pct": {"TN":19.7,"MH":25.6,"KA":19.5,"KL":15.7,"AP":17.2,"TG":18.3,"GJ":25.1,"RJ":19.0,"UP":17.3,"WB":20.3},
+      "underweight_under5_pct": {"TN":23.8,"MH":36.1,"KA":32.0,"KL":19.7,"AP":28.9,"TG":28.0,"GJ":39.3,"RJ":31.8,"UP":39.5,"WB":32.1},
+      "help": "Stunted = low height-for-age. Wasted = low weight-for-height (acute malnutrition). Underweight = low weight-for-age.",
+      "source": "NFHS-5 2019-21"
+    },
+    "immunization": {
+      "fully_immunized_pct": {"TN":69.7,"MH":56.6,"KA":65.0,"KL":82.3,"AP":65.8,"TG":64.6,"GJ":57.7,"RJ":54.5,"UP":69.6,"WB":84.0},
+      "help": "% children 12-23 months who received all basic vaccines (BCG, DPT3, Polio3, Measles).",
+      "source": "NFHS-5 2019-21"
+    },
+    "anemia": {
+      "women_15_49_pct": {"TN":45.5,"MH":53.2,"KA":47.5,"KL":30.2,"AP":57.4,"TG":53.9,"GJ":65.2,"RJ":54.4,"UP":50.4,"WB":70.6},
+      "children_6_59mo_pct": {"TN":57.4,"MH":68.9,"KA":65.5,"KL":39.4,"AP":68.0,"TG":72.7,"GJ":79.7,"RJ":71.5,"UP":66.7,"WB":69.0},
+      "help": "Anemia (haemoglobin below threshold) affects iron levels, causing fatigue and complications in pregnancy.",
+      "source": "NFHS-5 2019-21"
+    }
+  },
+  "sdg": {
+    "overall_score_2023": {"TN":78,"MH":75,"KA":73,"KL":79,"AP":67,"TG":68,"GJ":72,"RJ":60,"UP":57,"WB":66},
+    "goal4_education": {"TN":72,"MH":69,"KA":65,"KL":84,"AP":58,"TG":60,"GJ":61,"RJ":46,"UP":42,"WB":63},
+    "goal3_health": {"TN":81,"MH":76,"KA":74,"KL":90,"AP":69,"TG":71,"GJ":70,"RJ":55,"UP":50,"WB":65},
+    "goal5_gender": {"TN":66,"MH":60,"KA":58,"KL":74,"AP":54,"TG":56,"GJ":52,"RJ":38,"UP":35,"WB":55},
+    "help": "NITI Aayog SDG India Index scores (0-100). Higher = better progress on Sustainable Development Goals.",
+    "source": "NITI Aayog SDG India Index & Dashboard 2023-24"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "meta": { "state": "Tamil Nadu", "sources": ["NFHS-5 2019-21", "NCRB 2022", "PLFS 2021-22", "SRS 2020", "MoWCD Annual Report 2022-23"] },
+  "key_stats": {
+    "female_literacy": 82.9,
+    "sex_ratio_overall": 996,
+    "sex_ratio_at_birth": 955,
+    "women_in_workforce_pct": 30.8,
+    "child_marriage_pct": 15.7,
+    "institutional_delivery_pct": 99.3,
+    "women_in_legislature_pct": 10.2
+  },
+  "education_trend": {
+    "years": ["2001","2006","2011","2016","2019-21"],
+    "female_literacy": [64.36, 69.5, 73.44, 78.2, 82.9],
+    "male_literacy":   [80.33, 84.1, 86.81, 89.1, 91.3],
+    "gender_gap":      [15.97, 14.6, 13.37, 10.9, 8.4],
+    "help": "Gender gap in literacy (male − female) has been narrowing steadily in Tamil Nadu. At 8.4 points it is below the national average of ~14 points.",
+    "source": "Census 2001, 2011; NFHS-4, NFHS-5"
+  },
+  "workforce": {
+    "years": ["2017-18","2018-19","2019-20","2020-21","2021-22"],
+    "women_lfpr_rural": [33.4, 35.1, 36.2, 36.9, 37.2],
+    "women_lfpr_urban": [20.1, 21.0, 21.8, 22.1, 22.4],
+    "men_lfpr_rural":   [72.4, 73.1, 73.8, 74.2, 74.6],
+    "men_lfpr_urban":   [68.3, 68.8, 69.2, 69.5, 69.8],
+    "help": "LFPR = Labour Force Participation Rate. Urban women participation in TN lags rural, partly due to social norms and migration patterns.",
+    "source": "PLFS Annual Reports 2018-2022"
+  },
+  "maternal_mortality": {
+    "years": ["2014-16","2015-17","2016-18","2017-19","2018-20"],
+    "mmr": [66, 63, 63, 58, 54],
+    "national_mmr": [130, 122, 113, 103, 97],
+    "sdg_target": 70,
+    "help": "Tamil Nadu achieved SDG MMR target of 70 by 2018-20. National average is still above target. MMR = deaths per 1,00,000 live births.",
+    "source": "SRS Special Bulletin on MMR, RGI India"
+  },
+  "child_marriage_trend": {
+    "years": ["NFHS-4 (2015-16)","NFHS-5 (2019-21)"],
+    "tn_pct": [19.7, 15.7],
+    "national_pct": [26.8, 23.3],
+    "help": "Child marriage (women married before 18) has declined but remains above Kerala's 6.3%. Economic hardship and social norms are key drivers.",
+    "source": "NFHS-4, NFHS-5"
+  },
+  "domestic_violence": {
+    "ever_married_women_pct": {
+      "physical_violence": 19.5,
+      "emotional_violence": 12.3,
+      "sexual_violence": 10.2,
+      "any_violence": 24.7
+    },
+    "national_any_violence_pct": 29.3,
+    "help": "% ever-married women aged 15-49 who experienced violence. TN below national average, but 1 in 4 women still report some form of violence.",
+    "source": "NFHS-5 2019-21"
+  },
+  "scheme_beneficiaries": {
+    "schemes": [
+      {"name":"Kalaignar Magalir Urimai Thogai","beneficiaries_lakhs":1.06,"desc":"₹1,000/month direct cash transfer to women heads of household"},
+      {"name":"Pudhumai Penn Scheme","beneficiaries_lakhs":3.4,"desc":"₹1,000/month scholarship for govt school girl students in higher education"},
+      {"name":"Cradle Baby Scheme","beneficiaries_since_2011":43000,"desc":"Prevents female infanticide by accepting unwanted baby girls"},
+      {"name":"Makkalai Thedi Maruthuvam","beneficiaries_lakhs":12.0,"desc":"Doorstep health services especially benefiting women"},
+      {"name":"SHG TNSRLM","shgs_lakhs":4.6,"members_lakhs":63,"desc":"Self-Help Groups promoting women's economic empowerment"}
+    ],
+    "help": "State government schemes targeting women's economic security and health outcomes.",
+    "source": "TN Budget 2023-24, TN WD Dept"
+  },
+  "women_in_politics": {
+    "state_assembly_pct": 10.2,
+    "local_body_pct": 43.5,
+    "panchayat_president_pct": 47.2,
+    "help": "Local body representation boosted by 50% reservation for women in TN panchayats. State assembly representation is lower.",
+    "source": "State Election Commission TN 2021, Election Commission of India"
+  }
+}

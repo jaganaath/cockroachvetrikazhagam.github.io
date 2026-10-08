@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Party Rule Comparison — TN Electricity</title>
+<link rel="stylesheet" href="css/electricity.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<nav class="e-nav">
+  <a href="../index.html" class="e-nav-brand">⚡ CVK → Electricity Hub</a>
+  <div class="e-nav-links">
+    <a href="index.html">Overview</a>
+    <a href="tangedco.html">TANGEDCO</a>
+    <a href="generation.html">Generation</a>
+    <a href="party.html" class="active">Party Comparison</a>
+    <a href="compare.html">State Compare</a>
+    <a href="whitepaper.html">White Paper</a>
+  </div>
+  <button class="lang-btn">EN / TA / HI</button>
+</nav>
+
+<div class="e-hero">
+  <h1>Party Rule Comparison — <span>Who Ran TN's Electricity Better?</span></h1>
+  <p>Data-driven comparison of DMK (2006–11, 2021–26) vs AIADMK (2011–16, 2016–21) on capacity addition, debt accumulation, loss reduction, renewable growth and consumer experience. Data decides — you judge.</p>
+  <div class="stat-row">
+    <div class="stat-pill"><div class="v" style="color:#3399CC">9,120 MW</div><div class="l">AIADMK 2011-16 capacity added</div></div>
+    <div class="stat-pill"><div class="v" style="color:#CC0000">3.4 pp</div><div class="l">DMK 2021-26 AT&C reduction</div></div>
+    <div class="stat-pill"><div class="v" style="color:#3399CC">₹63,700 Cr</div><div class="l">AIADMK total loss added</div></div>
+    <div class="stat-pill"><div class="v" style="color:#CC0000">71%</div><div class="l">Renewable share under DMK 2024</div></div>
+  </div>
+</div>
+
+<!-- SCORECARD CARDS -->
+<div class="section reveal">
+  <div class="section-title">Government Scorecards</div>
+  <div class="party-grid">
+
+    <div class="party-card dmk">
+      <h3 style="color:#CC0000">DMK — 2006 to 2011</h3>
+      <div class="cm">Chief Minister: M. Karunanidhi</div>
+      <div class="metric"><span class="k">Capacity Added</span><span class="v" style="color:#F5A623">1,820 MW</span></div>
+      <div class="metric"><span class="k">Renewable Added</span><span class="v" style="color:#44BB66">680 MW</span></div>
+      <div class="metric"><span class="k">AT&C Change</span><span class="v" style="color:#44BB66">−2.6 pp (22.4→19.8%)</span></div>
+      <div class="metric"><span class="k">Tariff Hike</span><span class="v" style="color:#44BB66">0%</span></div>
+      <div class="metric"><span class="k">Load Shedding (Urban)</span><span class="v" style="color:#FF4444">~4 hrs/day</span></div>
+      <div class="metric"><span class="k">Loss Added</span><span class="v" style="color:#FF4444">₹11,000 Cr</span></div>
+      <div class="metric"><span class="k">Annual Loss (end)</span><span class="v" style="color:#FF8800">₹2,800 Cr</span></div>
+      <div class="metric"><span class="k">Renewable % (end)</span><span class="v" style="color:#44BB66">27.2%</span></div>
+      <div class="verdict-badge" style="background:rgba(255,136,0,0.15);color:#FF8800">⚠ Mixed — no tariff hike = revenue gap; severe load shedding 2010-11</div>
+    </div>
+
+    <div class="party-card aiadmk">
+      <h3 style="color:#2288AA">AIADMK — 2011 to 2016</h3>
+      <div class="cm">Chief Minister: J. Jayalalithaa</div>
+      <div class="metric"><span class="k">Capacity Added</span><span class="v" style="color:#F5A623">9,120 MW ★</span></div>
+      <div class="metric"><span class="k">Renewable Added</span><span class="v" style="color:#44BB66">7,400 MW ★</span></div>
+      <div class="metric"><span class="k">AT&C Change</span><span class="v" style="color:#44BB66">−1.6 pp (19.2→17.6%)</span></div>
+      <div class="metric"><span class="k">Tariff Hike</span><span class="v" style="color:#FF8800">+33% (2012+2015)</span></div>
+      <div class="metric"><span class="k">Load Shedding (Urban)</span><span class="v" style="color:#44BB66">~1.5 hrs/day</span></div>
+      <div class="metric"><span class="k">Loss Added</span><span class="v" style="color:#FF4444">₹26,000 Cr</span></div>
+      <div class="metric"><span class="k">Annual Loss (end)</span><span class="v" style="color:#FF8800">₹6,000 Cr</span></div>
+      <div class="metric"><span class="k">Renewable % (end)</span><span class="v" style="color:#44BB66">52.6%</span></div>
+      <div class="verdict-badge" style="background:rgba(68,187,102,0.12);color:#44BB66">✓ Best capacity addition — but losses doubled in 5 years</div>
+    </div>
+
+    <div class="party-card aiadmk">
+      <h3 style="color:#2288AA">AIADMK — 2016 to 2021</h3>
+      <div class="cm">Chief Minister: Edappadi K. Palaniswami</div>
+      <div class="metric"><span class="k">Capacity Added</span><span class="v" style="color:#F5A623">5,600 MW</span></div>
+      <div class="metric"><span class="k">Renewable Added</span><span class="v" style="color:#44BB66">6,400 MW</span></div>
+      <div class="metric"><span class="k">AT&C Change</span><span class="v" style="color:#FF4444">+1.0 pp (17.2→18.2%) ✗</span></div>
+      <div class="metric"><span class="k">Tariff Hike</span><span class="v" style="color:#FF8800">+20%</span></div>
+      <div class="metric"><span class="k">Load Shedding (Urban)</span><span class="v" style="color:#44BB66">~0.5 hrs/day</span></div>
+      <div class="metric"><span class="k">Loss Added</span><span class="v" style="color:#FF4444">₹37,700 Cr ✗</span></div>
+      <div class="metric"><span class="k">Annual Loss (end)</span><span class="v" style="color:#FF4444">₹9,200 Cr (highest ever)</span></div>
+      <div class="metric"><span class="k">Renewable % (end)</span><span class="v" style="color:#44BB66">68.9%</span></div>
+      <div class="verdict-badge" style="background:rgba(255,68,68,0.12);color:#FF4444">✗ Worst period — AT&C losses rose; highest ever annual loss; smart meters stalled</div>
+    </div>
+
+    <div class="party-card dmk">
+      <h3 style="color:#CC0000">DMK — 2021 to 2026</h3>
+      <div class="cm">Chief Minister: M.K. Stalin</div>
+      <div class="metric"><span class="k">Capacity Added</span><span class="v" style="color:#F5A623">4,840 MW</span></div>
+      <div class="metric"><span class="k">Renewable Added</span><span class="v" style="color:#44BB66">3,980 MW</span></div>
+      <div class="metric"><span class="k">AT&C Change</span><span class="v" style="color:#44BB66">−3.4 pp (18.2→14.8%) ★</span></div>
+      <div class="metric"><span class="k">Tariff Hike</span><span class="v" style="color:#44BB66">+5% only</span></div>
+      <div class="metric"><span class="k">Load Shedding (Urban)</span><span class="v" style="color:#44BB66">&lt;0.2 hrs/day ★</span></div>
+      <div class="metric"><span class="k">Loss Added</span><span class="v" style="color:#FF4444">₹48,400 Cr</span></div>
+      <div class="metric"><span class="k">Annual Loss (end)</span><span class="v" style="color:#FF8800">₹13,200 Cr</span></div>
+      <div class="metric"><span class="k">Renewable % (end)</span><span class="v" style="color:#44BB66">71.0% ★</span></div>
+      <div class="verdict-badge" style="background:rgba(68,187,102,0.12);color:#44BB66">★ Best on efficiency & reliability — but inherited debt still rising</div>
+    </div>
+  </div>
+</div>
+
+<!-- METRIC COMPARISON CHARTS -->
+<div class="section reveal">
+  <div class="section-title">Head-to-Head Charts</div>
+  <div class="sel-row">
+    <div class="ctrl-grp"><label>Metric</label>
+      <select id="metricSel" onchange="updatePartyChart()">
+        <option value="cap">Capacity Added (MW)</option>
+        <option value="renew">Renewable Energy Added (MW)</option>
+        <option value="atc">AT&C Loss Change (pp)</option>
+        <option value="shedding">Load Shedding Urban (hrs/day)</option>
+        <option value="accum">Accumulated Loss Added (₹Cr)</option>
+        <option value="annual">Annual Loss at End (₹Cr)</option>
+        <option value="tariff">Tariff Hike (%)</option>
+        <option value="renewpct">Renewable % at End</option>
+      </select>
+    </div>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-box full-width">
+      <h4 id="partyChartTitle">Capacity Added (MW) by Government</h4>
+      <div class="chart-wrap-lg"><canvas id="partyMetricChart"></canvas></div>
+      <div class="src-note" id="partyChartNote">★ = best performer. ✗ = worst performer. Source: TANGEDCO Annual Reports, TVK White Paper 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE CHART -->
+<div class="section reveal">
+  <div class="section-title">15-Year Timeline — Key Metrics Under Each Government</div>
+  <div class="chart-grid">
+    <div class="chart-box full-width">
+      <h4>AT&C Losses % — 2010 to 2025 (shaded by ruling party)</h4>
+      <div class="chart-wrap-lg"><canvas id="atcTimelineChart"></canvas></div>
+      <div class="src-note">Red shading = DMK rule · Blue shading = AIADMK rule · Source: TANGEDCO Annual Reports</div>
+    </div>
+    <div class="chart-box">
+      <h4>Annual Loss of TANGEDCO (₹ Crore)</h4>
+      <div class="chart-wrap"><canvas id="annualLossChart"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <h4>Renewable % Growth Over Time</h4>
+      <div class="chart-wrap"><canvas id="renewPctChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT EACH PARTY GETS CREDIT / BLAME FOR -->
+<div class="section reveal">
+  <div class="section-title">The Honest Verdict — Credit & Blame</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
+    <div style="background:#111;border:1px solid #1e1e1e;border-radius:8px;padding:1.4rem">
+      <div style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#CC0000;margin-bottom:1rem">DMK — Credit</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem">
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>Introduced 100-unit free electricity (2006) — now a pan-India benchmark</li>
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>Best AT&C loss reduction in recent history: 18.2% → 14.8% (2021–24)</li>
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>#1 rooftop solar rank nationally under 2021–26 DMK government</li>
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>Near-zero urban load shedding — most reliable supply in TN history</li>
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>Green Energy Corridor II — ₹13,000 Cr grid investment underway</li>
+      </ul>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #1a1a1a">
+        <div style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#FF4444;margin-bottom:0.6rem">DMK — Blame</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem">
+          <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#FF4444">✗</span>2006–11: No tariff revision for 5 years → built the structural revenue gap</li>
+          <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#FF4444">✗</span>2010–11 crisis: 8–12 hr rural load shedding — worst in TN history</li>
+          <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#FF4444">✗</span>2021–26: Accumulated losses still rising despite efficiency gains</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:#111;border:1px solid #1e1e1e;border-radius:8px;padding:1.4rem">
+      <div style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#2288AA;margin-bottom:1rem">AIADMK — Credit</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem">
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>2011–16: Added 9,120 MW capacity — largest ever in any 5-year period</li>
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>2011–16: Added 7,400 MW renewable — transformed TN's energy mix</li>
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>Tariff revisions 2012 & 2015 addressed revenue gap (politically unpopular but necessary)</li>
+        <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#44BB66">✓</span>Reduced load shedding drastically — urban consumers got relief</li>
+      </ul>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #1a1a1a">
+        <div style="font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#FF4444;margin-bottom:0.6rem">AIADMK — Blame</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem">
+          <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#FF4444">✗</span>Accumulated losses grew from ₹11K Cr to ₹74.7K Cr across both terms (+580%)</li>
+          <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#FF4444">✗</span>2016–21: AT&C losses INCREASED from 17.2% to 18.2% — worst outcome</li>
+          <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#FF4444">✗</span>Highest ever annual loss (₹9,200 Cr) in 2020-21</li>
+          <li style="font-size:0.8rem;color:#AAA;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:#FF4444">✗</span>Smart meter rollout stalled; CAG flagged coal procurement irregularities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="e-footer">
+  Data: TANGEDCO Annual Reports, TVK White Paper 2026, CAG Reports · Analysis: CVK Data Platform ·
+  <a href="index.html">← Electricity Hub</a>
+</div>
+
+<script>
+(function(){
+  const obs=new IntersectionObserver(els=>els.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  const LABELS=['DMK\n2006-11','AIADMK\n2011-16','AIADMK\n2016-21','DMK\n2021-26'];
+  const PCOLORS=['rgba(204,0,0,0.75)','rgba(34,136,170,0.75)','rgba(34,136,170,0.75)','rgba(204,0,0,0.75)'];
+  const PCOLORS_BDR=['#CC0000','#2288AA','#2288AA','#CC0000'];
+
+  const METRICS={
+    cap:  {label:'Capacity Added (MW)',        data:[1820,9120,5600,4840], unit:'MW',  higherBetter:true},
+    renew:{label:'Renewable Added (MW)',        data:[680,7400,6400,3980],  unit:'MW',  higherBetter:true},
+    atc:  {label:'AT&C Change (percentage pts)',data:[2.6,1.6,-1.0,3.4],   unit:' pp', higherBetter:true, note:'Positive = reduction (improvement). Negative = increase (failure).'},
+    shedding:{label:'Avg Urban Load Shedding (hrs/day)',data:[4.0,1.5,0.5,0.2],unit:' hrs',higherBetter:false},
+    accum:{label:'Accumulated Loss Added (₹ Cr)',data:[11000,26000,37700,48400],unit:' Cr',higherBetter:false},
+    annual:{label:'Annual Loss at End of Term (₹ Cr)',data:[2800,6000,9200,13200],unit:' Cr',higherBetter:false},
+    tariff:{label:'Cumulative Tariff Hike (%)',data:[0,33,20,5],unit:'%',higherBetter:false, note:'Lower hike = consumer-friendly. Higher hike = more fiscally honest.'},
+    renewpct:{label:'Renewable % at End of Term',data:[27.2,52.6,68.9,71.0],unit:'%',higherBetter:true}
+  };
+
+  const cx=(extra={})=>({responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1}},
+    scales:{x:{ticks:{color:'#666',font:{size:10}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:10}},grid:{color:'#111'}}}, ...extra});
+
+  let partyChart=null;
+  function updatePartyChart(){
+    const key=document.getElementById('metricSel').value;
+    const m=METRICS[key];
+    document.getElementById('partyChartTitle').textContent=m.label+' by Government';
+    const sorted=[...m.data];
+    const best=m.higherBetter?Math.max(...sorted):Math.min(...sorted);
+    const worst=m.higherBetter?Math.min(...sorted):Math.max(...sorted);
+    const bgc=m.data.map(v=>v===best?PCOLORS[0].replace('0.75','0.9'):v===worst?'rgba(255,68,68,0.4)':PCOLORS[m.data.indexOf(v)]);
+    if(partyChart) partyChart.destroy();
+    partyChart=new Chart(document.getElementById('partyMetricChart'),{type:'bar',
+      data:{labels:LABELS,datasets:[{data:m.data,backgroundColor:PCOLORS,borderColor:PCOLORS_BDR,borderWidth:2,borderRadius:5}]},
+      options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:11}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:10},callback:v=>v+m.unit},grid:{color:'#111'}}},
+        plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',bodyColor:'#DDD',titleColor:'#AAA',borderColor:'#333',borderWidth:1,callbacks:{label:ctx=>ctx.parsed.y+m.unit+(ctx.parsed.y===best?' ★ BEST':'')+(ctx.parsed.y===worst?' ✗ WORST':'')}}}}});
+  }
+  window.updatePartyChart=updatePartyChart;
+  updatePartyChart();
+
+  // AT&C Timeline
+  const YEARS=["2010-11","2011-12","2012-13","2013-14","2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25e"];
+  const ATC=[19.8,19.2,18.9,18.4,17.9,17.6,17.2,16.8,16.3,15.9,18.2,17.1,16.0,15.2,14.8];
+  const ANNUAL=[2800,3800,4800,5600,5800,6000,6300,6700,7500,8000,9200,9800,11800,13600,13200];
+  const RENEW_PCT=[27.2,29.8,33.8,39.2,45.2,52.6,56.7,59.7,63.4,67.1,68.9,69.8,70.5,69.9,71.0];
+
+  new Chart(document.getElementById('atcTimelineChart'),{type:'line',data:{labels:YEARS,datasets:[
+    {label:'AT&C Loss %',data:ATC,borderColor:'#F5A623',backgroundColor:'rgba(245,166,35,0.08)',fill:true,tension:0.3,pointRadius:3,borderWidth:2.5,
+     pointBackgroundColor:YEARS.map((_,i)=>i<=4?'#CC0000':i<=9?'#2288AA':i<=14&&i>=10?'#2288AA':'#CC0000')}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',titleColor:'#AAA',bodyColor:'#DDD',borderColor:'#333',borderWidth:1},
+      annotation:{annotations:{
+        dmk1:{type:'box',xMin:-0.5,xMax:4.5,backgroundColor:'rgba(204,0,0,0.04)',borderColor:'rgba(204,0,0,0.15)',borderWidth:1,label:{content:'DMK 2006-11',display:true,color:'rgba(204,0,0,0.5)',font:{size:9}}},
+        aiadmk1:{type:'box',xMin:4.5,xMax:9.5,backgroundColor:'rgba(34,136,170,0.04)',borderColor:'rgba(34,136,170,0.15)',borderWidth:1,label:{content:'AIADMK 2011-21',display:true,color:'rgba(34,136,170,0.5)',font:{size:9}}},
+        dmk2:{type:'box',xMin:9.5,xMax:14.5,backgroundColor:'rgba(204,0,0,0.04)',borderColor:'rgba(204,0,0,0.15)',borderWidth:1,label:{content:'DMK 2021-26',display:true,color:'rgba(204,0,0,0.5)',font:{size:9}}}
+      }}},
+    scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{min:12,max:22,ticks:{color:'#666',font:{size:10},callback:v=>v+'%'},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('annualLossChart'),{type:'bar',data:{labels:YEARS,datasets:[{data:ANNUAL,
+    backgroundColor:YEARS.map((_,i)=>i<=4?'rgba(204,0,0,0.6)':i<=9?'rgba(34,136,170,0.6)':i<=10?'rgba(34,136,170,0.6)':'rgba(204,0,0,0.6)'),borderRadius:2}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:9},callback:v=>'₹'+(v/1000).toFixed(1)+'K'},grid:{color:'#111'}}}}});
+
+  new Chart(document.getElementById('renewPctChart'),{type:'line',data:{labels:YEARS,datasets:[{data:RENEW_PCT,
+    borderColor:'#44BB66',backgroundColor:'rgba(68,187,102,0.1)',fill:true,tension:0.3,pointRadius:3,borderWidth:2.5,
+    pointBackgroundColor:YEARS.map((_,i)=>i<=4?'#CC0000':i<=10?'#2288AA':'#CC0000')}]},
+    options:{...cx(),scales:{x:{ticks:{color:'#666',font:{size:8}},grid:{color:'#111'}},y:{ticks:{color:'#666',font:{size:10},callback:v=>v+'%'},grid:{color:'#111'}}}}});
+})();
+</script>
+</body>
+</html>

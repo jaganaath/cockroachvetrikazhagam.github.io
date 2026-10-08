@@ -1,0 +1,145 @@
+{
+  "_meta": {
+    "title": "Tamil Nadu State Fiscal Data",
+    "sources": [
+      "RBI Handbook of Statistics on Indian States",
+      "Tamil Nadu Budget Documents (Finance Department)",
+      "TVK White Paper on State Finances (June 2026)",
+      "DMK White Paper on State Finances (August 2021)",
+      "AIADMK White Paper on State Finances (2001)",
+      "CAG Reports on State Finances of Tamil Nadu",
+      "Economic Survey of Tamil Nadu (P&D Dept)",
+      "MOSPI National Accounts Statistics"
+    ],
+    "unit_amounts": "₹ Lakh Crore",
+    "unit_ratios": "Percentage (%)",
+    "last_updated": "June 2026"
+  },
+  "years": ["2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"],
+  "gsdp": {
+    "label": "GSDP at Current Prices",
+    "source": "MOSPI / TN Directorate of Economics & Statistics",
+    "help": "Gross State Domestic Product — the total value of all goods and services produced in Tamil Nadu in a year. Higher GSDP means a larger, more productive economy.",
+    "values": [9.02, 10.42, 11.52, 12.88, 14.62, 15.76, 14.82, 18.16, 20.98, 23.64, 26.42]
+  },
+  "gsdp_growth": {
+    "label": "GSDP Growth Rate (%)",
+    "source": "MOSPI / TN Directorate of Economics & Statistics",
+    "help": "How fast Tamil Nadu's economy grew compared to the previous year. A positive number means growth; negative means contraction (like during COVID in 2020-21).",
+    "values": [9.8, 15.5, 10.6, 11.8, 13.5, 7.8, -5.9, 22.5, 15.5, 12.7, 11.8]
+  },
+  "per_capita_income": {
+    "label": "Per Capita Net State Income (₹)",
+    "source": "TN Directorate of Economics & Statistics",
+    "help": "Average income per person in Tamil Nadu. This is the NSDP divided by population — a rough measure of individual prosperity.",
+    "values": [99826, 114290, 125820, 139640, 157820, 168540, 157200, 193200, 222100, 249500, 278600]
+  },
+  "revenue_receipts": {
+    "label": "Total Revenue Receipts",
+    "source": "TN Finance Department / RBI State Finances",
+    "help": "All money the state government earns — from taxes (like GST, stamp duty, vehicle tax), non-tax sources, and transfers from the central government.",
+    "values": [1.18, 1.36, 1.52, 1.68, 1.86, 1.94, 1.83, 2.14, 2.52, 2.84, 3.05]
+  },
+  "own_tax_revenue": {
+    "label": "State's Own Tax Revenue (SOTR)",
+    "source": "TN Finance Department",
+    "help": "Taxes collected directly by Tamil Nadu state — SGST, Stamp Duty, Registration, Motor Vehicle Tax, State Excise. This is TN's financial independence measure. TVK White Paper notes SOTR/GSDP fell to a historic low of 5.45%.",
+    "values": [0.70, 0.80, 0.88, 0.94, 1.02, 1.04, 0.82, 1.00, 1.14, 1.29, 1.44]
+  },
+  "sotr_pct_gsdp": {
+    "label": "SOTR as % of GSDP",
+    "source": "TN Finance Department / TVK White Paper 2026",
+    "help": "How much of the state's economy is captured as own taxes. A declining ratio means the state is collecting less taxes relative to its economic size — indicating tax administration gaps.",
+    "values": [7.76, 7.68, 7.64, 7.30, 6.98, 6.60, 5.53, 5.51, 5.43, 5.46, 5.45]
+  },
+  "central_transfers": {
+    "label": "Central Tax Devolution + Grants",
+    "source": "Finance Commission Awards / Union Budget",
+    "help": "Money Tamil Nadu receives from the central government — its share of national taxes (income tax, GST) plus specific grants. TN's share has been declining as a % of national pool.",
+    "values": [0.38, 0.45, 0.52, 0.58, 0.64, 0.68, 0.72, 0.86, 1.04, 1.18, 1.22]
+  },
+  "revenue_expenditure": {
+    "label": "Revenue Expenditure",
+    "source": "TN Finance Department",
+    "help": "Day-to-day spending — salaries, pensions, subsidies, interest payments, maintenance. Does NOT create new assets. High revenue expenditure leaves less room for development spending.",
+    "values": [1.24, 1.44, 1.68, 1.88, 2.10, 2.32, 2.42, 2.50, 2.74, 3.30, 3.48]
+  },
+  "capital_expenditure": {
+    "label": "Capital Expenditure",
+    "source": "TN Finance Department",
+    "help": "Investment spending that creates long-term assets — roads, hospitals, schools, infrastructure. Higher capex is generally positive for development. TN's capex has been low compared to debt levels.",
+    "values": [0.20, 0.22, 0.25, 0.27, 0.34, 0.28, 0.22, 0.34, 0.58, 0.54, 0.62]
+  },
+  "interest_payments": {
+    "label": "Interest Payments",
+    "source": "TN Finance Department / CAG",
+    "help": "Amount paid as interest on all outstanding loans. TVK White Paper highlights that interest payments now EXCEED capital expenditure — meaning TN pays more to service past debt than it invests in new assets.",
+    "values": [0.22, 0.26, 0.30, 0.34, 0.38, 0.43, 0.47, 0.54, 0.62, 0.73, 0.83]
+  },
+  "salaries_pensions": {
+    "label": "Salaries & Pensions",
+    "source": "TN Finance Department",
+    "help": "Combined cost of paying all government employees and retired employees. This is the single largest component of committed expenditure — hard to reduce once committed.",
+    "values": [0.50, 0.58, 0.66, 0.74, 0.84, 0.92, 0.96, 1.02, 1.12, 1.26, 1.38]
+  },
+  "subsidies": {
+    "label": "Subsidies & Welfare Transfers",
+    "source": "TN Finance Department",
+    "help": "Spending on free/subsidised schemes — electricity subsidy (TANGEDCO), PDS rice, Amma Canteens, welfare pensions. Popular but can crowd out development spending.",
+    "values": [0.14, 0.16, 0.18, 0.20, 0.22, 0.26, 0.28, 0.30, 0.36, 0.42, 0.46]
+  },
+  "fiscal_deficit": {
+    "label": "Fiscal Deficit",
+    "source": "TN Finance Department / RBI",
+    "help": "The gap between total spending and total income. Government must borrow to fill this gap. Not inherently bad — but if borrowed money funds consumption (not investment), debt grows without economic return.",
+    "values": [0.30, 0.36, 0.42, 0.46, 0.54, 0.60, 0.66, 0.76, 0.88, 1.12, 1.19]
+  },
+  "fiscal_deficit_pct_gsdp": {
+    "label": "Fiscal Deficit as % of GSDP",
+    "source": "TN Finance Department / FRBM Act",
+    "help": "FRBM Act mandates fiscal deficit ≤ 3% of GSDP. Tamil Nadu has been breaching this limit consistently. Central govt also allows relaxation during COVID and for capital investment.",
+    "values": [3.33, 3.46, 3.65, 3.57, 3.69, 3.81, 4.45, 4.19, 4.20, 4.74, 4.51]
+  },
+  "revenue_deficit": {
+    "label": "Revenue Deficit",
+    "source": "TN Finance Department",
+    "help": "When day-to-day spending exceeds day-to-day income. A revenue deficit means the state is borrowing even for current expenses — a structural problem that erodes fiscal health.",
+    "values": [0.06, 0.09, 0.16, 0.20, 0.24, 0.38, 0.59, 0.36, 0.22, 0.46, 0.43]
+  },
+  "primary_deficit": {
+    "label": "Primary Deficit",
+    "source": "TN Finance Department",
+    "help": "Fiscal deficit minus interest payments. A positive primary deficit means even excluding interest, TN is spending more than it earns — showing underlying fiscal weakness.",
+    "values": [0.08, 0.10, 0.12, 0.12, 0.16, 0.17, 0.19, 0.22, 0.26, 0.39, 0.36]
+  },
+  "debt_stock": {
+    "label": "Outstanding Debt (Direct Liabilities)",
+    "source": "TN Finance Department / TVK White Paper 2026",
+    "help": "Total loans the state government owes. Includes market borrowings, loans from Centre, and public account liabilities. Per TVK White Paper (2026), this crossed ₹10 lakh crore.",
+    "values": [2.48, 2.87, 3.32, 3.78, 4.18, 4.64, 5.13, 5.83, 6.78, 7.87, 10.08]
+  },
+  "psu_debt": {
+    "label": "PSU Off-Budget Liabilities",
+    "source": "TVK White Paper 2026 / CAG",
+    "help": "Loans taken by state-owned companies (TANGEDCO, TNSTC etc) that don't appear in the state budget but are backed by state guarantees. TVK WP estimates this at ₹3.10 lakh crore.",
+    "values": [0.42, 0.56, 0.72, 0.92, 1.14, 1.46, 1.72, 2.08, 2.48, 2.82, 3.10]
+  },
+  "total_liabilities": {
+    "label": "Total Liabilities (Direct + PSU)",
+    "source": "TVK White Paper 2026 / CAG",
+    "help": "Complete financial obligation of Tamil Nadu including PSU debt. TVK White Paper pegs total liabilities at ₹13.18 lakh crore — every child born in TN carries ₹1.29 lakh of debt.",
+    "values": [2.90, 3.43, 4.04, 4.70, 5.32, 6.10, 6.85, 7.91, 9.26, 10.69, 13.18]
+  },
+  "debt_pct_gsdp": {
+    "label": "Debt as % of GSDP",
+    "source": "TN Finance Department / RBI",
+    "help": "How heavy is the debt burden relative to the state's economic size. FRBM guideline: keep below 25%. Tamil Nadu is well above this — and rising.",
+    "values": [27.5, 27.5, 28.8, 29.3, 28.6, 29.4, 34.6, 32.1, 32.3, 33.3, 38.1]
+  },
+  "debt_per_capita": {
+    "label": "Direct Debt Per Capita (₹)",
+    "source": "Calculated: Debt Stock / TN Population",
+    "help": "Each resident's share of state government debt. Does not include PSU liabilities.",
+    "values": [33400, 38200, 43800, 49400, 54200, 59800, 65800, 74400, 86200, 99700, 127800]
+  }
+}

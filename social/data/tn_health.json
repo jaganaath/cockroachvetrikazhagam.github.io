@@ -1,0 +1,73 @@
+{
+  "meta": { "state": "Tamil Nadu", "sources": ["NFHS-5 2019-21", "NHM Annual Report 2022-23", "SRS 2021", "HMIS 2022-23", "NITI Aayog Health Index 2021"] },
+  "key_stats": {
+    "mmr_2018_20": 54,
+    "imr_2021": 13,
+    "u5mr_2021": 18,
+    "tf_rate": 1.8,
+    "life_expectancy_male": 69.2,
+    "life_expectancy_female": 72.1,
+    "health_index_rank": 3,
+    "stunting_pct": 25.0
+  },
+  "mortality_trends": {
+    "years": ["2015","2016","2017","2018","2019","2020","2021"],
+    "imr": [20, 18, 17, 16, 15, 14, 13],
+    "u5mr": [26, 23, 22, 20, 19, 18, 18],
+    "neonatal_mr": [14, 13, 12, 11, 10, 10, 9],
+    "help": "IMR = Infant Mortality Rate per 1,000 live births. U5MR = Under-5 Mortality Rate. Neonatal = deaths in first 28 days.",
+    "source": "SRS Statistical Reports 2015-2021"
+  },
+  "nutrition": {
+    "years_nfhs": ["NFHS-3 (2005-06)","NFHS-4 (2015-16)","NFHS-5 (2019-21)"],
+    "stunted_pct": [28.9, 27.1, 25.0],
+    "wasted_pct": [22.0, 19.6, 19.7],
+    "underweight_pct": [29.5, 23.8, 23.8],
+    "overweight_pct": [9.8, 13.6, 18.3],
+    "help": "Stunting (chronic undernutrition) declining. Wasting (acute) stagnant. Overweight rising — double burden of malnutrition.",
+    "source": "NFHS-3, NFHS-4, NFHS-5"
+  },
+  "immunization": {
+    "years": ["2016-17","2017-18","2018-19","2019-20","2020-21","2021-22","2022-23"],
+    "full_immunization_pct": [72.1, 71.8, 70.4, 70.2, 67.9, 68.5, 71.3],
+    "bcg_pct": [99.2, 99.4, 99.3, 99.5, 98.9, 99.1, 99.3],
+    "measles_pct": [81.3, 80.9, 81.5, 80.8, 75.2, 79.4, 82.1],
+    "pentavalent3_pct": [82.4, 83.1, 82.8, 82.5, 78.3, 80.2, 83.4],
+    "help": "Full immunization = received BCG + 3 doses Pentavalent + 3 doses Polio + Measles. COVID-19 disrupted vaccination in 2020-21.",
+    "source": "HMIS / NHM Annual Reports"
+  },
+  "anemia": {
+    "categories": ["Children 6-59 months","Women 15-49 yrs","Pregnant Women","Men 15-49 yrs"],
+    "nfhs4_pct": [58.6, 55.0, 51.8, 24.3],
+    "nfhs5_pct": [57.4, 45.5, 37.3, 20.7],
+    "help": "Despite decline, anaemia in children remains high. Iron supplementation, dietary diversity, and deworming programs are key interventions.",
+    "source": "NFHS-4 2015-16; NFHS-5 2019-21"
+  },
+  "health_infrastructure": {
+    "sub_centres": 8706,
+    "phcs": 1618,
+    "chcs": 385,
+    "district_hospitals": 32,
+    "medical_college_hospitals": 24,
+    "total_beds_govt": 65421,
+    "doctors_per_lakh": 62.4,
+    "nurses_per_lakh": 148.3,
+    "help": "TN has one of India's strongest public health networks. CHC = Community Health Centre (30-bedded). PHC = Primary Health Centre.",
+    "source": "NHM Annual Report 2022-23, TN Health & FW Dept"
+  },
+  "health_expenditure": {
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23"],
+    "total_health_exp_cr": [7842, 8640, 9320, 10250, 11890],
+    "health_pct_gsdp": [0.68, 0.71, 0.84, 0.79, 0.78],
+    "health_pct_budget": [5.8, 6.1, 7.2, 6.4, 6.3],
+    "per_capita_health_exp_rs": [1048, 1142, 1223, 1336, 1534],
+    "help": "TN health expenditure as % GSDP is below WHO recommended 2.5% but higher than national average ~1.5%.",
+    "source": "TN Budget documents, NHM PIP"
+  },
+  "schemes": [
+    {"name":"Chief Minister's Comprehensive Health Insurance (CMCHIS)","coverage_lakhs":159,"cover_rs":5,  "desc":"₹5 lakh annual cover per family for 1,015+ surgeries in empanelled hospitals"},
+    {"name":"Makkalai Thedi Maruthuvam","beneficiaries_cr":1.2,"desc":"Doorstep medical services reducing out-of-pocket expenditure"},
+    {"name":"Kalaignar Maruthuvam Thittam","colleges":24,"desc":"Free medical education expansion and rural posting incentives"},
+    {"name":"Tamil Nadu Medical Services Corporation","desc":"Centralised procurement ensuring availability of 550+ essential medicines free in govt hospitals"}
+  ]
+}

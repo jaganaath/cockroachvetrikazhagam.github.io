@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central Finance & TN Share — CVK Finance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@700;900&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/finance.css">
+</head>
+<body>
+<nav class="fin-nav">
+  <a href="index.html" class="fin-nav-brand">
+    <div class="fin-nav-logo">CVK</div>
+    <div class="fin-nav-title">Finance Hub <small>Central Finance</small></div>
+  </a>
+  <ul class="fin-nav-links">
+    <li><a href="index.html">Overview</a></li>
+    <li><a href="budget.html">Budget</a></li>
+    <li><a href="debt.html">Debt</a></li>
+    <li><a href="psu.html">PSUs</a></li>
+    <li><a href="cag.html">CAG</a></li>
+    <li><a href="compare.html">Compare States</a></li>
+    <li><a href="central.html" class="active">Central Finance</a></li>
+  </ul>
+  <div class="fin-nav-right">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ta">TA</button>
+    <button class="lang-btn" data-lang="hi">HI</button>
+    <a href="../index.html" class="back-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>CVK</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Centre-State Finance</div>
+    <h1 class="page-title" data-i18n="central_title">Central Government Finance & TN's Share</h1>
+    <p class="page-desc">Central fiscal data, TN's share of national taxes, GST transition impact, Finance Commission devolution, and how central policies affect Tamil Nadu's finances.</p>
+    <div class="page-tags">
+      <span class="page-tag">Finance Commission</span>
+      <span class="page-tag">GST Devolution</span>
+      <span class="page-tag">NITI Aayog</span>
+      <span class="page-tag">Union Budget</span>
+      <span class="page-tag">RBI Data</span>
+    </div>
+  </div>
+</div>
+
+<main class="fin-main">
+
+  <div class="stats-row reveal">
+    <div class="stat-card">
+      <div class="stat-label">TN Share in Central Taxes <span class="help-icon" data-tip="Tamil Nadu's share of the central divisible tax pool under 15th Finance Commission. Has declined from ~6% in 2000s to 4.189% now.">?</span></div>
+      <div class="stat-value gold">4.19%</div>
+      <div class="stat-meta">15th Finance Commission (2021-26)</div>
+      <div class="stat-trend down">▼ Was ~6% in early 2000s</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Central Transfers 2024-25 <span class="help-icon" data-tip="Total from Centre: tax devolution + grants + CSS central share.">?</span></div>
+      <div class="stat-value">₹1.04L Cr</div>
+      <div class="stat-meta">~34% of TN's revenue receipts</div>
+      <div class="stat-trend up">▲ Growing in absolute terms</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Central Fiscal Deficit 2023-24 <span class="help-icon" data-tip="Central government's fiscal deficit as % of GDP. Declining from 6.4% (COVID peak) back towards 4%.">?</span></div>
+      <div class="stat-value">5.63%</div>
+      <div class="stat-meta">₹17.35L Cr · of national GDP</div>
+      <div class="stat-trend down">▼ Consolidating</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Central Capex 2024-25 <span class="help-icon" data-tip="Central government's capital expenditure — sharply increased post-COVID under PM Gati Shakti. States benefit through infrastructure investment.">?</span></div>
+      <div class="stat-value gold">₹11.11L Cr</div>
+      <div class="stat-meta">3.4% of GDP (BE)</div>
+      <div class="stat-trend down">▼ Record high investment</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">TN SGST Collection 2023-24 <span class="help-icon" data-tip="Tamil Nadu's State GST collection. IGST settlements add to this. TN was a net loser in GST transition (manufacturing state → producing state loses to consuming states).">?</span></div>
+      <div class="stat-value">₹64,820Cr</div>
+      <div class="stat-meta">+ IGST settled: ₹22,480 Cr</div>
+      <div class="stat-trend neutral">GST compensation ended Jun'22</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">TN SDG Index Rank 2023-24 <span class="help-icon" data-tip="NITI Aayog SDG India Index. TN ranked #3 nationally with score of 79. Kerala is #1.">?</span></div>
+      <div class="stat-value green">#3</div>
+      <div class="stat-meta">Score: 79 · NITI Aayog SDG Index</div>
+      <div class="stat-trend down">✅ Top performer</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="reveal">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('devolution')">Tax Devolution</button>
+      <button class="tab-btn" onclick="switchTab('gst')">GST</button>
+      <button class="tab-btn" onclick="switchTab('central')">Central Budget</button>
+      <button class="tab-btn" onclick="switchTab('fc')">Finance Commission</button>
+      <button class="tab-btn" onclick="switchTab('niti')">NITI Aayog</button>
+    </div>
+
+    <!-- DEVOLUTION TAB -->
+    <div id="tab-devolution" class="tab-panel active">
+      <div class="alert alert-warn">
+        <strong>TN's Declining Share — The Demographic Penalty</strong>
+        Tamil Nadu's share in the central divisible tax pool has declined from ~6% (2000s) to 4.189% (15th FC). This is largely because Finance Commission formulas reward population growth — and TN successfully controlled its population through better human development. TN, having achieved lower fertility rates earlier, "penalised" itself by losing weight in population-based devolution criteria.
+        <div style="margin-top:6px"><span class="source-pill">15th Finance Commission Report / Economic Survey of TN</span></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">Central Transfers to TN (₹ L.Cr)</div><div class="card-subtitle">Tax devolution + Grants + CSS</div></div>
+            <span class="help-icon" data-tip="Total money TN receives from Centre. Growing in absolute terms but as % of GSDP, central dependence is a concern.">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="devChart"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">TN Share in National Tax Pool (%)</div><div class="card-subtitle">Under successive Finance Commissions</div></div>
+            <span class="help-icon" data-tip="Declining share means TN gets less from the central pool as a % of total. This is despite TN contributing significantly more in central taxes than it receives back.">?</span>
+          </div>
+          <div class="card-body">
+            <div style="padding:1rem 0">
+              <div class="progress-row">
+                <div class="progress-label"><span>10th FC (1995-2000)</span><span>5.68%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:95%"></div></div>
+              </div>
+              <div class="progress-row">
+                <div class="progress-label"><span>11th FC (2000-05)</span><span>5.39%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:90%"></div></div>
+              </div>
+              <div class="progress-row">
+                <div class="progress-label"><span>12th FC (2005-10)</span><span>4.97%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:83%"></div></div>
+              </div>
+              <div class="progress-row">
+                <div class="progress-label"><span>13th FC (2010-15)</span><span>4.97%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:83%"></div></div>
+              </div>
+              <div class="progress-row">
+                <div class="progress-label"><span>14th FC (2015-20)</span><span>4.02%</span></div>
+                <div class="progress-track"><div class="progress-fill red" style="width:67%"></div></div>
+              </div>
+              <div class="progress-row">
+                <div class="progress-label"><span>15th FC (2021-26)</span><span><strong>4.19%</strong></span></div>
+                <div class="progress-track"><div class="progress-fill red" style="width:70%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GST TAB -->
+    <div id="tab-gst" class="tab-panel">
+      <div class="alert alert-bad">
+        <strong>GST Transition — TN's Structural Loss</strong>
+        GST is a destination-based tax — revenue accrues to the state where goods are consumed, not where they are produced. Tamil Nadu, being a major manufacturing and exporting state, historically collected more under the origin-based Sales Tax system. Under GST, part of TN's tax base shifted to consuming states. The central government provided compensation for 5 years (2017-22), but post-compensation, TN faces a structural revenue gap of ₹8,000-12,000 crore annually according to TN Finance Ministry estimates.
+        <div style="margin-top:6px"><span class="source-pill">TN Finance Ministry / GST Council Data</span></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">TN SGST Collection Trend</div><div class="card-subtitle">State GST revenue (₹ Crore)</div></div>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:260px"><canvas id="gstChart"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">GST Compensation vs Gap</div><div class="card-subtitle">Compensation period ended June 2022</div></div>
+            <span class="help-icon" data-tip="TN received GST compensation to make up for revenue loss in GST transition. Post-June 2022, no more compensation — TN bears the full structural gap.">?</span>
+          </div>
+          <div class="card-body">
+            <div style="padding:1rem 0">
+              <div class="fin-table-wrap">
+                <table class="fin-table">
+                  <thead><tr><th>Year</th><th class="num">SGST</th><th class="num">Compensation</th><th class="num">IGST Share</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr><td>2019-20</td><td class="num">38,420</td><td class="num green">9,848</td><td class="num">11,248</td><td><span class="badge badge-green">Compensated</span></td></tr>
+                    <tr><td>2020-21</td><td class="num">36,248</td><td class="num green">11,240</td><td class="num">11,248</td><td><span class="badge badge-green">Compensated</span></td></tr>
+                    <tr><td>2021-22</td><td class="num">46,824</td><td class="num gold">2,480</td><td class="num">15,624</td><td><span class="badge badge-gold">Partial</span></td></tr>
+                    <tr><td>2022-23</td><td class="num">56,248</td><td class="num red">0</td><td class="num">18,428</td><td><span class="badge badge-red">No Compensation</span></td></tr>
+                    <tr><td>2023-24</td><td class="num">64,820</td><td class="num red">0</td><td class="num">22,480</td><td><span class="badge badge-red">No Compensation</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTRAL BUDGET TAB -->
+    <div id="tab-central" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">Central Govt Expenditure Profile</div><div class="card-subtitle">Revenue vs Capital (₹ L.Cr)</div></div>
+            <span class="help-icon" data-tip="Central capex has grown significantly — from ₹3.4L Cr (2019-20) to ₹11.1L Cr (2024-25). This infrastructure push benefits states through national projects.">?</span>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="centralExpChart"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div><div class="card-title">Central Fiscal Deficit & Debt</div><div class="card-subtitle">% of GDP</div></div>
+          </div>
+          <div class="card-body"><div class="chart-wrap" style="height:280px"><canvas id="centralFdChart"></canvas></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINANCE COMMISSION TAB -->
+    <div id="tab-fc" class="tab-panel">
+      <div class="grid-2">
+        <div>
+          <div class="card">
+            <div class="card-head"><div class="card-title">15th Finance Commission (2021-26)</div></div>
+            <div class="card-body">
+              <table class="fin-table">
+                <thead><tr><th>Criterion</th><th class="num">Weight</th><th>TN Impact</th></tr></thead>
+                <tbody>
+                  <tr><td>Population (2011 Census)</td><td class="num">15%</td><td>Neutral</td></tr>
+                  <tr><td>Area</td><td class="num">15%</td><td>Neutral</td></tr>
+                  <tr><td>Forest & Ecology</td><td class="num">10%</td><td>Slight positive</td></tr>
+                  <tr><td>Income Distance</td><td class="num">45%</td><td><span class="badge badge-red">Negative</span> (richer state)</td></tr>
+                  <tr><td>Tax Effort</td><td class="num">2.5%</td><td>Neutral</td></tr>
+                  <tr><td>Demographic Performance</td><td class="num">12.5%</td><td><span class="badge badge-green">Positive</span> (low fertility)</td></tr>
+                </tbody>
+              </table>
+              <div style="margin-top:0.8rem;font-size:0.76rem;color:var(--grey)">TN's share: <strong class="gold">4.189%</strong> — slight improvement from 14th FC (4.023%) but still well below historical levels.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="alert alert-warn">
+            <strong>Income Distance Formula — The Prosperity Penalty</strong>
+            The largest criterion (45%) is "income distance" — how far a state's per capita income is below the national average. Poorer states get more; richer states get less. TN, being above-average in income, receives less under this formula. Critics argue this penalises successful states and reduces the incentive for development.
+          </div>
+          <div class="alert alert-info">
+            <strong>Demographic Performance Bonus</strong>
+            TN benefits from the 12.5% weight for demographic performance — states that achieved lower fertility rates earlier (like TN, Kerala, Himachal Pradesh) get rewarded. This partially offsets the population share loss from not counting population growth.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NITI AAYOG TAB -->
+    <div id="tab-niti" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">NITI Aayog SDG Index 2023-24</div></div>
+          <div class="card-body">
+            <div style="margin-bottom:1rem">
+              <div style="font-size:0.8rem;color:var(--grey);margin-bottom:0.5rem">Top 5 States by SDG Score</div>
+              <div class="progress-row"><div class="progress-label"><span>#1 Kerala</span><span>82</span></div><div class="progress-track"><div class="progress-fill green" style="width:100%"></div></div></div>
+              <div class="progress-row"><div class="progress-label"><span>#2 Himachal Pradesh</span><span>80</span></div><div class="progress-track"><div class="progress-fill green" style="width:97%"></div></div></div>
+              <div class="progress-row"><div class="progress-label"><span>#3 Tamil Nadu ★</span><span>79</span></div><div class="progress-track"><div class="progress-fill" style="width:96%"></div></div></div>
+              <div class="progress-row"><div class="progress-label"><span>#4 Andhra Pradesh</span><span>73</span></div><div class="progress-track"><div class="progress-fill" style="width:89%"></div></div></div>
+              <div class="progress-row"><div class="progress-label"><span>#5 Telangana</span><span>72</span></div><div class="progress-track"><div class="progress-fill" style="width:88%"></div></div></div>
+            </div>
+            <div class="alert alert-good">
+              <strong>TN's Strengths</strong>
+              SDG 3 (Good Health), SDG 4 (Quality Education), SDG 8 (Decent Work), SDG 9 (Industry & Innovation). TN has no Aspirational Districts — all 38 districts meet baseline development thresholds.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">NITI Aayog — TN Highlights</div></div>
+          <div class="card-body">
+            <div class="fin-table-wrap">
+              <table class="fin-table">
+                <thead><tr><th>Index</th><th>TN Rank</th><th>TN Score</th><th>National Avg</th></tr></thead>
+                <tbody>
+                  <tr><td>SDG Index 2023-24</td><td class="num gold">3</td><td class="num green">79</td><td>66</td></tr>
+                  <tr><td>Water Management Index</td><td class="num gold">4</td><td class="num green">62</td><td>48</td></tr>
+                  <tr><td>DPIIT Investment Ranking</td><td class="num gold">3</td><td class="num">—</td><td>—</td></tr>
+                  <tr><td>Logistics Ease Index</td><td class="num gold">4</td><td class="num">—</td><td>—</td></tr>
+                  <tr><td>Health Index</td><td class="num gold">2</td><td class="num green">79.3</td><td>64</td></tr>
+                  <tr><td>School Education Quality</td><td class="num">5</td><td class="num">—</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="margin-top:0.8rem;font-size:0.76rem;color:var(--grey)">TN consistently ranks among top 5 states on human development indices — a bright spot amidst fiscal stress.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sources-section reveal">
+    <div class="sources-title">Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-item">Union Budget Documents — Finance Ministry (indiabudget.gov.in)</div>
+      <div class="source-item">Finance Commission Reports — 14th & 15th FC (fincomindia.nic.in)</div>
+      <div class="source-item">GST Council Data (gstcouncil.gov.in)</div>
+      <div class="source-item">NITI Aayog SDG India Index (niti.gov.in)</div>
+      <div class="source-item">RBI Government Debt Statistics</div>
+      <div class="source-item">Controller General of Accounts — Monthly Accounts</div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.72rem;color:var(--mid)" data-i18n="note_approx">* Approximate figures. Verify with original sources.</div>
+  </div>
+
+</main>
+<footer class="fin-footer">
+  <div data-i18n="footer_cvk">Cockroach Vetri Kazhagam · நேர்மையான தகவலே கிடைக்கும்</div>
+  <div style="margin-top:8px"><a href="index.html">← Finance Hub</a> · <a href="../index.html">CVK Home</a></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+const YEARS=['2018-19','2019-20','2020-21','2021-22','2022-23','2023-24','2024-25'];
+applyChartDefaults();
+
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    const ids=['devolution','gst','central','fc','niti'];
+    b.classList.toggle('active',ids[i]===id);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+new Chart(document.getElementById('devChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'Tax Devolution',data:[0.28,0.29,0.32,0.38,0.44,0.52,0.58],backgroundColor:'rgba(212,160,23,0.7)',stack:'a'},
+    {label:'Grants-in-Aid',data:[0.08,0.09,0.12,0.14,0.16,0.18,0.20],backgroundColor:'rgba(68,187,102,0.7)',stack:'a'},
+    {label:'CSS Central Share',data:[0.14,0.15,0.18,0.20,0.22,0.24,0.26],backgroundColor:'rgba(51,153,204,0.7)',stack:'a'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{stacked:true,ticks:{font:{size:9},maxRotation:30}},
+            y:{stacked:true,ticks:{callback:v=>'₹'+v+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+new Chart(document.getElementById('gstChart'),{
+  type:'bar',
+  data:{labels:['2019-20','2020-21','2021-22','2022-23','2023-24'],
+        datasets:[
+    {label:'SGST',data:[38420,36248,46824,56248,64820],backgroundColor:'rgba(212,160,23,0.7)'},
+    {label:'Compensation',data:[9848,11240,2480,0,0],backgroundColor:'rgba(68,187,102,0.7)'},
+    {label:'IGST Settled',data:[11248,11248,15624,18428,22480],backgroundColor:'rgba(51,153,204,0.7)'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{ticks:{font:{size:10}}},y:{ticks:{callback:v=>'₹'+v.toLocaleString('en-IN')+'Cr'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+new Chart(document.getElementById('centralExpChart'),{
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'Revenue Expenditure',data:[20.07,22.47,26.39,29.69,32.08,35.02,37.09],backgroundColor:'rgba(204,0,0,0.6)'},
+    {label:'Capital Expenditure',data:[3.08,3.36,4.12,5.54,7.28,9.98,11.11],backgroundColor:'rgba(68,187,102,0.8)'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:30}},y:{ticks:{callback:v=>'₹'+v+'L'},grid:{color:'rgba(255,255,255,0.04)'}}}}
+});
+
+new Chart(document.getElementById('centralFdChart'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'Fiscal Deficit % GDP',data:[3.4,3.3,4.6,3.4,2.4,1.9,1.7],borderColor:'#FF8800',backgroundColor:'rgba(255,136,0,0.08)',fill:true,tension:0.3,borderWidth:2,yAxisID:'y'},
+    {label:'Central Debt % GDP',data:[49.1,51.2,61.8,60.4,57.8,57.0,56.2],borderColor:'#CC3344',backgroundColor:'rgba(204,0,0,0.05)',fill:true,tension:0.3,borderWidth:2,yAxisID:'y1'}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{ticks:{font:{size:9},maxRotation:30}},
+            y:{ticks:{callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}},
+            y1:{position:'right',ticks:{callback:v=>v+'%'},grid:{display:false}}}}
+});
+
+document.addEventListener('DOMContentLoaded',()=>{initLang();initReveal();});
+initLang();initReveal();
+</script>
+</body>
+</html>

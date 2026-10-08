@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "title": "CAG Audit Findings — Tamil Nadu",
+    "sources": [
+      "CAG Reports on State Finances of Tamil Nadu (Annual)",
+      "CAG Reports on Revenue Receipts of Tamil Nadu",
+      "CAG Reports on PSUs of Tamil Nadu",
+      "Performance Audit Reports on various schemes"
+    ],
+    "note": "CAG = Comptroller and Auditor General of India. These are independent constitutional audit findings.",
+    "last_updated": "June 2026"
+  },
+  "audit_overview": {
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "total_audit_paras": [428, 446, 362, 384, 412, 438],
+    "pending_paras_from_previous": [2840, 3168, 3482, 3728, 3992, 4284],
+    "amount_under_objection_crore": [28420, 32640, 36480, 40820, 45240, 50680],
+    "amount_recovered_crore": [1284, 1468, 982, 1124, 1368, 1284],
+    "recovery_rate_pct": [4.5, 4.5, 2.7, 2.8, 3.0, 2.5]
+  },
+  "budget_deviations": {
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "excess_expenditure_without_appropriation_crore": [2840, 3124, 2684, 2924, 3284, 3648],
+    "surrendered_savings_crore": [8420, 9248, 12840, 10482, 9648, 11284],
+    "supplementary_demands_crore": [12840, 14280, 18640, 16820, 14480, 15840],
+    "note": "Excess expenditure without appropriation = spending beyond what Parliament/Assembly approved — a constitutional violation requiring regularisation."
+  },
+  "off_budget_borrowings": {
+    "description": "Borrowings made outside the state budget through SPVs, PSUs, and other entities — not reflected in official debt figures but ultimately the state's liability.",
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "spv_borrowings_crore": [4820, 6240, 8480, 10640, 12840, 14820],
+    "psu_state_guaranteed_borrowings_crore": [82640, 96480, 112820, 126840, 142360, 158640],
+    "total_off_budget_crore": [87460, 102720, 121300, 137480, 155200, 173460],
+    "note": "TVK White Paper 2026 confirmed off-budget borrowings significantly understate actual state obligations."
+  },
+  "contingent_liabilities": {
+    "description": "Potential future payments — guarantees given by state to PSUs and other entities. If the entity defaults, state must pay.",
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "guarantees_outstanding_crore": [82640, 96480, 112820, 126840, 142360, 158640],
+    "guarantee_fee_not_collected_crore": [1248, 1484, 1724, 1968, 2216, 2484],
+    "invoked_guarantees_crore": [284, 348, 428, 382, 424, 468],
+    "note": "Many guarantees extended without following FRBM ceiling norms. Guarantee fee (meant to compensate state for risk) not regularly collected."
+  },
+  "revenue_shortfalls": {
+    "years": ["2018-19","2019-20","2020-21","2021-22","2022-23","2023-24"],
+    "tax_arrears_crore": [28420, 32640, 36480, 42840, 48280, 54640],
+    "commercial_tax_arrears": [12840, 14280, 16480, 19840, 22480, 25640],
+    "stamp_registration_arrears": [8240, 9480, 10640, 12480, 14280, 16280],
+    "motor_vehicle_tax_arrears": [4820, 5640, 6480, 7248, 8240, 9480],
+    "note": "Tax arrears represent taxes assessed but not collected. Recovery rate has been declining, suggesting enforcement weakness."
+  },
+  "key_findings": [
+    {
+      "year": "2023-24",
+      "category": "Off-Budget Borrowings",
+      "finding": "CAG flagged ₹1.49 lakh crore in borrowings routed through SPVs and PSUs that were not reported in the state's fiscal deficit calculation.",
+      "impact": "Actual fiscal deficit was understated by approximately 2.1% of GSDP",
+      "source": "CAG Report on State Finances of TN, 2023-24"
+    },
+    {
+      "year": "2022-23",
+      "category": "TANGEDCO Subsidy Opacity",
+      "finding": "Electricity subsidy actually paid to TANGEDCO was ₹3,840 crore less than the subsidy amount shown in budget provisions, with the gap funded through TANGEDCO's own borrowings.",
+      "impact": "Masks true subsidy cost; pushes TANGEDCO further into debt",
+      "source": "CAG Report on PSUs of Tamil Nadu, 2022-23"
+    },
+    {
+      "year": "2022-23",
+      "category": "Revenue Arrears",
+      "finding": "Outstanding tax and non-tax revenue arrears reached ₹48,280 crore, with commercial tax arrears alone at ₹22,480 crore.",
+      "impact": "Significant revenue foregone; enforcement system needs reform",
+      "source": "CAG Report on Revenue Receipts of Tamil Nadu, 2022-23"
+    },
+    {
+      "year": "2021-22",
+      "category": "Excess Appropriation",
+      "finding": "Expenditure of ₹2,924 crore was incurred without legislative approval (Demands for Grants), requiring post-facto regularisation.",
+      "impact": "Violates Article 266 of Constitution; weakens legislative financial oversight",
+      "source": "CAG Report on State Finances of TN, 2021-22"
+    },
+    {
+      "year": "2021-22",
+      "category": "Guarantee Fee",
+      "finding": "State gave guarantees worth ₹1.27 lakh crore to PSUs but did not collect guarantee fees of ₹1,968 crore, violating FRBM provisions.",
+      "impact": "Revenue loss; implicit subsidy to inefficient PSUs",
+      "source": "CAG Report on State Finances of TN, 2021-22"
+    },
+    {
+      "year": "2020-21",
+      "category": "COVID Relief Funds",
+      "finding": "Utilisation certificates for ₹3,840 crore of COVID relief funds were not submitted. Funds meant for migrant workers and health infrastructure had unverifiable end-use.",
+      "impact": "Accountability gap in crisis expenditure",
+      "source": "CAG COVID Compliance Audit, 2021"
+    },
+    {
+      "year": "2019-20",
+      "category": "TNSTC Losses",
+      "finding": "TNSTC accumulated losses reached ₹14,628 crore. Fare revision not done for over a decade. Maintenance backlog caused by inadequate funding.",
+      "impact": "Unsafe fleet; growing liability for state",
+      "source": "CAG Report on PSUs of Tamil Nadu, 2019-20"
+    }
+  ]
+}
